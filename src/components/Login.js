@@ -27,7 +27,7 @@ const Login = props => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userId", res.data.id);
         localStorage.setItem("username", res.data.username);
-        props.history.push("/tools");
+        props.history.push("/");
       })
       .catch(err => console.log(err));
   };
@@ -35,11 +35,10 @@ const Login = props => {
   return (
     <div>
       <form onSubmit={login}>
-        <i class="fas fa-tools fa-5x"></i>
         <input
           value={user}
           onChange={userHandler}
-          placeholder="Username"
+          placeholder="username"
           autoComplete="off"
           required
         />
@@ -47,7 +46,7 @@ const Login = props => {
           type="password"
           value={pass}
           onChange={passHandler}
-          placeholder="Password"
+          placeholder="password"
           autoComplete="off"
           required
         />
