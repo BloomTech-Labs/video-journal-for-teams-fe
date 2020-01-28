@@ -5,6 +5,9 @@ const SignUp = props => {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
 
   const userHandler = e => {
     setUser(e.target.value);
@@ -18,10 +21,25 @@ const SignUp = props => {
     setConfirmPass(e.target.value);
   };
 
+  const firstNameHandler = e => {
+    setFirstName(e.target.value);
+  };
+
+  const lastNameHandler = e => {
+    setLastName(e.target.value);
+  };
+
+  const emailHandler = e => {
+    setEmail(e.target.value);
+  };
+
   const register = e => {
     const newUser = {
       username: user,
       password: pass,
+      firstName: firstName,
+      lastName: lastName,
+      email: email
     };
 
     if (pass === confirmPass) {
@@ -46,9 +64,9 @@ const SignUp = props => {
     return (pass === "" && confirmPass === "") || confirmPass.length === 0 ? (
       ""
     ) : pass === confirmPass ? (
-      <StyledAccept>Passwords match!</StyledAccept>
+      <p>Passwords match!</p>
     ) : (
-      <StyledWarning>***Passwords must match***</StyledWarning>
+      <p>***Passwords must match***</p>
     );
   };
 
@@ -56,16 +74,13 @@ const SignUp = props => {
     return pass.length === 0 || pass.length > 3 ? (
       ""
     ) : (
-      <StyledWarning>
-        ***Password must be at least 4 characters***
-      </StyledWarning>
+      <p>***Password must be at least 4 characters***</p>
     );
   };
 
   return (
     <div>
       <form onSubmit={register}>
-        <i class="fas fa-id-card fa-5x"></i>
         <input
           type="text"
           name="user"
@@ -92,6 +107,30 @@ const SignUp = props => {
           autoComplete="off"
         />
         {passConfirm()}
+        <input
+          type="text"
+          name="firstName"
+          value={firstName}
+          onChange={firstNameHandler}
+          placeholder="First Name"
+          autoComplete="off"
+        />
+        <input
+          type="text"
+          name="lastName"
+          value={lastName}
+          onChange={lastNameHandler}
+          placeholder="Last Name"
+          autoComplete="off"
+        />
+        <input
+          type="text"
+          name="email"
+          value={email}
+          onChange={emailHandler}
+          placeholder="email"
+          autoComplete="off"
+        />
         <button>Register</button>
       </form>
     </div>
