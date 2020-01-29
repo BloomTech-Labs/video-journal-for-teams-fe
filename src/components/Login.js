@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
+import { Input, Button } from "antd";
 
 const Login = props => {
   const [user, setUser] = useState("");
@@ -15,19 +16,20 @@ const Login = props => {
 
   const login = e => {
     e.preventDefault();
-
+console.log('Login Submission')
     const credentials = {
       username: user,
       password: pass
     };
 
     AxiosWithAuth()
-      .post("/api/auth/login", credentials)
+      .post("/api/users/login/username", credentials)
       .then(res => {
+          console.log('Response', res)
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userId", res.data.id);
         localStorage.setItem("username", res.data.username);
-        props.history.push("/");
+        props.history.push("/test");
       })
       .catch(err => console.log(err));
   };
@@ -35,14 +37,14 @@ const Login = props => {
   return (
     <div>
       <form onSubmit={login}>
-        <input
+        <Input
           value={user}
           onChange={userHandler}
           placeholder="username"
           autoComplete="off"
           required
         />
-        <input
+        <Input
           type="password"
           value={pass}
           onChange={passHandler}
@@ -50,14 +52,14 @@ const Login = props => {
           autoComplete="off"
           required
         />
-        <button>Log In</button>
-        <button
+        <button type="submit">Log In</button>
+        <Button
           onClick={() => {
-            props.history.push("/");
+            props.history.push("/register");
           }}
         >
-          Sign Up
-        </button>
+          Register
+        </Button>
       </form>
     </div>
   );

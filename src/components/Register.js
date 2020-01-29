@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
+import { Button, Input } from "antd";
 
 const SignUp = props => {
     const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ const SignUp = props => {
         if (pass === confirmPass) {
             e.preventDefault();
             AxiosWithAuth()
-                .post("/api/auth/register", newUser)
+                .post("/api/user/register", newUser)
                 .then(res => {
                     console.log(res);
                     props.history.push("/");
@@ -69,7 +70,7 @@ const SignUp = props => {
     return (
         <div>
             <form onSubmit={register}>
-                <input
+                <Input
                     type="text"
                     name="email"
                     value={email}
@@ -103,7 +104,7 @@ const SignUp = props => {
                     autoComplete="off"
                 />
                 {passConfirm()}
-                <button>Register</button>
+                <Button>Register</Button>
             </form>
         </div>
     );

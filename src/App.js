@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import TestComponent from "./components/TestComponent"
 import { Button } from "antd";
 import "./App.css";
 
@@ -14,6 +15,8 @@ function App() {
             <Route exact path="/" component={Login} />
 
             <Route path="/register" component={Register} />
+
+            <PrivateRoute path="/test" component={TestComponent} />
         </div>
     );
 }
