@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
+import UserVideosCard from "./UserVideosCard";
 
 // temporary array for state data.
 
@@ -13,16 +14,14 @@ function UserVideos() {
 		using the user_id from redux state
 		*/
 		setVideos(MOCKDATA);
-	}, [])
+	}, [videos])
 
 	return (
-		<>
-			<Layout>
-				{videos.map(el => (
-					<p>{el.title}, {el.created_at}</p>
-				))}
-			</Layout>
-		</>
+		<Layout>
+			{videos.map(item => (
+				<UserVideosCard item={item} key={item.video_id} />
+			))}
+		</Layout>
 	)
 }
 
