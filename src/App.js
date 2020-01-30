@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Button } from "antd";
 import "./App.css";
 
 // Components
@@ -13,8 +12,6 @@ import UserDashboard from './pages/UserDashboard';
 function App() {
     return (
         <div className="app">
-            {/* This button below was showing up on all routes */}
-            {/* <Button type="primary">YEET</Button> */}
             
             <Route exact path="/" component={Login} />
 
@@ -23,6 +20,7 @@ function App() {
             <PrivateRoute path="/test" component={TestComponent} />
 
             <Route path="/user-dashboard" component={UserDashboard} />
+
         </div>
     );
 }
