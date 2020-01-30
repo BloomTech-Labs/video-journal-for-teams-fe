@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AxiosWithAuth from "../utils/AxiosWithAuth";
+import AxiosWithAuth from "./utils/AxiosWithAuth";
 import { Button, Input } from "antd";
 
 const SignUp = props => {
@@ -34,7 +34,7 @@ const SignUp = props => {
         if (pass === confirmPass) {
             e.preventDefault();
             AxiosWithAuth()
-                .post("/api/user/register", newUser)
+                .post("/api/users/register", newUser)
                 .then(res => {
                     console.log(res);
                     props.history.push("/");
@@ -104,7 +104,7 @@ const SignUp = props => {
                     autoComplete="off"
                 />
                 {passConfirm()}
-                <Button>Register</Button>
+                <button>Register</button>
             </form>
         </div>
     );
