@@ -25,6 +25,8 @@ const SignUp = props => {
     };
 
     const register = e => {
+        e.preventDefault();
+        
         const newUser = {
             email: email,
             username: user,
@@ -32,7 +34,6 @@ const SignUp = props => {
         };
 
         if (pass === confirmPass) {
-            e.preventDefault();
             AxiosWithAuth()
                 .post("/api/users/register", newUser)
                 .then(res => {
@@ -44,7 +45,6 @@ const SignUp = props => {
             setPass("");
             setConfirmPass("");
         } else {
-            e.preventDefault();
             alert("Error! Passwords do not match!");
         }
     };
