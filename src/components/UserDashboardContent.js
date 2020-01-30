@@ -1,8 +1,8 @@
 import React from 'react';
+import TeamList from './TeamList';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 const { Header, Content } = Layout;
-import TeamList from './TeamList';
 
 function UserDashboardContent() {
 
