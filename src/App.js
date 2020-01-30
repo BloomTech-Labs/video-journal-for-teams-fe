@@ -22,7 +22,7 @@ function App() {
 
             <PrivateRoute path="/test" component={TestComponent} />
 
-            <Route path="/test-user-dashboard" component={UserDashboard} />
+            <Route path="/user-dashboard" component={UserDashboard} />
         </div>
     );
 }
