@@ -1,6 +1,9 @@
 import React from 'react';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
+
+import UserVideos from "./UserVideos"
+
 const { Header, Content } = Layout;
 
 function UserDashboardContent() {
@@ -22,6 +25,7 @@ function UserDashboardContent() {
             >
                <h1>Hi Welcome User</h1>
                <p>Put main content/components for user dashboard content here...</p>
+               <UserVideos />
             </Content>
          </Layout>
       </>
