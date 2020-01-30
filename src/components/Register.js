@@ -26,6 +26,7 @@ const SignUp = props => {
 
     const register = e => {
         e.preventDefault();
+        
         const newUser = {
             email: email,
             username: user,
