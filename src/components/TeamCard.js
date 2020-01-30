@@ -6,8 +6,8 @@ const TeamCard = props => {
     return (
         <div className="card-container">
             <div className="card-content">
-                <h1>{props.name}</h1>
-                <h2>{props.description}</h2>
+                <h1>Team Name:{props.data.name}</h1>
+                <p>Description: {props.data.description}</p>
             </div>
         </div>
     );
