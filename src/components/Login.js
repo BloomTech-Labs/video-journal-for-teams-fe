@@ -27,8 +27,6 @@ console.log('Login Submission')
       .then(res => {
           console.log('Response', res)
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("userId", res.data.id);
-        localStorage.setItem("username", res.data.username);
         props.history.push("/test");
       })
       .catch(err => console.log(err));
