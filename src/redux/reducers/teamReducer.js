@@ -1,22 +1,34 @@
 import constants from "../constants";
 
-//TODO Remove demo references
-
 const initialState = {
-  demoData: [],
+    teams: [],
+    isFetching: false,
 };
 
-const dataReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case constants.DEMO_CONSTANT:
-      return {
-        ...state,
-        demoData: [...payload],
-      };
+const teamReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
+        case constants.FETCH_TEAMS_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case constants.FETCH_TEAMS_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                teams: [...payload]
+            }
+        case constants.FETCH_TEAMS_FAILURE:
+            return {
+                ...state,
+                error: [...payload],
+                isFetching: false
+            }
+        default:
+            return state;
+        }
+    };
 
-    default:
-      return state;
-  }
-};
-
-export default dataReducer;
+export default teamReducer;
