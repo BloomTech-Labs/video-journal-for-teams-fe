@@ -1,8 +1,8 @@
 import React from 'react'
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
-import DashboardNav from './DashboardNav';
-import UserDashboardContent from './UserDashboardContent';
+import DashboardNav from '../components/DashboardNav';
+import UserDashboardContent from '../components/UserDashboardContent';
 
 function UserDashboard() {
 

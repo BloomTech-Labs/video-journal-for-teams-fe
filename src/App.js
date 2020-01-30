@@ -8,7 +8,7 @@ import PrivateRoute from "./components/utils/PrivateRoute";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import TestComponent from "./components/TestComponent"
-import UserDashboard from './components/UserDashboard';
+import UserDashboard from './pages/UserDashboard';
 
 function App() {
     return (
