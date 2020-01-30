@@ -2,18 +2,18 @@ import React from 'react'
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import DashboardNav from './DashboardNav';
-import TestUserContent from './TestUserContent';
+import UserDashboardContent from './UserDashboardContent';
 
-function TestDash() {
+function UserDashboard() {
 
    return (
       <>
          <Layout>
             <DashboardNav />
-            <TestUserContent />
+            <UserDashboardContent />
          </Layout>
       </>
    )
 }
 
-export default TestDash
+export default UserDashboard

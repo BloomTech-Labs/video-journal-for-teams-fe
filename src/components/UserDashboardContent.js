@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 const { Header, Content } = Layout;
 
-function TestUserContent() {
+function UserDashboardContent() {
 
    return (
       <>
@@ -21,11 +21,11 @@ function TestUserContent() {
                }}
             >
                <h1>Hi Welcome User</h1>
-               <p>Main dashboard content here...</p>
+               <p>Put main content/components for user dashboard content here...</p>
             </Content>
          </Layout>
       </>
    )
 }
 
-export default TestUserContent
+export default UserDashboardContent
