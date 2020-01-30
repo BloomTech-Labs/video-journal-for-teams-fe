@@ -8,7 +8,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import TestComponent from "./components/TestComponent"
 import UserDashboard from './pages/UserDashboard';
-import TeamList from "./components/TeamList";
 
 function App() {
     return (
@@ -22,7 +21,6 @@ function App() {
 
             <Route path="/user-dashboard" component={UserDashboard} />
 
-            <Route path="/teams" component={TeamList} />
         </div>
     );
 }

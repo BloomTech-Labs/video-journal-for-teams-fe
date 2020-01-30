@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 const { Header, Content } = Layout;
+import TeamList from './TeamList';
 
 function UserDashboardContent() {
 
@@ -22,6 +23,7 @@ function UserDashboardContent() {
             >
                <h1>Hi Welcome User</h1>
                <p>Put main content/components for user dashboard content here...</p>
+               <TeamList />
             </Content>
          </Layout>
       </>
