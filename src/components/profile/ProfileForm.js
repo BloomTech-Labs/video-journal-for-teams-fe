@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Row, Col } from 'antd';
 import 'antd/dist/antd.css';
+const { TextArea } = Input;
 
 function ProfileForm() {
    return (
@@ -8,7 +9,7 @@ function ProfileForm() {
          <h1>Update Profile Information</h1>
          <div className="form-container">
             <Form layout="vertical">
-               <Row gutter={16}>
+               <Row gutter={24}>
                   <Col span={12}>
                      <Form.Item label="First Name">
                         <Input placeholder="First Name" />
@@ -23,7 +24,7 @@ function ProfileForm() {
                         <Input placeholder="Website" />
                      </Form.Item>
                      <Form.Item label="Bio">
-                        <Input placeholder="Bio" />
+                        <TextArea placeholder="Bio" />
                      </Form.Item>
                   </Col>
 
@@ -38,7 +39,7 @@ function ProfileForm() {
                         <Input placeholder="Confirm Password" />
                      </Form.Item>
                   </Col>
-                  <Col span={24}>
+                  <Col span={24} className="button-wrapper">
                      <Button type="primary" htmlType="submit">
                         Save
                      </Button>

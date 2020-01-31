@@ -15,9 +15,9 @@ function UserProfileContent() {
          <ProfileCarousel />
          <div className="profile-main">
             <div className="container">
-               <Row gutter={96}>
-                  <Col span={6}><ProfileAvatar /></Col>
-                  <Col span={18}><ProfileForm /></Col>
+               <Row gutter={20}>
+                  <Col span={8}><ProfileAvatar /></Col>
+                  <Col span={16}><ProfileForm /></Col>
                </Row>
             </div>
          </div>

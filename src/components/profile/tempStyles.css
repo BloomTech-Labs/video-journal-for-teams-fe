@@ -2,7 +2,6 @@
    max-width: 1000px;
    width: 100%;
    margin: auto;
-   overflow: hidden;
    position: relative;
 }
 
@@ -14,18 +13,17 @@ img {
 
 .ant-carousel .slick-slide {
    text-align: center;
-   height: 160px;
+   height: 250px;
    line-height: 160px;
    background: #364d79;
-   overflow: hidden;
    color: #fff;
 }
 
 /* main profile */
 
-.profile-main {
+/* .profile-main {
    padding: 20px 0;
-}
+} */
 
 /* Avatar section */
 
@@ -35,11 +33,13 @@ img {
 
 .avatar-img img {
    border-radius: 50%;
-   border: 2px solid #fff;
+   border: 3px solid #fff;
 }
 
 .avatar-wrapper {
    text-align: center;
+   position: absolute;
+   top: -75px;
 }
 
 /* Profile information/Form */
@@ -60,4 +60,14 @@ img {
 
 .ant-layout-footer {
    background-color: lightslategray;
+}
+
+/* Buttons */
+
+.button-wrapper {
+   text-align: left;
+}
+
+.button-wrapper button {
+   margin-right: 15px;
 }
