@@ -45,5 +45,19 @@ img {
 /* Profile information/Form */
 
 .profile-information {
-   padding: 20px;
+   padding: 20px 0;
+}
+
+.profile-information h1 {
+   text-align: left;
+}
+
+.form-container {
+   margin-top: 40px;
+}
+
+/* Footer */
+
+.ant-layout-footer {
+   background-color: lightslategray;
 }

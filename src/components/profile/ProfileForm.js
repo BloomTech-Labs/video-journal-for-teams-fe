@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Icon, Input, Button, Row, Col } from 'antd';
+import { Form, Input, Button, Row, Col } from 'antd';
 import 'antd/dist/antd.css';
 
 function ProfileForm() {
@@ -8,7 +8,7 @@ function ProfileForm() {
          <h1>Update Profile Information</h1>
          <div className="form-container">
             <Form layout="vertical">
-               <Row>
+               <Row gutter={16}>
                   <Col span={12}>
                      <Form.Item label="First Name">
                         <Input placeholder="First Name" />
@@ -26,6 +26,7 @@ function ProfileForm() {
                         <Input placeholder="Bio" />
                      </Form.Item>
                   </Col>
+
                   <Col span={12}>
                      <Form.Item label="Current Password">
                         <Input placeholder="Current Password" />
