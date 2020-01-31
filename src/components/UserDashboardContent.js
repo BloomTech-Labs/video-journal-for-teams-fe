@@ -13,7 +13,7 @@ function UserDashboardContent() {
       <>
       {/* user dash content area */}
          <Layout>
-            <Header style={{ background: '#fff', padding: 0 }}>
+            <Header style={{ background: '#fff', padding: 0, height: 64}}>
                <p>Header</p>
             </Header>
             <Content
