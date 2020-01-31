@@ -14,3 +14,20 @@
    overflow: hidden;
    position: relative;
 }
+
+img {
+   max-width: 100%;
+}
+
+.avatar-img {
+   margin-bottom: 10px;
+}
+
+.avatar-img img {
+   border-radius: 50%;
+   border: 2px solid #fff;
+}
+
+.avatar-wrapper {
+   text-align: center;
+}

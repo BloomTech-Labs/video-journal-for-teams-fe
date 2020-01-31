@@ -15,9 +15,7 @@ function UserProfileContent() {
          <div className="container">
             <Row>
                <Col span={5}><ProfileAvatar /></Col>
-               <Col span={19}>
-                  <p>From content here...</p>
-               </Col>
+               <Col span={19}><p>From content here...</p></Col>
             </Row>
          </div>
       </>
