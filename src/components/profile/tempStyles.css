@@ -41,3 +41,9 @@ img {
 .avatar-wrapper {
    text-align: center;
 }
+
+/* Profile information/Form */
+
+.profile-information {
+   padding: 20px;
+}
