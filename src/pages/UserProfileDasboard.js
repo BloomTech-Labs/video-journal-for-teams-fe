@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
-import UserProfileContent from '../components/profile/UserProfileContent';
+import ProfileContent from '../components/profile/ProfileContent';
 
 const { Header, Footer, Content } = Layout;
 
@@ -11,7 +11,7 @@ function EditUserDashboard() {
          <Layout>
             <Header>Header</Header>
             <Content>
-               <UserProfileContent />
+               <ProfileContent />
             </Content>
             <Footer>Footer</Footer>
          </Layout>
