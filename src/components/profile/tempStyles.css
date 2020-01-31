@@ -1,12 +1,3 @@
-.ant-carousel .slick-slide {
-   text-align: center;
-   height: 160px;
-   line-height: 160px;
-   background: #364d79;
-   overflow: hidden;
-   color: #fff;
-}
-
 .container {
    max-width: 1000px;
    width: 100%;
@@ -18,6 +9,25 @@
 img {
    max-width: 100%;
 }
+
+/* Carousel */
+
+.ant-carousel .slick-slide {
+   text-align: center;
+   height: 160px;
+   line-height: 160px;
+   background: #364d79;
+   overflow: hidden;
+   color: #fff;
+}
+
+/* main profile */
+
+.profile-main {
+   padding: 20px 0;
+}
+
+/* Avatar section */
 
 .avatar-img {
    margin-bottom: 10px;

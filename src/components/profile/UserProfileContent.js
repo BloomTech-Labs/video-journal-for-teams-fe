@@ -6,17 +6,20 @@ import './tempStyles.css';
 // Components
 import ProfileCarousel from './ProfileCarousel';
 import ProfileAvatar from './ProfileAvatar';
+import ProfileForm from './ProfileForm';
 
 function UserProfileContent() {
 
    return (
       <>
          <ProfileCarousel />
-         <div className="container">
-            <Row>
-               <Col span={5}><ProfileAvatar /></Col>
-               <Col span={19}><p>From content here...</p></Col>
-            </Row>
+         <div className="profile-main">
+            <div className="container">
+               <Row>
+                  <Col span={5}><ProfileAvatar /></Col>
+                  <Col span={19}><ProfileForm /></Col>
+               </Row>
+            </div>
          </div>
       </>
    )
