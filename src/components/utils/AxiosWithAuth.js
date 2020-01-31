@@ -1,14 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
 
 const AxiosWithAuth = () => {
-  const token = localStorage.getItem('token');
-  
+  const token = localStorage.getItem("token");
+
   return axios.create({
-    baseURL: process.env.REACT_APP_ENV === "development" ? process.env.REACT_APP_LOCAL_HOST : process.env.REACT_APP_STAGING_URL,
+    baseURL: (function() {
+      switch (process.env.REACT_APP_ENV) {
+        case "development":
+          return process.env.REACT_APP_LOCAL_HOST;
+        case "staging":
+          return process.env.REACT_APP_STAGING_URL;
+        case "production":
+          return process.env.REACT_APP_PRODUCTION_URL;
+        default:
+          return process.env.REACT_APP_LOCAL_HOST;
+      }
+    })(),
     headers: {
-      Authorization: token,
-      'Content-Type': 'application/json'
-    }
+      "Authorization": token,
+      "Content-Type": "application/json",
+    },
   });
 };
 
