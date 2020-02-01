@@ -1,6 +1,6 @@
 import React from 'react';
 import TeamList from './TeamList';
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, Tooltip } from 'antd';
 
 import UserVideos from "./UserVideos"
 
@@ -13,7 +13,9 @@ function UserDashboardContent() {
 			{/* user dash content area */}
 			<Header className="userDashHeader">
 				<div className="userDashContentHeader">
-					<Icon type="user" />
+					<Tooltip placement="left" title="username here">
+						<Icon type="user" />
+					</Tooltip>
 				</div>
 			</Header>
 			<Content className="userDashMain"	>

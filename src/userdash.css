@@ -34,5 +34,9 @@ main.userDashMain {
 }
 
 .userDashContentHeader i {
+	background-color: #bbb;
+	border-radius: 50%;
+	padding: 7px;
+	/* display: inline-block; */
 	transform: scale(1.5);
 }
