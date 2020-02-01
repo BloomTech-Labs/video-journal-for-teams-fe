@@ -36,4 +36,12 @@ main.userDashMain {
 .userDashTeamList {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.teamCard {
+	margin: 10px;
+	width: 225px;
+	height: 110px;
+	border-radius: 5px;
 }

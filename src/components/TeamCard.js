@@ -1,17 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Layout } from 'antd';
+import { Card } from 'antd';
 
 
 const TeamCard = props => {
 
     return (
-        <div className="card-container">
-            <div className="card-content">
-                <h1>Team Name:{props.data.name}</h1>
-                <p>Description: {props.data.description}</p>
-            </div>
-        </div>
+        <Card className="teamCard" size="small">
+                <p>{props.data.name}</p>
+                <p>{props.data.description}</p>
+        </Card>
     );
 };
 

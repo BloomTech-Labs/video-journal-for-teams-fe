@@ -1,8 +1,9 @@
 import React from 'react';
 import TeamList from './TeamList';
-import { Layout, Icon, Tooltip, Avatar } from 'antd';
+import { Layout, Tooltip, Avatar, Typography, Card } from 'antd';
 
 import UserVideos from "./UserVideos"
+const { Title } = Typography;
 
 const { Header, Content } = Layout;
 
@@ -13,18 +14,19 @@ function UserDashboardContent() {
 			{/* user dash content area */}
 			<Header className="userDashHeader">
 				<div className="userDashContentHeader">
+					<Title level={4}>username</Title>
 					<Tooltip placement="left" title="username here">
 						{/* change src below for image */}
 						<Avatar size="large" icon="user" src="" />
 					</Tooltip>
 				</div>
 			</Header>
-			<Content className="userDashMain"	>
-				<h1>Hi Welcome User</h1>
-				<p>Put main content/components for user dashboard content here...</p>
+			<Card title="Your Teams" style={{ margin: "20px" }}>
 				<TeamList />
+			</Card>
+			<Card title="Your Teams" style={{ margin: "20px" }}>
 				<UserVideos />
-			</Content>
+			</Card>
 		</Layout>
 	)
 }
