@@ -1,27 +1,31 @@
 import React from 'react'
-import { Layout, Row, Col } from 'antd';
+import { Card, Row, Col } from 'antd';
 import 'antd/dist/antd.css';
 
 const UserVideosCard = (props) => {
-	const item = props.item;
+	const data = props.data;
 	return (
-		<Layout>
+		<Card className="videoCard" size="small">
 			<Row gutter={[16, 16]}>
-				<Col span={4}>
-					<img src={item.fs_path} height={100} width={100} />
+				<Col span={6}>
+					<img src={data.fs_path} height={100} width={100} />
 				</Col>
-				<Col span={8} style={{ textAlign: "left" }}>
-					<h3>Title: {item.title}</h3>
-					<ul style={{ listStyleType: "none" }}>
-						{item.description && <li>Desc: {item.description}</li>}
-						<li>Creation: {item.created_at}</li>
-					</ul>
+				<Col span={3}>
+					{/* Space only */}
 				</Col>
-				<Col span={12} style={{ textAlign: "left" }}>
-					<p>Feedbacks go here?</p>
+				<Col span={15} style={{ textAlign: "left" }}>
+						<p>{data.title}</p>
+						{data.description && <p className="small">{data.description}</p>}
+						<p className="small">{data.created_at}</p>
 				</Col>
 			</Row>
-		</Layout>
+		</Card>
+		// <Layout>
+		// 		<Col span={12} style={{ textAlign: "left" }}>
+		// 			<p>Feedbacks go here?</p>
+		// 		</Col>
+		// 	</Row>
+		// </Layout>
 	)
 }
 

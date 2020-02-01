@@ -1,3 +1,11 @@
+p.small {
+	font-size: .75rem;
+}
+
+.ant-card p {
+	margin-bottom: .3rem;
+}
+
 .userDashHeader {
 	background: rgba(255, 255, 255, 0.2);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -33,7 +41,7 @@ main.userDashMain {
 	justify-content: flex-end;
 }
 
-.userDashTeamList {
+.userDashList {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -45,3 +53,11 @@ main.userDashMain {
 	height: 110px;
 	border-radius: 5px;
 }
+
+.videoCard{
+	margin: 10px;
+	width: 420px;
+	height: 125px;
+	border-radius: 5px;
+}
+

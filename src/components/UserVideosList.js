@@ -3,7 +3,8 @@ import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import UserVideosCard from "./UserVideosCard";
 
-// temporary array for state data.
+const { Header, Content } = Layout;
+
 
 function UserVideos() {
 	const [videos, setVideos] = useState([]);
@@ -17,11 +18,11 @@ function UserVideos() {
 	}, [videos])
 
 	return (
-		<Layout>
-			{videos.map(item => (
-				<UserVideosCard item={item} key={item.video_id} />
+<Content className="userDashList">
+			{videos.map(data => (
+				<UserVideosCard data={data} key={data.video_id} />
 			))}
-		</Layout>
+		</Content>
 	)
 }
 

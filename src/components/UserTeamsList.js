@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { fetchTeams } from "../redux/actions/teamActions";
-import TeamCard from "./TeamCard";
+import TeamCard from "./UserTeamsCard";
 import { Layout, Typography } from 'antd';
 
 const { Title } = Typography;
@@ -31,7 +31,7 @@ const TeamList = props => {
 	//     return <h2>Loading...</h2>;
 	// } else {
 	return (
-		<Content className="userDashTeamList">
+		<Content className="userDashList">
 			{teams.map(data => {
 				return <TeamCard key={data.id} data={data} />;
 			})}

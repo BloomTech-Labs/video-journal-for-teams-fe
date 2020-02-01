@@ -8,7 +8,7 @@ const TeamCard = props => {
     return (
         <Card className="teamCard" size="small">
                 <p>{props.data.name}</p>
-                <p>{props.data.description}</p>
+                <p className="small">{props.data.description}</p>
         </Card>
     );
 };

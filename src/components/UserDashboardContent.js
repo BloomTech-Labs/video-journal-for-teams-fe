@@ -1,8 +1,8 @@
 import React from 'react';
-import TeamList from './TeamList';
+import TeamList from './UserTeamsList';
 import { Layout, Tooltip, Avatar, Typography, Card } from 'antd';
 
-import UserVideos from "./UserVideos"
+import UserVideos from "./UserVideosList"
 const { Title } = Typography;
 
 const { Header, Content } = Layout;
@@ -24,7 +24,7 @@ function UserDashboardContent() {
 			<Card title="Your Teams" style={{ margin: "20px" }}>
 				<TeamList />
 			</Card>
-			<Card title="Your Teams" style={{ margin: "20px" }}>
+			<Card title="Your Videos" style={{ margin: "20px" }}>
 				<UserVideos />
 			</Card>
 		</Layout>
