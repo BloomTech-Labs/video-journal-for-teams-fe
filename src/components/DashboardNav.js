@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout, Menu, Icon, Typography } from 'antd';
 import 'antd/dist/antd.css';
 
+
 const { Sider } = Layout;
 const { Title } = Typography;
 
@@ -28,10 +29,10 @@ function DashboardNav() {
 	return (
 		<>
 			<Sider>
-				<div style={{...navHeaderStyles}}>
-					<Title level={3} style={{...navHeaderFontStyles}}>Alpaca Vids</Title>
+				<div className={"userDashHeader"}>
+					<Title level={3} className={"userDashHeaderFont"}>Alpaca Vids</Title>
 				</div>
-				<Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{...menuStyles}}>
+				<Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} className={"userDashMenu"}>
 					<Menu.Item key="1">
 						<Icon type="user" />
 						<span>Home</span>
