@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import "./App.css";
+import 'antd/dist/antd.css';
 import './userdash.css';
 
 // Components

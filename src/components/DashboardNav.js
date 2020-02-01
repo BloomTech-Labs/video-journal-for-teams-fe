@@ -1,30 +1,10 @@
 import React from 'react'
 import { Layout, Menu, Icon, Typography } from 'antd';
-import 'antd/dist/antd.css';
-
 
 const { Sider } = Layout;
 const { Title } = Typography;
 
 function DashboardNav() {
-
-	const navHeaderStyles = {
-		background: 'rgba(255, 255, 255, 0.2)',
-		padding: '16px',
-		marginBottom: "32px",
-		height: "64px",
-		textAlign: "center"
-	}
-
-	const navHeaderFontStyles = {
-		color: '#fff',
-		marginBottom: 0
-	}
-	
-	const menuStyles ={
-		textAlign: "left",
-		margin: "0 auto"
-	}
 
 	return (
 		<>
