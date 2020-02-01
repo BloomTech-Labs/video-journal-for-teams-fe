@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Layout } from 'antd';
+
 
 const TeamCard = props => {
 
