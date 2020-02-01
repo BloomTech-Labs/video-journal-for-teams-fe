@@ -1,17 +1,38 @@
 .userDashHeader {
 	background: rgba(255, 255, 255, 0.2);
-	padding: 16px;
-	margin-bottom: 32px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 	height: 64px;
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .userDashHeaderFont {
 	color: rgb(255, 255, 255) !important;
-	margin-bottom: 0px;
+	margin-top: 10px;
 }
 
 .userDashMenu {
 	text-align: left;
-	margin: 0px auto;
+	margin-top: 20px;
+}
+
+
+main.userDashMain {
+	margin: 24px 16px;
+	padding: 24px;
+	background: rgb(255, 255, 255);
+	min-height: 280px;
+}
+
+.userDashContentHeader {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.userDashContentHeader i {
+	transform: scale(1.5);
 }
