@@ -71,3 +71,27 @@ img {
 .button-wrapper button {
    margin-right: 15px;
 }
+
+.login-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+  
+.login-form-button {
+    width: 100%;
+}
+
+.register-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.register-form-button {
+    width: 100%;
+}

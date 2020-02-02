@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import AxiosWithAuth from "./utils/AxiosWithAuth";
-import { Input, Button } from "antd";
+import { Link } from "react-router-dom";
+import "./profile/tempStyles.css";
+import { Layout } from "antd";
+import { Form, Icon, Input, Button, Checkbox } from "antd";
+const { Sider, Content } = Layout;
 
 const Login = props => {
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
 
     const userHandler = e => {
-
         setUser(e.target.value);
     };
 
@@ -23,56 +26,63 @@ const Login = props => {
                 password: pass
             };
             AxiosWithAuth()
-            .post("/api/users/login/email", credentials)
-            .then(res => {
-                localStorage.setItem("token", res.data.token);
-                props.history.push("/user-dashboard");
-            })
-            .catch(err => console.log(err));
+                .post("/api/users/login/email", credentials)
+                .then(res => {
+                    localStorage.setItem("token", res.data.token);
+                    props.history.push("/user-dashboard");
+                })
+                .catch(err => console.log(err));
         } else {
             const credentials = {
                 username: user,
                 password: pass
             };
             AxiosWithAuth()
-            .post("/api/users/login/username", credentials)
-            .then(res => {
-                localStorage.setItem("token", res.data.token);
-                props.history.push("/user-dashboard");
-            })
-            .catch(err => console.log(err));
+                .post("/api/users/login/username", credentials)
+                .then(res => {
+                    localStorage.setItem("token", res.data.token);
+                    props.history.push("/user-dashboard");
+                })
+                .catch(err => console.log(err));
         }
-
-
     };
 
     return (
         <div>
-            <form onSubmit={login}>
-                <Input
-                    value={user}
-                    onChange={userHandler}
-                    placeholder="username"
-                    autoComplete="off"
-                    required
-                />
-                <Input
-                    type="password"
-                    value={pass}
-                    onChange={passHandler}
-                    placeholder="password"
-                    autoComplete="off"
-                    required
-                />
-                <button type="submit">Log In</button>
-                <Button
-                    onClick={() => {
-                        props.history.push("/register");
-                    }}
-                >
-                    Register
-        </Button>
-            </form>
+            <Layout>
+                <Sider />
+                <Content>
+                    <Form onSubmit={login} className="login-form">
+                        <Form.Item>
+                        <Input
+                            prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.5)" }} />}
+                            value={user}
+                            onChange={userHandler}
+                            placeholder="Enter username or email"
+                            autoComplete="off"
+                            required
+                        />
+                        </Form.Item>
+                        <Form.Item>
+                        <Input
+                            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.5)" }} />}
+                            type="password"
+                            value={pass}
+                            onChange={passHandler}
+                            placeholder="Enter password"
+                            autoComplete="off"
+                            required
+                        />
+                        </Form.Item>
+                        <Form.Item> 
+                            <Checkbox>Remember me</Checkbox> 
+                            <Link to="" className="login-form-forgot">forgot password?</Link>                    
+                            <Button type="primary" htmlType="submit" className="login-form-button">Log In</Button>
+                            <Link to="/register">or register now!</Link>
+                        </Form.Item>
+                    </Form>
+                </Content>
+            </Layout>
         </div>
     );
 };
