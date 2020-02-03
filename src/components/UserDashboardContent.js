@@ -1,37 +1,34 @@
 import React from 'react';
-import TeamList from './TeamList';
-import { Layout } from 'antd';
-import 'antd/dist/antd.css';
+import TeamList from './UserTeamsList';
+import { Layout, Tooltip, Avatar, Typography, Card } from 'antd';
 
-import UserVideos from "./UserVideos"
+import UserVideos from "./UserVideosList"
+const { Title } = Typography;
 
 const { Header, Content } = Layout;
 
 function UserDashboardContent() {
 
-   return (
-      <>
-      {/* user dash content area */}
-         <Layout>
-            <Header style={{ background: '#fff', padding: 0 }}>
-               <p>Header</p>
-            </Header>
-            <Content
-               style={{
-                  margin: '24px 16px',
-                  padding: 24,
-                  background: '#fff',
-                  minHeight: 280,
-               }}
-            >
-               <h1>Hi Welcome User</h1>
-               <p>Put main content/components for user dashboard content here...</p>
-               <TeamList />
-               <UserVideos />
-            </Content>
-         </Layout>
-      </>
-   )
+	return (
+		<Layout>
+			{/* user dash content area */}
+			<Header className="userDashHeader">
+				<div className="userDashContentHeader">
+					<Title level={4}>username</Title>
+					<Tooltip placement="left" title="username here">
+						{/* change src below for image */}
+						<Avatar size="large" icon="user" src="" />
+					</Tooltip>
+				</div>
+			</Header>
+			<Card title="Your Teams" style={{ margin: "20px" }}>
+				<TeamList />
+			</Card>
+			<Card title="Your Videos" style={{ margin: "20px" }}>
+				<UserVideos />
+			</Card>
+		</Layout>
+	)
 }
 
 export default UserDashboardContent
