@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 // Components
-import { Layout } from "antd";
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import { Layout, Form, Icon, Input, Button, Checkbox } from "antd";
 
 // Styles
-import "./profile/tempStyles.css";
+import "../components/profile/tempStyles.css";
 
 const { Sider, Content } = Layout;
 

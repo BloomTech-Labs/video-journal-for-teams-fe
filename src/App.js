@@ -3,8 +3,8 @@ import { Route } from "react-router-dom";
 import "./components/utils/AxiosDefaults";
 // Components
 import PrivateRoute from "./components/utils/PrivateRoute";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import TestComponent from "./components/TestComponent";
 import UserDashboard from "./pages/UserDashboard";
 import UserProfileDashboard from "./pages/UserProfileDashboard";
