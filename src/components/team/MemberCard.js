@@ -1,10 +1,15 @@
 import React from 'react';
-import { Card, Icon } from 'antd';
+import { Card, Icon, Avatar } from 'antd';
 
-function MemberCard() {
+function MemberCard(props) {
+  const { member } = props;
+
   return (
-    <Card>
-      Member Card
+    <Card className="member-card">
+      <div className='image-container'>
+        {(!member.img) ? (<Avatar size={80} icon="user" />): (<img src = {member.img} />)}
+      </div>
+      <p className="small">{member.name}</p>
     </Card>
   )
 }

@@ -7,9 +7,17 @@ function TeamDashboardContent() {
   return (
     <Layout>
       <DashboardHeader />
+      {/* Display Members */}
       <Card title="" style={{ margin: "20px" }}>
         <MembersList />
       </Card>
+
+      {/* Diplay Prompts */}
+      <Card title="" style={{ margin: "20px" }}>
+        Team prompts...
+      </Card>
+
+      {/* Diplay videos */}
       <Card title="" style={{ margin: "20px" }}>
         Team vids...
       </Card>
