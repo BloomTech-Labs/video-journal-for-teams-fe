@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 
 // Redux
@@ -148,6 +149,7 @@ const Register = (props) => {
               <Button type="primary" htmlType="submit" className="register-form-button">
                 Register
               </Button>
+              <Link to="/">I already have an account</Link>
             </Form.Item>
           </Form>
         </Content>
