@@ -11,6 +11,7 @@ import TestComponent from "./components/TestComponent"
 import UserDashboard from './pages/UserDashboard';
 import UserProfileDashboard from "./pages/UserProfileDashboard";
 import UserVideos from "./pages/UserVideos";
+import TeamDashboard from "./pages/TeamDashboard";
 
 function App() {
     return (
@@ -27,6 +28,8 @@ function App() {
             <Route path="/profile" component={UserProfileDashboard} />
 
             <Route path="/videos" component={UserVideos} />
+            <Route path="/team/:id" component={TeamDashboard} />
+
         </div>
     );
 }
