@@ -22,22 +22,36 @@ export const registerUser = (applicant) => (dispatch) => {
 // LOGIN A USER
 export const loginUser = (userCredentials) => (dispatch) => {
   if (userCredentials.method === "email") {
+    const user = {
+      email: userCredentials.usernameOrEmail,
+      password: userCredentials.password,
+    };
+
     axios
-      .post("/auth/login/email", userCredentials)
+      .post("/auth/login/email", user)
       .then((loginResponse) => {
-        dispatch({ type: constants.LOGIN_USER, payload: loginResponse });
+        console.log(loginResponse);
+        dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
       })
       .catch((error) => {
-        dispatch({ type: constants.GENERATE_ERROR, payload: error.response.data });
+        dispatch({ type: constants.GENERATE_ERROR, payload: "Invalid username/password combination." });
       });
   } else {
+    const user = {
+      username: userCredentials.usernameOrEmail,
+      password: userCredentials.password,
+    };
+
     axios
-      .post("/auth/login/username", userCredentials)
+      .post("/auth/login/username", user)
       .then((loginResponse) => {
-        dispatch({ type: constants.LOGIN_USER, payload: loginResponse });
+        console.log(loginResponse);
+
+        dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
       })
       .catch((error) => {
-        dispatch({ type: constants.GENERATE_ERROR, payload: error.response.data });
+        console.log({ error });
+        dispatch({ type: constants.GENERATE_ERROR, payload: "Invalid username/password combination." });
       });
   }
 };
