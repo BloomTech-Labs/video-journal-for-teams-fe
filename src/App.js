@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import TestComponent from "./components/TestComponent";
 import UserDashboard from "./pages/UserDashboard";
 import UserProfileDashboard from "./pages/UserProfileDashboard";
+import TeamDashboard from "./pages/TeamDashboard";
 
 // Styles
 import "antd/dist/antd.css";
@@ -28,8 +29,12 @@ function App() {
       <PrivateRoute path="/user-dashboard" component={UserDashboard} />
 
       <Route path="/profile" component={UserProfileDashboard} />
+
+      <Route path="/team/:id" component={TeamDashboard} />
+
     </div>
-  );
+    );
+
 }
 
 export default App;
