@@ -1,9 +1,10 @@
 import constants from "../constants";
-import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
+import axios from "axios";
+// import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
-  AxiosWithAuth()
+  axios
     .post("/auth/register", applicant)
     .then((registerResponse) => {
       dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
@@ -21,7 +22,7 @@ export const registerUser = (applicant) => (dispatch) => {
 // LOGIN A USER
 export const loginUser = (userCredentials) => (dispatch) => {
   if (userCredentials.method === "email") {
-    AxiosWithAuth()
+    axios
       .post("/auth/login/email", userCredentials)
       .then((loginResponse) => {
         dispatch({ type: constants.LOGIN_USER, payload: loginResponse });
@@ -30,7 +31,7 @@ export const loginUser = (userCredentials) => (dispatch) => {
         dispatch({ type: constants.GENERATE_ERROR, payload: error.response.data });
       });
   } else {
-    AxiosWithAuth()
+    axios
       .post("/auth/login/username", userCredentials)
       .then((loginResponse) => {
         dispatch({ type: constants.LOGIN_USER, payload: loginResponse });
