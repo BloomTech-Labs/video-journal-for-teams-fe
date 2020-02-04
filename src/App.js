@@ -26,7 +26,7 @@ function App() {
 
             <Route path="/profile" component={UserProfileDashboard} />
 
-            <Route path="/team" component={TeamDashboard} />
+            <Route path="/team/:id" component={TeamDashboard} />
 
         </div>
     );
