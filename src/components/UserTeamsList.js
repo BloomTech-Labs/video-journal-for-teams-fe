@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { fetchTeams } from "../redux/actions/teamActions";
 import TeamCard from "./UserTeamsCard";
-import { Layout, Typography } from 'antd';
+import { Layout, Typography, Modal, Button, Form, Input } from 'antd';
 
 const { Title } = Typography;
 const { Header, Content } = Layout;
@@ -11,6 +11,7 @@ const { Header, Content } = Layout;
 
 const TeamList = props => {
 	const [teams, setTeams] = useState([]);
+	const [showModal, setShowModal] = useState(false)
 
 	useEffect(() => {
 		/* 
@@ -30,8 +31,34 @@ const TeamList = props => {
 	// if (props.teams.length === 0) {
 	//     return <h2>Loading...</h2>;
 	// } else {
+
+	const toggleModal = () => {
+		setShowModal(!showModal)
+	}
+
+	const handleOk = () => {
+		toggleModal()
+	}
+
 	return (
 		<Content className="userDashList">
+			<button onClick={toggleModal}>Create Team</button>
+			<Modal
+          title="Create New Team"
+					visible={showModal}
+					onOk={handleOk}
+					onCancel={toggleModal}
+					okText="Create Team"
+        >
+					<Form layout="vertical">
+						<Form.Item label="Team Name">
+								<Input />
+							</Form.Item>
+							<Form.Item label="Team Description">
+              <Input />
+            </Form.Item>
+					</Form>
+				</Modal>
 			{teams.map(data => {
 				return <TeamCard key={data.id} data={data} />;
 			})}
