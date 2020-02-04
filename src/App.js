@@ -10,6 +10,7 @@ import Register from "./components/Register";
 import TestComponent from "./components/TestComponent"
 import UserDashboard from './pages/UserDashboard';
 import UserProfileDashboard from "./pages/UserProfileDashboard";
+import TeamDashboard from "./pages/TeamDashboard";
 
 function App() {
     return (
@@ -24,6 +25,8 @@ function App() {
             <Route path="/user-dashboard" component={UserDashboard} />
 
             <Route path="/profile" component={UserProfileDashboard} />
+
+            <Route path="/team/:id" component={TeamDashboard} />
 
         </div>
     );
