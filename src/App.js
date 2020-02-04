@@ -1,35 +1,40 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import 'antd/dist/antd.css';
-import './userdash.css';
+import "./components/utils/AxiosDefaults";
 
 // Components
 import PrivateRoute from "./components/utils/PrivateRoute";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import TestComponent from "./components/TestComponent"
-import UserDashboard from './pages/UserDashboard';
+
+// Pages
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import TestComponent from "./components/TestComponent";
+import UserDashboard from "./pages/UserDashboard";
 import UserProfileDashboard from "./pages/UserProfileDashboard";
 import TeamDashboard from "./pages/TeamDashboard";
 
+// Styles
+import "antd/dist/antd.css";
+import "./userdash.css";
+
 function App() {
-    return (
-        <div className="app">
-            
-            <Route exact path="/" component={Login} />
+  return (
+    <div className="app">
+      <Route exact path="/" component={Login} />
 
-            <Route path="/register" component={Register} />
+      <Route path="/register" component={Register} />
 
-            <PrivateRoute path="/test" component={TestComponent} />
+      <PrivateRoute path="/test" component={TestComponent} />
 
-            <Route path="/user-dashboard" component={UserDashboard} />
+      <PrivateRoute path="/user-dashboard" component={UserDashboard} />
 
-            <Route path="/profile" component={UserProfileDashboard} />
+      <Route path="/profile" component={UserProfileDashboard} />
 
-            <Route path="/team/:id" component={TeamDashboard} />
+      <Route path="/team/:id" component={TeamDashboard} />
 
-        </div>
+    </div>
     );
+
 }
 
 export default App;
