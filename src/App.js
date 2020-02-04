@@ -10,6 +10,7 @@ import Register from "./components/Register";
 import TestComponent from "./components/TestComponent"
 import UserDashboard from './pages/UserDashboard';
 import UserProfileDashboard from "./pages/UserProfileDashboard";
+import UserVideos from "./pages/UserVideos";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
 
             <Route path="/profile" component={UserProfileDashboard} />
 
+            <Route path="/videos" component={UserVideos} />
         </div>
     );
 }
