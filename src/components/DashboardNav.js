@@ -30,6 +30,7 @@ function DashboardNav() {
 						<Icon type="setting" />
 						<span>Teams Settings</span>
 					</Menu.Item>
+					
 					<hr style={{margin: "40px 0"}}/>
 
 					<h3 style={{ color: "white", paddingLeft: "24px", paddingBottom: "20px"}}>Team Controls</h3>
@@ -45,7 +46,6 @@ function DashboardNav() {
 						<Icon type="setting" />
 						<span>Teams Settings</span>
 					</Menu.Item>
-					{/* </div> */}
 				</Menu>
 			</Sider>
 		</>
