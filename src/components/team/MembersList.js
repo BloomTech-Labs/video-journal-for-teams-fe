@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Typography, Row, Col } from 'antd';
+import { Layout, Typography, Row, Col, Button } from 'antd';
 import './teamTest.css';
 import MemberCard from './MemberCard';
 
@@ -35,9 +35,14 @@ function MembersList() {
     <Content>
       <p>Members({mockmembers.length})</p>
         <Row gutter={[16, 16]}>
-        <Col span={3}>Add Member Card</Col>
+          {/* Add member button */}
+        <Col span={2}>
+          <Button type="primary" shape="circle" icon="plus-circle" className="add-member" />
+        </Col>
+
+          {/* Display members */}
           {mockmembers.map(member => (
-            <Col span={3}><MemberCard member={member} /></Col>
+            <Col span={2}><MemberCard member={member} /></Col>
           ))}
         </Row>
     </Content>

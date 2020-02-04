@@ -14,12 +14,7 @@ function TeamDashboardContent() {
 
       {/* Diplay Prompts */}
       <Card title="" style={{ margin: "20px" }}>
-        Team prompts...
-      </Card>
-
-      {/* Diplay videos */}
-      <Card title="" style={{ margin: "20px" }}>
-        Team vids...
+        Prompts....
       </Card>
     </Layout>
   )
