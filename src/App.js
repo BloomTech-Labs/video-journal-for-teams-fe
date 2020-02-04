@@ -1,8 +1,11 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import "./components/utils/AxiosDefaults";
+
 // Components
 import PrivateRoute from "./components/utils/PrivateRoute";
+
+// Pages
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import TestComponent from "./components/TestComponent";
@@ -22,7 +25,7 @@ function App() {
 
       <PrivateRoute path="/test" component={TestComponent} />
 
-      <Route path="/user-dashboard" component={UserDashboard} />
+      <PrivateRoute path="/user-dashboard" component={UserDashboard} />
 
       <Route path="/profile" component={UserProfileDashboard} />
     </div>
