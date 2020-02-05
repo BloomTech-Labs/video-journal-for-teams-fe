@@ -47,7 +47,7 @@ const Register = (props) => {
   useEffect(() => {
     if (props.isLogged) {
       props.clearError();
-      props.history.push("/user-dashboard");
+      props.history.push("/");
     }
   }, [props.isLogged]);
 
