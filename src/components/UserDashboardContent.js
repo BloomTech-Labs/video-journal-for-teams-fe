@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 import TeamList from './UserTeamsList';
 import { Layout, Tooltip, Avatar, Typography, Card } from 'antd';
 
@@ -7,14 +8,14 @@ const { Title } = Typography;
 
 const { Header, Content } = Layout;
 
-function UserDashboardContent() {
+function UserDashboardContent(props) {
 
 	return (
 		<Layout>
 			{/* user dash content area */}
 			<Header className="userDashHeader">
 				<div className="userDashContentHeader">
-					<Title level={4}>username</Title>
+					<Title level={4}>{props.username}</Title>
 					<Tooltip placement="left" title="username here">
 						{/* change src below for image */}
 						<Avatar size="large" icon="user" src="" />
@@ -31,4 +32,10 @@ function UserDashboardContent() {
 	)
 }
 
-export default UserDashboardContent
+const mapStateToProps = (state) => {
+	return {
+		username: state.User.username,
+	}
+}
+
+export default connect(mapStateToProps, {})(UserDashboardContent);
