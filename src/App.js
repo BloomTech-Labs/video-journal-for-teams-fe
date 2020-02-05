@@ -32,6 +32,8 @@ function App() {
 
       <Route path="/team/:id" component={TeamDashboard} />
 
+      <Route path="/videos" />
+
     </div>
     );
 

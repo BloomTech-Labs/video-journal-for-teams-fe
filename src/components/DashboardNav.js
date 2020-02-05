@@ -16,17 +16,21 @@ function DashboardNav() {
 				<Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} className={"userDashMenu"}>
 					<Menu.Item key="1">
 						<Icon type="home" />
-						<span><Link to="user-dashboard">Dashboard</Link></span>
+						<span><Link to="/user-dashboard">Dashboard</Link></span>
 					</Menu.Item>
 					<Menu.Item key="2">
-						<Icon type="calendar" />
-						<span><Link to="/teams">My Teams</Link></span>
+						<Icon type="user" />
+						<span><Link to="/profile">My Profile</Link></span>
 					</Menu.Item>
 					<Menu.Item key="3">
-						<Icon type="play-circle" />
-						<span>My Videos</span>
+						<Icon type="calendar" />
+						<span><Link to="/team/:id">My Teams</Link></span>
 					</Menu.Item>
 					<Menu.Item key="4">
+						<Icon type="play-circle" />
+						<span><Link to="/videos">My Videos</Link></span>
+					</Menu.Item>
+					<Menu.Item key="5">
 						<Icon type="setting" />
 						<span>Teams Settings</span>
 					</Menu.Item>
@@ -34,15 +38,15 @@ function DashboardNav() {
 					<hr style={{margin: "40px 0"}}/>
 
 					<h3 style={{ color: "white", paddingLeft: "24px", paddingBottom: "20px"}}>Team Controls</h3>
-					<Menu.Item key="5">
+					<Menu.Item key="6">
 						<Icon type="calendar" />
 						<span>Manage Teams</span>
 					</Menu.Item>
-					<Menu.Item key="6">
+					<Menu.Item key="7">
 						<Icon type="folder" />
 						<span>Team Archive</span>
 					</Menu.Item>
-					<Menu.Item key="7">
+					<Menu.Item key="8">
 						<Icon type="setting" />
 						<span>Teams Settings</span>
 					</Menu.Item>
