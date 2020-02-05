@@ -30,7 +30,6 @@ export const loginUser = (userCredentials) => (dispatch) => {
     axios
       .post("/auth/login/email", user)
       .then((loginResponse) => {
-        console.log(loginResponse);
         dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
       })
       .catch((error) => {
@@ -45,12 +44,9 @@ export const loginUser = (userCredentials) => (dispatch) => {
     axios
       .post("/auth/login/username", user)
       .then((loginResponse) => {
-        console.log(loginResponse);
-
         dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
       })
       .catch((error) => {
-        console.log({ error });
         dispatch({ type: constants.GENERATE_ERROR, payload: "Invalid username/password combination." });
       });
   }

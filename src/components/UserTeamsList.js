@@ -12,8 +12,9 @@ const TeamList = props => {
 	// const [teams, setTeams] = useState([]);
 
 	useEffect(() => {
+		console.log(props)
 		props.fetchUserTeams(props.id)
-	},[])
+	},[props.id])
 
 	// useEffect(() => {
 	//     if (props.teams.length === 0) {
@@ -40,7 +41,7 @@ const mapStateToProps = (state) => {
 	console.log(state)
 	return {
 		teams: state.User.teams,
-		id: state.User.id
+		id: state.User.userId
 	}
 }
 
