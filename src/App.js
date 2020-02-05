@@ -19,22 +19,24 @@ import "antd/dist/antd.css";
 import "./userdash.css";
 
 function App() {
-  return (
-    <div className="app">
-      <Route exact path="/" component={Login} />
+	return (
+		<div className="app">
+			<Route exact path="/" component={Login} />
 
-      <Route path="/register" component={Register} />
+			<Route path="/register" component={Register} />
 
-      <PrivateRoute path="/test" component={TestComponent} />
+			<PrivateRoute path="/test" component={TestComponent} />
 
-      <PrivateRoute path="/user-dashboard" component={UserDashboard} />
+			<PrivateRoute path="/user-dashboard" component={UserDashboard} />
 
-      <Route path="/profile" component={UserProfileDashboard} />
+			<Route path="/profile" component={UserProfileDashboard} />
 
-      <Route path="/team/:id" component={TeamDashboard} />
+			<Route path="/team/:id" component={TeamDashboard} />
 
-    </div>
-    );
+			<Route path="/videos" component={UserVideos} />ƒ
+
+		</div>
+	);
 
 }
 
