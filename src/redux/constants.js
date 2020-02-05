@@ -25,6 +25,10 @@ const constants = {
     FETCH_USER_VIDEOS_SUCCESS: "user:fetch-videos-success",
 
   //TEAM CONSTANTS
+    //GET fetch team by id
+    FETCH_TEAM_BY_ID_START: "team:fetch-teamById-start",
+    FETCH_TEAM_BY_ID_SUCCESS: "team:fetch-teamById-success",
+  
     //GET fetch team members
     FETCH_TEAM_MEMBERS_START: "team:fetch-team-members-start",
     FETCH_TEAM_MEMBERS_SUCCESS: "team:fetch-team-members-success",

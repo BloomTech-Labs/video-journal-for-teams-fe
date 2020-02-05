@@ -1,7 +1,18 @@
 import constants from "../constants";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
-export const getTeamMembers = (team_id) => (dispatch) => {
+export const fetchTeamById = (team_id) => (dispatch) => {
+  dispatch({type: constants.FETCH_TEAM_BY_ID_START})
+  AxiosWithAuth()
+    .get(`/teams/${team_id}`)
+    .then(teamResponse => {
+      console.log("Action Response", teamResponse)
+      dispatch({ type: constants.FETCH_TEAM_BY_ID_SUCCESS, payload: teamResponse.data })
+    })
+    .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+}
+
+export const fetchTeamMembers = (team_id) => (dispatch) => {
   dispatch({type: constants.FETCH_TEAM_MEMBERS_START})
   AxiosWithAuth()
     .get(`/teams/${team_id}/users`)
@@ -12,7 +23,7 @@ export const getTeamMembers = (team_id) => (dispatch) => {
     .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
 }
 
-export const getTeamPrompts = (team_id) => (dispatch) => {
+export const fetchTeamPrompts = (team_id) => (dispatch) => {
   dispatch({type: constants.FETCH_TEAM_PROMPTS_START})
   AxiosWithAuth()
     .get(`/teams/${team_id}/prompts`)

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
-import { getTeamPrompts, setError, clearError } from "../../redux/actions/teamActions";
+import { fetchTeamPrompts, setError, clearError } from "../../redux/actions/teamActions";
 import { Layout, Typography, Row, Col, Button } from 'antd';
 import './teamTest.css';
 import PromptCard from './PromptCard';
@@ -11,7 +11,7 @@ const PromptsList = (props) => {
 
   useEffect(() => {
     if (props.teamPrompts.length === 0) {
-      props.getTeamPrompts(1);
+      //props.fetchTeamPrompts(props.team.id)
       console.log("Component", props.teamPrompts)
     }
   }, [props, props.teamPrompts]);
@@ -31,7 +31,7 @@ const PromptsList = (props) => {
 
           {/* Display all team prompts */}
           {props.teamPrompts.map(prompt => (
-            <Col span={2}><PromptCard prompt={prompt} /></Col>
+            <Col span={2}><PromptCard key={prompt.id} prompt={prompt} /></Col>
           ))}
         </Row>
       </Content>
@@ -40,11 +40,12 @@ const PromptsList = (props) => {
 }
 
 const mapStateToProps = (state) => ({
+  team: state.Team.team,
   teamPrompts: state.Team.teamPrompts
 });
 
 const mapActionsToProps = {
-  getTeamPrompts,
+  fetchTeamPrompts,
   setError,
   clearError
 };

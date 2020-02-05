@@ -1,6 +1,7 @@
 import constants from "../constants";
 
 const initialState = {
+  team: {},
   teamMembers: [],
   teamPrompts: [],
   error: null,
@@ -9,6 +10,21 @@ const initialState = {
 
 const teamReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case constants.FETCH_TEAM_BY_ID_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: null
+      };
+
+    case constants.FETCH_TEAM_BY_ID_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        team: payload
+      };
+    
     case constants.FETCH_TEAM_MEMBERS_START:
       return {
         ...state,
