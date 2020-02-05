@@ -1,13 +1,22 @@
 import constants from "../constants";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
-export const fetchTeams = () => (dispatch) => {
-    dispatch({ type: constants.FETCH_TEAMS_START });
-    AxiosWithAuth()
-    .get('/api/teams/')
-    .then(res => {
-        console.log(res);
-        dispatch({ type: constants.FETCH_TEAMS_SUCCESS, payload: res.data })
+export const getTeamMembers = (id) => (dispatch) => {
+  AxiosWithAuth()
+    .get(`/api/teams/${id}/users`)
+    .then(teamMembersResponse => {
+      console.log("Action Response", teamMembersResponse)
+      dispatch({ type: constants.GET_TEAM_MEMBERS, payload: teamMembersResponse.data })
     })
-    .catch(err => dispatch({ type: constants.FETCH_TEAMS_FAILURE, payload: err }));
+    .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
 }
+
+// SET AN ERROR
+export const setError = (errorMessage) => (dispatch) => {
+  dispatch({ type: constants.GENERATE_ERROR, payload: errorMessage });
+};
+
+// CLEAR AN ERROR
+export const clearError = () => (dispatch) => {
+  dispatch({ type: constants.CLEAR_ERROR, payload: null });
+};

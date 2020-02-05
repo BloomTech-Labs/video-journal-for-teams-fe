@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosWithAuth = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token") || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU4MDkyNTQ5MiwiZXhwIjoxNTgwOTM2MjkyfQ.DJuoEccn7Srb8ArtNipNNpo6XP1GbrKLE45rHbpfHRs"
 
   return axios.create({
     baseURL: (function() {
@@ -17,6 +17,7 @@ const AxiosWithAuth = () => {
       }
     })(),
     headers: {
+      // "Authorization": token,
       "Authorization": token,
       "Content-Type": "application/json",
     },

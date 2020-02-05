@@ -44,7 +44,7 @@ const Login = (props) => {
     const userCredentials = user;
 
     emailLoginSchema
-      .validate(user.usernameOrEmail)
+      .validate({ email: user.usernameOrEmail })
       .then(() => {
         userCredentials.method = "email";
 

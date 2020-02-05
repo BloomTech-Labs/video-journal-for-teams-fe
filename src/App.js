@@ -30,7 +30,7 @@ function App() {
 
       <Route path="/profile" component={UserProfileDashboard} />
 
-      <Route path="/team/:id" component={TeamDashboard} />
+      <PrivateRoute path="/team/:id" component={TeamDashboard} />
 
     </div>
     );
