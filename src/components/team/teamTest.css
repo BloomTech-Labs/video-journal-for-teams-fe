@@ -1,0 +1,29 @@
+.image-container {
+  width: 64px;
+  height: 64px;
+  margin: auto;
+}
+
+.image-container img {
+  border-radius: 50%;
+}
+
+.member-card p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.member-card .ant-card-body {
+  padding: 0;
+}
+
+/* Button */
+
+.add-member {
+  width: 64px;
+  height: 64px;
+}
+
+.add-member .anticon {
+  font-size: 30px;
+}
