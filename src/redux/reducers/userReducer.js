@@ -48,6 +48,7 @@ const userReducer = (state = initialState, { type, payload }) => {
     case constants.GENERATE_ERROR:
       return {
         ...state,
+        isFetching: false,
         error: payload,
       };
 

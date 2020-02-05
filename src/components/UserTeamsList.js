@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import TeamCard from "./UserTeamsCard";
 import { Layout, Typography, Modal, Button, Form, Input } from 'antd';
@@ -8,26 +9,16 @@ import { createTeam } from "../redux/actions/teamActions";
 const { Title } = Typography;
 const { Header, Content } = Layout;
 
-
 const TeamList = props => {
 	const [team, setTeam] = useState({});
 	const [showModal, setShowModal] = useState(false)
+
+	let history = useHistory();
 
 	useEffect(() => {
 		console.log(props)
 		props.fetchUserTeams(props.id)
 	},[props.id])
-
-	// useEffect(() => {
-	//     if (props.teams.length === 0) {
-	//         console.log(props.teams)
-	//         props.fetchTeams();
-	//     }
-	// }, [props, props.teams]);
-
-	// if (props.teams.length === 0) {
-	//     return <h2>Loading...</h2>;
-	// } else {
 
 	const handleInput = (e) => {
 			setTeam({ ...team, [e.target.name]: e.target.value });
@@ -38,7 +29,7 @@ const TeamList = props => {
 	}
 
 	const handleOk = () => {
-		props.createTeam(team);
+		props.createTeam(team, history);
 		toggleModal();
 	}
 
@@ -61,9 +52,11 @@ const TeamList = props => {
             </Form.Item>
 					</Form>
 				</Modal>
-			{props.teams.map(data => {
-				return <TeamCard key={data.id} data={data} />;
-			})}
+				{
+					props.isFetching ? "Loading..." : props.teams.map(data => {
+						return <TeamCard key={data.id} data={data} />;
+					})
+				}
 		</Content>
 	);
 	// }
@@ -73,7 +66,8 @@ const mapStateToProps = (state) => {
 	console.log(state)
 	return {
 		teams: state.User.teams,
-		id: state.User.userId
+		id: state.User.userId,
+		isFetching: state.User.isFetching
 	}
 }
 
