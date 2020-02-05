@@ -88,8 +88,4 @@ export const fetchUserVideos = (userId) => (dispatch) => {
               dispatch({type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data})
           })
           .catch((err) => dispatch({type: constants.GENERATE_ERROR, payload: err}));
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 08068192b4e89245c99101c4088bb63b306d4486

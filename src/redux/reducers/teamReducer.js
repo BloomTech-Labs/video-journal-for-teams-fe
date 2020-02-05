@@ -2,6 +2,7 @@ import constants from "../constants";
 
 const initialState = {
   teamMembers: [],
+  teamPrompts: [],
   error: null
 };
 
@@ -13,7 +14,14 @@ const teamReducer = (state = initialState, { type, payload }) => {
         ...state,
         teamMembers: payload
       };
-    
+
+    case constants.GET_TEAM_PROMPTS:
+      console.log("Reducer", payload)
+      return {
+        ...state,
+        teamPrompts: payload
+      };
+
     case constants.GENERATE_ERROR:
       return {
         ...state,
@@ -25,7 +33,7 @@ const teamReducer = (state = initialState, { type, payload }) => {
         ...state,
         error: null,
       };
-    
+
     default:
       return state;
   }
