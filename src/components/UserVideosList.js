@@ -12,12 +12,12 @@ function UserVideos(props) {
 	const [videos, setVideos] = useState([]);
 
 	useEffect(() => {
-		props.fetchUserVideos(1)
+		props.fetchUserVideos(props.id)
 	},[])
 
 	return (
 <Content className="userDashList">
-			{props.user_videos.map(data => (
+			{props.videos.map(data => (
 				<UserVideosCard data={data} key={data.video_id} />
 			))}
 		</Content>
@@ -26,7 +26,8 @@ function UserVideos(props) {
 
 const mapStateToProps = (state) => {
 	return {
-		user_videos: state.User.user_videos
+		videos: state.User.videos,
+		id: state.User.id
 	}
 }
 

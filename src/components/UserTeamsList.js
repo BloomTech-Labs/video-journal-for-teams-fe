@@ -12,7 +12,7 @@ const TeamList = props => {
 	// const [teams, setTeams] = useState([]);
 
 	useEffect(() => {
-		props.fetchUserTeams(1)
+		props.fetchUserTeams(props.id)
 	},[])
 
 	// useEffect(() => {
@@ -28,7 +28,7 @@ const TeamList = props => {
 
 	return (
 		<Content className="userDashList">
-			{props.user_teams.map(data => {
+			{props.teams.map(data => {
 				return <TeamCard key={data.id} data={data} />;
 			})}
 		</Content>
@@ -37,8 +37,10 @@ const TeamList = props => {
 };
 
 const mapStateToProps = (state) => {
+	console.log(state)
 	return {
-		user_teams: state.User.user_teams
+		teams: state.User.teams,
+		id: state.User.id
 	}
 }
 

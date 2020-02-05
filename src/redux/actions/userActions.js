@@ -74,7 +74,7 @@ export const clearError = () => (dispatch) => {
 export const fetchUserTeams = (userId) => (dispatch) => {
 
     dispatch({type: constants.FETCH_USER_TEAMS_START})
-    AxiosWithAuth().get(`/api/users/${userId}/teams`)
+    AxiosWithAuth().get(`/users/${userId}/teams`)
             .then((res) => {
                 console.log(res)
                 dispatch({type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data})
@@ -86,7 +86,7 @@ export const fetchUserTeams = (userId) => (dispatch) => {
 export const fetchUserVideos = (userId) => (dispatch) => {
 
   dispatch({type: constants.FETCH_USER_VIDEOS_START})
-  AxiosWithAuth().get(`/api/users/${userId}/videos`)
+  AxiosWithAuth().get(`/users/${userId}/videos`)
           .then((res) => {
               console.log(res)
               dispatch({type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data})

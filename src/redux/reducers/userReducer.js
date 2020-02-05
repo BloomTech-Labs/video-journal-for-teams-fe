@@ -2,6 +2,7 @@ import constants from "../constants";
 
 const initialState = {
   isLogged: false,
+  id: "",
   first_name: "",
   last_name: "",
   email: "",
@@ -21,6 +22,7 @@ const userReducer = (state = initialState, { type, payload }) => {
       localStorage.setItem("token", payload.token);
       return {
         ...state,
+        id: payload.user.id,
         first_name: payload.user.first_name,
         last_name: payload.user.last_name,
         email: payload.user.email,
@@ -35,6 +37,7 @@ const userReducer = (state = initialState, { type, payload }) => {
       localStorage.setItem("token", payload.token);
       return {
         ...state,
+        id: payload.user.id,
         first_name: payload.user.first_name,
         last_name: payload.user.last_name,
         email: payload.user.email,
@@ -79,7 +82,7 @@ const userReducer = (state = initialState, { type, payload }) => {
         isFetching: true,
         error: null
     };
-    case constants.FETCH_USER_VIDEEOS_SUCCESS:
+    case constants.FETCH_USER_VIDEOS_SUCCESS:
         return {
           ...state,
           isFetching: false,
