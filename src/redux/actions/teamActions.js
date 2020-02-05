@@ -1,13 +1,13 @@
 import constants from "../constants";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
-export const fetchTeams = () => (dispatch) => {
-    dispatch({ type: constants.FETCH_TEAMS_START });
+export const createTeam = (newTeam) => (dispatch) => {
+    dispatch({ type: constants.CREATE_TEAM_START });
     AxiosWithAuth()
-    .get('/api/teams/')
+    .post('/teams/', newTeam)
     .then(res => {
         console.log(res);
-        dispatch({ type: constants.FETCH_TEAMS_SUCCESS, payload: res.data })
+        dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data })
     })
-    .catch(err => dispatch({ type: constants.FETCH_TEAMS_FAILURE, payload: err }));
+    .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: "An error occurred, try again later." }));
 }

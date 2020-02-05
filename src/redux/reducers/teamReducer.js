@@ -7,24 +7,18 @@ const initialState = {
 
 const teamReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case constants.FETCH_TEAMS_START:
+        case constants.CREATE_TEAM_START:
             return {
                 ...state,
                 isFetching: true,
                 error: ''
             }
-        case constants.FETCH_TEAMS_SUCCESS:
+        case constants.CREATE_TEAM_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 error: '',
-                teams: [...payload]
-            }
-        case constants.FETCH_TEAMS_FAILURE:
-            return {
-                ...state,
-                error: [...payload],
-                isFetching: false
+                teams: payload
             }
         default:
             return state;

@@ -42,9 +42,8 @@ const constants = {
 
   //TEAM CONSTANTS
   //GET fetch all teams
-  FETCH_TEAMS_START: "FETCH_START",
-  FETCH_TEAMS_SUCCESS: "FETCH_SUCCESS",
-  FETCH_TEAMS_FAILURE: "FETCH_FAILURE",
+  CREATE_TEAM_START: "teams:create-team-start",
+  CREATE_TEAM_SUCCESS: "teams:create-team-success",
 
   //GET fetch by team id
   // FETCH_TEAMID_START = 'FETCH_START',

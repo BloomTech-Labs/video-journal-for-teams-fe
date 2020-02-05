@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 import TeamCard from "./UserTeamsCard";
 import { Layout, Typography, Modal, Button, Form, Input } from 'antd';
 import { fetchUserTeams } from '../redux/actions/userActions';
+import { createTeam } from "../redux/actions/teamActions";
 
 const { Title } = Typography;
 const { Header, Content } = Layout;
 
 
 const TeamList = props => {
-	const [teams, setTeams] = useState([]);
+	const [team, setTeam] = useState({});
 	const [showModal, setShowModal] = useState(false)
 
 	useEffect(() => {
@@ -28,12 +29,17 @@ const TeamList = props => {
 	//     return <h2>Loading...</h2>;
 	// } else {
 
+	const handleInput = (e) => {
+			setTeam({ ...team, [e.target.name]: e.target.value });
+		};
+
 	const toggleModal = () => {
 		setShowModal(!showModal)
 	}
 
 	const handleOk = () => {
-		toggleModal()
+		props.createTeam(team);
+		toggleModal();
 	}
 
 	return (
@@ -48,10 +54,10 @@ const TeamList = props => {
         >
 					<Form layout="vertical">
 						<Form.Item label="Team Name">
-								<Input />
+								<Input onChange={handleInput} name="name"/>
 							</Form.Item>
 							<Form.Item label="Team Description">
-              <Input />
+              <Input onChange={handleInput} name="description"/>
             </Form.Item>
 					</Form>
 				</Modal>
@@ -71,4 +77,9 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, {fetchUserTeams})(TeamList);
+const mapActionsToProps = {
+	createTeam,
+	fetchUserTeams
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(TeamList);
