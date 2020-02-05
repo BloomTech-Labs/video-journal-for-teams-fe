@@ -2,6 +2,7 @@ import constants from "../constants";
 
 const initialState = {
   isLogged: false,
+  userId: null,
   first_name: "",
   last_name: "",
   email: "",
@@ -18,6 +19,7 @@ const userReducer = (state = initialState, { type, payload }) => {
       localStorage.setItem("token", payload.token);
       return {
         ...state,
+        userId: payload.user.id,
         first_name: payload.user.first_name,
         last_name: payload.user.last_name,
         email: payload.user.email,
@@ -32,6 +34,7 @@ const userReducer = (state = initialState, { type, payload }) => {
       localStorage.setItem("token", payload.token);
       return {
         ...state,
+        userId: payload.user.id,
         first_name: payload.user.first_name,
         last_name: payload.user.last_name,
         email: payload.user.email,
