@@ -18,6 +18,7 @@ import "antd/dist/antd.css";
 import "./userdash.css";
 
 function App() {
+  
   return (
     <div className="app">
       <Route exact path="/" component={Login} />
@@ -30,7 +31,7 @@ function App() {
 
       <Route path="/profile" component={UserProfileDashboard} />
 
-      <PrivateRoute path="/team/:id" component={TeamDashboard} />
+      <PrivateRoute path="/team/:team_id" component={TeamDashboard} />
 
     </div>
     );

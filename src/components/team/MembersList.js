@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamMembers, setError, clearError } from "../../redux/actions/teamActions";
 import { Layout, Typography, Row, Col, Button } from 'antd';
@@ -8,11 +9,11 @@ import MemberCard from './MemberCard';
 const { Header, Content } = Layout;
 
 function MembersList(props) {
+	let { team_id } = useParams();
 
   useEffect(() => {
     if (props.teamMembers.length === 0) {
-      props.fetchTeamMembers(1);
-      //props.fetchTeamMembers(props.team.id)
+      props.fetchTeamMembers(team_id)
       console.log("Component", props.teamMembers)
     }
   }, [props, props.teamMembers]);

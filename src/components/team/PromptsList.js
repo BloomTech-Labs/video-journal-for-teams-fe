@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamPrompts, setError, clearError } from "../../redux/actions/teamActions";
 import { Layout, Typography, Row, Col, Button } from 'antd';
@@ -8,10 +9,11 @@ import PromptCard from './PromptCard';
 const { Header, Content } = Layout;
 
 const PromptsList = (props) => {
+  let { team_id } = useParams();
 
   useEffect(() => {
     if (props.teamPrompts.length === 0) {
-      //props.fetchTeamPrompts(props.team.id)
+      props.fetchTeamPrompts(team_id)
       console.log("Component", props.teamPrompts)
     }
   }, [props, props.teamPrompts]);
