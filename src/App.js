@@ -33,10 +33,10 @@ function App() {
 
 			<Route path="/team/:id" component={TeamDashboard} />
 
-      <Route path="/videos" />
+			<Route path="/videos" component={UserVideos} />
 
-    </div>
-    );
+		</div>
+	);
 
 }
 
