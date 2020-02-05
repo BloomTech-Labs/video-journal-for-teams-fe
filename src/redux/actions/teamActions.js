@@ -1,22 +1,24 @@
 import constants from "../constants";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
-export const getTeamMembers = (id) => (dispatch) => {
+export const getTeamMembers = (team_id) => (dispatch) => {
+  dispatch({type: constants.FETCH_TEAM_MEMBERS_START})
   AxiosWithAuth()
-    .get(`/teams/${id}/users`)
+    .get(`/teams/${team_id}/users`)
     .then(teamMembersResponse => {
       console.log("Action Response", teamMembersResponse)
-      dispatch({ type: constants.GET_TEAM_MEMBERS, payload: teamMembersResponse.data })
+      dispatch({ type: constants.FETCH_TEAM_MEMBERS_SUCCESS, payload: teamMembersResponse.data })
     })
     .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
 }
 
-export const getTeamPrompts = (id) => (dispatch) => {
+export const getTeamPrompts = (team_id) => (dispatch) => {
+  dispatch({type: constants.FETCH_TEAM_PROMPTS_START})
   AxiosWithAuth()
-    .get(`/teams/${id}/prompts`)
+    .get(`/teams/${team_id}/prompts`)
     .then(teamPromptsResponse => {
       console.log("Action Response", teamPromptsResponse)
-      dispatch({ type: constants.GET_TEAM_PROMPTS, payload: teamPromptsResponse.data })
+      dispatch({ type: constants.FETCH_TEAM_PROMPTS_SUCCESS, payload: teamPromptsResponse.data })
     })
     .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
 }

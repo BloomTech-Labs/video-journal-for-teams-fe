@@ -6,9 +6,6 @@ function PromptCard(props) {
 
   return (
     <Card className="prompt-card" bordered={false}>
-      {/* <div className='image-container'>
-        {(!member.img) ? (<Avatar size={64} icon="user" />): (<img src = {member.img} />)}
-      </div> */}
       <p className="small">{prompt.question}</p>
     </Card>
   )

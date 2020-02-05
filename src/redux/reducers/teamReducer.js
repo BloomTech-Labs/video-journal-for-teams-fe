@@ -3,22 +3,39 @@ import constants from "../constants";
 const initialState = {
   teamMembers: [],
   teamPrompts: [],
-  error: null
+  error: null,
+  isFetching: false,
 };
 
 const teamReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case constants.GET_TEAM_MEMBERS:
-      console.log("Reducer", payload)
+    case constants.FETCH_TEAM_MEMBERS_START:
       return {
         ...state,
+        isFetching: true,
+        error: null
+      };
+
+    case constants.FETCH_TEAM_MEMBERS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
         teamMembers: payload
       };
 
-    case constants.GET_TEAM_PROMPTS:
-      console.log("Reducer", payload)
+    case constants.FETCH_TEAM_PROMPTS_START:
       return {
         ...state,
+        isFetching: true,
+        error: null
+      };
+
+    case constants.FETCH_TEAM_PROMPTS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
         teamPrompts: payload
       };
 

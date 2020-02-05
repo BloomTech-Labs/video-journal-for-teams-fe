@@ -22,14 +22,14 @@ const PromptsList = (props) => {
 
     return (
       <Content>
-        <p>Members({props.teamPrompts.length})</p>
+        <p>Prompts({props.teamPrompts.length})</p>
         <Row gutter={[16, 16]}>
-          {/* Add member button */}
+          {/* Add a prompt button */}
           <Col span={2}>
             <Button type="primary" shape="circle" icon="plus-circle" className="add-prompt" />
           </Col>
 
-          {/* Display members */}
+          {/* Display all team prompts */}
           {props.teamPrompts.map(prompt => (
             <Col span={2}><PromptCard prompt={prompt} /></Col>
           ))}
