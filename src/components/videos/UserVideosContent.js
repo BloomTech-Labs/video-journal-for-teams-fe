@@ -10,7 +10,7 @@ function UserVideosContent() {
   return (
     <Layout>
       <DashboardHeader />
-      <Title>My Videos</Title>
+      <Title style={{marginLeft: "20px"}}>My Videos</Title>
       {/* Display Videos */}
       <Card title="" style={{ margin: "20px" }}>
         <UserVideosList />
