@@ -20,13 +20,15 @@ import "./userdash.css";
 function App() {
   return (
     <div className="app">
-      <Route exact path="/" component={Login} />
 
-      <Route path="/register" component={Register} />
+      {/* The two following routes make sure you not see the login/register screen if you're already logged in */}
+      <Route path="/register" render={props => localStorage.getItem("token") ? props.history.push('/') : <Register />  } />
+
+      <Route path="/login" render={props => localStorage.getItem("token") ? props.history.push('/') : <Login  /> } />
 
       <PrivateRoute path="/test" component={TestComponent} />
-
-      <PrivateRoute path="/user-dashboard" component={UserDashboard} />
+      
+      <PrivateRoute path='/' exact component={UserDashboard} />
 
       <Route path="/profile" component={UserProfileDashboard} />
 
@@ -34,7 +36,6 @@ function App() {
 
     </div>
     );
-
 }
 
 export default App;
