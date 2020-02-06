@@ -66,6 +66,17 @@ export const clearError = () => (dispatch) => {
   dispatch({ type: constants.CLEAR_ERROR, payload: null });
 };
 
+export const createTeam = (data) => (dispatch) => {
+  dispatch({ type: constants.CREATE_TEAM_START });
+  AxiosWithAuth()
+  .post('/api/teams/')
+  .then(res => {
+      console.log(res);
+      dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data })
+  })
+  .catch(err => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err }));
+}
+
 // FETCH TEAMS FOR USER
 export const fetchUserTeams = (userId) => (dispatch) => {
   dispatch({ type: constants.FETCH_USER_TEAMS_START });

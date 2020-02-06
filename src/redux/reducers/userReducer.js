@@ -59,10 +59,9 @@ const userReducer = (state = initialState, { type, payload }) => {
 
     case constants.LOGOUT_USER:
       localStorage.removeItem("token");
-      return {
-        ...state,
-        isLogged: false,
-      };
+      localStorage.removeItem("persist:root");
+      return initialState;
+      
     case constants.FETCH_USER_TEAMS_START:
       return {
         ...state,
