@@ -12,11 +12,9 @@ const PromptsList = (props) => {
   let { team_id } = useParams();
 
   useEffect(() => {
-    if (props.teamPrompts.length === 0) {
-      props.fetchTeamPrompts(team_id)
-      console.log("Component", props.teamPrompts)
-    }
-  }, [props, props.teamPrompts]);
+    props.fetchTeamPrompts(team_id)
+    console.log("Component", props.teamPrompts)
+  }, [team_id]);
 
   if (!props.teamPrompts) {
     return <h2>Loading...</h2>;

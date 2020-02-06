@@ -3,6 +3,7 @@ import { Card, Icon, Avatar } from 'antd';
 
 function PromptCard(props) {
   const { prompt } = props;
+  console.log(prompt)
 
   return (
     <Card className="prompt-card" bordered={false}>
