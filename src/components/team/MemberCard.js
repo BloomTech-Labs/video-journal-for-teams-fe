@@ -6,10 +6,10 @@ function MemberCard(props) {
 
   return (
     <Card className="member-card" bordered={false}>
-      <div className='image-container'>
+      {/* <div className='image-container'>
         {(!member.img) ? (<Avatar size={64} icon="user" />): (<img src = {member.img} />)}
-      </div>
-      <p className="small">{member.name}</p>
+      </div> */}
+      <p className="small">{member.user_full_name}</p>
     </Card>
   )
 }

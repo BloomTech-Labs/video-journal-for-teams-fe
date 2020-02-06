@@ -120,3 +120,13 @@ export const fetchFeedback = (videoId) => (dispatch) => {
     })
     .catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err }));
 };
+
+  dispatch({type: constants.FETCH_USER_VIDEOS_START})
+  AxiosWithAuth().get(`/users/${userId}/videos`)
+          .then((res) => {
+              console.log(res)
+              dispatch({type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data})
+          })
+          .catch((err) => dispatch({type: constants.GENERATE_ERROR, payload: err}));
+}
+
