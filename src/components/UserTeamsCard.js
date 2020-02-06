@@ -1,20 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Card, Icon } from 'antd';
-
+import { Link } from "react-router-dom";
 
 const TeamCard = props => {
 
 	return (
-		<Card className="teamCard" size="small"
-			actions={[
-				"",
-				<Icon type="setting" key="setting" title="Manage this team"/>,
-			]}
-		>
-			<p>{props.data.name}</p>
-			<p className="small">{props.data.description}</p>
-		</Card>
+		<Link to={`/teams/${props.data.id}`}>
+			<Card className="teamCard" size="small"
+				actions={[
+					"",
+					<Icon type="setting" key="setting" title="Manage this team"/>,
+				]}
+			>
+				<p>{props.data.name}</p>
+				<p className="small">{props.data.description}</p>
+			</Card>
+		</Link>
 	);
 };
 
