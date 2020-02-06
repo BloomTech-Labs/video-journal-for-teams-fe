@@ -7,13 +7,18 @@ import * as serviceWorker from "./serviceWorker";
 
 // Redux
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import { persistor, store } from "./redux/store";
+import { PersistGate } from 'redux-persist/lib/integration/react';
+
+import LoadingView from './components/utils/LoadingView';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <PersistGate loading={<LoadingView />} persistor={persistor}>
+      <Router>
+        <App />
+      </Router>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

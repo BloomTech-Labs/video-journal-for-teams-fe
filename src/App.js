@@ -31,7 +31,7 @@ function App() {
 
 			<Route path="/profile" component={UserProfileDashboard} />
 
-			<Route path="/team/:id" component={TeamDashboard} />
+      <PrivateRoute path="/team/:team_id" component={TeamDashboard} />
 
 			<Route path="/videos" component={UserVideos} />
 
