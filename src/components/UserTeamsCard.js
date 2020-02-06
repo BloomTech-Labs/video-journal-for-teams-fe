@@ -4,7 +4,6 @@ import { Card, Icon } from 'antd';
 import { Link } from "react-router-dom";
 
 const TeamCard = props => {
-
 	return (
 		<Link to={`/teams/${props.data.id}`}>
 			<Card className="teamCard" size="small"
@@ -15,6 +14,7 @@ const TeamCard = props => {
 			>
 				<p>{props.data.name}</p>
 				<p className="small">{props.data.description}</p>
+				{props.data.role_id === 2 ? <Icon type="team" /> : null}
 			</Card>
 		</Link>
 	);
