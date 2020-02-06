@@ -79,18 +79,47 @@ export const createTeam = (data) => (dispatch) => {
 
 // FETCH TEAMS FOR USER
 export const fetchUserTeams = (userId) => (dispatch) => {
-
-    dispatch({type: constants.FETCH_USER_TEAMS_START})
-    AxiosWithAuth().get(`/users/${userId}/teams`)
-            .then((res) => {
-                console.log(res)
-                dispatch({type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data})
-            })
-            .catch((err) => dispatch({type: constants.GENERATE_ERROR, payload: err}));
-}
+  dispatch({ type: constants.FETCH_USER_TEAMS_START });
+  AxiosWithAuth()
+    .get(`/users/${userId}/teams`)
+    .then((res) => {
+      console.log(res);
+      dispatch({ type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data });
+    })
+    .catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+};
 
 // FETCH VIDEOS FOR USER
 export const fetchUserVideos = (userId) => (dispatch) => {
+  dispatch({ type: constants.FETCH_USER_VIDEOS_START });
+  AxiosWithAuth()
+    .get(`/users/${userId}/videos`)
+    .then((res) => {
+      console.log(res);
+      dispatch({ type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data });
+    })
+    .catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+};
+
+export const fetchVideo = (videoId) => (dispatch) => {
+  dispatch({ type: constants.FETCH_VIDEO_START });
+  AxiosWithAuth()
+    .get(`/videos/${videoId}`)
+    .then((res) => {
+      dispatch({ type: constants.FETCH_VIDEO_SUCCESS, payload: res.data });
+    })
+    .catch((err) => dispatch({ type: constants.FETCH_VIDEO_FAILURE, payload: err }));
+};
+
+export const fetchFeedback = (videoId) => (dispatch) => {
+  dispatch({ type: constants.FETCH_FEEDBACK_START });
+  AxiosWithAuth()
+    .get(`/videos/${videoId}/feedback`)
+    .then((res) => {
+      dispatch({ type: constants.FETCH_FEEDBACK_SUCCESS, payload: res.data });
+    })
+    .catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err }));
+};
 
   dispatch({type: constants.FETCH_USER_VIDEOS_START})
   AxiosWithAuth().get(`/users/${userId}/videos`)
@@ -100,3 +129,4 @@ export const fetchUserVideos = (userId) => (dispatch) => {
           })
           .catch((err) => dispatch({type: constants.GENERATE_ERROR, payload: err}));
 }
+
