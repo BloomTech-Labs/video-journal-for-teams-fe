@@ -13,6 +13,7 @@ import UserDashboard from "./pages/UserDashboard";
 import UserProfileDashboard from "./pages/UserProfileDashboard";
 import UserVideos from "./pages/UserVideos";
 import TeamDashboard from "./pages/TeamDashboard";
+import VideoDetails from "./pages/VideoDetails";
 
 // Styles
 import "antd/dist/antd.css";
@@ -27,7 +28,9 @@ function App() {
 
 			<PrivateRoute path="/test" component={TestComponent} />
 
-			<PrivateRoute path="/user-dashboard" component={UserDashboard} />
+      <PrivateRoute exact path="/user-dashboard" component={UserDashboard} />
+
+      <PrivateRoute path="/user-dashboard/video/:id" component={VideoDetails} />
 
 			<Route path="/profile" component={UserProfileDashboard} />
 
@@ -37,7 +40,6 @@ function App() {
 
 		</div>
 	);
-
 }
 
 export default App;

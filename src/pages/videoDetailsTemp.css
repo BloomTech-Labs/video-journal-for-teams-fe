@@ -1,0 +1,23 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+}
+
+.video-detail-card {
+  display: flex;
+  flex-direction: column wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+/*
+id(pin): 9
+owner_id(pin): 1
+video_title(pin): 'suspendisse potenti'
+video_description(pin): 'nunc vestibulum ante ipsum pr…ae mauris'
+video_url(pin): 'https://www.youtube.com/embed…w5dK48MtI'
+created_at(pin): '2019-09-27T14:53:14.000Z'
+prompt_question(pin): 'Tell me how you think others …ribe you.'
+owner_name(pin): 'Curr Ladley'
+*/
