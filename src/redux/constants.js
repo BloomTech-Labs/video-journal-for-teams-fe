@@ -16,14 +16,6 @@ const constants = {
     FETCH_USER_VIDEOS_START: "user:fetch-videos-start",
     FETCH_USER_VIDEOS_SUCCESS: "user:fetch-videos-success",
 
-    //GET fetch teams for user
-    FETCH_USER_TEAMS_START: "user:fetch-teams-start",
-    FETCH_USER_TEAMS_SUCCESS: "user:fetch-teams-success",
-
-    //GET fetch teams for user
-    FETCH_USER_VIDEOS_START: "user:fetch-videos-start",
-    FETCH_USER_VIDEOS_SUCCESS: "user:fetch-videos-success",
-
   FETCH_VIDEO_START: "user:fetch-video-start",
   FETCH_VIDEO_SUCCESS: "user:fetch-video-success",
   FETCH_VIDEO_FAILURE: "user:fetch-video-failure",
@@ -33,6 +25,10 @@ const constants = {
   FETCH_FEEDBACK_FAILURE: "user:fetch-feedback-failure",
 
   //TEAM CONSTANTS
+    // POST create team
+    CREATE_TEAM_START: "teams:create-team-start",
+    CREATE_TEAM_SUCCESS: "teams:create-team-success",
+
     //GET fetch team by id
     FETCH_TEAM_BY_ID_START: "team:fetch-teamById-start",
     FETCH_TEAM_BY_ID_SUCCESS: "team:fetch-teamById-success",

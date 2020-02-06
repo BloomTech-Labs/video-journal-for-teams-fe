@@ -48,6 +48,7 @@ const userReducer = (state = initialState, { type, payload }) => {
       console.log(`${constants.GENERATE_ERROR}:`, payload);
       return {
         ...state,
+        isFetching: false,
         error: payload,
       };
 
