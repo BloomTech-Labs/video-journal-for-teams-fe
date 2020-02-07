@@ -33,7 +33,7 @@ function MembersList(props) {
 
           {/* Display members */}
           {props.teamMembers.map(member => (
-            <Col span={2}><MemberCard key={member.id} member={member} /></Col>
+            <Col span={2} key={member.user_id}><MemberCard  member={member} /></Col>
           ))}
         </Row>
       </Content>

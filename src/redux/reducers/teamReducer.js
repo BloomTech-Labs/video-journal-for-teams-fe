@@ -4,8 +4,10 @@ const initialState = {
   team: {},
   teamMembers: [],
   teamPrompts: [],
+  deleteUserCount: 0,
   error: null,
   isFetching: false,
+  isDeleting: false
 };
 
 const teamReducer = (state = initialState, { type, payload }) => {
@@ -68,6 +70,21 @@ const teamReducer = (state = initialState, { type, payload }) => {
         teamPrompts: payload
       };
 
+    case constants.DELETE_TEAM_MEMBER_START:
+        return {
+          ...state,
+          isDeleting: true,
+          error: null
+        };
+
+      case constants.DELETE_TEAM_MEMBER_SUCCESS:
+          return {
+            ...state,
+            error: null,
+            isDeleting: false,
+            deletedUserCount: payload
+          }
+
     case constants.GENERATE_ERROR:
       return {
         ...state,
@@ -79,7 +96,6 @@ const teamReducer = (state = initialState, { type, payload }) => {
         ...state,
         error: null,
       };
-
     default:
       return state;
   }
