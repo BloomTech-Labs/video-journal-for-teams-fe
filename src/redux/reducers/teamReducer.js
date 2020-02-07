@@ -82,7 +82,8 @@ const teamReducer = (state = initialState, { type, payload }) => {
             ...state,
             error: null,
             isDeleting: false,
-            deletedUserCount: payload
+						deletedUserCount: payload,
+						teamMembers: state.teamMembers.filter(member => member.user_id !== payload.user_id)
           }
 
     case constants.GENERATE_ERROR:
