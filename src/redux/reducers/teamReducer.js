@@ -4,6 +4,7 @@ const initialState = {
   team: {},
   teamMembers: [],
   teamPrompts: [],
+  teamVideos: [],
   deleteUserCount: 0,
   error: null,
   isFetching: false,
@@ -68,6 +69,21 @@ const teamReducer = (state = initialState, { type, payload }) => {
         isFetching: false,
         error: null,
         teamPrompts: payload
+      };
+
+    case constants.FETCH_TEAM_VIDEOS_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: null
+      };
+
+    case constants.FETCH_TEAM_VIDEOS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        teamVideos: payload
       };
 
     case constants.DELETE_TEAM_MEMBER_START:
