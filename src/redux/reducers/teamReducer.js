@@ -5,8 +5,10 @@ const initialState = {
   teamMembers: [],
   teamPrompts: [],
   teamVideos: [],
+  deleteUserCount: 0,
   error: null,
   isFetching: false,
+  isDeleting: false
 };
 
 const teamReducer = (state = initialState, { type, payload }) => {
@@ -84,6 +86,22 @@ const teamReducer = (state = initialState, { type, payload }) => {
         teamVideos: payload
       };
 
+    case constants.DELETE_TEAM_MEMBER_START:
+        return {
+          ...state,
+          isDeleting: true,
+          error: null
+        };
+
+      case constants.DELETE_TEAM_MEMBER_SUCCESS:
+          return {
+            ...state,
+            error: null,
+            isDeleting: false,
+						deletedUserCount: payload,
+						teamMembers: state.teamMembers.filter(member => member.user_id !== payload.user_id)
+          }
+
     case constants.GENERATE_ERROR:
       return {
         ...state,
@@ -95,7 +113,6 @@ const teamReducer = (state = initialState, { type, payload }) => {
         ...state,
         error: null,
       };
-
     default:
       return state;
   }

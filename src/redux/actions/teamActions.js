@@ -53,6 +53,15 @@ export const fetchTeamVideos = (team_id) => (dispatch) => {
     .then(teamVideosResponse => {
       console.log("Action Video Response", teamVideosResponse)
       dispatch({ type: constants.FETCH_TEAM_VIDEOS_SUCCESS, payload: teamVideosResponse.data })
+
+export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
+  
+  dispatch({type: constants.DELETE_TEAM_MEMBER_START})
+  AxiosWithAuth()
+    .delete(`/teams/${team_id}/users/${user_id}`)
+    .then(removedMemberResponse => {
+      console.log("Action Response", removedMemberResponse)
+      dispatch({ type: constants.DELETE_TEAM_MEMBER_SUCCESS, payload: {count: removedMemberResponse.data.count, user_id: user_id} })
     })
     .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
 }
