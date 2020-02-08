@@ -46,6 +46,17 @@ export const fetchTeamPrompts = (team_id) => (dispatch) => {
     .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
 }
 
+export const fetchTeamVideos = (team_id) => (dispatch) => {
+  dispatch({type: constants.FETCH_TEAM_VIDEOS_START})
+  AxiosWithAuth()
+    .get(`/teams/${team_id}/videos`)
+    .then(teamVideosResponse => {
+      console.log("Action Video Response", teamVideosResponse)
+      dispatch({ type: constants.FETCH_TEAM_VIDEOS_SUCCESS, payload: teamVideosResponse.data })
+    })
+    .catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+}
+
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {
   dispatch({ type: constants.GENERATE_ERROR, payload: errorMessage });

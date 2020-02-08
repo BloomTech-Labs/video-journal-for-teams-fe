@@ -41,6 +41,10 @@ const constants = {
     FETCH_TEAM_PROMPTS_START: "team:fetch-team-prompts-start",
     FETCH_TEAM_PROMPTS_SUCCESS: "team:fetch-team-prompts-success",
 
+    //GET fetch team videos
+    FETCH_TEAM_VIDEOS_START: "team:fetch-team-videos-start",
+    FETCH_TEAM_VIDEOS_SUCCESS: "team:fetch-team-videos-success",
+
   //FAILURES
   GENERATE_ERROR: "error:generate-error",
   CLEAR_ERROR: "error:clear-error",
