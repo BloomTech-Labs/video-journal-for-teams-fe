@@ -9,11 +9,12 @@ import MemberCard from './MemberCard';
 const { Header, Content } = Layout;
 
 function MembersList(props) {
-	let { team_id } = useParams();
+  let { team_id } = useParams();
+  const { fetchTeamMembers } = props
 
-	useEffect(() => {
-			props.fetchTeamMembers(team_id)
-	}, []);
+  useEffect(() => {
+      fetchTeamMembers(team_id)
+  }, [team_id, fetchTeamMembers]);
 
   if (!props.teamMembers) {
     return <h2>Loading...</h2>;

@@ -7,6 +7,11 @@ const initialState = {
   last_name: "",
   email: "",
   username: "",
+  invite: {
+    invite_code: null,
+    invited_team_id: null,
+    error: null
+  },
   error: null,
   isFetching: false,
   teams: [],
@@ -136,6 +141,53 @@ const userReducer = (state = initialState, { type, payload }) => {
         error: payload,
       };
 
+      case constants.FETCH_INVITE_START:
+        return {
+          ...state,
+          invite: { ...state.invite, invite_code: payload, error: null },
+          isFetching: true,
+        }
+
+      case constants.FETCH_INVITE_SUCCESS:
+        return {
+          ...state,
+          invite: { ...state.invite, invited_team_id: payload, error: null },
+          isFetching: false,
+        }
+
+      case constants.FETCH_INVITE_FAILURE:
+          return {
+            ...state,
+            isFetching: false,
+            invite: { ...state.invite, error: payload },
+          }
+      case constants.ADD_INVITED_MEMBER_START:
+        return {
+          ...state,
+          isFetching: true,
+          error: null
+        }
+      case constants.ADD_INVITED_MEMBER_SUCCESS:
+          return {
+            ...state,
+            isFetching: false,
+            error: null
+          }
+      case constants.ADD_INVITED_MEMBER_FAILURE:
+            return {
+              ...state,
+              isFetching: false,
+              error: payload
+            }
+      case constants.CLEAR_INVITE:
+            return {
+              ...state, 
+              invite: {
+                invite_code: null,
+                invited_team_id: null,
+                error: null
+              } 
+            }
     default:
       return state;
   }

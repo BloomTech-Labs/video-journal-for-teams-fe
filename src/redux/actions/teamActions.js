@@ -53,6 +53,8 @@ export const fetchTeamVideos = (team_id) => (dispatch) => {
     .then(teamVideosResponse => {
       console.log("Action Video Response", teamVideosResponse)
       dispatch({ type: constants.FETCH_TEAM_VIDEOS_SUCCESS, payload: teamVideosResponse.data })
+    })
+  }
 
 export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
   
