@@ -64,7 +64,7 @@ const Register = (props) => {
       .validate(applicant, { abortEarly: true })
       .then(() => {
         //Data is good, proceed to registration action
-        props.registerUser(applicant);
+        props.registerUser(applicant, props.invited_team_id);
       })
       .catch((validationError) => {
         props.setError(validationError.errors);

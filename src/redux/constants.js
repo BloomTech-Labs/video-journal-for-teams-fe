@@ -24,6 +24,9 @@ const constants = {
   FETCH_FEEDBACK_SUCCESS: "user:fetch-feedback-success",
   FETCH_FEEDBACK_FAILURE: "user:fetch-feedback-failure",
 
+  //Clear invite
+  CLEAR_INVITE: "user:clear-invite",
+
   //TEAM CONSTANTS
     // POST create team
     CREATE_TEAM_START: "teams:create-team-start",
@@ -40,6 +43,16 @@ const constants = {
     //GET fetch team prompts
     FETCH_TEAM_PROMPTS_START: "team:fetch-team-prompts-start",
     FETCH_TEAM_PROMPTS_SUCCESS: "team:fetch-team-prompts-success",
+
+    //GET fetch invite
+    FETCH_INVITE_START: "team:fetch-invite-start",
+    FETCH_INVITE_SUCCESS: "team:fetch-invite-success",
+    FETCH_INVITE_FAILURE: "team:fetch-invite-failure",
+
+    //POST create team member
+    ADD_INVITED_MEMBER_START: "team:add-invited-member-start",
+    ADD_INVITED_MEMBER_SUCCESS: "team:add-invited-member-success",
+    ADD_INVITED_MEMBER_FAILURE: "team:add-invited-member-failure",
 
   //FAILURES
   GENERATE_ERROR: "error:generate-error",
