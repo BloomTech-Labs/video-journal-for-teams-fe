@@ -53,6 +53,14 @@ const constants = {
     ADD_INVITED_MEMBER_START: "team:add-invited-member-start",
     ADD_INVITED_MEMBER_SUCCESS: "team:add-invited-member-success",
     ADD_INVITED_MEMBER_FAILURE: "team:add-invited-member-failure",
+    
+    //GET fetch team videos
+    FETCH_TEAM_VIDEOS_START: "team:fetch-team-videos-start",
+    FETCH_TEAM_VIDEOS_SUCCESS: "team:fetch-team-videos-success",
+
+    //DELETE team member from a team
+    DELETE_TEAM_MEMBER_START: "team:delete-team-member-start",
+    DELETE_TEAM_MEMBER_SUCCESS: "team:delete-team-member-success",
 
   //FAILURES
   GENERATE_ERROR: "error:generate-error",

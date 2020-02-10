@@ -31,7 +31,7 @@ function MembersList(props) {
 
           {/* Display members */}
           {props.teamMembers.map(member => (
-            <Col span={2}><MemberCard key={member.id} member={member} /></Col>
+            <Col span={2} key={member.user_id}><MemberCard  member={member} /></Col>
           ))}
         </Row>
       </Content>
@@ -41,7 +41,8 @@ function MembersList(props) {
 
 const mapStateToProps = (state) => ({
   team: state.Team.team,
-  teamMembers: state.Team.teamMembers
+	teamMembers: state.Team.teamMembers,
+	deleteUserCount: state.Team.deleteUserCount
 });
 
 const mapActionsToProps = {
