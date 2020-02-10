@@ -7,7 +7,7 @@ export const registerUser = (applicant) => (dispatch) => {
   axios
     .post("/auth/register", applicant)
     .then((registerResponse) => {
-      dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data })
+      dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
     })
     .catch((error) => {
       console.log(error)
@@ -72,7 +72,7 @@ export const createTeam = (data) => (dispatch) => {
   AxiosWithAuth()
   .post('/api/teams/')
   .then(res => {
-      dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data })
+      dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
   })
   .catch(err => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err }));
 }
@@ -126,9 +126,9 @@ export const fetchInvite = (invite) => (dispatch) => {
   .get(`/invites/${invite}`)
     .then((invite) => {
       if (invite.data.team_id > 0) {
-        dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data.team_id })
+        dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data.team_id });
       } else {
-        dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: invite.data.message })
+        dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: invite.data.message });
       }
     })
     .catch((err) => {console.log(err)
@@ -144,11 +144,11 @@ export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
           team_id: team_id
         })
         .then((res) => {
-          dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res })
+          dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res });
           history.push(`/teams/${team_id}`)
         }).then(() => dispatch({ type: constants.CLEAR_INVITE }))
         .catch((err) => {
-          dispatch({ type: constants.ADD_INVITED_MEMBER_FAILURE, payload: err })
+          dispatch({ type: constants.ADD_INVITED_MEMBER_FAILURE, payload: err });
         })
 }
 
