@@ -3,14 +3,11 @@ import axios from "axios";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
 // REGISTER A NEW USER
-export const registerUser = (applicant, invited_team) => (dispatch) => {
+export const registerUser = (applicant) => (dispatch) => {
   axios
     .post("/auth/register", applicant)
     .then((registerResponse) => {
       dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data })
-      if (invited_team) {
-        addToInvitedTeam(invited_team, registerResponse.data.user.id)
-      }
     })
     .catch((error) => {
       console.log(error)
