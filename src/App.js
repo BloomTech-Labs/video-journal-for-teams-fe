@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import "./components/utils/AxiosDefaults";
 
 // Components
@@ -19,14 +19,11 @@ import Invite from "./pages/Invite";
 // Styles
 import "antd/dist/antd.css";
 import "./userdash.css";
+import { Alert } from "antd";
 
 // Redux
 import { connect } from "react-redux";
 import { addToInvitedTeam } from "./redux/actions/userActions";
-
-import { Alert } from "antd";
-
-import { withRouter } from "react-router-dom";
 
 function App(props) {
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history } = props
