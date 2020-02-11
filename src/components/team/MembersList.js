@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, createInvite, setError, clearError } from "../../redux/actions/teamActions";
 import { Layout, Typography, Row, Col, Modal, Button, Form, Input } from 'antd';
@@ -9,10 +9,12 @@ import MemberCard from './MemberCard';
 const { Header, Content } = Layout;
 
 function MembersList(props) {
-	let history = useHistory();
-	let { team_id } = useParams();
-
 	const [showModal, setShowModal] = useState(false)
+	const [code, setCode] = useState("");
+
+	let { team_id } = useParams();
+	let baseURL = process.env.REACT_APP_FRONT_END_URL || "https://alpacavids.netlify.com/";
+	let URL = baseURL.concat("invite/", code)
 
 	useEffect(() => {
 		props.fetchTeamById(team_id)
@@ -22,10 +24,27 @@ function MembersList(props) {
 	const toggleModal = () => {
 		setShowModal(!showModal)
 		props.createInvite({ team_id: props.team.id, team_name: props.team.name })
+		setCode(props.invite.link)
 	}
 
 	const handleOk = (e) => {
 		toggleModal();
+		copyLink();
+	}
+
+	function copyLink() {
+		/* Get the text field */
+		var copyText = document.getElementById("team-link");
+
+		/* Select the text field */
+		copyText.select();
+		copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+		/* Copy the text inside the text field */
+		document.execCommand("copy");
+
+		/* Alert the copied text */
+		alert(copyText.value + " ...has been copied to clipboard.");
 	}
 
 	if (!props.teamMembers) {
@@ -44,11 +63,11 @@ function MembersList(props) {
 							visible={showModal}
 							onOk={handleOk}
 							onCancel={toggleModal}
-							okText="Okay"
+							okText="Copy"
 						>
 							<Form>
-								<Form.Item label="Copy this code link">
-									<Input readOnly value={props.inviteLink.link} />
+								<Form.Item label="Copy Link">
+									<Input readOnly id="team-link" value={URL} />
 								</Form.Item>
 							</Form>
 						</Modal>
@@ -67,7 +86,7 @@ function MembersList(props) {
 const mapStateToProps = (state) => ({
 	team: state.Team.team,
 	teamMembers: state.Team.teamMembers,
-	inviteLink: state.Team.inviteLink,
+	invite: state.Team.inviteLink,
 	deleteUserCount: state.Team.deleteUserCount
 });
 
