@@ -19,7 +19,7 @@ function TeamDashboardContent(props) {
       <DashboardHeader></DashboardHeader>
       {/* Display Members */}
       <div>
-        <h1>{props.team.name}</h1>
+      <h1 style={{marginLeft: "20px"}}>{props.team.name}</h1>
         <Card title="" style={{ margin: "20px" }}>
           <MembersList />
         </Card>
