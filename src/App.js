@@ -26,8 +26,6 @@ import { connect } from "react-redux";
 import { addToInvitedTeam } from "./redux/actions/userActions";
 
 function App(props) {
-	const url = process.env.REACT_APP_LOCAL_HOST
-	console.log(url)
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history } = props
 
 	useEffect(() => {
