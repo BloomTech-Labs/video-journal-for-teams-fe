@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Components
+import DashboardHeader from '../components/DashboardHeader';
 import ClipLoader from "react-spinners/ClipLoader";
 import { Layout } from "antd";
 import { Tooltip, Avatar, Typography, Card, Table } from "antd";
@@ -16,7 +17,7 @@ import { fetchVideo, fetchFeedback } from "../redux/actions/userActions";
 // Styles
 import "./videoDetailsTemp.css";
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 const { Title } = Typography;
 const { TextArea } = Input;
 
@@ -43,130 +44,121 @@ owner_name(pin): 'Curr Ladley'
 */
 
 const columns = [
-  {
-    title: "Name",
-    dataIndex: "owner_id",
-    key: "owner_id",
-    render: (text) => <span>{text}</span>,
-  },
-  {
-    title: "Feedback",
-    dataIndex: "post",
-    key: "post",
-    render: (feedback) => <p>{feedback}</p>,
-  },
+	{
+		title: "Name",
+		dataIndex: "owner_name",
+		key: "owner_id",
+		render: (text) => <span>{text}</span>,
+	},
+	{
+		title: "Feedback",
+		dataIndex: "post",
+		key: "post",
+		render: (feedback) => <p>{feedback}</p>,
+	},
 ];
 
 const VideoDetails = (props) => {
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [feedbackInput, setFeedbackInput] = useState("");
-  const video = props.video;
-  const feedback = props.feedback;
-  const history = useHistory();
-  const { id } = useParams();
+	const [showFeedback, setShowFeedback] = useState(false);
+	const [feedbackInput, setFeedbackInput] = useState("");
+	const video = props.video;
+	const feedback = props.feedback;
+	const history = useHistory();
+	const { id } = useParams();
 
-  useEffect(() => {
-    props.fetchVideo(id);
-  }, [id]);
+	useEffect(() => {
+		props.fetchVideo(id);
+	}, [id]);
 
-  useEffect(() => {
-    //Check if video data has been fetched
-    if (video.owner_id) {
-      //Verify if viewer id matches owner id of video
-      if (props.userId === video.owner_id) {
-        //Get feedback if that's the case
-        props.fetchFeedback(id);
-        setShowFeedback(true);
-      }
-    }
-  }, [video.owner_id]);
+	useEffect(() => {
+		//Check if video data has been fetched
+		if (video.owner_id) {
+			//Verify if viewer id matches owner id of video
+			if (props.userId === video.owner_id) {
+				//Get feedback if that's the case
+				props.fetchFeedback(id);
+				setShowFeedback(true);
+			}
+		}
+	}, [video.owner_id]);
 
-  const handleInput = (e) => {
-    setFeedbackInput(e.target.value);
-  };
+	const handleInput = (e) => {
+		setFeedbackInput(e.target.value);
+	};
 
-  const submitFeedback = (e) => {
-    e.preventDefault();
+	const submitFeedback = (e) => {
+		e.preventDefault();
 
-    if (feedbackInput) {
-      console.log("Need an endpoint to submit feedback");
-      setFeedbackInput("");
-    }
-  };
+		if (feedbackInput) {
+			console.log("Need an endpoint to submit feedback");
+			setFeedbackInput("");
+		}
+	};
 
-  return (
-    <Layout>
-      {/* Yeah I copied over the userdash stuff to keep the style coherent for now */}
-      {/* user dash content area */}
-      <Header className="userDashHeader">
-        <div className="userDashContentHeader">
-          <Title level={4}>{props.username}</Title>
-          <Tooltip placement="left" title="username here">
-            {/* change src below for image */}
-            <Avatar size="large" icon="user" src="" />
-          </Tooltip>
-        </div>
-      </Header>
-      <Content>
-        <Card style={{ margin: "20px" }} className="video-detail-card">
-          <div className="spinner">
-            <ClipLoader size={50} color="#36d7b7" loading={props.isFetching} />
-          </div>
-          {props.isFetching ? null : (
-            <>
-              <h2>{video.video_title}</h2>
-              <h4>
-                By {video.owner_name}, posted {Date(video.created_at)}
-              </h4>
-              <iframe
-                width="560"
-                height="315"
-                src={video.video_url}
-                frameBorder={0}
-                // allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen></iframe>
-              <br />
+	return (
+		<Layout>
+			{/* user dash content area */}
+			<DashboardHeader />
+			<Content>
+				<Card style={{ margin: "20px" }} className="video-detail-card">
+					<div className="spinner">
+						<ClipLoader size={50} color="#36d7b7" loading={props.isFetching} />
+					</div>
+					{props.isFetching ? null : (
+						<>
+							<h2>{video.video_title}</h2>
+							<h4>
+								By {video.owner_name}, posted {Date(video.created_at)}
+							</h4>
+							<iframe
+								width="560"
+								height="315"
+								src={video.video_url}
+								frameBorder={0}
+								// allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+								allowFullScreen></iframe>
+							<br />
 
-              {showFeedback ? (
-                <>
-                  <Table columns={columns} dataSource={feedback} />
-                </>
-              ) : (
-                <>
-                  <br />
-                  <Form layout="vertical" onSubmit={submitFeedback}>
-                    <Form.Item label="Feedback">
-                      <TextArea rows={4} value={feedbackInput} onChange={handleInput}></TextArea>
-                    </Form.Item>
-                    <Form.Item>
-                      <Button type="primary" htmlType="submit" className="feedback-form-button">
-                        Submit Feedback
+							{showFeedback ? (
+								<>
+									<Table columns={columns} dataSource={feedback} />
+								</>
+							) : (
+									<>
+										<br />
+										<Form layout="vertical" onSubmit={submitFeedback}>
+											<Form.Item label="Feedback">
+												<TextArea rows={4} value={feedbackInput} onChange={handleInput}></TextArea>
+											</Form.Item>
+											<Form.Item>
+												<Button type="primary" htmlType="submit" className="feedback-form-button">
+													Submit Feedback
                       </Button>
-                    </Form.Item>
-                  </Form>
-                </>
-              )}
-              <br />
-              <Button onClick={() => history.goBack()}>Back to dashboard</Button>
-            </>
-          )}
-        </Card>
-      </Content>
-      <Footer>this is a footer</Footer>
-    </Layout>
-  );
+											</Form.Item>
+										</Form>
+									</>
+								)}
+							<br />
+							<Button onClick={() => history.goBack()}>Back to dashboard</Button>
+						</>
+					)}
+				</Card>
+			</Content>
+			<Footer>this is a footer</Footer>
+		</Layout>
+	);
 };
 
 const mapStateToProps = (state) => ({
-  userId: state.User.userId,
-  video: state.User.videoDetailFocus,
-  feedback: state.User.videoDetailFocus.feedback,
-  isFetching: state.User.isFetching,
+	userId: state.User.userId,
+	video: state.User.videoDetailFocus,
+	feedback: state.User.videoDetailFocus.feedback,
+	isFetching: state.User.isFetching,
 });
 
 const mapActionsToProps = {
-  fetchVideo,
-  fetchFeedback,
+	fetchVideo,
+	fetchFeedback,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(VideoDetails);
