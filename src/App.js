@@ -42,7 +42,7 @@ function App(props) {
 
 			<Route path="/register" component={Register} />
 
-			<Route path="/invite_:invite" component={Invite} />
+			<Route path="/invite/:invite" component={Invite} />
 
 			<PrivateRoute path="/test" component={TestComponent} />
 
