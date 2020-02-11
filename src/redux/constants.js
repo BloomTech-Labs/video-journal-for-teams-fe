@@ -47,15 +47,30 @@ const constants = {
 
 	//DELETE team member from a team
 	DELETE_TEAM_MEMBER_START: "team:delete-team-member-start",
-	DELETE_TEAM_MEMBER_SUCCESS: "team:delete-team-member-success",
+  DELETE_TEAM_MEMBER_SUCCESS: "team:delete-team-member-success",
+  
+  //POST create team member
+  ADD_INVITED_MEMBER_START: "team:add-invited-member-start",
+  ADD_INVITED_MEMBER_SUCCESS: "team:add-invited-member-success",
+  ADD_INVITED_MEMBER_FAILURE: "team:add-invited-member-failure", 
+
+  // Invites
 
 	//POST creates team invitation link
 	POST_INVITE_LINK_START: "team:post-invite-link-start",
 	POST_INVITE_LINK_SUCCESS: "team:post-invite-link-success",
 
-	//FAILURES
+  //Clear invite
+  CLEAR_INVITE: "user:clear-invite",
+  
+  //GET fetch invite
+  FETCH_INVITE_START: "team:fetch-invite-start",
+  FETCH_INVITE_SUCCESS: "team:fetch-invite-success",
+  FETCH_INVITE_FAILURE: "team:fetch-invite-failure",
+
+  //FAILURES
 	GENERATE_ERROR: "error:generate-error",
-	CLEAR_ERROR: "error:clear-error",
+  CLEAR_ERROR: "error:clear-error",
 };
 
 export default constants;

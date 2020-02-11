@@ -10,6 +10,7 @@ export const registerUser = (applicant) => (dispatch) => {
       dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
     })
     .catch((error) => {
+      console.log(error)
       const duplicateAccountError = error.response.data.error;
       if (duplicateAccountError) {
         dispatch({ type: constants.GENERATE_ERROR, payload: duplicateAccountError });
@@ -71,8 +72,7 @@ export const createTeam = (data) => (dispatch) => {
   AxiosWithAuth()
   .post('/api/teams/')
   .then(res => {
-      console.log(res);
-      dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data })
+      dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
   })
   .catch(err => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err }));
 }
@@ -83,7 +83,6 @@ export const fetchUserTeams = (userId) => (dispatch) => {
   AxiosWithAuth()
     .get(`/users/${userId}/teams`)
     .then((res) => {
-      console.log(res);
       dispatch({ type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data });
     })
     .catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
@@ -120,4 +119,36 @@ export const fetchFeedback = (videoId) => (dispatch) => {
     })
     .catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err }));
 };
+
+export const fetchInvite = (invite) => (dispatch) => {
+  dispatch({ type: constants.FETCH_INVITE_START, payload: invite });
+  axios
+  .get(`/invites/${invite}`)
+    .then((invite) => {
+      if (invite.data.team_id > 0) {
+        dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data.team_id });
+      } else {
+        dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: invite.data.message });
+      }
+    })
+    .catch((err) => {console.log(err)
+      dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: "Invalid invite code." })});
+}
+
+export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
+  dispatch({ type: constants.ADD_INVITED_MEMBER_START });
+        AxiosWithAuth()
+        .post(`/teams/${team_id}/users`, {
+          user_id: user_id,
+          role_id: 1,
+          team_id: team_id
+        })
+        .then((res) => {
+          dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res });
+          history.push(`/teams/${team_id}`)
+        }).then(() => dispatch({ type: constants.CLEAR_INVITE }))
+        .catch((err) => {
+          dispatch({ type: constants.ADD_INVITED_MEMBER_FAILURE, payload: err });
+        })
+}
 
