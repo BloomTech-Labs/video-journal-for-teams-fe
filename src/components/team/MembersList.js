@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchTeamById, fetchTeamMembers, createInvite, setError, clearError } from "../../redux/actions/teamActions";
+import { fetchTeamMembers, createInvite, setError, clearError } from "../../redux/actions/teamActions";
 import { Layout, Typography, Row, Col, Modal, Button, Form, Input } from 'antd';
 import './teamTest.css';
 import MemberCard from './MemberCard';
@@ -17,7 +17,6 @@ function MembersList(props) {
 	let URL = baseURL.concat("invite/", code)
 
 	useEffect(() => {
-		props.fetchTeamById(team_id)
 		props.fetchTeamMembers(team_id)
 	}, []);
 
@@ -94,7 +93,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-	fetchTeamById,
 	fetchTeamMembers,
 	createInvite,
 	setError,
