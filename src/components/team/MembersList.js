@@ -21,10 +21,13 @@ function MembersList(props) {
 		props.fetchTeamMembers(team_id)
 	}, []);
 
+	useEffect(() => {
+		setCode(props.invite.link)
+	}, [props.invite.link]);
+
 	const toggleModal = () => {
 		setShowModal(!showModal)
 		props.createInvite({ team_id: props.team.id, team_name: props.team.name })
-		setCode(props.invite.link)
 	}
 
 	const handleOk = (e) => {
