@@ -3,6 +3,7 @@ import constants from "../constants";
 const initialState = {
 	team: {},
 	teamMembers: [],
+	newPrompt: {},
 	teamPrompts: [],
 	teamVideos: [],
 	deleteUserCount: 0,
@@ -116,6 +117,21 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				isFetching: false,
 				error: null,
 				inviteLink: payload
+			};
+
+		case constants.POST_TEAM_PROMPT_START:
+			return {
+				...state,
+				isFetching: true,
+				error: null
+			};
+
+		case constants.POST_TEAM_PROMPT_SUCCESS:
+			return {
+				...state,
+				isFetching: false,
+				error: null,
+				newPrompt: payload
 			};
 
 		case constants.GENERATE_ERROR:
