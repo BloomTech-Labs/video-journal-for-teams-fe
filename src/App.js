@@ -35,7 +35,7 @@ function App(props) {
 	}, [isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history])
 
 	return (
-		
+
 		<div className="app">
 			{props.inviteError ? <Alert message={props.inviteError} type="error" /> : null}
 			<Route exact path="/" component={Login} />
@@ -46,13 +46,13 @@ function App(props) {
 
 			<PrivateRoute path="/test" component={TestComponent} />
 
-      <PrivateRoute exact path="/user-dashboard" component={UserDashboard} />
+			<PrivateRoute exact path="/user-dashboard" component={UserDashboard} />
 
-      <PrivateRoute path="/user-dashboard/video/:id" component={VideoDetails} />
+			<PrivateRoute path="/user-dashboard/video/:id" component={VideoDetails} />
 
 			<Route path="/profile" component={UserProfileDashboard} />
 
-      <PrivateRoute path="/teams/:team_id" component={TeamDashboard} />
+			<PrivateRoute path="/teams/:team_id" component={TeamDashboard} />
 
 			<Route path="/videos" component={UserVideos} />
 
@@ -69,7 +69,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  addToInvitedTeam
+	addToInvitedTeam
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(withRouter(App));
