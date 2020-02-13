@@ -11,7 +11,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "../App";
 
 describe("App Component", () => {
-	it("renders without crashing", () => {
+	it("should render without crashing", () => {
 		rtl.render(
 			<Provider store={store}>
 				<Router>
