@@ -1,6 +1,5 @@
 import React from "react";
 import * as rtl from "@testing-library/react";
-import App from "../App";
 
 // Redux
 import { Provider } from "react-redux";
@@ -9,11 +8,10 @@ import { store } from "../redux/store";
 // import { PersistGate } from 'redux-persist/lib/integration/react';
 import { BrowserRouter as Router } from "react-router-dom";
 
-//afterEach(rtl.cleanup); //Use if necessary, see docs
-//https://jestjs.io/docs/en/setup-teardown
+import App from "../App";
 
-describe("Main App Demo Test", () => {
-	it("renders without crashing", () => {
+describe("App Component", () => {
+	it("should render without crashing", () => {
 		rtl.render(
 			<Provider store={store}>
 				<Router>
