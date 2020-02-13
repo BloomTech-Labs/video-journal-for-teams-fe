@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamVideos, setError, clearError } from "../../redux/actions/teamActions";
 import { Layout, Typography, Row, Col, Button } from 'antd';
@@ -10,7 +10,7 @@ const { Header, Content } = Layout;
 
 const PromptVideoList = (props) => {
 	let { team_id } = useParams();
-
+	let history = useHistory();
 	useEffect(() => {
 		props.fetchTeamVideos(team_id)
 		console.log("Comp Videos", props.teamVideos)
@@ -28,16 +28,18 @@ const PromptVideoList = (props) => {
 					<Col span={2}>
 						<Button type="primary" shape="circle" icon="plus-circle" className="add-prompt" />
 					</Col>
-					
+
 					{/* Display team prompts array */}
 					<Col span={2}>
+
+
 						{props.teamVideos.map(promptVideos => (
 							<div key={promptVideos.id}>
 								<div className="prompt-container">
 									<h3>{promptVideos.question}</h3>
 									<p>{promptVideos.description}</p>
 								</div>
-								
+								<Button onClick={() => history.push("/videos")} type="primary" shape="circle" icon="plus-circle" className="add-prompt" />
 								{/* Display videos array for a specific prompt */}
 								<div className="videos-container">
 									{promptVideos.videos.map(data => <UserVideosCard key={data.video_id} data={data} />)}
