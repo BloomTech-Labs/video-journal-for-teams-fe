@@ -24,16 +24,24 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"coverage": "CI=true yarn test --coverage || true"
+		"coverage": "yarn test --coverage --watchAll=false"
 	},
 	"jest": {
-		"collectCoverageFrom": [
-			"**/*.{js,jsx}",
-			"!**/node_modules/**",
-			"!**/vendor/**",
-			"!**/__tests__/**"
+		"coverageReporters": [
+			"json-summary",
+			"text",
+			"lcov"
 		],
-		"verbose": true
+		"coveragePathIgnorePatterns": [
+			"/node_modules/",
+			"/__tests__/",
+			"/coverage/",
+			"/public/",
+			"/database/",
+			"/.github/",
+			"serviceWorker.js",
+			"index.js"
+		]
 	},
 	"eslintConfig": {
 		"extends": "react-app"

@@ -79,6 +79,17 @@ export const createInvite = (team) => (dispatch) => {
 		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
 }
 
+export const createPrompt = (prompt, team_id) => (dispatch) => {
+	dispatch({ type: constants.POST_TEAM_PROMPT_START })
+	AxiosWithAuth()
+		.post(`teams/${team_id}/prompts`, prompt)
+		.then(promptResponse => {
+			console.log("Action Response", promptResponse)
+			dispatch({ type: constants.POST_TEAM_PROMPT_SUCCESS, payload: promptResponse.data })
+		})
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+}
+
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {
 	dispatch({ type: constants.GENERATE_ERROR, payload: errorMessage });
