@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
 
 // Redux
@@ -26,11 +26,13 @@ const Login = (props) => {
     password: "",
   });
 
+  let history = useHistory();
+
   //Redirect if logged already logged in OR on successful registration
   useEffect(() => {
     if (props.isLogged) {
       props.clearError();
-      props.history.push("/user-dashboard");
+      history.push("/user-dashboard");
     }
   }, [props.isLogged]);
 
@@ -64,7 +66,7 @@ const Login = (props) => {
       <Sider />
       <Content>
         {props.error ? <Alert message={props.error} type="error" /> : null}
-        <Form onSubmit={submitLogin} className="login-form">
+        <Form onSubmit={submitLogin} className="login-form" data-testid="login-form">
           <Form.Item>
             <Input
               prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.5)" }} />}
@@ -72,7 +74,7 @@ const Login = (props) => {
               name="usernameOrEmail"
               value={user.usernameOrEmail}
               onChange={handleInput}
-              placeholder="Username or email"
+              placeholder="username or email"
               autoComplete="off"
               required
             />
@@ -84,7 +86,7 @@ const Login = (props) => {
               name="password"
               value={user.password}
               onChange={handleInput}
-              placeholder="Password"
+              placeholder="password"
               autoComplete="off"
               required
             />

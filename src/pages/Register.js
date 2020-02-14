@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
 
 // Redux
@@ -43,11 +43,13 @@ const Register = (props) => {
     confirm_password: "",
   });
 
+  let history = useHistory();
+
   //Redirect if logged already logged in OR on successful registration
   useEffect(() => {
     if (props.isLogged) {
       props.clearError();
-      props.history.push("/user-dashboard");
+      history.push("/user-dashboard");
     }
   }, [props.isLogged]);
 
@@ -78,7 +80,7 @@ const Register = (props) => {
         <Content>
           {/* Alert will show any form validation error */}
           {props.error ? <Alert message={props.error} type="error" /> : null}
-          <Form onSubmit={submitRegistration} className="register-form">
+          <Form onSubmit={submitRegistration} className="register-form" data-testid="register-form">
             <Form.Item>
               <Input
                 type="text"
@@ -146,9 +148,9 @@ const Register = (props) => {
               />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit" className="register-form-button">
+              <button type="primary" htmltype="submit" className="register-form-button" data-testid="register-button">
                 Register
-              </Button>
+              </button>
               <Link to="/">I already have an account</Link>
             </Form.Item>
           </Form>
