@@ -49,6 +49,10 @@ const constants = {
 	DELETE_TEAM_MEMBER_START: "team:delete-team-member-start",
 	DELETE_TEAM_MEMBER_SUCCESS: "team:delete-team-member-success",
 
+	// PUT update team member role
+	UPDATE_TEAM_MEMBER_ROLE_START: "team:update_team_member_role_start",
+	UPDATE_TEAM_MEMBER_ROLE_SUCCESS: "team:update_team_member_role_success",
+
 	//POST create team member
 	ADD_INVITED_MEMBER_START: "team:add-invited-member-start",
 	ADD_INVITED_MEMBER_SUCCESS: "team:add-invited-member-success",
