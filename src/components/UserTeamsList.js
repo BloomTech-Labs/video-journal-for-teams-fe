@@ -16,13 +16,12 @@ const TeamList = props => {
 	let history = useHistory();
 
 	useEffect(() => {
-		console.log(props)
 		props.fetchUserTeams(props.id)
-	},[props.id])
+	}, [props.id])
 
 	const handleInput = (e) => {
-			setTeam({ ...team, [e.target.name]: e.target.value });
-		};
+		setTeam({ ...team, [e.target.name]: e.target.value });
+	};
 
 	const toggleModal = () => {
 		setShowModal(!showModal)
@@ -37,33 +36,31 @@ const TeamList = props => {
 		<Content className="userDashList">
 			<button onClick={toggleModal}>Create Team</button>
 			<Modal
-          title="Create New Team"
-					visible={showModal}
-					onOk={handleOk}
-					onCancel={toggleModal}
-					okText="Create Team"
-        >
-					<Form layout="vertical">
-						<Form.Item label="Team Name">
-								<Input onChange={handleInput} name="name"/>
-							</Form.Item>
-							<Form.Item label="Team Description">
-              <Input onChange={handleInput} name="description"/>
-            </Form.Item>
-					</Form>
-				</Modal>
-				{
-					props.isFetching ? "Loading..." : props.teams.map(data => {
-						return <TeamCard key={data.id} data={data} />;
-					})
-				}
+				title="Create New Team"
+				visible={showModal}
+				onOk={handleOk}
+				onCancel={toggleModal}
+				okText="Create Team"
+			>
+				<Form layout="vertical">
+					<Form.Item label="Team Name">
+						<Input onChange={handleInput} name="name" />
+					</Form.Item>
+					<Form.Item label="Team Description">
+						<Input onChange={handleInput} name="description" />
+					</Form.Item>
+				</Form>
+			</Modal>
+			{
+				props.isFetching ? "Loading..." : props.teams.map(data => {
+					return <TeamCard key={data.id} data={data} />;
+				})
+			}
 		</Content>
 	);
-	// }
 };
 
 const mapStateToProps = (state) => {
-	console.log(state)
 	return {
 		teams: state.User.teams,
 		id: state.User.userId,

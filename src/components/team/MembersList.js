@@ -13,7 +13,7 @@ function MembersList(props) {
 	const [code, setCode] = useState("");
 
 	let { team_id } = useParams();
-	let baseURL = process.env.REACT_APP_FRONT_END_URL || "https://alpacavids.netlify.com/";
+	let baseURL = process.env.REACT_APP_FRONT_END_URL || "https://www.alpacavids.com/";
 	let URL = baseURL.concat("invite/", code)
 
 	useEffect(() => {
