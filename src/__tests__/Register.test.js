@@ -105,6 +105,20 @@ describe("Register form tests", () => {
 
 		fireEvent.submit(getByTestId("register-form"))
 		await wait(() => expect(mock).not.toHaveBeenCalled());
+	});
 
+	it("won't register if password is less than 8 characters", async () => {
+		const { getByTestId } = render(
+			<Provider store={store}>
+				<Router>
+					<Register />
+				</Router>
+			</Provider>
+		);
+		
+		fillForm("Test", "User", "TestUser", "test@user.com", "1234567", "1234567")
+
+		fireEvent.submit(getByTestId("register-form"))
+		await wait(() => expect(mock).not.toHaveBeenCalled());
 	});
 })
