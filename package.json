@@ -29,14 +29,23 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"coverage": "CI=true yarn test --coverage || true"
+		"coverage": "yarn test --coverage --watchAll=false"
 	},
 	"jest": {
-		"collectCoverageFrom": [
-			"**/*.{js,jsx}",
-			"!**/node_modules/**",
-			"!**/vendor/**",
-			"!**/__tests__/**"
+		"coverageReporters": [
+			"json-summary",
+			"text",
+			"lcov"
+		],
+		"coveragePathIgnorePatterns": [
+			"/node_modules/",
+			"/__tests__/",
+			"/coverage/",
+			"/public/",
+			"/database/",
+			"/.github/",
+			"serviceWorker.js",
+			"index.js"
 		]
 	},
 	"eslintConfig": {
@@ -53,5 +62,11 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"@types/jest": "^25.1.2",
+		"enzyme": "^3.11.0",
+		"enzyme-adapter-react-16": "^1.15.2",
+		"redux-mock-store": "^1.5.4"
 	}
 }
