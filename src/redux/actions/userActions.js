@@ -4,13 +4,12 @@ import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
-  axios
+  return axios
     .post("/auth/register", applicant)
     .then((registerResponse) => {
       dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
     })
     .catch((error) => {
-      console.log(error)
       const duplicateAccountError = error.response.data.error;
       if (duplicateAccountError) {
         dispatch({ type: constants.GENERATE_ERROR, payload: duplicateAccountError });
