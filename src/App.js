@@ -18,6 +18,7 @@ import Invite from "./pages/Invite";
 import PostTeamVideo from "./pages/PostTeamVideo";
 
 // Styles
+import "./App.scss";
 import "antd/dist/antd.css";
 import "./userdash.css";
 import { Alert } from "antd";
@@ -37,6 +38,7 @@ function App(props) {
 
 	return (
 		<div className="app">
+			<p id="test">Testing</p>
 			{props.inviteError ? <Alert message={props.inviteError} type="error" /> : null}
 			<Route exact path="/" component={Login} />
 

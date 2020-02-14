@@ -148,9 +148,9 @@ const Register = (props) => {
               />
             </Form.Item>
             <Form.Item>
-              <button type="primary" htmltype="submit" className="register-form-button" data-testid="register-button">
+              <Button type="primary" htmltype="submit" className="register-form-button" data-testid="register-button">
                 Register
-              </button>
+              </Button>
               <Link to="/">I already have an account</Link>
             </Form.Item>
           </Form>
