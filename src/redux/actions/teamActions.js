@@ -90,6 +90,21 @@ export const createPrompt = (prompt, team_id) => (dispatch) => {
 		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
 }
 
+//Update user role.
+export const updateUserRole = (team_id, user_id, role_id) => dispatch => {
+	dispatch({ type: constants.UPDATE_TEAM_MEMBER_ROLE_START });
+
+	const changes = {
+		role_id: role_id
+	}
+
+	AxiosWithAuth().put(`/teams/${team_id}/users/${user_id}/role`, changes)
+		.then(updateResponse => {
+			dispatch({ type: constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS, payload: updateResponse.updatedRole });
+		})
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+}
+
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {
 	dispatch({ type: constants.GENERATE_ERROR, payload: errorMessage });

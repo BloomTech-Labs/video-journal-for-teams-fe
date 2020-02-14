@@ -10,7 +10,9 @@ const initialState = {
 	inviteLink: {},
 	error: null,
 	isFetching: false,
-	isDeleting: false
+	isDeleting: false,
+	isUpdating: false,
+	updated: null,
 };
 
 const teamReducer = (state = initialState, { type, payload }) => {
@@ -132,6 +134,20 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				isFetching: false,
 				error: null,
 				newPrompt: payload
+			};
+
+		case constants.UPDATE_TEAM_MEMBER_ROLE_START:
+			return {
+				...state,
+				isUpdating: true,
+				error: null
+			}
+		case constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS:
+			return {
+				...state,
+				isUpdating: false,
+				updated: payload,
+				error: null
 			};
 
 		case constants.GENERATE_ERROR:
