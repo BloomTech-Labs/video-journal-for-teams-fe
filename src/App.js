@@ -8,7 +8,6 @@ import PrivateRoute from "./components/utils/PrivateRoute";
 // Pages
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import TestComponent from "./components/TestComponent";
 import UserDashboard from "./pages/UserDashboard";
 import UserProfileDashboard from "./pages/UserProfileDashboard";
 import UserVideos from "./pages/UserVideos";
@@ -43,8 +42,6 @@ function App(props) {
 			<Route exact path="/register" component={Register} />
 
 			<Route exact path="/invite/:invite" component={Invite} />
-
-			<PrivateRoute exact path="/test" component={TestComponent} />
 
 			<PrivateRoute exact path="/user-dashboard" component={UserDashboard} />
 
