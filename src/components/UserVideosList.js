@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -9,16 +9,14 @@ const { Header, Content } = Layout;
 
 
 function UserVideos(props) {
-	const [videos, setVideos] = useState([]);
-
 	useEffect(() => {
 		props.fetchUserVideos(props.id)
-	},[props.id])
+	}, [props.id])
 
 	return (
-<Content className="userDashList">
-			{props.videos.map(data => (
-				<UserVideosCard data={data} key={data.video_id} />
+		<Content className="userDashList">
+			{props.videos.map(video => (
+				<UserVideosCard key={video.id} data={video} />
 			))}
 		</Content>
 	)
@@ -31,4 +29,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, {fetchUserVideos})(UserVideos);
+export default connect(mapStateToProps, { fetchUserVideos })(UserVideos);

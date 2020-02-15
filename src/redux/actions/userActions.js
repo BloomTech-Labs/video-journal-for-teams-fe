@@ -93,7 +93,6 @@ export const fetchUserVideos = (userId) => (dispatch) => {
 	AxiosWithAuth()
 		.get(`/users/${userId}/videos`)
 		.then((res) => {
-			console.log(res);
 			dispatch({ type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
@@ -131,7 +130,6 @@ export const fetchInvite = (invite) => (dispatch) => {
 			}
 		})
 		.catch((err) => {
-			console.log(err)
 			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: "Invalid invite code." })
 		});
 }

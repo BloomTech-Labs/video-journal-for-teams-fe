@@ -17,10 +17,6 @@ function MembersList(props) {
 	let URL = baseURL.concat("invite/", code)
 
 	useEffect(() => {
-		props.fetchTeamMembers(team_id)
-	}, []);
-
-	useEffect(() => {
 		setCode(props.invite.link)
 	}, [props.invite.link]);
 
@@ -59,8 +55,9 @@ function MembersList(props) {
 				<Row gutter={[16, 16]}>
 					{/* Add member invite link button */}
 					<Col span={2}>
-						<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-member" />
-						<Modal
+						{props.userRole === 2 ? (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-member" />) :
+							(<Button style={{ "display": "none" }} />)}
+						< Modal
 							title="Team Invitation Link"
 							visible={showModal}
 							onOk={handleOk}
@@ -80,12 +77,13 @@ function MembersList(props) {
 						<Col span={2} key={member.user_id}><MemberCard member={member} /></Col>
 					))}
 				</Row>
-			</Content>
+			</Content >
 		)
 	}
 }
 
 const mapStateToProps = (state) => ({
+	userId: state.User.userId,
 	team: state.Team.team,
 	teamMembers: state.Team.teamMembers,
 	invite: state.Team.inviteLink,

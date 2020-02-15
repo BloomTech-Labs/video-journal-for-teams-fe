@@ -5,14 +5,13 @@ const initialState = {
 	teamMembers: [],
 	newPrompt: {},
 	teamPrompts: [],
-	teamVideos: [],
+	teamPromptsAndVideos: [],
 	deleteUserCount: 0,
 	inviteLink: {},
 	error: null,
 	isFetching: false,
 	isDeleting: false,
-	isUpdating: false,
-	updated: null,
+	isUpdating: false
 };
 
 const teamReducer = (state = initialState, { type, payload }) => {
@@ -75,19 +74,19 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				teamPrompts: payload
 			};
 
-		case constants.FETCH_TEAM_VIDEOS_START:
+		case constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_START:
 			return {
 				...state,
 				isFetching: true,
 				error: null
 			};
 
-		case constants.FETCH_TEAM_VIDEOS_SUCCESS:
+		case constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_SUCCESS:
 			return {
 				...state,
 				isFetching: false,
 				error: null,
-				teamVideos: payload
+				teamPromptsAndVideos: payload
 			};
 
 		case constants.DELETE_TEAM_MEMBER_START:
@@ -145,8 +144,12 @@ const teamReducer = (state = initialState, { type, payload }) => {
 		case constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS:
 			return {
 				...state,
+				teamMembers: state.teamMembers.map(member => {
+					return member.user_id === payload.updatedRole.user_id &&
+						member.team_id === payload.updatedRole.team_id ?
+						{ ...member, role_id: payload.updatedRole.role_id } : member;
+				}),
 				isUpdating: false,
-				updated: payload,
 				error: null
 			};
 
@@ -161,6 +164,7 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				error: null,
 			};
+
 		default:
 			return state;
 	}

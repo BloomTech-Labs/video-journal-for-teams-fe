@@ -15,13 +15,10 @@ function EditMemberCard(props) {
 
 	// Update member's role locally
 	const handleRoleChange = () => {
-
 		if (member.role_id === 1) {
-			setRole(member.role_id = 2);
-
+			setRole(2);
 		} else if (member.role_id === 2) {
-			setRole(member.role_id = 1);
-
+			setRole(1);
 		}
 	}
 
@@ -29,6 +26,7 @@ function EditMemberCard(props) {
 	useEffect(() => {
 		props.updateUserRole(team_id, member.user_id, role);
 	}, [role])
+
 
 	return (
 		<Card className="edit-card">
@@ -39,11 +37,9 @@ function EditMemberCard(props) {
 	)
 }
 
-const mapStateToProps = (state) => {
-	return {
-		deleteCount: state.Team.deletedUserCount
-	}
-}
+const mapStateToProps = (state) => ({
+	deleteCount: state.Team.deletedUserCount
+});
 
 const mapActionsToProps = {
 	deleteTeamMember,

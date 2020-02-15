@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamVideos, createPrompt, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Typography, Row, Col, Modal, Form, Input, Button, Carousel } from "antd";
+import { Layout, Typography, Row, Col, Modal, Form, Input, Button } from "antd";
 import "./teamTest.css";
 import UserVideosCard from "../UserVideosCard";
 
@@ -32,16 +32,17 @@ const PromptVideoList = (props) => {
 		setPrompt({ ...prompt, [e.target.name]: e.target.value });
 	};
 
-	if (!props.teamVideos) {
+	if (!props.teamPromptsAndVideos) {
 		return <h2>Loading...</h2>;
 	} else {
 		return (
 			<Content>
-				<p>Prompts({props.teamVideos.length})</p>
+				<p>Prompts({props.teamPromptsAndVideos.length})</p>
 				<Row gutter={[16, 16]}>
 					{/* Add a prompt button */}
 					<Col span={2}>
-						<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-prompt" />
+						{props.userRole === 2 ? (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-prompt" />) :
+							(<Button style={{ "display": "none" }} />)}
 						<Modal title="Add New Prompt" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Submit">
 							<Form>
 								<Form.Item label="Question">
@@ -55,27 +56,25 @@ const PromptVideoList = (props) => {
 					</Col>
 
 					{/* Display team prompts array */}
-					<Col span={12}>
-						{props.teamVideos.map((promptVideos) => (
-							<div key={promptVideos.id}>
+					<Col span={2}>
+						{props.teamPromptsAndVideos.map((prompts) => (
+							<div key={prompts.id}>
 								<div className="prompt-container">
-									<h3>{promptVideos.question}</h3>
-									<p>{promptVideos.description}</p>
+									<h3>{prompts.question}</h3>
+									<p>{prompts.description}</p>
 								</div>
-								<div style={{ "display": "flex" }}>
-									<Button
-										onClick={() => history.push(`/teams/${props.teamId}/videos/post`)}
-										type="primary"
-										shape="circle"
-										icon="plus-circle"
-										className="add-prompt"
-									/>
-									{/* Display videos array for a specific prompt */}
-									<div className="videos-container" style={{ "display": "flex" }}>
-										{promptVideos.videos.map((data) => (
-											<UserVideosCard key={data.video_id} data={data} />
-										))}
-									</div>
+								<Button
+									onClick={() => history.push(`/teams/${props.teamId}/videos/post`)}
+									type="primary"
+									shape="circle"
+									icon="plus-circle"
+									className="add-prompt"
+								/>
+								{/* Display videos array for a specific prompt */}
+								<div className="videos-container">
+									{prompts.videos.map((video) => (
+										<UserVideosCard key={video.id} data={video} />
+									))}
 								</div>
 							</div>
 						))}
@@ -87,7 +86,7 @@ const PromptVideoList = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-	teamVideos: state.Team.teamVideos,
+	teamPromptsAndVideos: state.Team.teamPromptsAndVideos,
 	newPrompt: state.Team.newPrompt,
 	teamId: state.Team.team.id,
 });
