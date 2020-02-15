@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamVideos, createPrompt, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Typography, Row, Col, Modal, Form, Input, Button } from "antd";
+import { Layout, Typography, Row, Col, Modal, Form, Input, Button, Carousel } from "antd";
 import "./teamTest.css";
 import UserVideosCard from "../UserVideosCard";
 
@@ -55,25 +55,27 @@ const PromptVideoList = (props) => {
 					</Col>
 
 					{/* Display team prompts array */}
-					<Col span={2}>
+					<Col span={12}>
 						{props.teamVideos.map((promptVideos) => (
 							<div key={promptVideos.id}>
 								<div className="prompt-container">
 									<h3>{promptVideos.question}</h3>
 									<p>{promptVideos.description}</p>
 								</div>
-								<Button
-									onClick={() => history.push(`/teams/${props.teamId}/videos/post`)}
-									type="primary"
-									shape="circle"
-									icon="plus-circle"
-									className="add-prompt"
-								/>
-								{/* Display videos array for a specific prompt */}
-								<div className="videos-container">
-									{promptVideos.videos.map((data) => (
-										<UserVideosCard key={data.video_id} data={data} />
-									))}
+								<div style={{ "display": "flex" }}>
+									<Button
+										onClick={() => history.push(`/teams/${props.teamId}/videos/post`)}
+										type="primary"
+										shape="circle"
+										icon="plus-circle"
+										className="add-prompt"
+									/>
+									{/* Display videos array for a specific prompt */}
+									<div className="videos-container" style={{ "display": "flex" }}>
+										{promptVideos.videos.map((data) => (
+											<UserVideosCard key={data.video_id} data={data} />
+										))}
+									</div>
 								</div>
 							</div>
 						))}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Icon, Avatar } from 'antd';
 import EditMemberCard from './EditMemberCard';
 
@@ -11,9 +11,11 @@ function MemberCard(props) {
 			bordered={false}
 			hoverable
 		>
-			{/* <div className='image-container'>
-        {(!member.img) ? (<Avatar size={64} icon="user" />): (<img src = {member.img} />)}
-      </div> */}
+			<div className='image-container'>
+				{(!member.avatar) ? (<Avatar size={64} icon="user" />) : (
+					<img src={`https://video-journal.herokuapp.com/public/avatars/${member.avatar}`} />)}
+			</div>
+
 			<p className="small">{member.user_full_name}</p>
 			<EditMemberCard member={member} />
 		</Card>

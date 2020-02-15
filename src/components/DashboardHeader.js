@@ -22,7 +22,7 @@ function DashboardHeader(props) {
 				<Title level={4}>{props.fullName}</Title>
 				<Tooltip placement="left" title={props.username}>
 					{/* change src below for image */}
-					<Avatar size="large" icon="user" src="" />
+					<Avatar size="large" icon="user" src={`http://localhost:5000/public/avatars/${props.avatar}`} />
 				</Tooltip>
 			</div>
 			<Button onClick={handleLogout}>
@@ -36,6 +36,7 @@ const mapStateToProps = (state) => {
 	return {
 		fullName: `${state.User.first_name} ${state.User.last_name}`,
 		username: state.User.username,
+		avatar: state.User.avatar
 	};
 };
 
