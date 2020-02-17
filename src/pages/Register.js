@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
+import Alpaca from '../imgs/Group 33.png';
 
 // Redux
 import { connect } from "react-redux";
 
 // Components
-import { Layout, Form, Input, Button, Alert } from "antd";
+import { Layout, Form, Input, Button, Alert, Row, Col } from "antd";
 
 // Styles
 import "../components/profile/tempStyles.css";
@@ -74,89 +75,94 @@ const Register = (props) => {
   };
 
   return (
-    <div>
-      <Layout>
-        <Sider />
-        <Content>
+    <Row>
+      <Col xs={2} sm={4} md={6} lg={6} xl={8} className="auth-sider">
+        <img src={Alpaca}></img>
+        </Col>
+        <Col xl={16} className="auth-main">
+          <span>
+            Already a member? <Link to="/">Sign in</Link>
+          </span>`
           {/* Alert will show any form validation error */}
+          <div className="auth-content">
+            <h1>Create Account</h1>
           {props.error ? <Alert message={props.error} type="error" /> : null}
-          <Form onSubmit={submitRegistration} className="register-form" data-testid="register-form">
-            <Form.Item>
+          <Form onSubmit={submitRegistration} className="register-form" data-testid="register-form" labelAlign="left">
+          <Form.Item label="First Name"labelAlign="left">
               <Input
                 type="text"
                 name="first_name"
                 onChange={handleInput}
                 value={applicant.first_name}
-                placeholder="first name"
+                placeholder="First Name"
                 autoComplete="off"
                 required
               />
-            </Form.Item>
-            <Form.Item>
-              <Input
-                type="text"
-                name="last_name"
-                onChange={handleInput}
-                value={applicant.last_name}
-                placeholder="last name"
-                autoComplete="off"
-                required
-              />
-            </Form.Item>
-            <Form.Item>
+              </Form.Item>
+              <Form.Item label="Last Name">
+                <Input
+                  type="text"
+                  name="last_name"
+                  onChange={handleInput}
+                  value={applicant.last_name}
+                  placeholder="Last Name"
+                  autoComplete="off"
+                  required
+                />
+              </Form.Item>
+            <Form.Item label="Email">
               <Input
                 type="text"
                 name="email"
                 onChange={handleInput}
                 value={applicant.email}
-                placeholder="email"
+                placeholder="Email"
                 autoComplete="off"
                 required
               />
             </Form.Item>
-            <Form.Item>
+            <Form.Item label="Username">
               <Input
                 type="text"
                 name="username"
                 onChange={handleInput}
                 value={applicant.username}
-                placeholder="username"
+                placeholder="Username"
                 autoComplete="off"
                 required
               />
             </Form.Item>
-            <Form.Item>
+            <Form.Item label="Password">
               <Input
                 type="password"
                 name="password"
                 onChange={handleInput}
                 value={applicant.password}
-                placeholder="password"
+                placeholder="Password"
                 autoComplete="off"
                 required
               />
             </Form.Item>
-            <Form.Item>
+            <Form.Item label="Confirm Password">
               <Input
                 type="password"
                 name="confirm_password"
                 onChange={handleInput}
                 value={applicant.confirm_password}
-                placeholder="confirm password"
+                placeholder="Confirm Password"
                 autoComplete="off"
                 required
               />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmltype="submit" className="register-form-button" data-testid="register-button">
+            <Button type="primary" htmlType="submit" className="register-form-button">
                 Register
               </Button>
-              <Link to="/">I already have an account</Link>
             </Form.Item>
           </Form>
-        </Content>
-      </Layout>
-    </div>
+          </div>
+        </Col>
+      </Row>
   );
 };
 

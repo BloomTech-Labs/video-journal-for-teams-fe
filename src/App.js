@@ -38,7 +38,6 @@ function App(props) {
 
 	return (
 		<div className="app">
-			<p id="test">Testing</p>
 			{props.inviteError ? <Alert message={props.inviteError} type="error" /> : null}
 			<Route exact path="/" component={Login} />
 
