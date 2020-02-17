@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
+import Alpaca from '../imgs/Group 33.png';
 
 // Redux
 import { connect } from "react-redux";
@@ -9,7 +10,7 @@ import { connect } from "react-redux";
 import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 // Components
-import { Layout, Form, Icon, Input, Button, Checkbox, Alert } from "antd";
+import { Layout, Form, Icon, Input, Button, Checkbox, Alert, Row, Col } from "antd";
 
 // Styles
 import "../components/profile/tempStyles.css";
@@ -62,48 +63,53 @@ const Login = (props) => {
   };
 
   return (
-    <Layout>
-      <Sider />
-      <Content>
+    <Row>
+      <Col xs={2} sm={4} md={6} lg={6} xl={8} className="auth-sider">
+        <img alt="Alpaca Vids Logo" src={Alpaca}></img>
+      </Col>
+        <Col xl={16} className="auth-main">
+        <span>
+            Not a Member? <Link to="/register">Register here</Link>
+          </span>
+          <div className="auth-content">
+          <h1>Welcome Back!</h1>
+          <p>Please sign in</p>
         {props.error ? <Alert message={props.error} type="error" /> : null}
         <Form onSubmit={submitLogin} className="login-form" data-testid="login-form">
-          <Form.Item>
+        <Form.Item label="Username or Email"labelAlign="left">
             <Input
               prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.5)" }} />}
               type="text"
               name="usernameOrEmail"
               value={user.usernameOrEmail}
               onChange={handleInput}
-              placeholder="username or email"
+              placeholder="Username or Email"
               autoComplete="off"
               required
             />
           </Form.Item>
-          <Form.Item>
+          <Form.Item label="Password"labelAlign="left">
             <Input
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.5)" }} />}
               type="password"
               name="password"
               value={user.password}
               onChange={handleInput}
-              placeholder="password"
+              placeholder="Password"
               autoComplete="off"
               required
             />
           </Form.Item>
           <Form.Item>
-            <Checkbox>Remember me</Checkbox>
-            <Link to="" className="login-form-forgot">
-              Forgot password?
-            </Link>
+            {/* <Checkbox>Remember me</Checkbox> */}
             <Button type="primary" htmlType="submit" className="login-form-button">
-              Log In
+              Sign In
             </Button>
-            <Link to="/register">Register an account instead</Link>
           </Form.Item>
         </Form>
-      </Content>
-    </Layout>
+        </div>
+        </Col>
+      </Row>
   );
 };
 
