@@ -9,12 +9,12 @@ export const registerUser = (applicant) => (dispatch) => {
 		.then((registerResponse) => {
 			dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
 		})
-		.catch((error) => {
-			const duplicateAccountError = error.response.data.error;
+		.catch((err) => {
+			const duplicateAccountError = err.response.data.error;
 			if (duplicateAccountError) {
 				dispatch({ type: constants.GENERATE_ERROR, payload: duplicateAccountError });
 			} else {
-				dispatch({ type: constants.GENERATE_ERROR, payload: "An error occurred, try again later." });
+				dispatch({ type: constants.GENERATE_ERROR, payload: err.response });
 			}
 		});
 };
@@ -32,8 +32,8 @@ export const loginUser = (userCredentials) => (dispatch) => {
 			.then((loginResponse) => {
 				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 			})
-			.catch((error) => {
-				dispatch({ type: constants.GENERATE_ERROR, payload: "Invalid username/password combination." });
+			.catch((err) => {
+				dispatch({ type: constants.GENERATE_ERROR, payload: err.response });
 			});
 	} else {
 		const user = {
@@ -46,24 +46,16 @@ export const loginUser = (userCredentials) => (dispatch) => {
 			.then((loginResponse) => {
 				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 			})
-			.catch((error) => {
-				dispatch({ type: constants.GENERATE_ERROR, payload: "Invalid username/password combination." });
+			.catch((err) => {
+				dispatch({
+					type: constants.GENERATE_ERROR, payload: err.response
+				});
 			});
 	}
 };
 
 export const logoutUser = () => (dispatch) => {
 	dispatch({ type: constants.LOGOUT_USER });
-};
-
-// SET AN ERROR
-export const setError = (errorMessage) => (dispatch) => {
-	dispatch({ type: constants.GENERATE_ERROR, payload: errorMessage });
-};
-
-// CLEAR AN ERROR
-export const clearError = () => (dispatch) => {
-	dispatch({ type: constants.CLEAR_ERROR, payload: null });
 };
 
 export const createTeam = (data) => (dispatch) => {
@@ -73,7 +65,7 @@ export const createTeam = (data) => (dispatch) => {
 		.then(res => {
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err }));
+		.catch(err => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
 }
 
 // FETCH TEAMS FOR USER
@@ -84,7 +76,7 @@ export const fetchUserTeams = (userId) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data });
 		})
-		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
 // FETCH VIDEOS FOR USER
@@ -95,7 +87,7 @@ export const fetchUserVideos = (userId) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data });
 		})
-		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
 export const fetchVideo = (videoId) => (dispatch) => {
@@ -105,7 +97,7 @@ export const fetchVideo = (videoId) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: constants.FETCH_VIDEO_SUCCESS, payload: res.data });
 		})
-		.catch((err) => dispatch({ type: constants.FETCH_VIDEO_FAILURE, payload: err }));
+		.catch((err) => dispatch({ type: constants.FETCH_VIDEO_FAILURE, payload: err.response }));
 };
 
 export const fetchFeedback = (videoId) => (dispatch) => {
@@ -115,7 +107,7 @@ export const fetchFeedback = (videoId) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: constants.FETCH_FEEDBACK_SUCCESS, payload: res.data });
 		})
-		.catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err }));
+		.catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err.response }));
 };
 
 export const fetchInvite = (invite) => (dispatch) => {
@@ -130,7 +122,7 @@ export const fetchInvite = (invite) => (dispatch) => {
 			}
 		})
 		.catch((err) => {
-			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: "Invalid invite code." })
+			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: err.response })
 		});
 }
 
@@ -147,6 +139,16 @@ export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
 			history.push(`/teams/${team_id}`)
 		}).then(() => dispatch({ type: constants.CLEAR_INVITE }))
 		.catch((err) => {
-			dispatch({ type: constants.ADD_INVITED_MEMBER_FAILURE, payload: err });
+			dispatch({ type: constants.ADD_INVITED_MEMBER_FAILURE, payload: err.response });
 		})
 }
+
+// SET AN ERROR
+export const setError = (errorMessage) => (dispatch) => {
+	dispatch({ type: constants.GENERATE_ERROR, payload: errorMessage });
+};
+
+// CLEAR AN ERROR
+export const clearError = () => (dispatch) => {
+	dispatch({ type: constants.CLEAR_ERROR, payload: null });
+};
