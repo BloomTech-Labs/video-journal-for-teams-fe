@@ -13,9 +13,9 @@ function UserDashboard() {
 		<NavAndHeader>
 			<div className="user-dashboard">
 				<h1>Dashboard</h1>
-				<Card title="Your Teams" style={{ margin: "20px" }}>
+				{/* <Card title="Your Teams" style={{ margin: "20px" }}> */}
 					<TeamList />
-				</Card>
+				{/* </Card> */}
 				<Card title="Your Videos" style={{ margin: "20px" }}>
 					<UserVideos />
 				</Card>
