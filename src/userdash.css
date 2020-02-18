@@ -15,11 +15,6 @@ p.small {
 	justify-content: center;
 }
 
-.userDashHeaderFont {
-	color: rgb(255, 255, 255) !important;
-	margin-top: 10px;
-}
-
 .userDashMenu {
 	text-align: left;
 	margin-top: 20px;

@@ -1,0 +1,47 @@
+.nav-header {
+	height: 100vh;
+	.userDashHeaderFont {
+		color: $alpaca-green;
+		font-family: Pacifico;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 36px;
+		line-height: 63px;
+		display: flex;
+		align-items: center;
+	}
+	.ant-layout-sider {
+		flex: 0 0 240px !important;
+    max-width: 240px !important;
+    min-width: 240px !important;
+		width: 240px !important;
+	}
+	.userDashHeader {
+		height: 83px;
+		padding: 0;
+		.userDashHeaderFont {
+			margin-bottom: 0;
+		}
+		.userDashContentHeader {
+			padding: 0 50px;
+			background-color: $white;
+			span {
+				.ant-avatar {
+					cursor: pointer;
+					border: 1px solid $alpaca-green;
+				}
+				p {
+					line-height: 0;
+					font-size: 13px;
+				}
+			}
+		}
+	}
+}
+
+.ant-popover-inner-content {
+	button {
+		border: none !important;
+		cursor: pointer;
+	}
+}
