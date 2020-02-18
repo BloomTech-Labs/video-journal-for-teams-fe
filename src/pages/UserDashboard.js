@@ -11,12 +11,15 @@ function UserDashboard() {
 
 	return (
 		<NavAndHeader>
-			<Card title="Your Teams" style={{ margin: "20px" }}>
-				<TeamList />
-			</Card>
-			<Card title="Your Videos" style={{ margin: "20px" }}>
-				<UserVideos />
-			</Card>
+			<div className="user-dashboard">
+				<h1>Dashboard</h1>
+				<Card title="Your Teams" style={{ margin: "20px" }}>
+					<TeamList />
+				</Card>
+				<Card title="Your Videos" style={{ margin: "20px" }}>
+					<UserVideos />
+				</Card>
+			</div>
 		</NavAndHeader>
 	)
 }

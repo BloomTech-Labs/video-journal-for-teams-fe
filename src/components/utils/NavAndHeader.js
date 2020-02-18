@@ -6,7 +6,7 @@ const { Content } = Layout;
 
 const NavAndHeader = (props) => {
     return (
-				<Layout>
+				<Layout className="nav-header">
 					<DashboardNav />
 					<Content>
 						<DashboardHeader />
