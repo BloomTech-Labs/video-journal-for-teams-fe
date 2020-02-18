@@ -152,18 +152,78 @@ export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
 		});
 };
 
-//TODO Create action to upload video to server
-export const uploadVideo = () => (dispatch) => {
+export const uploadVideo = (video) => (dispatch) => {
 	dispatch({
 		type: constants.UPLOAD_VIDEO_START,
-		payload: null,
 	});
+
+	//Create formdata object
+	const videoSubmission = new FormData();
+
+	//Append video and associated metadata
+	try {
+		//raw video arrayBuffer
+		const blob = new Blob(video.raw, { type: "video/webm" });
+
+		//Video metadata
+		videoSubmission.append("video", blob);
+		videoSubmission.append("title", video.title);
+		videoSubmission.append("description", video.description);
+		videoSubmission.append("owner_id", video.owner_id);
+		videoSubmission.append("prompt_id", video.prompt_id);
+	} catch (err) {
+		dispatch({
+			type: constants.UPLOAD_VIDEO_FAILURE,
+			payload: err,
+		});
+	}
+
+	const submissionConfig = {
+		onUploadProgress: function(progressEvent) {
+			dispatch({
+				type: constants.UPLOAD_VIDEO_PROGRESS,
+				payload: Math.round((progressEvent.loaded * 100) / progressEvent.total),
+			});
+		},
+		headers: {
+			"Content-Type": `multipart/form-data; boundary=${videoSubmission._boundary}`,
+		},
+		timeout: 500000,
+	};
+
+	AxiosWithAuth()
+		.post("/videos", videoSubmission, submissionConfig)
+		.then((res) => {
+			dispatch({
+				type: constants.UPLOAD_VIDEO_SUCCESS,
+				payload: res.data,
+			});
+		})
+		.catch((err) => {
+			dispatch({
+				type: constants.UPLOAD_VIDEO_FAILURE,
+				payload: err.response,
+			});
+		});
 };
 
 export const updateStreamObject = (streamObj) => (dispatch) => {
 	dispatch({
 		type: constants.UPDATE_STREAM_OBJECT,
 		payload: streamObj,
+	});
+};
+
+export const updateStreamRaw = (arrayBuffer) => (dispatch) => {
+	dispatch({
+		type: constants.UPDATE_STREAM_RAW,
+		payload: arrayBuffer,
+	});
+};
+
+export const toggleStreamPlayback = () => (dispatch) => {
+	dispatch({
+		type: constants.TOGGLE_STREAM_PLAYBACK,
 	});
 };
 
