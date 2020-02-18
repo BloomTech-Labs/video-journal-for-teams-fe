@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
-import DashboardHeader from '../DashboardHeader';
-import DashboardNav from '../DashboardNav';
+import DashboardHeader from './DashboardHeader';
+import DashboardNav from './DashboardNav';
 const { Content } = Layout;
 
 const NavAndHeader = (props) => {

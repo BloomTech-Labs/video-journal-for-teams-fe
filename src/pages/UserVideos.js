@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Typography } from 'antd';
-import NavAndHeader from "../components/utils/NavAndHeader";
+import NavAndHeader from "../components/NavAndHeader";
 import UserVideosList from '../components/UserVideosList';
 
 const { Title } = Typography;

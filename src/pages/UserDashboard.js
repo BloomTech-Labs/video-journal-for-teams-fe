@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-import NavAndHeader from "../components/utils/NavAndHeader";
+import NavAndHeader from "../components/NavAndHeader";
 import TeamList from '../components/UserTeamsList';
 import UserVideos from "../components/UserVideosList";
 

@@ -1,46 +1,56 @@
-import React, {useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-
-// Redux
-
-import { connect } from "react-redux";
-import { fetchTeamById } from "../redux/actions/teamActions";
+import { Card } from "antd";
 
 // Components
+import NavAndHeader from "../components/NavAndHeader";
+import MembersList from "../components/team/MembersList";
+import PromptVideoList from "../components/team/PromptVideoList";
 
-import MembersList from '../components/team/MembersList';
-import PromptVideoList from '../components/team/PromptVideoList';
+// Redux 
+import { connect } from "react-redux";
+import { fetchTeamById, fetchTeamMembers, } from "../redux/actions/teamActions";
 
-import { Card } from 'antd';
-import NavAndHeader from "../components/utils/NavAndHeader";
+function TeamDashboardContent(props) {
+	const [userRole, setUserRole] = useState();
+	let { team_id } = useParams();
 
-function TeamDashboard(props) {
-  let { team_id } = useParams();
-
-  useEffect(() => {
+	useEffect(() => {
 		props.fetchTeamById(team_id)
+		props.fetchTeamMembers(team_id)
 	}, []);
 
-  return (
+	useEffect(() => {
+		if (props.teamMembers.length > 0) {
+			const findTeamMember = props.teamMembers.find((item) => (item.user_id === props.userId));
+			setUserRole(findTeamMember.role_id);
+		}
+	}, [props.teamMembers])
+
+
+	return (
     <NavAndHeader>
-      <h1 style={{marginLeft: "20px"}}>{props.team.name}</h1>
-        <Card title="" style={{ margin: "20px" }}>
-          <MembersList />
-        </Card>
-        {/* Diplay Prompts */}
-        <Card title="" style={{ margin: "20px" }}>
-          <PromptVideoList />
-        </Card>
+				<h1 style={{ marginLeft: "20px" }}>{props.team.name}</h1>
+				<Card title="" style={{ margin: "20px" }}>
+					<MembersList userRole={userRole} />
+				</Card>
+				{/* Diplay Prompts */}
+				<Card title="" style={{ margin: "20px" }}>
+					<PromptVideoList userRole={userRole} />
+				</Card>
     </NavAndHeader>
-  )
+	)
 }
 
 const mapStateToProps = (state) => ({
-	team: state.Team.team
+	userId: state.User.userId,
+	team: state.Team.team,
+	teamMembers: state.Team.teamMembers
 });
 
 const mapActionsToProps = {
-	fetchTeamById
+	fetchTeamById,
+	fetchTeamMembers
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(TeamDashboard);
+export default connect(mapStateToProps, mapActionsToProps)(TeamDashboardContent);

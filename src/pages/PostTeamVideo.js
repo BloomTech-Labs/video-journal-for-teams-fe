@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 // Actions
 
 // Components
-import NavAndHeader from "../components/utils/NavAndHeader";
+import NavAndHeader from "../components/NavAndHeader";
 import { Layout, Card, Button, Icon, Form } from "antd";
 
 // Styles

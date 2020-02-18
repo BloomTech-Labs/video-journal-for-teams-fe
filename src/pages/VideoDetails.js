@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Components
-import NavAndHeader from "../components/utils/NavAndHeader";
+import NavAndHeader from "../components/NavAndHeader";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Layout } from "antd";
 import { Card, Table } from "antd";

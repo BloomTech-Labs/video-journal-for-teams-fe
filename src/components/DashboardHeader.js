@@ -30,7 +30,7 @@ function DashboardHeader(props) {
 		<Header className="userDashHeader">
 			<div className="userDashContentHeader">
 				<Popover content={content} trigger="click">
-					<Avatar size="large" icon="user" src="" />
+					<Avatar size="large" icon="user" src={`https://video-journal.herokuapp.com/public/avatars/${props.avatar}`} />
 					{<p>{getInitials()}</p>}
 				</Popover>
 			</div>
