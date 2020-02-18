@@ -31,36 +31,36 @@ describe("Register form tests", () => {
 
 	const fillForm = (first_name, last_name, username, email, password, confirm_password) => {
 
-		fireEvent.change(getByPlaceholderText("first name"), {
+		fireEvent.change(getByPlaceholderText("First Name"), {
 			target: {value: first_name},
 		})
-		fireEvent.change(getByPlaceholderText("last name"), {
+		fireEvent.change(getByPlaceholderText("Last Name"), {
 			target: {value: last_name},
 		})
-		fireEvent.change(getByPlaceholderText("username"), {
+		fireEvent.change(getByPlaceholderText("Username"), {
 			target: {value: username},
 		})
-		fireEvent.change(getByPlaceholderText("email"), {
+		fireEvent.change(getByPlaceholderText("Email"), {
 			target: {value: email},
 		})
-		fireEvent.change(getByPlaceholderText("password"), {
+		fireEvent.change(getByPlaceholderText("Password"), {
 			target: {value: password},
 		})
-		fireEvent.change(getByPlaceholderText("confirm password"), {
+		fireEvent.change(getByPlaceholderText("Confirm Password"), {
 			target: {value: confirm_password},
 		})
 	}
 
 	it("renders form correctly", () => {
 	
-		expect(getByPlaceholderText("first name")).toBeInTheDocument();
-		expect(getByPlaceholderText("last name")).toBeInTheDocument();
-		expect(getByPlaceholderText("username")).toBeInTheDocument();
-		expect(getByPlaceholderText("email")).toBeInTheDocument();
-		expect(getByPlaceholderText("password")).toBeInTheDocument();
-		expect(getByPlaceholderText("confirm password")).toBeInTheDocument();
+		expect(getByPlaceholderText("First Name")).toBeInTheDocument();
+		expect(getByPlaceholderText("Last Name")).toBeInTheDocument();
+		expect(getByPlaceholderText("Username")).toBeInTheDocument();
+		expect(getByPlaceholderText("Email")).toBeInTheDocument();
+		expect(getByPlaceholderText("Password")).toBeInTheDocument();
+		expect(getByPlaceholderText("Confirm Password")).toBeInTheDocument();
 		expect(getByText("Register").closest('button')).toBeInTheDocument();
-		expect(getByText("I already have an account")).toBeInTheDocument();
+		expect(getByText("Already a member?")).toBeInTheDocument();
 
 	})
 
@@ -76,12 +76,12 @@ describe("Register form tests", () => {
 		fillForm("Test", "User", "TestUser", "test@user.com", "12345678", "12345678")
 
 		const user = {
-			first_name: getByPlaceholderText("first name").value,
-			last_name: getByPlaceholderText("last name").value,
-			username: getByPlaceholderText("username").value,
-			email: getByPlaceholderText("email").value,
-			password: getByPlaceholderText("password").value,
-			confirm_password: getByPlaceholderText("confirm password").value
+			first_name: getByPlaceholderText("First Name").value,
+			last_name: getByPlaceholderText("Last Name").value,
+			username: getByPlaceholderText("Username").value,
+			email: getByPlaceholderText("Email").value,
+			password: getByPlaceholderText("Password").value,
+			confirm_password: getByPlaceholderText("Confirm Password").value
 		}
 
 		const result = { data: { user: user, token: '12345' }}
