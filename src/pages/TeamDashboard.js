@@ -20,6 +20,7 @@ function TeamDashboard(props) {
 		props.fetchTeamMembers(team_id)
 	}, []);
 
+  // Sets the logged in user role for the team
 	useEffect(() => {
 		if (props.teamMembers.length > 0) {
       const findTeamMember = props.teamMembers.find((item) => (item.user_id === props.userId));
