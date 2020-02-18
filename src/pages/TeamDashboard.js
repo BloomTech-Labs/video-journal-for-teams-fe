@@ -11,9 +11,9 @@ import PromptVideoList from "../components/team/PromptVideoList";
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, } from "../redux/actions/teamActions";
 
-function TeamDashboardContent(props) {
+function TeamDashboard(props) {
 	const [userRole, setUserRole] = useState();
-	let { team_id } = useParams();
+  let { team_id } = useParams();
 
 	useEffect(() => {
 		props.fetchTeamById(team_id)
@@ -22,10 +22,10 @@ function TeamDashboardContent(props) {
 
 	useEffect(() => {
 		if (props.teamMembers.length > 0) {
-			const findTeamMember = props.teamMembers.find((item) => (item.user_id === props.userId));
-			setUserRole(findTeamMember.role_id);
+      const findTeamMember = props.teamMembers.find((item) => (item.user_id === props.userId));
+      findTeamMember ? setUserRole(findTeamMember.role_id) : setUserRole(1)
 		}
-	}, [props.teamMembers])
+	}, [props.teamMembers, props.userId])
 
 
 	return (
@@ -53,4 +53,4 @@ const mapActionsToProps = {
 	fetchTeamMembers
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(TeamDashboardContent);
+export default connect(mapStateToProps, mapActionsToProps)(TeamDashboard);
