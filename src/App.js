@@ -15,6 +15,7 @@ import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
 import PostTeamVideo from "./pages/PostTeamVideo";
+import Upload from "./components/utils/Upload";
 
 // Styles
 import "./App.scss";
