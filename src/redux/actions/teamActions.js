@@ -89,12 +89,14 @@ export const updateUserRole = (team_id, user_id, role_id) => dispatch => {
 	const changes = {
 		role_id: role_id
 	}
-
+	console.log("Response user_id", user_id);
 	AxiosWithAuth().put(`/teams/${team_id}/users/${user_id}/role`, changes)
 		.then(updateResponse => {
-			dispatch({ type: constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS, payload: updateResponse.updatedRole });
+			dispatch({ type: constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS, payload: updateResponse.data.updatedRole });
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+		.catch(err => {
+			dispatch({ type: constants.GENERATE_ERROR, payload: err.response })
+		});
 }
 
 // SET AN ERROR
