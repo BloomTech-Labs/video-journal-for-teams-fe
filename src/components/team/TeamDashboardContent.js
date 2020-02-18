@@ -14,9 +14,14 @@ function TeamDashboardContent(props) {
 	useEffect(() => {
 		props.fetchTeamById(team_id)
 		props.fetchTeamMembers(team_id)
-		const findTeamMember = props.teamMembers.find((item) => (item.user_id = props.userId));
-		setUserRole(findTeamMember.role_id);
-	}, [props.teamMembers]);
+	}, []);
+
+	useEffect(() => {
+		if (props.teamMembers.length > 0) {
+			const findTeamMember = props.teamMembers.find((item) => (item.user_id === props.userId));
+			setUserRole(findTeamMember.role_id);
+		}
+	}, [props.teamMembers])
 
 
 	return (
