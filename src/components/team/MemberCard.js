@@ -4,7 +4,7 @@ import { Card, Avatar } from 'antd';
 import EditMemberCard from './EditMemberCard';
 
 function MemberCard(props) {
-	const { member } = props;
+	const { member, userRole } = props;
 
 	return (
 		<Card
@@ -19,9 +19,7 @@ function MemberCard(props) {
 
 			<p className="small">{member.user_full_name}</p>
 
-			{props.userRole === 1 ? null :
-
-				(<EditMemberCard member={member} />)}
+			{userRole === 1 ? null : (<EditMemberCard member={member} />)}
 		</Card>
 	)
 }

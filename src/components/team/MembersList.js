@@ -55,7 +55,7 @@ function MembersList(props) {
 				<Row gutter={[16, 16]}>
 					{/* Add member invite link button */}
 					<Col span={2}>
-						{props.userRole === 2 ? (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-member" />) : null}
+						{props.userRole === 1 ? null : (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-member" />)}
 						< Modal
 							title="Team Invitation Link"
 							visible={showModal}
@@ -77,7 +77,6 @@ function MembersList(props) {
 							<MemberCard
 								member={member}
 								userRole={props.userRole}
-								setUserRole={props.setUserRole}
 							/></Col>
 					))}
 				</Row>
