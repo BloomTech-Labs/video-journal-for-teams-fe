@@ -6,14 +6,11 @@ import { connect } from "react-redux";
 // Actions
 
 // Components
-import DashboardHeader from "../components/DashboardHeader";
-import DashboardNav from "../components/DashboardNav";
+import NavAndHeader from "../components/utils/NavAndHeader";
 import { Layout, Card, Button, Icon, Form } from "antd";
 
 // Styles
 import "../userdash.css";
-// Additional Ant Design Components
-const { Content } = Layout;
 
 // const { Title } = Typography;
 // const { Header, Content } = Layout;
@@ -197,10 +194,7 @@ function PostTeamVideo(props) {
 	}
 
 	return (
-		<Layout>
-			<DashboardNav />
-			<Content>
-				<DashboardHeader />
+			<NavAndHeader>
 				<Card title="Record and post a new video" style={{ margin: "20px" }}>
 					<div className="record-container">
 						<a ref={blobStreamHandle} href="#" hidden>
@@ -249,8 +243,7 @@ function PostTeamVideo(props) {
 						</div>
 					</div>
 				</Card>
-			</Content>
-		</Layout>
+			</NavAndHeader>
 	);
 }
 const mapStateToProps = (state) => ({});

@@ -1,16 +1,20 @@
 import React from 'react';
-import { Layout } from 'antd';
-import DashboardNav from '../components/DashboardNav';
-import UserVideosContent from '../components/videos/UserVideosContent';
+import { Card, Typography } from 'antd';
+import NavAndHeader from "../components/utils/NavAndHeader";
+import UserVideosList from '../components/UserVideosList';
+
+const { Title } = Typography;
 
 function UserVideos() {
+
   return (
-    <>
-      <Layout>
-        <DashboardNav />
-        <UserVideosContent />
-      </Layout>
-    </>
+    <NavAndHeader>
+      <Title style={{marginLeft: "20px"}}>My Videos</Title>
+      {/* Display Videos */}
+      <Card title="" style={{ margin: "20px" }}>
+        <UserVideosList />
+      </Card>
+    </NavAndHeader>
   )
 }
 
