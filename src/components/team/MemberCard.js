@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { Card, Icon, Avatar } from 'antd';
+import { Card, Avatar } from 'antd';
 import EditMemberCard from './EditMemberCard';
 
 function MemberCard(props) {
-	// const [userRole, setUserRole] = useState();
-	const { member } = props;
-	const findUser = props.teamMembers.find((item) => (item.user_id = props.userId));
+	const { member, userRole } = props;
 
 	return (
 		<Card
@@ -21,9 +19,7 @@ function MemberCard(props) {
 
 			<p className="small">{member.user_full_name}</p>
 
-			{findUser.role_id === 1 ? (<div style={{ "display": "none" }} />) :
-
-				(<EditMemberCard member={member} />)}
+			{userRole === 1 ? null : (<EditMemberCard member={member} />)}
 		</Card>
 	)
 }
