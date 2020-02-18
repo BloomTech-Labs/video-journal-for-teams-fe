@@ -42,6 +42,7 @@ const mapStateToProps = (state) => {
 	return {
 		fullName: `${state.User.first_name} ${state.User.last_name}`,
 		username: state.User.username,
+		avatar: state.User.avatar
 	};
 };
 

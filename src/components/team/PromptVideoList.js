@@ -32,16 +32,17 @@ const PromptVideoList = (props) => {
 		setPrompt({ ...prompt, [e.target.name]: e.target.value });
 	};
 
-	if (!props.teamVideos) {
+	if (!props.teamPromptsAndVideos) {
 		return <h2>Loading...</h2>;
 	} else {
 		return (
 			<Content>
-				<p>Prompts({props.teamVideos.length})</p>
+				<p>Prompts({props.teamPromptsAndVideos.length})</p>
 				<Row gutter={[16, 16]}>
 					{/* Add a prompt button */}
 					<Col span={2}>
-						<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-prompt" />
+						{props.userRole === 2 ? (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-prompt" />) :
+							(<Button style={{ "display": "none" }} />)}
 						<Modal title="Add New Prompt" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Submit">
 							<Form>
 								<Form.Item label="Question">
@@ -56,11 +57,11 @@ const PromptVideoList = (props) => {
 
 					{/* Display team prompts array */}
 					<Col span={2}>
-						{props.teamVideos.map((promptVideos) => (
-							<div key={promptVideos.id}>
+						{props.teamPromptsAndVideos.map((prompts) => (
+							<div key={prompts.id}>
 								<div className="prompt-container">
-									<h3>{promptVideos.question}</h3>
-									<p>{promptVideos.description}</p>
+									<h3>{prompts.question}</h3>
+									<p>{prompts.description}</p>
 								</div>
 								<Button
 									onClick={() => history.push(`/teams/${props.teamId}/videos/post`)}
@@ -71,8 +72,8 @@ const PromptVideoList = (props) => {
 								/>
 								{/* Display videos array for a specific prompt */}
 								<div className="videos-container">
-									{promptVideos.videos.map((data) => (
-										<UserVideosCard key={data.video_id} data={data} />
+									{prompts.videos.map((video) => (
+										<UserVideosCard key={video.id} data={video} />
 									))}
 								</div>
 							</div>
@@ -85,7 +86,7 @@ const PromptVideoList = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-	teamVideos: state.Team.teamVideos,
+	teamPromptsAndVideos: state.Team.teamPromptsAndVideos,
 	newPrompt: state.Team.newPrompt,
 	teamId: state.Team.team.id,
 });

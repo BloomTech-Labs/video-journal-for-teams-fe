@@ -1,27 +1,23 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/9f724287cf9c5243b8d2/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/video-journal-for-teams-fe/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/9f724287cf9c5243b8d2/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/video-journal-for-teams-fe/test_coverage)
 
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
+# Video Journal For Teams | Alpaca Videos!
 
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
+Project deployed here: [https://www.alpacavids.com]
 
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
+Group Gmail account for accessing Netlify, Heroku, and Google Analytics
 
-# 1️⃣ Title of project goes here
+- email: alpacavideojournal@gmail.com
+- password: ztMuo@ms2P6t7Gt4Efwn
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+## Contributors
 
-## 4️⃣ Contributors
-
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
-|                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
+|[Kerri-Ann Bates](https://github.com/Kerri-AnnBates)|[Michael Nunes](https://github.com/TinySquid)|[Sofia Levin](https://github.com/sofialevin/)|[Darrin Lowery](https://github.com/ogrotten)|[Sam Allen](https://github.com/allensam88)|
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+|[<img src="https://avatars0.githubusercontent.com/u/18246524?s=460&v=4" width = "200" />](https://github.com/Kerri-AnnBates)|[<img src="https://avatars2.githubusercontent.com/u/13441400?s=460&v=4" width = "200" width = "200" />](https://github.com/TinySquid)|[<img src="https://avatars1.githubusercontent.com/u/8367070?s=460&v=4" width = "200" width = "200" />](https://github.com/sofialevin/)|[<img src="https://media-exp1.licdn.com/dms/image/C5603AQFhuYjzAGmDdw/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=Ot5Nj4Qnu5FU6XkMFHlL1KhmWo48HxvmlYgcoX2LcdA" />](https://github.com/ogrotten)|[<img src="https://avatars2.githubusercontent.com/u/54912919?s=460&v=4" width = "200" />](https://github.com/allensam88)|
+|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Kerri-AnnBates)|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TinySquid)|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/sofialevin/)|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ogrotten)|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/allensam88)|
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/kerri-ann-bates-0b4970129/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/miketnunes/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sofia-levin-a6960682/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/darrin-lowery-70860867/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/samallen79/) |
 
-<br>
 <br>
 
 🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
@@ -29,60 +25,62 @@
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](https://app.netlify.com/sites/alpacavids/overview)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+Tagline: It's how you asynchronously record and store practice videos for interviews then get feedback from team members.
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+[Trello Board](https://trello.com/b/GbkgxMJV/labs-20-video-journal-for-teams)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+[Product Canvas](https://www.notion.so/Video-Journal-for-Teams-6388875366074df4a553b884c848f02e)
 
-🚫 Replace lorem ipsum with a description of your project
+[UX Figma Design](https://www.figma.com/file/IEa7YKW4aIgoD7W12AfoyE/Video-Journal%2C-Kyla-O.?node-id=545%3A0)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+[UX InVision Prototype](https://projects.invisionapp.com/share/HZVSXPTM9NF#/screens)
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+### Key Features
 
+-    Login/Register with Passport
+-    User Dashboard: shows the teams you joined and your videos
+-    Team Dashboard: shows the team members, interview prompt questions, and team videos 
+-	 Video Viewer: plays a video and allows members to provide feedback
+-    Update User Profile capability
+-	 Update Team Info capability
+-	 Team Manager can create a new prompt question
+-	 Switch regular team member role to manager role
+-    Video Recording
+-    Video Storage
 
-### 4️⃣ Key Features
+## Tech Stack
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+### Front End built using: React
 
-## 1️⃣ Tech Stack
+Front End production deployed at [Netlify-Production](https://app.netlify.com/sites/alpacavids/overview)
 
-### Front end built using:
+Front End libraries and dependencies can be found in package.json, but major highlights are:
 
-#### _Front end framework goes here_
+-    Redux
+-    Axios
+-    Ant Design
+-    Thunk middleware
 
-🚫 Why did you choose this framework?
+### [Back End](https://github.com/Lambda-School-Labs/video-journal-for-teams-be) built using: Node
 
--    point one
--    point two
--    point three
--    point four
+Back End production pipeline deployed at [Heroku-Production](https://video-journal.herokuapp.com/)
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+Back End staging pipeline deployed at [Heroku-Staging](https://video-journal-staging.herokuapp.com/)
 
-#### Front end deployed to `🚫insert service here`
+List of major Back End dependencies:
 
-#### [Back end](🚫link to back end repo here) built using:
-
-#### 🚫 back end framework goes here
-
--    point one
--    point two
--    point three
-
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+-    Express
+-    Knex
+-    Passport
+-	 bcrypt
+-	 jsonwebtoken
 
 # APIs
 
@@ -104,34 +102,15 @@ This is the way you take out your flustrations. Get away from those little Chris
 
 You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
 
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
-
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+	* REACT_APP_ENV='development'
+	* REACT_APP_LOCAL_HOST='http://localhost:5000/api/'
+	* REACT_APP_STAGING_URL='https://video-journal-staging.herokuapp.com/api/'
+	* REACT_APP_PRODUCTION_URL='https://video-journal.herokuapp.com/api/'
+	* REACT_APP_FRONT_END_URL='https://alpacavids.com/'
 
 # 5️⃣ Content Licenses
 
@@ -144,20 +123,20 @@ In order for the app to function correctly, the user must set up their own envir
 
 # 4️⃣ Testing
 
-🚫Document what you used for testing and why
+Jest testing environment along with Enzyme dev dependency for testing React-Redux
 
 # 4️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+Packages can be installed locally with either: yarn install or npm install.
 
-## Other Scripts
+## Scripts
 
-🚫replace these examples with your own
+-	**npm run build** used on Netlify deployment
 
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+Can be ran with either yarn or npm.
+
+-	**start**: to render a local development browser,
+-	**test** to run local tests
 
 # Contributing
 
@@ -197,7 +176,7 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/video-journal-for-teams-be) for details on the backend of our project.
 
 ---
 github notifications added to slack.

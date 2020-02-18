@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import NavAndHeader from "../components/utils/NavAndHeader";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Layout } from "antd";
-import { Tooltip, Avatar, Typography, Card, Table } from "antd";
+import { Card, Table } from "antd";
 import { Form, Input, Button } from "antd";
 
 // Actions
@@ -18,7 +18,7 @@ import { fetchVideo, fetchFeedback } from "../redux/actions/userActions";
 import "./videoDetailsTemp.css";
 
 const { Content, Footer } = Layout;
-const { Title } = Typography;
+// const { Title } = Typography;
 const { TextArea } = Input;
 
 //TODO Cleanup this entire page

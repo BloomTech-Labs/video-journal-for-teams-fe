@@ -97,7 +97,7 @@ function PostTeamVideo(props) {
 						console.log("Blob handle", blobStreamHandle);
 						//https://developer.mozilla.org/en-US/docs/Web/API/Blob
 						//Generate a blob (Binary Large OBject) - A Blob object represents a file-like object of immutable, raw data;
-						blob = new Blob(chunks, { type: "video/webm;" });
+						blob = new Blob(chunks, { type: "video/webm;", name: "alpacafile"});
 
 						//Clear chunks data.
 						chunks = [];
@@ -179,10 +179,10 @@ function PostTeamVideo(props) {
 		e.preventDefault();
 
 		const videoData = new FormData();
-		videoData.append("file", blob, blob.name);
+		videoData.append("alpacafile", blob, blob.name);
 
 		AxiosWithAuth()
-			.post("URL HERE", videoData, {
+			.post("/videos", videoData, {
 				headers: {
 					"Content-Type": `multipart/form-data; boundary=${videoData._boundary}`,
 				},
