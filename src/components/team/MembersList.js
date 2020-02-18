@@ -49,8 +49,6 @@ function MembersList(props) {
 		return <h2>Loading...</h2>;
 	} else {
 
-
-		console.log(props.teamMembers)
 		return (
 			<Content>
 				<p>Members({props.teamMembers.length})</p>
