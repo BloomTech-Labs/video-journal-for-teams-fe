@@ -63,7 +63,7 @@ const Login = (props) => {
   };
 
   return (
-    <Row>
+    <Row className="auth-page">
       <Col xs={2} sm={4} md={6} lg={6} xl={8} className="auth-sider">
         <img alt="Alpaca Vids Logo" src={Alpaca}></img>
       </Col>
