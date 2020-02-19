@@ -62,37 +62,3 @@
 		align-items: flex-end;
 	}
 }
-
-.videoCard {
-	width: 167px;
-	height: 176px;
-	margin: 10px;
-	box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
-	border-radius: 0px 0px 4px 4px;
-	.ant-card-body {
-		padding: 0;
-	}
-	.videoTitle {
-		font-weight: 600;
-		font-size: 15px;
-		line-height: 19px;
-		color: $dark-grey;
-	}
-	.videoDate {
-		font-size: 13px;
-		line-height: 16px;
-		color: $medium-grey
-	}
-	.videoDescription {
-		font-size: 13px;
-		line-height: 16px;
-		color: $dark-grey;
-	}
-	.videoThumb {
-		height: 80px;
-		background-color: black;
-		img {
-			height: 80px;
-		}
-	}
-}
