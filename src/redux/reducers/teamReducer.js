@@ -113,6 +113,7 @@ const teamReducer = (state = initialState, { type, payload }) => {
 			};
 
 		case constants.POST_INVITE_LINK_SUCCESS:
+			console.log('Reducer', payload)
 			return {
 				...state,
 				isFetching: false,
@@ -145,9 +146,7 @@ const teamReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				teamMembers: state.teamMembers.map(member => {
-					return member.user_id === payload.updatedRole.user_id &&
-						member.team_id === payload.updatedRole.team_id ?
-						{ ...member, role_id: payload.updatedRole.role_id } : member;
+					return member.user_id === payload.user_id ? { ...member, role_id: payload.role_id } : member;
 				}),
 				isUpdating: false,
 				error: null

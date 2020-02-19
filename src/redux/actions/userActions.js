@@ -130,7 +130,7 @@ export const fetchInvite = (invite) => (dispatch) => {
 			}
 		})
 		.catch((err) => {
-			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: "Invalid invite code." })
+			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: "Invalid invite code.", err: err })
 		});
 }
 

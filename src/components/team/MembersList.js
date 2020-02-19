@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamMembers, createInvite, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Typography, Row, Col, Modal, Button, Form, Input } from 'antd';
+import { Layout, Row, Col, Modal, Button, Form, Input } from 'antd';
 import './teamTest.css';
 import MemberCard from './MemberCard';
 
@@ -22,9 +22,10 @@ function MembersList(props) {
 
 	const toggleModal = () => {
 		setShowModal(!showModal)
-		props.createInvite({ team_id: props.team.id, team_name: props.team.name })
+		props.createInvite(team_id, { team_name: props.team.name })
 	}
 
+	console.log('Comp invite link', props.invite.link)
 	const handleOk = (e) => {
 		toggleModal();
 		copyLink();
@@ -55,8 +56,7 @@ function MembersList(props) {
 				<Row gutter={[16, 16]}>
 					{/* Add member invite link button */}
 					<Col span={2}>
-						{props.userRole === 2 ? (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-member" />) :
-							(<Button style={{ "display": "none" }} />)}
+						{props.userRole === 1 ? null : (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-member" />)}
 						< Modal
 							title="Team Invitation Link"
 							visible={showModal}
@@ -74,7 +74,7 @@ function MembersList(props) {
 
 					{/* Display members */}
 					{props.teamMembers.map(member => (
-						<Col span={2} key={member.user_id}><MemberCard member={member} /></Col>
+						<Col span={2} key={member.user_id}><MemberCard member={member} userRole={props.userRole} /></Col>
 					))}
 				</Row>
 			</Content >

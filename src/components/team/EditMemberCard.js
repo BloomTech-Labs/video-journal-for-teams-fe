@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from "react-router-dom";
 import { Card } from 'antd';
 import { connect } from 'react-redux';
@@ -7,7 +7,6 @@ import { deleteTeamMember, updateUserRole } from '../../redux/actions/teamAction
 function EditMemberCard(props) {
 	const { team_id } = useParams();
 	const { member } = props;
-	const [role, setRole] = useState(member.role_id);
 
 	const handleDelete = () => {
 		props.deleteTeamMember(team_id, member.user_id);
@@ -16,17 +15,11 @@ function EditMemberCard(props) {
 	// Update member's role locally
 	const handleRoleChange = () => {
 		if (member.role_id === 1) {
-			setRole(2);
+			props.updateUserRole(team_id, member.user_id, 2);
 		} else if (member.role_id === 2) {
-			setRole(1);
+			props.updateUserRole(team_id, member.user_id, 1);
 		}
 	}
-
-	// run global update when role changes locally
-	useEffect(() => {
-		props.updateUserRole(team_id, member.user_id, role);
-	}, [role])
-
 
 	return (
 		<Card className="edit-card">
