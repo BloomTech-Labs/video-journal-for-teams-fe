@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import UserVideosCard from "./UserVideosCard";
-import { fetchUserVideos } from '../redux/actions/userActions';
+import { fetchUserVideos } from '../../redux/actions/userActions';
 
 const { Header, Content } = Layout;
 

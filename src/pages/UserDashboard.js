@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-import NavAndHeader from "../components/NavAndHeader";
-import TeamList from '../components/UserTeamsList';
-import UserVideos from "../components/UserVideosList";
+import NavAndHeader from "../components/nav/NavAndHeader";
+import TeamList from '../components/user/UserTeamsList';
+import UserVideos from "../components/user/UserVideosList";
 
 import { Card } from 'antd';
 
