@@ -4,6 +4,7 @@ import "./components/utils/AxiosDefaults";
 
 // Components
 import PrivateRoute from "./components/utils/PrivateRoute";
+import UploadProgress from "./components/PostTeamVideo/UploadVideo/UploadProgress";
 
 // Pages
 import Login from "./pages/Login";
@@ -51,9 +52,11 @@ function App(props) {
 
 			<PrivateRoute exact path="/teams/:team_id" component={TeamDashboard} />
 
-			<PrivateRoute exact path="/teams/:team_id/videos/post" component={PostTeamVideo} />
+			<PrivateRoute exact path="/teams/:team_id/videos/post/:prompt_id" component={PostTeamVideo} />
 
 			<Route exact path="/videos" component={UserVideos} />
+
+			<UploadProgress />
 		</div>
 	);
 }
