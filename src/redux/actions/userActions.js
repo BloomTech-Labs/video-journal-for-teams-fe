@@ -171,7 +171,7 @@ export const uploadVideo = (video) => (dispatch) => {
 	}
 
 	const submissionConfig = {
-		onUploadProgress: function(progressEvent) {
+		onUploadProgress: function (progressEvent) {
 			dispatch({
 				type: constants.UPLOAD_VIDEO_PROGRESS,
 				payload: Math.round((progressEvent.loaded * 100) / progressEvent.total),
