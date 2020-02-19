@@ -96,51 +96,45 @@ const VideoDetails = (props) => {
 	};
 
 	return (
-			<NavAndHeader>
-				<Card style={{ margin: "20px" }} className="video-detail-card">
-					<div className="spinner">
-						<ClipLoader size={50} color="#36d7b7" loading={props.isFetching} />
-					</div>
-					{props.isFetching ? null : (
-						<>
-							<h2>{video.video_title}</h2>
-							<h4>
-								By {video.owner_name}, posted {Date(video.created_at)}
-							</h4>
-							<iframe
-								width="560"
-								height="315"
-								src={video.video_url}
-								frameBorder={0}
-								// allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-								allowFullScreen></iframe>
-							<br />
+		<NavAndHeader>
+			<Card style={{ margin: "20px" }} className="video-detail-card">
+				<div className="spinner">
+					<ClipLoader size={50} color="#36d7b7" loading={props.isFetching} />
+				</div>
+				{props.isFetching ? null : (
+					<>
+						<h2>{video.video_title}</h2>
+						<h4>
+							By {video.owner_name}, posted {Date(video.created_at)}
+						</h4>
+						<video src={`http://localhost:5000/public/videos/${video.video_url}`} width="560" controls></video>
+						<br />
 
-							{showFeedback ? (
-								<>
-									<Table columns={columns} dataSource={feedback} />
-								</>
-							) : (
-									<>
-										<br />
-										<Form layout="vertical" onSubmit={submitFeedback}>
-											<Form.Item label="Feedback">
-												<TextArea rows={4} value={feedbackInput} onChange={handleInput}></TextArea>
-											</Form.Item>
-											<Form.Item>
-												<Button type="primary" htmlType="submit" className="feedback-form-button">
-													Submit Feedback
-                      </Button>
-											</Form.Item>
-										</Form>
-									</>
-								)}
-							<br />
-							<Button onClick={() => history.goBack()}>Back to dashboard</Button>
-						</>
-					)}
-				</Card>
-			</NavAndHeader>
+						{showFeedback ? (
+							<>
+								<Table columns={columns} dataSource={feedback} />
+							</>
+						) : (
+							<>
+								<br />
+								<Form layout="vertical" onSubmit={submitFeedback}>
+									<Form.Item label="Feedback">
+										<TextArea rows={4} value={feedbackInput} onChange={handleInput}></TextArea>
+									</Form.Item>
+									<Form.Item>
+										<Button type="primary" htmlType="submit" className="feedback-form-button">
+											Submit Feedback
+										</Button>
+									</Form.Item>
+								</Form>
+							</>
+						)}
+						<br />
+						<Button onClick={() => history.goBack()}>Back to dashboard</Button>
+					</>
+				)}
+			</Card>
+		</NavAndHeader>
 	);
 };
 
