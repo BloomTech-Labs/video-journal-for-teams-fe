@@ -63,7 +63,7 @@ const PromptVideoList = (props) => {
 									<p>{prompts.description}</p>
 								</div>
 								<Button
-									onClick={() => history.push(`/teams/${props.teamId}/videos/post`)}
+									onClick={() => history.push(`/teams/${props.teamId}/videos/post/${prompts.id}`)}
 									type="primary"
 									shape="circle"
 									icon="plus-circle"
