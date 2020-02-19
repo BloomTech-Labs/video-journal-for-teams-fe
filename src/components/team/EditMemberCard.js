@@ -21,7 +21,6 @@ function EditMemberCard(props) {
 		}
 	}
 
-
 	return (
 		<Card className="edit-card">
 			<span onClick={handleDelete}>Delete</span>
