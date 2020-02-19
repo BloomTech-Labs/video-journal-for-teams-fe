@@ -6,8 +6,7 @@ import { connect } from "react-redux";
 
 // Components
 import NavAndHeader from "../components/nav/NavAndHeader";
-import ClipLoader from "react-spinners/ClipLoader";
-import { Layout } from "antd";
+import { RemoteServeDir } from "../components/utils/RemoteServeDir";
 import { Card, Table } from "antd";
 import { Form, Input, Button } from "antd";
 
@@ -17,14 +16,9 @@ import { fetchVideo, fetchFeedback } from "../redux/actions/userActions";
 // Styles
 import "./videoDetailsTemp.css";
 
-const { Content, Footer } = Layout;
-// const { Title } = Typography;
 const { TextArea } = Input;
 
-//TODO Cleanup this entire page
-//TODO Need to seperate ALOT into different components
-
-//? Requirements
+//* Requirements
 //* Card component centered in page
 //* Header should show User avatar, Prompt, Team
 //* Subheader should show Name, Description
@@ -58,25 +52,23 @@ const columns = [
 	},
 ];
 
-const VideoDetails = (props) => {
+const VideoDetails = ({ video, feedback, fetchVideo, fetchFeedback, userId }) => {
 	const [showFeedback, setShowFeedback] = useState(false);
 	const [feedbackInput, setFeedbackInput] = useState("");
-	const video = props.video;
-	const feedback = props.feedback;
-	const history = useHistory();
 	const { id } = useParams();
+	const history = useHistory();
 
 	useEffect(() => {
-		props.fetchVideo(id);
+		fetchVideo(id);
 	}, [id]);
 
 	useEffect(() => {
 		//Check if video data has been fetched
 		if (video.owner_id) {
 			//Verify if viewer id matches owner id of video
-			if (props.userId === video.owner_id) {
-				//Get feedback if that's the case
-				props.fetchFeedback(id);
+			if (userId === video.owner_id) {
+				//Get feedback
+				fetchFeedback(id);
 				setShowFeedback(true);
 			}
 		}
@@ -98,41 +90,34 @@ const VideoDetails = (props) => {
 	return (
 		<NavAndHeader>
 			<Card style={{ margin: "20px" }} className="video-detail-card">
-				<div className="spinner">
-					<ClipLoader size={50} color="#36d7b7" loading={props.isFetching} />
-				</div>
-				{props.isFetching ? null : (
-					<>
-						<h2>{video.video_title}</h2>
-						<h4>
-							By {video.owner_name}, posted {Date(video.created_at)}
-						</h4>
-						<video src={`http://localhost:5000/public/videos/${video.video_url}`} width="560" controls></video>
-						<br />
+				<h2>{video.video_title}</h2>
+				<h4>
+					By {video.owner_name}, posted {Date(video.created_at)}
+				</h4>
+				<video src={`${RemoteServeDir}/videos/${video.video_url}`} width="560" controls></video>
+				<br />
 
-						{showFeedback ? (
-							<>
-								<Table columns={columns} dataSource={feedback} />
-							</>
-						) : (
-							<>
-								<br />
-								<Form layout="vertical" onSubmit={submitFeedback}>
-									<Form.Item label="Feedback">
-										<TextArea rows={4} value={feedbackInput} onChange={handleInput}></TextArea>
-									</Form.Item>
-									<Form.Item>
-										<Button type="primary" htmlType="submit" className="feedback-form-button">
-											Submit Feedback
-										</Button>
-									</Form.Item>
-								</Form>
-							</>
-						)}
+				{showFeedback ? (
+					<>
+						<Table columns={columns} dataSource={feedback} />
+					</>
+				) : (
+					<>
 						<br />
-						<Button onClick={() => history.goBack()}>Back to dashboard</Button>
+						<Form layout="vertical" onSubmit={submitFeedback}>
+							<Form.Item label="Feedback">
+								<TextArea rows={4} value={feedbackInput} onChange={handleInput}></TextArea>
+							</Form.Item>
+							<Form.Item>
+								<Button type="primary" htmlType="submit" className="feedback-form-button">
+									Submit Feedback
+								</Button>
+							</Form.Item>
+						</Form>
 					</>
 				)}
+				<br />
+				<Button onClick={() => history.goBack()}>Back to dashboard</Button>
 			</Card>
 		</NavAndHeader>
 	);
