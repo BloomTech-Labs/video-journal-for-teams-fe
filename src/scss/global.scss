@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 62.5%;
 }
 
 code {
@@ -15,4 +16,8 @@ code {
 .app {
   height: 100vh;
   text-align: center;
+}
+
+.small {
+
 }

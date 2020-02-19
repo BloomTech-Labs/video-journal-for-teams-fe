@@ -1,0 +1,19 @@
+.video-card {
+	width: 250px;
+	height: 350px;
+	cursor: pointer;
+	margin: 0 0 25px;
+	overflow: hidden;
+	.ant-card-body {
+		height: 100%;
+		overflow: hidden;
+		padding: 10px;
+		margin: 0 !important;
+	}
+	.ant-card-meta-title {
+		font-size: 1rem;
+	}
+	.ant-card-meta-description {
+		font-size: .75rem;
+	}
+}
