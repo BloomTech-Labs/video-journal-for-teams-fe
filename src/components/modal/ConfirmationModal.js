@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Modal, Button } from 'antd';
 
 function ConfirmationModal(props) {
-	const [visible, setVisible] = useState(false);
+	const { memberUpdated } = props;
+	const [visible, setVisible] = useState(memberUpdated);
 
 	const showModal = () => {
 		setVisible(true);
