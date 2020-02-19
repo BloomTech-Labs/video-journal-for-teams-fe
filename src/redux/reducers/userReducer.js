@@ -29,6 +29,8 @@ const initialState = {
 
 	videoStream: {
 		stream: null,
+		raw: null,
+		playback: false,
 		error: false,
 	},
 };
@@ -201,12 +203,76 @@ const userReducer = (state = initialState, { type, payload }) => {
 				},
 			};
 
+		case constants.UPLOAD_VIDEO_START:
+			return {
+				...state,
+				videoUpload: {
+					...state.videoUpload,
+					isUploading: true,
+				},
+			};
+
+		case constants.UPLOAD_VIDEO_PROGRESS:
+			return {
+				...state,
+				videoUpload: {
+					...state.videoUpload,
+					progress: payload,
+				},
+			};
+
+		case constants.UPLOAD_VIDEO_FAILURE:
+			return {
+				...state,
+				videoUpload: {
+					//Set to defaults
+					...initialState.videoUpload,
+					error: payload,
+				},
+			};
+
+		case constants.UPLOAD_VIDEO_SUCCESS:
+			return {
+				...state,
+				videoUpload: {
+					//Set all values to default
+					...initialState.videoUpload,
+				},
+				videoStream: {
+					//Set all values to default
+					...initialState.videoStream,
+				},
+			};
+
 		case constants.UPDATE_STREAM_OBJECT:
+			//Revoke previous blob so the browser can delete it to a prevent memory leak
+			if (state.videoStream.stream) {
+				window.URL.revokeObjectURL(state.videoStream.stream);
+			}
+
 			return {
 				...state,
 				videoStream: {
 					...state.videoStream,
 					stream: payload,
+				},
+			};
+
+		case constants.UPDATE_STREAM_RAW:
+			return {
+				...state,
+				videoStream: {
+					...state.videoStream,
+					raw: payload,
+				},
+			};
+
+		case constants.TOGGLE_STREAM_PLAYBACK:
+			return {
+				...state,
+				videoStream: {
+					...state.videoStream,
+					playback: !state.videoStream.playback,
 				},
 			};
 
