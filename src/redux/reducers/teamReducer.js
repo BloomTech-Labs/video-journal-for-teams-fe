@@ -126,7 +126,7 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isFetching: true,
 				error: null
-			};
+			}
 
 		case constants.POST_TEAM_PROMPT_SUCCESS:
 			return {

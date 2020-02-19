@@ -31,7 +31,7 @@ describe("Login form tests", () => {
 
 	const fillForm = (username, password) => {
 
-		fireEvent.change(getByPlaceholderText("username or email"), {
+		fireEvent.change(getByPlaceholderText("Username or Email"), {
 			target: {value: username},
 		})
 		fireEvent.change(getByPlaceholderText(/password/i), {
@@ -41,10 +41,10 @@ describe("Login form tests", () => {
 
 	it("renders form correctly", () => {
 	
-		expect(getByPlaceholderText("username or email")).toBeInTheDocument();
-		expect(getByPlaceholderText("password")).toBeInTheDocument();
-		expect(getByText("Register an account instead")).toBeInTheDocument();
-		expect(getByText("Log In").closest('button')).toBeInTheDocument();
+		expect(getByPlaceholderText("Username or Email")).toBeInTheDocument();
+		expect(getByPlaceholderText("Password")).toBeInTheDocument();
+		expect(getByText("Not a Member?")).toBeInTheDocument();
+		expect(getByText("Sign In").closest('button')).toBeInTheDocument();
 	})
 
 	it("will call login endpoint if username and password are filled", async () => {
@@ -59,8 +59,8 @@ describe("Login form tests", () => {
 		fillForm("TestUser", "12345678")
 
 		const user = {
-			username: getByPlaceholderText("username or email").value,
-			password: getByPlaceholderText("password").value,
+			username: getByPlaceholderText("Username or Email").value,
+			password: getByPlaceholderText("Password").value,
 		}
 
 		const result = { data: { user: user, token: '12345' }}
@@ -82,8 +82,8 @@ describe("Login form tests", () => {
 		fillForm("test@user.com", "12345678")
 
 		const user = {
-			email: getByPlaceholderText("username or email").value,
-			password: getByPlaceholderText("password").value,
+			email: getByPlaceholderText("Username or Email").value,
+			password: getByPlaceholderText("Password").value,
 		}
 
 		const result = { data: { user: user, token: '12345' }}

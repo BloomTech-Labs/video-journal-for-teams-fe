@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchTeamVideos, createPrompt, setError, clearError } from "../../redux/actions/teamActions";
 import { Layout, Typography, Row, Col, Modal, Form, Input, Button } from "antd";
 import "./teamTest.css";
-import UserVideosCard from "../UserVideosCard";
+import UserVideosCard from "../user/UserVideosCard";
 
 const { Header, Content } = Layout;
 
@@ -63,7 +63,7 @@ const PromptVideoList = (props) => {
 									<p>{prompts.description}</p>
 								</div>
 								<Button
-									onClick={() => history.push(`/teams/${props.teamId}/videos/post`)}
+									onClick={() => history.push(`/teams/${props.teamId}/videos/post/${prompts.id}`)}
 									type="primary"
 									shape="circle"
 									icon="plus-circle"
