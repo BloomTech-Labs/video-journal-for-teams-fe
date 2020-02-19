@@ -11,7 +11,7 @@ const initialState = {
 	invite: {
 		invite_code: null,
 		invited_team_id: null,
-		error: null
+		error: null,
 	},
 	error: null,
 	isFetching: false,
@@ -19,7 +19,20 @@ const initialState = {
 	videos: [],
 	videoDetailFocus: {
 		feedback: [],
-	}
+	},
+
+	videoUpload: {
+		isUploading: false,
+		progress: 0,
+		error: false,
+	},
+
+	videoStream: {
+		stream: null,
+		raw: null,
+		playback: false,
+		error: false,
+	},
 };
 
 const userReducer = (state = initialState, { type, payload }) => {
@@ -147,48 +160,130 @@ const userReducer = (state = initialState, { type, payload }) => {
 				...state,
 				invite: { ...state.invite, invite_code: payload, error: null },
 				isFetching: true,
-			}
+			};
 
 		case constants.FETCH_INVITE_SUCCESS:
 			return {
 				...state,
 				invite: { ...state.invite, invited_team_id: payload, error: null },
 				isFetching: false,
-			}
+			};
 
 		case constants.FETCH_INVITE_FAILURE:
 			return {
 				...state,
 				isFetching: false,
 				invite: { ...state.invite, error: payload },
-			}
+			};
 		case constants.ADD_INVITED_MEMBER_START:
 			return {
 				...state,
 				isFetching: true,
-				error: null
-			}
+				error: null,
+			};
 		case constants.ADD_INVITED_MEMBER_SUCCESS:
 			return {
 				...state,
 				isFetching: false,
-				error: null
-			}
+				error: null,
+			};
 		case constants.ADD_INVITED_MEMBER_FAILURE:
 			return {
 				...state,
 				isFetching: false,
-				error: payload
-			}
+				error: payload,
+			};
 		case constants.CLEAR_INVITE:
 			return {
 				...state,
 				invite: {
 					invite_code: null,
 					invited_team_id: null,
-					error: null
-				}
+					error: null,
+				},
+			};
+
+		case constants.UPLOAD_VIDEO_START:
+			return {
+				...state,
+				videoUpload: {
+					...state.videoUpload,
+					isUploading: true,
+				},
+			};
+
+		case constants.UPLOAD_VIDEO_PROGRESS:
+			return {
+				...state,
+				videoUpload: {
+					...state.videoUpload,
+					progress: payload,
+				},
+			};
+
+		case constants.UPLOAD_VIDEO_FAILURE:
+			return {
+				...state,
+				videoUpload: {
+					//Set to defaults
+					...initialState.videoUpload,
+					error: payload,
+				},
+			};
+
+		case constants.UPLOAD_VIDEO_SUCCESS:
+			return {
+				...state,
+				videoUpload: {
+					//Set all values to default
+					...initialState.videoUpload,
+				},
+				videoStream: {
+					//Set all values to default
+					...initialState.videoStream,
+				},
+			};
+
+		case constants.UPDATE_STREAM_OBJECT:
+			//Revoke previous blob so the browser can delete it to a prevent memory leak
+			if (state.videoStream.stream) {
+				window.URL.revokeObjectURL(state.videoStream.stream);
 			}
+
+			return {
+				...state,
+				videoStream: {
+					...state.videoStream,
+					stream: payload,
+				},
+			};
+
+		case constants.UPDATE_STREAM_RAW:
+			return {
+				...state,
+				videoStream: {
+					...state.videoStream,
+					raw: payload,
+				},
+			};
+
+		case constants.TOGGLE_STREAM_PLAYBACK:
+			return {
+				...state,
+				videoStream: {
+					...state.videoStream,
+					playback: !state.videoStream.playback,
+				},
+			};
+
+		case constants.SET_STREAM_ERROR:
+			return {
+				...state,
+				videoStream: {
+					...state.videoStream,
+					error: payload,
+				},
+			};
 
 		default:
 			return state;

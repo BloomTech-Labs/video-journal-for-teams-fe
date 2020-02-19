@@ -92,6 +92,19 @@ const constants = {
 	//ERRORS
 	GENERATE_ERROR: "error:generate-error",
 	CLEAR_ERROR: "error:clear-error",
+
+	//VIDEO UPLOAD
+	UPLOAD_VIDEO_START: "user:upload-video-start",
+	UPLOAD_VIDEO_PROGRESS: "user:upload-progress",
+	UPLOAD_VIDEO_SUCCESS: "user:upload-video-success",
+	UPLOAD_VIDEO_FAILURE: "user:upload-video-failure",
+
+	UPDATE_STREAM_OBJECT: "user:update-stream-object",
+	UPDATE_STREAM_RAW: "user:update-stream-raw",
+
+	TOGGLE_STREAM_PLAYBACK: "user:toggle-stream-playback",
+
+	SET_STREAM_ERROR: "user:set-stream-error",
 };
 
 export default constants;
