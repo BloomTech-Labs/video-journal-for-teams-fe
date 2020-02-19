@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Card } from "antd";
 
 // Components
-import NavAndHeader from "../components/NavAndHeader";
+import NavAndHeader from "../components/nav/NavAndHeader";
 import MembersList from "../components/team/MembersList";
 import PromptVideoList from "../components/team/PromptVideoList";
 
