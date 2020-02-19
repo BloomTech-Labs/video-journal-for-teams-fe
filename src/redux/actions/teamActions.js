@@ -9,7 +9,7 @@ export const createTeam = (newTeam, history) => (dispatch) => {
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data })
 			history.push(`/teams/${res.data.id}`);
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: "An error occurred, try again later." }));
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
 export const fetchTeamById = (team_id) => (dispatch) => {
@@ -19,7 +19,7 @@ export const fetchTeamById = (team_id) => (dispatch) => {
 		.then(teamResponse => {
 			dispatch({ type: constants.FETCH_TEAM_BY_ID_SUCCESS, payload: teamResponse.data })
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
 export const fetchTeamMembers = (team_id) => (dispatch) => {
@@ -29,7 +29,7 @@ export const fetchTeamMembers = (team_id) => (dispatch) => {
 		.then(teamMembersResponse => {
 			dispatch({ type: constants.FETCH_TEAM_MEMBERS_SUCCESS, payload: teamMembersResponse.data })
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
 export const fetchTeamPrompts = (team_id) => (dispatch) => {
@@ -39,7 +39,7 @@ export const fetchTeamPrompts = (team_id) => (dispatch) => {
 		.then(teamPromptsResponse => {
 			dispatch({ type: constants.FETCH_TEAM_PROMPTS_SUCCESS, payload: teamPromptsResponse.data })
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
 export const fetchTeamVideos = (team_id) => (dispatch) => {
@@ -49,7 +49,7 @@ export const fetchTeamVideos = (team_id) => (dispatch) => {
 		.then(teamVideosResponse => {
 			dispatch({ type: constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_SUCCESS, payload: teamVideosResponse.data })
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
 export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
@@ -59,7 +59,7 @@ export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
 		.then(removedMemberResponse => {
 			dispatch({ type: constants.DELETE_TEAM_MEMBER_SUCCESS, payload: { count: removedMemberResponse.data.count, user_id: user_id } })
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
 export const createInvite = (team) => (dispatch) => {
@@ -69,7 +69,7 @@ export const createInvite = (team) => (dispatch) => {
 		.then(inviteResponse => {
 			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data })
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
 export const createPrompt = (prompt, team_id) => (dispatch) => {
@@ -79,7 +79,7 @@ export const createPrompt = (prompt, team_id) => (dispatch) => {
 		.then(promptResponse => {
 			dispatch({ type: constants.POST_TEAM_PROMPT_SUCCESS, payload: promptResponse.data })
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
 //Update user role.
@@ -89,12 +89,13 @@ export const updateUserRole = (team_id, user_id, role_id) => dispatch => {
 	const changes = {
 		role_id: role_id
 	}
-
 	AxiosWithAuth().put(`/teams/${team_id}/users/${user_id}/role`, changes)
 		.then(updateResponse => {
-			dispatch({ type: constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS, payload: updateResponse.updatedRole });
+			dispatch({ type: constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS, payload: updateResponse.data.updatedRole });
 		})
-		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err }));
+		.catch(err => {
+			dispatch({ type: constants.GENERATE_ERROR, payload: err.response })
+		});
 }
 
 // SET AN ERROR

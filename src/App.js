@@ -18,6 +18,7 @@ import Invite from "./pages/Invite";
 import PostTeamVideo from "./pages/PostTeamVideo";
 
 // Styles
+import "./App.scss";
 import "antd/dist/antd.css";
 import "./userdash.css";
 import { Alert } from "antd";

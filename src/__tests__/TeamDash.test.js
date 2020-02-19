@@ -21,7 +21,7 @@ describe("Team Dashboard Page", () => {
 		);
 	});
 
-	it("should render user full name", () => {
+	it("should render user initials", () => {
 		const wrapper = mount(
 			<Provider store={mockStore(defaultStore)}>
 				<Router>
@@ -30,7 +30,7 @@ describe("Team Dashboard Page", () => {
 			</Provider>
 		);
 		const { getByText } = render(wrapper)
-		getByText(/Curr Ladley/i)
+		getByText(/CL/i)
 	});
 
 	it("should render team name", () => {

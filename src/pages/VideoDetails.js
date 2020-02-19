@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Components
-import DashboardHeader from '../components/DashboardHeader';
+import NavAndHeader from "../components/NavAndHeader";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Layout } from "antd";
 import { Card, Table } from "antd";
@@ -96,10 +96,7 @@ const VideoDetails = (props) => {
 	};
 
 	return (
-		<Layout>
-			{/* user dash content area */}
-			<DashboardHeader />
-			<Content>
+			<NavAndHeader>
 				<Card style={{ margin: "20px" }} className="video-detail-card">
 					<div className="spinner">
 						<ClipLoader size={50} color="#36d7b7" loading={props.isFetching} />
@@ -143,9 +140,7 @@ const VideoDetails = (props) => {
 						</>
 					)}
 				</Card>
-			</Content>
-			<Footer>this is a footer</Footer>
-		</Layout>
+			</NavAndHeader>
 	);
 };
 

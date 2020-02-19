@@ -1,19 +1,17 @@
 import React from "react";
 
 // Components
-import DashboardHeader from "../components/DashboardHeader";
-import DashboardNav from "../components/DashboardNav";
-
 import RecordStream from "../components/PostTeamVideo/RecordStream/RecordStream";
 import PlaybackStream from "../components/PostTeamVideo/PlaybackStream/PlaybackStream";
 
-import { Layout, Card } from "antd";
-
-// Styles
-import "../userdash.css";
+import NavAndHeader from "../components/NavAndHeader";
+import { Layout, Card, Button, Icon, Form } from "antd";
 
 // Additional Ant Design Components
 const { Content } = Layout;
+
+// Styles
+import "../userdash.css";
 
 //* Requirements
 //* Ability to capture webcam and audio into a stream - RecordStream
@@ -25,16 +23,12 @@ const { Content } = Layout;
 
 function PostTeamVideo() {
 	return (
-		<Layout>
-			<DashboardNav />
-			<Content>
-				<DashboardHeader />
+			<NavAndHeader>
 				<Card title="Record and post a new video" style={{ margin: "20px" }}>
 					<RecordStream />
 					<PlaybackStream />
 				</Card>
-			</Content>
-		</Layout>
+			</NavAndHeader>
 	);
 }
 
