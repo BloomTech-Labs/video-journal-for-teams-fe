@@ -3,8 +3,7 @@ import React from "react";
 // Components
 import RecordStream from "../components/PostTeamVideo/RecordStream/RecordStream";
 import PlaybackStream from "../components/PostTeamVideo/PlaybackStream/PlaybackStream";
-
-import NavAndHeader from "../components/NavAndHeader";
+import NavAndHeader from "../components/nav/NavAndHeader";
 import { Layout, Card, Button, Icon, Form } from "antd";
 
 import "../userdash.css";

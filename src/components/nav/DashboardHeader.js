@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Layout, Tooltip, Avatar, Typography, Button, Icon, Popover } from "antd";
-import { logoutUser } from "../redux/actions/userActions";
+import { logoutUser } from "../../redux/actions/userActions";
 
 const { Title } = Typography;
 const { Header, Content } = Layout;

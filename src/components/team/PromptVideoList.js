@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchTeamVideos, createPrompt, setError, clearError } from "../../redux/actions/teamActions";
 import { Layout, Typography, Row, Col, Modal, Form, Input, Button } from "antd";
 import "./teamTest.css";
-import UserVideosCard from "../UserVideosCard";
+import UserVideosCard from "../user/UserVideosCard";
 
 const { Header, Content } = Layout;
 
