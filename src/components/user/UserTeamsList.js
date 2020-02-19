@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import TeamCard from "./UserTeamsCard";
 import { Layout, Typography, Modal, Button, Form, Input, Card, Icon } from 'antd';
-import { fetchUserTeams } from '../redux/actions/userActions';
-import { createTeam } from "../redux/actions/teamActions";
+import { fetchUserTeams } from '../../redux/actions/userActions';
+import { createTeam } from "../../redux/actions/teamActions";
 
 const { Title } = Typography;
 const { Header, Content } = Layout;
