@@ -7,11 +7,12 @@ import PlaybackStream from "../components/PostTeamVideo/PlaybackStream/PlaybackS
 import NavAndHeader from "../components/NavAndHeader";
 import { Layout, Card, Button, Icon, Form } from "antd";
 
+import "../userdash.css";
+
 // Additional Ant Design Components
 const { Content } = Layout;
 
 // Styles
-import "../userdash.css";
 
 //* Requirements
 //* Ability to capture webcam and audio into a stream - RecordStream
@@ -23,12 +24,12 @@ import "../userdash.css";
 
 function PostTeamVideo() {
 	return (
-			<NavAndHeader>
-				<Card title="Record and post a new video" style={{ margin: "20px" }}>
-					<RecordStream />
-					<PlaybackStream />
-				</Card>
-			</NavAndHeader>
+		<NavAndHeader>
+			<Card title="Record and post a new video" style={{ margin: "20px" }}>
+				<RecordStream />
+				<PlaybackStream />
+			</Card>
+		</NavAndHeader>
 	);
 }
 
