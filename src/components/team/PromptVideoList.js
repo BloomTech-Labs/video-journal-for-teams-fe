@@ -41,8 +41,11 @@ const PromptVideoList = (props) => {
 				<Row gutter={[16, 16]}>
 					{/* Add a prompt button */}
 					<Col span={2}>
-						{props.userRole === 2 ? (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-prompt" />) :
-							(<Button style={{ "display": "none" }} />)}
+						{props.userRole === 2 ? (
+							<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-prompt" />
+						) : (
+							<Button style={{ display: "none" }} />
+						)}
 						<Modal title="Add New Prompt" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Submit">
 							<Form>
 								<Form.Item label="Question">
@@ -64,7 +67,7 @@ const PromptVideoList = (props) => {
 									<p>{prompts.description}</p>
 								</div>
 								<Button
-									onClick={() => history.push(`/teams/${props.teamId}/videos/post`)}
+									onClick={() => history.push(`/teams/${props.teamId}/videos/post/${prompts.id}`)}
 									type="primary"
 									shape="circle"
 									icon="plus-circle"
