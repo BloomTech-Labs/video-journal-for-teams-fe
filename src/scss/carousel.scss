@@ -1,0 +1,25 @@
+.carousel {
+	display: flex;
+	align-items: center;
+	.carouselItems {
+		display: flex;
+		justify-content: space-between
+	}
+	.leftButton, .rightButton {
+		border: none;
+		background-color: transparent;
+		&:disabled {
+			cursor: auto;
+		}
+		&:hover {
+			background-color: transparent;
+			color: $alpaca-green;
+		}
+	}
+	.leftButton {
+		padding-left: 0
+	}
+	.rightButton {
+		padding-right: 0
+	}
+}

@@ -33,8 +33,6 @@ const TeamList = props => {
 	}
 
 	return (
-		<>
-		<h3>My Teams</h3>
 		<Content className="userDashList">
 			<Card className="add-team">
 				<Button onClick={toggleModal} type="primary" shape="circle">
@@ -64,7 +62,6 @@ const TeamList = props => {
 				})
 			}
 		</Content>
-		</>
 	);
 };
 
