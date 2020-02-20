@@ -226,6 +226,19 @@ export const setStreamError = (error) => (dispatch) => {
 	});
 };
 
+// GET user data for profile
+export const getUserData = (id) => (dispatch) => {
+	dispatch({ type: constants.FETCH_USER_DATA_START });
+
+	AxiosWithAuth().get(`/users/${id}`)
+		.then(res => {
+			console.log(res.data);
+		})
+		.catch(error => {
+			dispatch({ type: constants.FETCH_USER_DATA_FAILURE, payload: error })
+		})
+}
+
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {
 	dispatch({ type: constants.GENERATE_ERROR, payload: errorMessage });
