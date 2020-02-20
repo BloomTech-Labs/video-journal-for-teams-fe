@@ -11,7 +11,8 @@ const initialState = {
 	error: null,
 	isFetching: false,
 	isDeleting: false,
-	isUpdating: false
+	isUpdating: false,
+	roleUpdated: false,
 };
 
 const teamReducer = (state = initialState, { type, payload }) => {
@@ -148,12 +149,14 @@ const teamReducer = (state = initialState, { type, payload }) => {
 					return member.user_id === payload.user_id ? { ...member, role_id: payload.role_id } : member;
 				}),
 				isUpdating: false,
+				roleUpdated: true,
 				error: null
 			};
 
 		case constants.GENERATE_ERROR:
 			return {
 				...state,
+				roleUpdated: false,
 				error: payload,
 			};
 
