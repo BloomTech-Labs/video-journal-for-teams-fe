@@ -1,22 +1,24 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Typography } from 'antd';
 import 'antd/dist/antd.css';
 import ProfileContent from '../components/profile/ProfileContent';
-
+const { Title } = Typography;
 const { Header, Footer, Content } = Layout;
 
 function EditUserDashboard() {
-   return (
-      <>
-         <Layout>
-            <Header>Header</Header>
-            <Content>
-               <ProfileContent />
-            </Content>
-            <Footer>Footer</Footer>
-         </Layout>
-      </>
-   )
+	return (
+		<>
+			<Layout>
+				<Header className="full-header">
+					<Title level={3} className={"userDashHeaderFont"}>Alpaca Vids</Title>
+				</Header>
+				<Content>
+					<ProfileContent />
+				</Content>
+				<Footer>Footer</Footer>
+			</Layout>
+		</>
+	)
 }
 
 export default EditUserDashboard

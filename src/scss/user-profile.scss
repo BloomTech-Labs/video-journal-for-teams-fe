@@ -1,3 +1,19 @@
+.full-header {
+	text-align    : left;
+	padding-top   : 10px;
+	padding-bottom: 10px;
+
+	.userDashHeaderFont {
+		color      : $alpaca-green;
+		font-family: Pacifico;
+		font-style : normal;
+		font-weight: normal;
+		font-size  : 36px;
+		line-height: 36px;
+	}
+}
+
+
 .jumbotron {
 	height          : 185px;
 	background-color: $pale-yellow;
@@ -5,7 +21,7 @@
 
 	.breadcrumb {
 		font-size      : $md-text-size;
-		display        : flex;
+		display        : inline-flex;
 		align-items    : center;
 		justify-content: flex-end;
 		padding-top    : 20px;
@@ -66,5 +82,14 @@
 
 	a {
 		font-size: $sm-text-size;
+	}
+}
+
+// Buttons
+.button-wrapper {
+	text-align: right;
+
+	button {
+		margin-right: 15px;
 	}
 }

@@ -84,8 +84,8 @@ function ProfileForm(props) {
 							</Form.Item>
 						</Col>
 						<Col span={24} className="button-wrapper">
-							<Button className="outlined-btn">Cancel</Button>
-							<Button type="primary" htmlType="submit" className="full-btn">Save</Button>
+							<Button className="outlined-btn" size="large">Cancel</Button>
+							<Button type="primary" htmlType="submit" className="full-btn" size="large">Save</Button>
 						</Col>
 					</Row>
 				</Form>
