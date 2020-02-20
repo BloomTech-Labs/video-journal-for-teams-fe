@@ -11,7 +11,7 @@ const initialState = {
 	error: null,
 	isFetching: false,
 	isDeleting: false,
-	isUpdating: false
+	isUpdating: false,
 };
 
 const teamReducer = (state = initialState, { type, payload }) => {
