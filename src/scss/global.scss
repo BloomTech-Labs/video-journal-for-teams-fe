@@ -30,3 +30,10 @@ code {
 h1 {
 	font-size: $lg-heading-font-size;
 }
+
+.container {
+	max-width: 1000px;
+	width    : 100%;
+	margin   : auto;
+	position : relative;
+}

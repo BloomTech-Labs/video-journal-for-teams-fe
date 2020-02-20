@@ -1,17 +1,22 @@
 import React from 'react';
-import { Layout, Carousel } from 'antd';
+import { useHistory } from "react-router";
 import 'antd/dist/antd.css';
-import './tempStyles.css';
+import { Icon } from 'antd';
 
-function ProfileCarousel() {
+const ProfileCarousel = (props) => {
+	let history = useHistory();
+
+	const handleRedirect = () => {
+		history.push('/user-dashboard');
+	}
+
 	return (
 		<>
-			{/* <Carousel>
-            <div>
-               <h3>Image here</h3>
-            </div>
-         </Carousel> */}
-			<div className="jumbotron"></div>
+			<div className="jumbotron">
+				<div className="container">
+					<span className="breadcrumb" onClick={handleRedirect}><Icon type="left" /> Dashboard</span>
+				</div>
+			</div>
 		</>
 	)
 }
