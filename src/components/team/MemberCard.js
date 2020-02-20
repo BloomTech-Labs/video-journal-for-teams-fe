@@ -6,16 +6,21 @@ import EditMemberCard from './EditMemberCard';
 function MemberCard(props) {
 	const { member, userRole } = props;
 
+	const actions = () => {
+		return (userRole === 1) ? null : (<EditMemberCard member={member} />);
+	}
+
 	return (
 		<Card
 			className="member-card"
 			bordered={false}
 			hoverable
-			actions={[
-				<Icon type="up-circle" key="up-circle" theme="twoTone" twoToneColor="#52c41a" />,
-				<Icon type="down-circle" key="down-circle" theme="twoTone" twoToneColor="#eb2f96" />,
-				<Icon type="stop" key="stop" theme="twoTone" twoToneColor="#ff0000" />
-			]}
+			actions={[			]}
+			// actions={[
+			// 	<Icon type="up-circle" key="up-circle" theme="twoTone" twoToneColor="#52c41a" />,
+			// 	<Icon type="down-circle" key="down-circle" theme="twoTone" twoToneColor="#eb2f96" />,
+			// 	<Icon type="stop" key="stop" theme="twoTone" twoToneColor="#ff0000" />
+			// ]}
 		>
 			<div className='image-container'>
 				{(!member.avatar) ? (<Avatar size={64} icon="user" />) : (

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
-import { Card, Modal } from 'antd';
+import { Card, Modal, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { deleteTeamMember, updateUserRole, } from '../../redux/actions/teamActions';
 
 const { confirm } = Modal;
 
 function EditMemberCard(props) {
+	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const { team_id } = useParams();
 	const { member } = props;
 
@@ -85,12 +86,18 @@ function EditMemberCard(props) {
 			content: "Uh oh, something's gone wrong. Try again later.",
 		});
 	}
+	// #endregion CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 
 	return (
 		<Card className="edit-card">
-			<span onClick={showDeleteConfirm}>Delete</span>
-			<br />
-			{member.role_id === 1 ? (<span onClick={showRoleConfirm}>Promote</span>) : (<span onClick={showRoleConfirm}>Demote</span>)}
+			<Card.Grid style={{ width: "50%", textAlign: 'center', padding: 0}}>
+			{member.role_id === 1
+				? (<Icon type="up-circle" theme="twoTone" twoToneColor="#52c41a" onClick={showRoleConfirm} />)
+				: (<Icon type="down-circle" theme="twoTone" twoToneColor="#eb2f96" onClick={showRoleConfirm} />)}
+			</Card.Grid>
+			<Card.Grid style={{ width: "50%", textAlign: 'center', padding: 0}}>
+				<Icon type="stop" theme="twoTone" twoToneColor="#ff0000" onClick={showDeleteConfirm} />
+			</Card.Grid>
 		</Card>
 	)
 }
