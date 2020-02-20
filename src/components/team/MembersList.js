@@ -62,7 +62,7 @@ function MembersList(props) {
 					</Button>
 				)}
 				<Divider />
-				< Modal
+				<Modal
 					title="Team Invitation Link"
 					visible={showModal}
 					onOk={handleOk}
@@ -77,13 +77,11 @@ function MembersList(props) {
 				</Modal>
 
 				{/* Display members */}
-				{props.teamMembers.map(member => (
-					<Col span={2} key={member.user_id}>
-						<MemberCard
-							member={member}
-							userRole={props.userRole}
-						/></Col>
-				))}
+				<div className="userDashList">
+					{props.teamMembers.map((member) => (
+						<MemberCard key={member.id} member={member} userRole={props.userRole} />
+					))}
+				</div>
 			</Content >
 		)
 	}

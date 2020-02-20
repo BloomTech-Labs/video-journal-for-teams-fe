@@ -16,8 +16,6 @@ const UserVideosCard = (props) => {
 			minute: "2-digit"
 		});
 
-	console.log(9, humanDate);
-
 	return (
 		<Card className="video-card"
 			// style={{ width: 300 }}
