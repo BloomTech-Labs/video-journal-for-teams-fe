@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { Form, Input, Button, Row, Col } from 'antd';
 import 'antd/dist/antd.css';
-import { updateUserData } from '../../redux/actions/userActions';
+import { updateUserData, getUserData } from '../../redux/actions/userActions';
 
 function ProfileForm(props) {
-	const { id, first_name, last_name, email, username, avatar, updateUserData } = props;
+	const { id, first_name, last_name, email, username, avatar, updateUserData, getUserData } = props;
 
 	const [userInput, setUserInput] = useState({
-		first_name: "",
-		last_name: "",
-		email: "",
-		username: ""
+		first_name: first_name,
+		last_name: last_name,
+		email: email,
+		username: username
 	});
+
+	const [isSaved, setIsSaved] = useState(false);
 
 	const handleChange = (e) => {
 		setUserInput({
@@ -23,10 +25,13 @@ function ProfileForm(props) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
 		updateUserData(id, userInput);
+		setIsSaved(!isSaved);
 	}
 
+	useEffect(() => {
+		getUserData(id);
+	}, [isSaved])
 
 	return (
 		<div className="profile-information">
@@ -39,7 +44,7 @@ function ProfileForm(props) {
 								<Input
 									placeholder="First Name"
 									name="first_name"
-									value={first_name}
+									value={userInput.first_name}
 									onChange={handleChange}
 								/>
 							</Form.Item>
@@ -47,21 +52,21 @@ function ProfileForm(props) {
 								<Input
 									placeholder="Last Name"
 									name="last_name"
-									value={last_name}
+									value={userInput.last_name}
 									onChange={handleChange}
 								/>
 							</Form.Item>
 							<Form.Item label="Email">
 								<Input placeholder="Email"
 									name="email"
-									value={email}
+									value={userInput.email}
 									onChange={handleChange}
 								/>
 							</Form.Item>
 							<Form.Item label="Username">
 								<Input placeholder="Username"
 									name="username"
-									value={username}
+									value={userInput.username}
 									onChange={handleChange}
 								/>
 							</Form.Item>
@@ -100,4 +105,4 @@ const mapStateToProps = state => {
 	}
 };
 
-export default connect(mapStateToProps, { updateUserData })(ProfileForm);
+export default connect(mapStateToProps, { updateUserData, getUserData })(ProfileForm);

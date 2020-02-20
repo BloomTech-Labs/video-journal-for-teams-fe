@@ -1,6 +1,7 @@
 import constants from "../constants";
 
 const initialState = {
+	isFetchingUserData: false,
 	isLogged: false,
 	userId: null,
 	first_name: "",
@@ -285,6 +286,21 @@ const userReducer = (state = initialState, { type, payload }) => {
 				},
 			};
 
+		case constants.UPDATE_USER_DATA_START:
+			return {
+				...state,
+				isFetchingUserData: true
+			}
+		case constants.UPDATE_USER_DATA_SUCCESS:
+			return {
+				...state,
+				isFetchingUserData: false,
+				userId: payload.id,
+				first_name: payload.first_name,
+				last_name: payload.last_name,
+				email: payload.email,
+				username: payload.username
+			}
 		default:
 			return state;
 	}

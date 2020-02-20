@@ -232,11 +232,23 @@ export const updateUserData = (id, changes) => (dispatch) => {
 
 	AxiosWithAuth().put(`/users/${id}`, changes)
 		.then(res => {
-			console.log(res.data);
-			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS });
+			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS, payload: res.data.updatedUser });
 		})
 		.catch(error => {
 			dispatch({ type: constants.UPDATE_USER_DATA_FAILURE, payload: error });
+		})
+}
+
+// Get user data
+export const getUserData = (id) => (dispatch) => {
+	dispatch({ type: constants.FETCH_USER_DATA_START });
+
+	AxiosWithAuth().get(`/users/${id}`)
+		.then(res => {
+			dispatch({ type: constants.FETCH_USER_DATA_SUCCESS, payload: res.data });
+		})
+		.catch(error => {
+			dispatch({ type: constants.FETCH_USER_DATA_FAILURE, payload: error });
 		})
 }
 
