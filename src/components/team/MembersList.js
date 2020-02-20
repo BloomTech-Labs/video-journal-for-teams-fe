@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamMembers, createInvite, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Row, Col, Modal, Button, Form, Input } from 'antd';
+import { Layout, Row, Col, Modal, Button, Form, Input, Divider } from 'antd';
 import './teamTest.css';
 import MemberCard from './MemberCard';
 
 const { Header, Content } = Layout;
 
 function MembersList(props) {
+	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false)
 	const [code, setCode] = useState("");
 
@@ -45,6 +46,7 @@ function MembersList(props) {
 		/* Alert the copied text */
 		alert(copyText.value + " ...has been copied to clipboard.");
 	}
+	// #endregion CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 
 	if (!props.teamMembers) {
 		return <h2>Loading...</h2>;
@@ -52,35 +54,34 @@ function MembersList(props) {
 
 		return (
 			<Content>
-				<p>Members({props.teamMembers.length})</p>
-				<Row gutter={[16, 16]}>
-					{/* Add member invite link button */}
-					<Col span={2}>
-						{props.userRole === 1 ? null : (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-member" />)}
-						< Modal
-							title="Team Invitation Link"
-							visible={showModal}
-							onOk={handleOk}
-							onCancel={toggleModal}
-							okText="Copy"
-						>
-							<Form>
-								<Form.Item label="Copy Link">
-									<Input readOnly id="team-link" value={URL} />
-								</Form.Item>
-							</Form>
-						</Modal>
-					</Col>
+				<h1>Members({props.teamMembers.length})</h1>
+				{/* Add member invite link button */}
+				{props.userRole === 1 ? null : (
+					<Button onClick={toggleModal} type="primary" shape="round" icon="user" className="adding-button">
+						Invite Member
+					</Button>
+				)}
+				<Divider />
+				<Modal
+					title="Team Invitation Link"
+					visible={showModal}
+					onOk={handleOk}
+					onCancel={toggleModal}
+					okText="Copy"
+				>
+					<Form>
+						<Form.Item label="Copy Link">
+							<Input readOnly id="team-link" value={URL} />
+						</Form.Item>
+					</Form>
+				</Modal>
 
-					{/* Display members */}
-					{props.teamMembers.map(member => (
-						<Col span={2} key={member.user_id}>
-							<MemberCard
-								member={member}
-								userRole={props.userRole}
-							/></Col>
+				{/* Display members */}
+				<div className="userDashList">
+					{props.teamMembers.map((member) => (
+						<MemberCard key={member.id} member={member} userRole={props.userRole} />
 					))}
-				</Row>
+				</div>
 			</Content >
 		)
 	}
