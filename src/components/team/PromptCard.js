@@ -13,11 +13,18 @@ const PromptCard = (props) => {
 	const prompt = props.data;
 
 	return (
-		<Collapse className="prompt-card">
+		<Collapse className="prompt-card" defaultActiveKey={['0']}>
+			{/*
+
+			REMOVE defaultActiveKey above to close the prompts
+			
+			*/}
 			<Panel header={prompt.question} style={{ textAlign: "left" }}>
 
 				<div key={prompt.id}>
 					<List
+						size="small"
+						header={<div>Description</div>}
 						bordered
 						dataSource={[prompt.description]}
 						renderItem={(item) => (
