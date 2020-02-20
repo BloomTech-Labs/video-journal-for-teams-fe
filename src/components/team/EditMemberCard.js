@@ -32,7 +32,7 @@ function EditMemberCard(props) {
 	const handleRoleChange = () => {
 		if (member.role_id === 1) {
 			// props.updateUserRole(team_id, member.user_id, 2);
-			props.updateUserRole(team_id, member.user_id, 20); //FIX BUG HELP.
+			props.updateUserRole(team_id, member.user_id, 2); //FIX BUG HELP.
 			showSuccessModal()
 		} else if (member.role_id === 2) {
 			props.updateUserRole(team_id, member.user_id, 1);
