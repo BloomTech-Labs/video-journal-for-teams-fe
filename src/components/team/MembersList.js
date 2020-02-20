@@ -22,9 +22,10 @@ function MembersList(props) {
 
 	const toggleModal = () => {
 		setShowModal(!showModal)
-		props.createInvite({ team_id: props.team.id, team_name: props.team.name })
+		props.createInvite(team_id, { team_name: props.team.name })
 	}
 
+	console.log('Comp invite link', props.invite.link)
 	const handleOk = (e) => {
 		toggleModal();
 		copyLink();
