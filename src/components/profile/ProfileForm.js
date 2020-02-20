@@ -55,13 +55,6 @@ function ProfileForm(props) {
 									onChange={handleChange}
 								/>
 							</Form.Item>
-							{/* Question */}
-							<Form.Item label="Website">
-								<Input placeholder="Website" />
-							</Form.Item>
-							<Form.Item label="Bio">
-								<TextArea placeholder="Bio" />
-							</Form.Item>
 						</Col>
 
 						<Col span={12}>
