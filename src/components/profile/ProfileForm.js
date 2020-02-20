@@ -2,18 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { Form, Input, Button, Row, Col } from 'antd';
 import 'antd/dist/antd.css';
-import { getUserData } from '../../redux/actions/userActions';
-const { TextArea } = Input;
+import { updateUserData } from '../../redux/actions/userActions';
 
 function ProfileForm(props) {
-	const { id, first_name, last_name, email, username, avatar } = props;
+	const { id, first_name, last_name, email, username, avatar, updateUserData } = props;
 
 	const [userInput, setUserInput] = useState({
 		first_name: "",
 		last_name: "",
 		email: "",
-		username: "",
-		avatar: ""
+		username: ""
 	});
 
 	const handleChange = (e) => {
@@ -23,13 +21,18 @@ function ProfileForm(props) {
 		})
 	}
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		updateUserData(id, userInput);
+	}
 
 
 	return (
 		<div className="profile-information">
 			<h1>Edit Profile</h1>
 			<div className="form-container">
-				<Form layout="vertical">
+				<Form layout="vertical" onSubmit={handleSubmit}>
 					<Row gutter={24}>
 						<Col span={12}>
 							<Form.Item label="First Name">
@@ -55,6 +58,13 @@ function ProfileForm(props) {
 									onChange={handleChange}
 								/>
 							</Form.Item>
+							<Form.Item label="Username">
+								<Input placeholder="Username"
+									name="username"
+									value={username}
+									onChange={handleChange}
+								/>
+							</Form.Item>
 						</Col>
 
 						<Col span={12}>
@@ -69,7 +79,7 @@ function ProfileForm(props) {
 							</Form.Item>
 						</Col>
 						<Col span={24} className="button-wrapper">
-							<Button type="secondary" outlined className="outlined-btn">Cancel</Button>
+							<Button className="outlined-btn">Cancel</Button>
 							<Button type="primary" htmlType="submit" className="full-btn">Save</Button>
 						</Col>
 					</Row>
@@ -89,4 +99,5 @@ const mapStateToProps = state => {
 		avatar: state.User.avatar,
 	}
 };
-export default connect(mapStateToProps, { getUserData })(ProfileForm);
+
+export default connect(mapStateToProps, { updateUserData })(ProfileForm);

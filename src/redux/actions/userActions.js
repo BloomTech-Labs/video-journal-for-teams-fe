@@ -226,16 +226,17 @@ export const setStreamError = (error) => (dispatch) => {
 	});
 };
 
-// GET user data for profile
-export const getUserData = (id) => (dispatch) => {
-	dispatch({ type: constants.FETCH_USER_DATA_START });
+// Update user data
+export const updateUserData = (id, changes) => (dispatch) => {
+	dispatch({ type: constants.UPDATE_USER_DATA_START });
 
-	AxiosWithAuth().get(`/users/${id}`)
+	AxiosWithAuth().put(`/users/${id}`, changes)
 		.then(res => {
 			console.log(res.data);
+			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS });
 		})
 		.catch(error => {
-			dispatch({ type: constants.FETCH_USER_DATA_FAILURE, payload: error })
+			dispatch({ type: constants.UPDATE_USER_DATA_FAILURE, payload: error });
 		})
 }
 
