@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Card, Row, Col, Icon, Avatar } from "antd";
+import { Card } from "antd";
 import "antd/dist/antd.css";
 
 import UserVideosCard from "../user/UserVideosCard.js";
@@ -19,7 +19,7 @@ const PromptCard = (props) => {
 					<p>{prompt.description}</p>
 				</div>
 				{/* Display videos array for a specific prompt */}
-				<div className="videos-container">
+				<div className="userDashList">
 					{prompt.videos.map((video) => (
 						<UserVideosCard key={video.id} data={video} />
 					))}
