@@ -1,31 +1,38 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Card } from "antd";
+import { Card, Collapse, List } from "antd";
 import "antd/dist/antd.css";
 
 import UserVideosCard from "../user/UserVideosCard.js";
 import { fetchUserVideos } from '../../redux/actions/userActions';
 
 const { Meta } = Card;
+const { Panel } = Collapse;
 
 const PromptCard = (props) => {
 	const prompt = props.data;
 
 	return (
-		<Card className="prompt-card">
-			<div key={prompt.id}>
-				<div className="prompt-container">
-					<h3>{prompt.question}</h3>
-					<p>{prompt.description}</p>
+		<Collapse className="prompt-card">
+			<Panel header={prompt.question} style={{ textAlign: "left" }}>
+
+				<div key={prompt.id}>
+					<List
+						bordered
+						dataSource={[prompt.description]}
+						renderItem={(item) => (
+							<List.Item>{item}</List.Item>
+						)}
+					/>
+					{/* Display videos array for a specific prompt */}
+					<div className="userDashList">
+						{prompt.videos.map((video) => (
+							<UserVideosCard key={video.id} data={video} />
+						))}
+					</div>
 				</div>
-				{/* Display videos array for a specific prompt */}
-				<div className="userDashList">
-					{prompt.videos.map((video) => (
-						<UserVideosCard key={video.id} data={video} />
-					))}
-				</div>
-			</div>
-		</Card>
+			</Panel>
+		</Collapse>
 	);
 };
 

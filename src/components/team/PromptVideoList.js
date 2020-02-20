@@ -10,7 +10,7 @@ const { Header, Content } = Layout;
 const { Panel } = Collapse;
 
 const PromptVideoList = (props) => {
-	// #region CLICK TO UNCOLLAPSE COMPONENT LOGIC
+	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false);
 	const [prompt, setPrompt] = useState({ question: "", description: "" });
 
@@ -41,6 +41,21 @@ const PromptVideoList = (props) => {
 		return (
 			<Content>
 				<h1>Prompts({props.teamPromptsAndVideos.length})</h1>
+				{props.userRole === 1 ? null : (
+					<Button onClick={toggleModal} type="primary" shape="round" icon="plus" className="add-prompt">
+						New Prompt
+					</Button>
+				)}
+				<Modal title="Add New Prompt" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Submit">
+					<Form>
+						<Form.Item label="Question">
+							<Input onChange={handleInput} name="question" placeholder="required" />
+						</Form.Item>
+						<Form.Item label="Description">
+							<Input onChange={handleInput} name="description" placeholder="optional" />
+						</Form.Item>
+					</Form>
+				</Modal>
 				{props.teamPromptsAndVideos.map((prompt) => (
 					<PromptCard key={prompt.id} data={prompt} />
 				))}
