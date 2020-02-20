@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
-import { Card, Modal, Icon } from 'antd';
+import { Card, Modal, Icon, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import { deleteTeamMember, updateUserRole, } from '../../redux/actions/teamActions';
 
@@ -90,13 +90,13 @@ function EditMemberCard(props) {
 
 	return (
 		<Card className="edit-card">
-			<Card.Grid style={{ width: "50%", textAlign: 'center', padding: 0}}>
-			{member.role_id === 1
-				? (<Icon type="up-circle" theme="twoTone" twoToneColor="#52c41a" onClick={showRoleConfirm} />)
-				: (<Icon type="down-circle" theme="twoTone" twoToneColor="#eb2f96" onClick={showRoleConfirm} />)}
+			<Card.Grid style={{ width: "50%", textAlign: 'center', padding: 0 }}>
+				{member.role_id === 1
+					? (<Tooltip placement="bottom" title={`Promote ${member.user_full_name}`}><Icon type="up-circle" theme="twoTone" twoToneColor="#52c41a" onClick={showRoleConfirm} /></Tooltip>)
+					: (<Tooltip placement="bottom" title={`Demote ${member.user_full_name}`}><Icon type="down-circle" theme="twoTone" twoToneColor="#eb2f96" onClick={showRoleConfirm} /></Tooltip>)}
 			</Card.Grid>
-			<Card.Grid style={{ width: "50%", textAlign: 'center', padding: 0}}>
-				<Icon type="stop" theme="twoTone" twoToneColor="#ff0000" onClick={showDeleteConfirm} />
+			<Card.Grid alt="Remove member from team" style={{ width: "50%", textAlign: 'center', padding: 0 }}>
+				<Tooltip placement="bottom" title={`REMOVE ${member.user_full_name}`}><Icon type="stop" theme="twoTone" twoToneColor="#ff0000" onClick={showDeleteConfirm} /></Tooltip>
 			</Card.Grid>
 		</Card>
 	)
