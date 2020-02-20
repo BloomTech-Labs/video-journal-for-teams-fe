@@ -33,7 +33,7 @@ const TeamList = props => {
 	}
 
 	return (
-		<Content className="userDashList">
+		<Content className="card-flex">
 			<button onClick={toggleModal}>Create Team</button>
 			<Modal
 				title="Create New Team"
