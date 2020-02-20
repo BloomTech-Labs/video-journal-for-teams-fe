@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamVideos, createPrompt, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Typography, Row, Col, Modal, Form, Input, Button } from "antd";
+import { Layout, Card, Row, Col, Modal, Form, Input, Button, Collapse } from "antd";
 import "./teamTest.css";
-import UserVideosCard from "../user/UserVideosCard";
+import PromptCard from "./PromptCard.js";
 
 const { Header, Content } = Layout;
+const { Panel } = Collapse;
 
 const PromptVideoList = (props) => {
+	// #region CLICK TO UNCOLLAPSE COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false);
 	const [prompt, setPrompt] = useState({ question: "", description: "" });
 
@@ -31,54 +33,17 @@ const PromptVideoList = (props) => {
 	const handleInput = (e) => {
 		setPrompt({ ...prompt, [e.target.name]: e.target.value });
 	};
+	//#endregion CLICK TO UNCOLLAPSE COMPONENT LOGIC
 
 	if (!props.teamPromptsAndVideos) {
 		return <h2>Loading...</h2>;
 	} else {
 		return (
 			<Content>
-				<p>Prompts({props.teamPromptsAndVideos.length})</p>
-				<Row gutter={[16, 16]}>
-					{/* Add a prompt button */}
-					<Col span={2}>
-						{props.userRole === 1 ? null : (<Button onClick={toggleModal} type="primary" shape="circle" icon="plus-circle" className="add-prompt" />)}
-						<Modal title="Add New Prompt" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Submit">
-							<Form>
-								<Form.Item label="Question">
-									<Input onChange={handleInput} name="question" placeholder="required" />
-								</Form.Item>
-								<Form.Item label="Description">
-									<Input onChange={handleInput} name="description" placeholder="optional" />
-								</Form.Item>
-							</Form>
-						</Modal>
-					</Col>
-
-					{/* Display team prompts array */}
-					<Col span={2}>
-						{props.teamPromptsAndVideos.map((prompts) => (
-							<div key={prompts.id}>
-								<div className="prompt-container">
-									<h3>{prompts.question}</h3>
-									<p>{prompts.description}</p>
-								</div>
-								<Button
-									onClick={() => history.push(`/teams/${props.teamId}/videos/post/${prompts.id}`)}
-									type="primary"
-									shape="circle"
-									icon="plus-circle"
-									className="add-prompt"
-								/>
-								{/* Display videos array for a specific prompt */}
-								<div className="videos-container">
-									{prompts.videos.map((video) => (
-										<UserVideosCard key={video.id} data={video} />
-									))}
-								</div>
-							</div>
-						))}
-					</Col>
-				</Row>
+				<h1>Prompts({props.teamPromptsAndVideos.length})</h1>
+				{props.teamPromptsAndVideos.map((prompt) => (
+					<PromptCard key={prompt.id} data={prompt} />
+				))}
 			</Content>
 		);
 	}
