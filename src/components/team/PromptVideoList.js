@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamVideos, createPrompt, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Card, Row, Col, Modal, Form, Input, Button, Collapse } from "antd";
+import { Layout, Card, Row, Col, Modal, Form, Input, Button, Collapse, Divider } from "antd";
 import "./teamTest.css";
 import PromptCard from "./PromptCard.js";
 
@@ -42,10 +42,11 @@ const PromptVideoList = (props) => {
 			<Content>
 				<h1>Prompts({props.teamPromptsAndVideos.length})</h1>
 				{props.userRole === 1 ? null : (
-					<Button onClick={toggleModal} type="primary" shape="round" icon="plus" className="add-prompt">
+					<Button onClick={toggleModal} type="primary" shape="round" icon="plus" className="adding-button">
 						New Prompt
 					</Button>
 				)}
+				<Divider />
 				<Modal title="Add New Prompt" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Submit">
 					<Form>
 						<Form.Item label="Question">
