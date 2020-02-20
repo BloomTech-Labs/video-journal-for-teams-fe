@@ -8,8 +8,8 @@ const columns = [
 	{
 		title: "Name",
 		dataIndex: "owner_name",
-		key: "owner_id",
-		render: (text) => <span>{text}</span>,
+		key: "owner_name",
+		render: (feedbackOwner) => <span>{feedbackOwner}</span>,
 	},
 	{
 		title: "Feedback",
@@ -20,7 +20,7 @@ const columns = [
 ];
 
 function FeedbackTable({ feedback }) {
-	return <Table columns={columns} dataSource={feedback} />;
+	return <Table columns={columns} dataSource={feedback} rowKey="id" />;
 }
 
 export default FeedbackTable;
