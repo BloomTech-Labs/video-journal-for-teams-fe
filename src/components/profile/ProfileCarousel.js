@@ -4,15 +4,16 @@ import 'antd/dist/antd.css';
 import './tempStyles.css';
 
 function ProfileCarousel() {
-   return (
-      <>
-         <Carousel>
+	return (
+		<>
+			{/* <Carousel>
             <div>
                <h3>Image here</h3>
             </div>
-         </Carousel>
-      </>
-   )
+         </Carousel> */}
+			<div className="jumbotron"></div>
+		</>
+	)
 }
 
 export default ProfileCarousel

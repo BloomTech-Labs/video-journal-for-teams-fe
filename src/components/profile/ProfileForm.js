@@ -27,7 +27,7 @@ function ProfileForm(props) {
 
 	return (
 		<div className="profile-information">
-			<h1>Update Profile Information</h1>
+			<h1>Edit Profile</h1>
 			<div className="form-container">
 				<Form layout="vertical">
 					<Row gutter={24}>
@@ -76,12 +76,8 @@ function ProfileForm(props) {
 							</Form.Item>
 						</Col>
 						<Col span={24} className="button-wrapper">
-							<Button type="primary" htmlType="submit">
-								Save
-              </Button>
-							<Button type="secondary">
-								Cancel
-							</Button>
+							<Button type="secondary" outlined className="outlined-btn">Cancel</Button>
+							<Button type="primary" htmlType="submit" className="full-btn">Save</Button>
 						</Col>
 					</Row>
 				</Form>

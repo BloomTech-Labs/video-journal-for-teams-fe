@@ -1,0 +1,18 @@
+.jumbotron {
+	height          : 185px;
+	background-color: $pale-yellow;
+}
+
+.profile-main {
+	background-color: #fff;
+
+	.outlined-btn {
+		@include outlined-button($alpaca-green);
+		color: $black;
+	}
+
+	.full-btn {
+		@include button($alpaca-green);
+		color: $black;
+	}
+}
