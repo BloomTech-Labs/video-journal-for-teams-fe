@@ -82,7 +82,7 @@ function EditMemberCard(props) {
 	const roleChangeError = () => {
 		Modal.error({
 			title: 'Error!',
-			content: "Uh oh, something's gone wrong. Tyr again.",
+			content: "Uh oh, something's gone wrong. Try again later.",
 		});
 	}
 
