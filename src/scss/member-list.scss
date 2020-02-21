@@ -1,9 +1,9 @@
 .member-card {
 	width: $card-width * 0.6;
-	margin: 0 $card-spacing*.5 $card-row-spacing;
+	margin: 0 $card-spacing*.2 $card-row-spacing;
+	text-align: center;
 	
 	p {
-		text-align: center;
 		// margin-bottom: 10px;
 	}
 	.ant-card-body {
@@ -11,3 +11,7 @@
 	}
 }
 
+.edit-card {
+	width: 75%;
+	margin:auto;
+}
