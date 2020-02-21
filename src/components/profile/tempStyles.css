@@ -1,22 +1,22 @@
 .container {
-   max-width: 1000px;
-   width: 100%;
-   margin: auto;
-   position: relative;
+	max-width: 1000px;
+	width: 100%;
+	margin: auto;
+	position: relative;
 }
 
 img {
-   max-width: 100%;
+	max-width: 100%;
 }
 
 /* Carousel */
 
 .ant-carousel .slick-slide {
-   text-align: center;
-   height: 200px;
-   line-height: 160px;
-   background: #364d79;
-   color: #fff;
+	text-align: center;
+	height: 200px;
+	line-height: 160px;
+	background: #364d79;
+	color: #fff;
 }
 
 /* main profile */
@@ -28,41 +28,41 @@ img {
 /* Avatar section */
 
 .avatar-img {
-   margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .avatar-img img {
-   border-radius: 50%;
-   border: 3px solid #fff;
+	border-radius: 50%;
+	border: 3px solid #fff;
 }
 
 .avatar-wrapper {
-   text-align: center;
-   position: absolute;
-   top: -75px;
+	text-align: center;
+	position: absolute;
+	top: -75px;
 }
 
 /* Profile information/Form */
 
 .profile-information {
-   padding: 20px 0;
+	padding: 20px 0;
 }
 
 .profile-information h1 {
-   text-align: left;
+	text-align: left;
 }
 
 .form-container {
-   margin-top: 40px;
+	margin-top: 40px;
 }
 
 /* Footer */
 
 .ant-layout-footer {
-   background-color: lightslategray;
+	background-color: lightslategray;
 }
 
-/* Buttons */
+/* Buttons
 
 .button-wrapper {
    text-align: left;
@@ -70,28 +70,28 @@ img {
 
 .button-wrapper button {
    margin-right: 15px;
-}
+} */
 
 .login-form {
-    width: 300px;
-    margin: 0 auto;
-    padding: 24px;
+	width: 300px;
+	margin: 0 auto;
+	padding: 24px;
 }
 
 .login-form-forgot {
-    float: right;
+	float: right;
 }
-  
+
 .login-form-button {
-    width: 100%;
+	width: 100%;
 }
 
 .register-form {
-    width: 300px;
-    margin: 0 auto;
-    padding: 24px;
+	width: 300px;
+	margin: 0 auto;
+	padding: 24px;
 }
 
 .register-form-button {
-    width: 100%;
+	width: 100%;
 }

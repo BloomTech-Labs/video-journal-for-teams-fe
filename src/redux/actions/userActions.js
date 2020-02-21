@@ -193,7 +193,7 @@ export const uploadVideo = (video) => (dispatch) => {
 	}
 
 	const submissionConfig = {
-		onUploadProgress: function(progressEvent) {
+		onUploadProgress: function (progressEvent) {
 			dispatch({
 				type: constants.UPLOAD_VIDEO_PROGRESS,
 				payload: Math.round((progressEvent.loaded * 100) / progressEvent.total),
@@ -247,6 +247,33 @@ export const setStreamError = (error) => (dispatch) => {
 		payload: error,
 	});
 };
+
+// Update user data
+export const updateUserData = (id, changes) => (dispatch) => {
+	dispatch({ type: constants.UPDATE_USER_DATA_START });
+
+	return AxiosWithAuth().put(`/users/${id}`, changes)
+		.then(res => {
+			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS, payload: res.data.updatedUser });
+			return res.data;
+		})
+		.catch(error => {
+			dispatch({ type: constants.GENERATE_ERROR, payload: error });
+		})
+}
+
+// Get user data
+export const getUserData = (id) => (dispatch) => {
+	dispatch({ type: constants.FETCH_USER_DATA_START });
+
+	AxiosWithAuth().get(`/users/${id}`)
+		.then(res => {
+			dispatch({ type: constants.FETCH_USER_DATA_SUCCESS, payload: res.data });
+		})
+		.catch(error => {
+			dispatch({ type: constants.GENERATE_ERROR, payload: error });
+		})
+}
 
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {

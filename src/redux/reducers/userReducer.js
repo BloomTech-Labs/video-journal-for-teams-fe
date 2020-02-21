@@ -1,6 +1,7 @@
 import constants from "../constants";
 
 const initialState = {
+	isUpdatingUserData: false,
 	isLogged: false,
 	userId: null,
 	first_name: "",
@@ -70,19 +71,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				username: payload.user.username,
 				avatar: payload.user.avatar,
 				isLogged: true,
-			};
-
-		case constants.GENERATE_ERROR:
-			return {
-				...state,
-				isFetching: false,
-				error: payload,
-			};
-
-		case constants.CLEAR_ERROR:
-			return {
-				...state,
-				error: null,
 			};
 
 		case constants.LOGOUT_USER:
@@ -348,6 +336,34 @@ const userReducer = (state = initialState, { type, payload }) => {
 				},
 			};
 
+		case constants.UPDATE_USER_DATA_START:
+			return {
+				...state,
+				isUpdatingUserData: true
+			}
+		case constants.UPDATE_USER_DATA_SUCCESS:
+			return {
+				...state,
+				isUpdatingUserData: false,
+				userId: payload.id,
+				first_name: payload.first_name,
+				last_name: payload.last_name,
+				email: payload.email,
+				username: payload.username
+			}
+		case constants.GENERATE_ERROR:
+			return {
+				...state,
+				error: payload,
+				isFetching: false,
+				isUpdatingUserData: false,
+			};
+
+		case constants.CLEAR_ERROR:
+			return {
+				...state,
+				error: null,
+			};
 		default:
 			return state;
 	}

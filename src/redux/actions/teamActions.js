@@ -62,11 +62,12 @@ export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
 		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
-export const createInvite = (team) => (dispatch) => {
+export const createInvite = (team_id, team_name) => (dispatch) => {
 	dispatch({ type: constants.POST_INVITE_LINK_START })
 	AxiosWithAuth()
-		.post(`/invites`, team)
+		.post(`teams/${team_id}/invite`, team_name)
 		.then(inviteResponse => {
+			console.log("Action response", inviteResponse)
 			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data })
 		})
 		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
@@ -89,9 +90,10 @@ export const updateUserRole = (team_id, user_id, role_id) => dispatch => {
 	const changes = {
 		role_id: role_id
 	}
-	AxiosWithAuth().put(`/teams/${team_id}/users/${user_id}/role`, changes)
+	return AxiosWithAuth().put(`/teams/${team_id}/users/${user_id}/role`, changes)
 		.then(updateResponse => {
 			dispatch({ type: constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS, payload: updateResponse.data.updatedRole });
+			return updateResponse.data;
 		})
 		.catch(err => {
 			dispatch({ type: constants.GENERATE_ERROR, payload: err.response })
