@@ -22,7 +22,7 @@ function UserDashboard(props) {
 				<h3>My Teams</h3>
 				<TeamList />
 				<h3>My Videos</h3>
-				<Carousel component={UserVideosCard} data={props.videos}/>
+				<Carousel component={UserVideosCard} data={props.videos} maxCards={6}/>
 			</div>
 		</NavAndHeader>
 	)

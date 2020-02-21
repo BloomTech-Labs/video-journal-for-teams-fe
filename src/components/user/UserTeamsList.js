@@ -34,6 +34,7 @@ const TeamList = props => {
 
 	return (
 		<Content className="userDashList">
+			<div className="team-cards">
 			<Card className="add-team">
 				<Button onClick={toggleModal} type="primary" shape="circle">
 				<Icon type="plus-circle" theme="filled" />
@@ -61,6 +62,7 @@ const TeamList = props => {
 					return <TeamCard key={data.id} data={data} />;
 				})
 			}
+			</div>
 		</Content>
 	);
 };
