@@ -6,7 +6,20 @@ const { Content } = Layout;
 
 function Carousel({ component: Component, ...props }) {
 	const [axis, setAxis] = useState(0);
+	const [width, setWidth] = useState(window.innerWidth)
 	const carouselList = useRef(null);
+	
+	useEffect(() => {
+		function handleResize() {
+      setWidth(window.innerWidth)
+		}
+
+		window.addEventListener('resize', handleResize)
+
+		return function cleanup() {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [width])
 
 	const scroll = (direction) => {
 		let newAxis;
@@ -39,6 +52,7 @@ function Carousel({ component: Component, ...props }) {
 				<Icon type="left" />
 			</Button>
 			<div className="carouselItems" ref={carouselList}>
+				{props.children}
 				{props.data.map(item => (
 					<Component key={item.id} data={item}/>
 				))}

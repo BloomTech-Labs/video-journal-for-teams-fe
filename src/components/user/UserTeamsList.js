@@ -2,22 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import TeamCard from "./UserTeamsCard";
-import { Layout, Typography, Modal, Button, Form, Input, Card, Icon } from 'antd';
+import { Modal, Button, Form, Input, Card, Icon } from 'antd';
 import { fetchUserTeams } from '../../redux/actions/userActions';
 import { createTeam } from "../../redux/actions/teamActions";
+import Carousel from "../Carousel";
 
-const { Title } = Typography;
-const { Header, Content } = Layout;
-
-const TeamList = props => {
+const TeamList = ({ id, teams }) => {
 	const [team, setTeam] = useState({});
 	const [showModal, setShowModal] = useState(false)
 
 	let history = useHistory();
 
 	useEffect(() => {
-		props.fetchUserTeams(props.id)
-	}, [props.id])
+		fetchUserTeams(id)
+	}, [id])
 
 	const handleInput = (e) => {
 		setTeam({ ...team, [e.target.name]: e.target.value });
@@ -28,13 +26,12 @@ const TeamList = props => {
 	}
 
 	const handleOk = () => {
-		props.createTeam(team, history);
+		createTeam(team, history);
 		toggleModal();
 	}
 
 	return (
-		<Content className="userDashList">
-			<div className="team-cards">
+		<Carousel component={TeamCard} data={teams} name={"videos"}>
 			<Card className="add-team">
 				<Button onClick={toggleModal} type="primary" shape="circle">
 				<Icon type="plus-circle" theme="filled" />
@@ -57,13 +54,12 @@ const TeamList = props => {
 					</Form.Item>
 				</Form>
 			</Modal>
-			{
+			{/* {
 				props.isFetching ? "Loading..." : props.teams.map(data => {
 					return <TeamCard key={data.id} data={data} />;
 				})
-			}
-			</div>
-		</Content>
+			} */}
+		</Carousel>
 	);
 };
 
@@ -75,9 +71,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapActionsToProps = {
-	createTeam,
-	fetchUserTeams
-};
-
-export default connect(mapStateToProps, mapActionsToProps)(TeamList);
+export default connect(mapStateToProps, {fetchUserTeams, createTeam})(TeamList);

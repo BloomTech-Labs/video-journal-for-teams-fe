@@ -19,10 +19,10 @@ function UserDashboard(props) {
 		<NavAndHeader>
 			<div className="user-dashboard">
 				<h1>Dashboard</h1>
-				<h3>My Teams</h3>
+				<h3>My&nbsp;Teams</h3>
 				<TeamList />
-				<h3>My Videos</h3>
-				<Carousel component={UserVideosCard} data={props.videos} maxCards={6}/>
+				<h3>My&nbsp;Videos</h3>
+				<Carousel component={UserVideosCard} data={props.videos} name={"videos"}/>
 			</div>
 		</NavAndHeader>
 	)

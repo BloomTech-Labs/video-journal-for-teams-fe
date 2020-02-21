@@ -1,5 +1,11 @@
 .user-dashboard {
-	margin: 30px;
+	margin: 3%;
+	@media( max-width: 600px ) {
+    margin: 10%;
+	}
+	@media( max-width: 800px ) {
+    margin: 5%;
+  }
 	h1 {
 		font-style: normal;
 		font-weight: bold;
@@ -12,6 +18,7 @@
 	h3 {
 		text-align: left;
 		margin-left: 40px;
+		margin-top: 10px;
 		color: $dark-grey;
 		font-weight: 600;
 		font-size: 17px;

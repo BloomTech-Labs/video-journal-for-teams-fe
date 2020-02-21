@@ -4,7 +4,8 @@
 	position: relative;
 	.carouselItems {
 		display: flex;
-		flex-wrap: no-wrap;
+		flex-grow: 1;
+		flex-wrap: nowrap;
 		overflow-x: auto;
 		width:fit-content;
 		.video-card {
@@ -14,6 +15,9 @@
 	.leftButton, .rightButton {
 		border: none;
 		background-color: transparent;
+		&:focus {
+			color: $alpaca-green;
+		}
 		&:hover {
 			background-color: transparent;
 			color: $alpaca-green;
