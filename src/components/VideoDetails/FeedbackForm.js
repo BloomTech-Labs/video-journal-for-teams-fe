@@ -1,31 +1,38 @@
 import React, { useState } from "react";
 
+// Redux
+import { connect } from "react-redux";
+
+// Actions
+import { submitFeedback } from "../../redux/actions/userActions";
+
 // Components
 import { Form, Input, Button } from "antd";
 
 // Additional Ant Design components
 const { TextArea } = Input;
 
-function FeedbackForm() {
-	const [feedbackInput, setFeedbackInput] = useState("");
+function FeedbackForm({ videoId, submitFeedback }) {
+	const [feedback, setFeedback] = useState({
+		post: "",
+	});
 
 	const handleInput = (e) => {
-		setFeedbackInput(e.target.value);
+		setFeedback({ ...feedback, [e.target.name]: e.target.value });
 	};
 
-	const submitFeedback = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-
-		if (feedbackInput) {
-			console.log("Need an endpoint to submit feedback");
-			setFeedbackInput("");
+		if (feedback.post) {
+			submitFeedback(videoId, feedback);
+			setFeedback({ post: "" });
 		}
 	};
 
 	return (
-		<Form layout="vertical" onSubmit={submitFeedback}>
+		<Form layout="vertical" onSubmit={handleSubmit}>
 			<Form.Item label="Feedback">
-				<TextArea rows={4} value={feedbackInput} onChange={handleInput}></TextArea>
+				<TextArea name="post" rows={4} value={feedback.post} onChange={handleInput}></TextArea>
 			</Form.Item>
 			<Form.Item>
 				<Button type="primary" htmlType="submit" className="feedback-form-button">
@@ -36,4 +43,8 @@ function FeedbackForm() {
 	);
 }
 
-export default FeedbackForm;
+const mapActionsToProps = {
+	submitFeedback,
+};
+
+export default connect(null, mapActionsToProps)(FeedbackForm);
