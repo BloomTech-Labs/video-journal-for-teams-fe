@@ -55,7 +55,7 @@ function ProfileForm(props) {
 	const openErrorNotification = () => {
 		notification.error({
 			message: "Something's gone wrong! Try again later.",
-			duration: 2
+			duration: 1.5
 		});
 	};
 
@@ -110,11 +110,8 @@ function ProfileForm(props) {
 							</Form.Item>
 						</Col>
 						<Col span={24} className="button-wrapper">
-							<div>
-								<Button className="outlined-btn" size="large">Cancel</Button>
-								<Button type="primary" htmlType="submit" className="full-btn" size="large" loading={isUpdatingUserData}>Save</Button>
-							</div>
-							<div className="success-message">Profile Updated!</div>
+							<Button className="outlined-btn" size="large">Cancel</Button>
+							<Button type="primary" htmlType="submit" className="full-btn" size="large" loading={isUpdatingUserData}>Save</Button>
 						</Col>
 					</Row>
 				</Form>

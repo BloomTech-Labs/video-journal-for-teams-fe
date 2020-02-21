@@ -50,6 +50,11 @@
 		@include button($alpaca-green);
 		color: $black;
 	}
+
+	label {
+		color    : $alpaca-blue;
+		font-size: 16px;
+	}
 }
 
 .profile-information {
@@ -92,16 +97,4 @@
 	button {
 		margin-left: 15px;
 	}
-}
-
-.success-message {
-	margin-top      : 10px;
-	background-color: $alpaca-blue;
-	color           : $alpaca-green;
-	display         : none;
-	padding         : 5px 30px;
-}
-
-.show-success {
-	display: inline-block;
 }
