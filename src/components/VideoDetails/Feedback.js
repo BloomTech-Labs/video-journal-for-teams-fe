@@ -24,13 +24,13 @@ function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetchFeedba
 	if (showFeedback) {
 		return <FeedbackTable feedback={feedback} />;
 	} else {
-		return <FeedbackForm />;
+		return <FeedbackForm videoId={videoId} />;
 	}
 }
 
 const mapStateToProps = (state) => ({
 	loggedInUserId: state.User.userId,
-	feedback: state.User.videoDetailFocus.feedback,
+	feedback: state.User.videoDetailFocus.feedback.entries,
 });
 
 const mapActionsToProps = {
