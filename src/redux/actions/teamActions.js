@@ -7,7 +7,7 @@ export const createTeam = (newTeam, history) => (dispatch) => {
 		.post('/teams/', newTeam)
 		.then(res => {
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data })
-			history.push(`/teams/${res.data.id}`);
+			history.push(`/teams/${res.data[0].id}`);
 		})
 		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
