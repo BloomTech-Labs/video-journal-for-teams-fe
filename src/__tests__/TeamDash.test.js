@@ -124,7 +124,7 @@ describe("Team Dashboard Page", () => {
 				role_id: 1,
 				user_full_name: "Candide Bouchard"
 			}],
-			teamVideos: [
+			teamPromptsAndVideos: [
 				{
 					id: 1,
 					question: "Tell me a little about yourself.",
