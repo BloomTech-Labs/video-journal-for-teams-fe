@@ -1,6 +1,7 @@
 import constants from "../constants";
 import axios from "axios";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
+import { notification } from "antd";
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
@@ -119,9 +120,15 @@ export const submitFeedback = (videoId, feedback) => (dispatch) => {
 			dispatch({
 				type: constants.SUBMIT_FEEDBACK_SUCCESS,
 			});
+			notification["success"]({
+				message: "Feedback Submitted!",
+			});
 		})
 		.catch((err) => {
 			dispatch({ type: constants.SUBMIT_FEEDBACK_FAILURE, payload: err.response });
+			notification["failure"]({
+				message: "Could not submit feedback :( Try again later.",
+			});
 		});
 };
 
