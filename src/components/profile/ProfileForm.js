@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
-import { Form, Input, Button, Row, Col } from 'antd';
+import { Form, Input, Button, Row, Col, Icon, notification } from 'antd';
 import 'antd/dist/antd.css';
 import { updateUserData, getUserData } from '../../redux/actions/userActions';
 
 function ProfileForm(props) {
-	const { id, first_name, last_name, email, username, avatar, updateUserData, getUserData } = props;
+	const { id, first_name, last_name, email, username, avatar, updateUserData, getUserData, isUpdatingUserData } = props;
 
 	const [userInput, setUserInput] = useState({
 		first_name: first_name,
@@ -23,15 +23,41 @@ function ProfileForm(props) {
 		})
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		updateUserData(id, userInput);
-		setIsSaved(!isSaved);
+
+		try {
+			const result = await updateUserData(id, userInput);
+
+			if (result) {
+				openSuccessNotification();
+				setIsSaved(!isSaved);
+			} else {
+				openErrorNotification();
+			}
+
+		} catch {
+			openErrorNotification();
+		}
 	}
 
 	useEffect(() => {
 		getUserData(id);
 	}, [isSaved])
+
+	const openSuccessNotification = () => {
+		notification.success({
+			message: 'Profile Updated!',
+			duration: 1.5,
+		});
+	};
+
+	const openErrorNotification = () => {
+		notification.error({
+			message: "Something's gone wrong! Try again later.",
+			duration: 2
+		});
+	};
 
 	return (
 		<div className="profile-information">
@@ -84,8 +110,11 @@ function ProfileForm(props) {
 							</Form.Item>
 						</Col>
 						<Col span={24} className="button-wrapper">
-							<Button className="outlined-btn" size="large">Cancel</Button>
-							<Button type="primary" htmlType="submit" className="full-btn" size="large">Save</Button>
+							<div>
+								<Button className="outlined-btn" size="large">Cancel</Button>
+								<Button type="primary" htmlType="submit" className="full-btn" size="large" loading={isUpdatingUserData}>Save</Button>
+							</div>
+							<div className="success-message">Profile Updated!</div>
 						</Col>
 					</Row>
 				</Form>
@@ -102,6 +131,7 @@ const mapStateToProps = state => {
 		email: state.User.email,
 		username: state.User.username,
 		avatar: state.User.avatar,
+		isUpdatingUserData: state.User.isUpdatingUserData
 	}
 };
 

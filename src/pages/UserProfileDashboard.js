@@ -15,7 +15,7 @@ function EditUserDashboard() {
 				<Content>
 					<ProfileContent />
 				</Content>
-				<Footer>Footer</Footer>
+				<Footer>Copyrigths &copy;</Footer>
 			</Layout>
 		</>
 	)

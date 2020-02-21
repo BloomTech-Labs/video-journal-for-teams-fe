@@ -90,6 +90,18 @@
 	text-align: right;
 
 	button {
-		margin-right: 15px;
+		margin-left: 15px;
 	}
+}
+
+.success-message {
+	margin-top      : 10px;
+	background-color: $alpaca-blue;
+	color           : $alpaca-green;
+	display         : none;
+	padding         : 5px 30px;
+}
+
+.show-success {
+	display: inline-block;
 }

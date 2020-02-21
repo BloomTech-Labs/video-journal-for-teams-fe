@@ -230,12 +230,13 @@ export const setStreamError = (error) => (dispatch) => {
 export const updateUserData = (id, changes) => (dispatch) => {
 	dispatch({ type: constants.UPDATE_USER_DATA_START });
 
-	AxiosWithAuth().put(`/users/${id}`, changes)
+	return AxiosWithAuth().put(`/users/${id}`, changes)
 		.then(res => {
 			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS, payload: res.data.updatedUser });
+			return res.data;
 		})
 		.catch(error => {
-			dispatch({ type: constants.UPDATE_USER_DATA_FAILURE, payload: error });
+			dispatch({ type: constants.GENERATE_ERROR, payload: error });
 		})
 }
 
@@ -248,7 +249,7 @@ export const getUserData = (id) => (dispatch) => {
 			dispatch({ type: constants.FETCH_USER_DATA_SUCCESS, payload: res.data });
 		})
 		.catch(error => {
-			dispatch({ type: constants.FETCH_USER_DATA_FAILURE, payload: error });
+			dispatch({ type: constants.GENERATE_ERROR, payload: error });
 		})
 }
 
