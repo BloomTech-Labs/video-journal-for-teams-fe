@@ -126,7 +126,7 @@ export const submitFeedback = (videoId, feedback) => (dispatch) => {
 		})
 		.catch((err) => {
 			dispatch({ type: constants.SUBMIT_FEEDBACK_FAILURE, payload: err.response });
-			notification["failure"]({
+			notification["error"]({
 				message: "Could not submit feedback :( Try again later.",
 			});
 		});
