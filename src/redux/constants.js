@@ -28,6 +28,11 @@ const constants = {
 	FETCH_FEEDBACK_SUCCESS: "user:fetch-feedback-success",
 	FETCH_FEEDBACK_FAILURE: "user:fetch-feedback-failure",
 
+
+	SUBMIT_FEEDBACK_START: "user:submit-feedback-start",
+	SUBMIT_FEEDBACK_SUCCESS: "user:submit-feedback-success",
+	SUBMIT_FEEDBACK_FAILURE: "user:submit-feedback-failure",
+  
 	// Update user data
 	UPDATE_USER_DATA_START: "user:update-user-data-start",
 	UPDATE_USER_DATA_SUCCESS: "user:update-user-data-success",

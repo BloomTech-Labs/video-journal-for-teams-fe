@@ -1,6 +1,7 @@
 import constants from "../constants";
 import axios from "axios";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
+import { notification } from "antd";
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
@@ -48,7 +49,8 @@ export const loginUser = (userCredentials) => (dispatch) => {
 			})
 			.catch((err) => {
 				dispatch({
-					type: constants.GENERATE_ERROR, payload: err.response
+					type: constants.GENERATE_ERROR,
+					payload: err.response,
 				});
 			});
 	}
@@ -65,7 +67,7 @@ export const createTeam = (data) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
+		.catch((err) => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
 };
 
 // FETCH TEAMS FOR USER
@@ -110,6 +112,26 @@ export const fetchFeedback = (videoId) => (dispatch) => {
 		.catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err.response }));
 };
 
+export const submitFeedback = (videoId, feedback) => (dispatch) => {
+	dispatch({ type: constants.SUBMIT_FEEDBACK_START });
+	AxiosWithAuth()
+		.post(`/videos/${videoId}/feedback`, feedback)
+		.then(() => {
+			dispatch({
+				type: constants.SUBMIT_FEEDBACK_SUCCESS,
+			});
+			notification["success"]({
+				message: "Feedback Submitted!",
+			});
+		})
+		.catch((err) => {
+			dispatch({ type: constants.SUBMIT_FEEDBACK_FAILURE, payload: err.response });
+			notification["error"]({
+				message: "Could not submit feedback :( Try again later.",
+			});
+		});
+};
+
 export const fetchInvite = (invite) => (dispatch) => {
 	dispatch({ type: constants.FETCH_INVITE_START, payload: invite });
 	axios
@@ -122,7 +144,7 @@ export const fetchInvite = (invite) => (dispatch) => {
 			}
 		})
 		.catch((err) => {
-			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: err.response })
+			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: err.response });
 		});
 };
 
@@ -141,7 +163,7 @@ export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
 		.then(() => dispatch({ type: constants.CLEAR_INVITE }))
 		.catch((err) => {
 			dispatch({ type: constants.ADD_INVITED_MEMBER_FAILURE, payload: err.response });
-		})
+		});
 };
 
 export const uploadVideo = (video) => (dispatch) => {
