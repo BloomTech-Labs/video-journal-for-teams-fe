@@ -2,15 +2,6 @@
 	display: flex;
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	@media( max-width: 600px ) {
-		margin: 10%;
-		flex-wrap: nowrap;
-		overflow-x: auto;
-		width:fit-content;
-	}
-	// @media( max-width: 800px ) {
-  //   margin: 5%;
-  // }
 }
 
 .add-team {
