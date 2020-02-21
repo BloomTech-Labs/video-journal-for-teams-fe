@@ -1,7 +1,7 @@
 .member-card {
 	width: $card-width * 0.6;
-	margin: .3rem .3rem 1rem .3rem;
-
+	margin: 0 $card-spacing*.5 $card-row-spacing;
+	
 	p {
 		text-align: center;
 		// margin-bottom: 10px;
