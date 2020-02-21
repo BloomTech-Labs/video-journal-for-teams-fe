@@ -2,27 +2,49 @@
 	.app {
 		.ant-row.auth-page {
 			background-color: $pale-yellow;
+			@media( max-width: 900px ) {
+				display: flex;
+				flex-direction: column;
+				height: 100vh;
+			}
 			.ant-col.auth-main {
 				height: 100vh;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				flex-direction: column;
+				@media( max-width: 600px ) {
+					justify-content: flex-start;
+				}
 				span {
 					padding: 20px 40px;
 					align-self: flex-end;
+					font-size: 14px;
+					@media( max-width: 900px ) {
+						padding: 0 0 15px 0;
+						align-self: center;
+						order: 3;
+					}
 				}
 				.auth-content {
 					height: 100%;
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
+					p {
+						font-size: 16px;
+						margin-bottom: 20px;
+					}
 					span {
 						padding: 0;
+						justify-content: center;
 					}
 					h1 {
 						font-size: 30px;
 						font-weight: normal;
+						@media( max-width: 600px) {
+							margin-bottom: 10px;
+						}
 					}
 				}
 			}
@@ -32,6 +54,26 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				padding: 20px;
+				min-width: 300px;
+				img {
+					max-width: 100%;
+					max-height: 100%;
+				}
+				@media( max-width: 900px ) {
+					justify-content: flex-start;
+					padding: 10px;
+					width: 100%;
+					height: auto;
+					img {
+						max-width: 10%;
+					}
+				}
+				@media( max-width: 600px ) {
+					img {
+						max-width: 15%;
+					}
+				}
 			}
 			a {
 				color: $dark-blue;
@@ -41,6 +83,9 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				@media( max-width: 900px ) {
+					margin-bottom: 0;
+				}
 				.register-form-button, .login-form-button {
 					@include button($red);
 					width: 144px;
