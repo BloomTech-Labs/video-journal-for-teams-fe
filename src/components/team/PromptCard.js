@@ -17,7 +17,7 @@ const PromptCard = (props) => {
 				<div className="prompt-desc">{prompt.description}</div>
 				{/* Display videos array for a specific prompt */}
 				<Divider orientation="left">Videos</Divider>
-				<div className="userDashList">
+				<div className="card-flex">
 					{prompt.videos.map((video) => (
 						<UserVideosCard key={video.id} data={video} />
 					))}

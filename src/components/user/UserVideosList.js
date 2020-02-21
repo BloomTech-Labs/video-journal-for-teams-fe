@@ -14,7 +14,7 @@ function UserVideos(props) {
 	}, [props.id])
 
 	return (
-		<Content className="userDashList">
+		<Content className="card-flex">
 			{props.videos.map(video => (
 				<UserVideosCard key={video.id} data={video} />
 			))}

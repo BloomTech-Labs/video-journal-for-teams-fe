@@ -77,7 +77,7 @@ function MembersList(props) {
 				</Modal>
 
 				{/* Display members */}
-				<div className="userDashList">
+				<div className="card-flex">
 					{props.teamMembers.map((member) => (
 						<MemberCard key={member.id} member={member} userRole={props.userRole} />
 					))}
