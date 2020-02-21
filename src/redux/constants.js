@@ -28,6 +28,10 @@ const constants = {
 	FETCH_FEEDBACK_SUCCESS: "user:fetch-feedback-success",
 	FETCH_FEEDBACK_FAILURE: "user:fetch-feedback-failure",
 
+	SUBMIT_FEEDBACK_START: "user:submit-feedback-start",
+	SUBMIT_FEEDBACK_SUCCESS: "user:submit-feedback-success",
+	SUBMIT_FEEDBACK_FAILURE: "user:submit-feedback-failure",
+
 	//TEAM CONSTANTS
 	// POST create team
 	CREATE_TEAM_START: "teams:create-team-start",
