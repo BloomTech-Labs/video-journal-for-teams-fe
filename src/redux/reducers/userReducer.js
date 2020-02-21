@@ -17,8 +17,16 @@ const initialState = {
 	isFetching: false,
 	teams: [],
 	videos: [],
+
 	videoDetailFocus: {
-		feedback: [],
+		feedback: {
+			entries: [],
+			isSubmitting: false,
+			isFetching: false,
+			error: false,
+		},
+		isFetching: false,
+		error: false,
 	},
 
 	videoUpload: {
@@ -132,27 +140,82 @@ const userReducer = (state = initialState, { type, payload }) => {
 				error: payload,
 			};
 
-		//* FEEDBACK FETCHING (Individual video)
+		//* FETCHING FEEDBACK FOR A VIDEO
 		case constants.FETCH_FEEDBACK_START:
 			return {
 				...state,
-				isFetching: true,
-				error: null,
+				videoDetailFocus: {
+					...state.videoDetailFocus,
+					feedback: {
+						...state.videoDetailFocus.feedback,
+						isFetching: true,
+						error: false,
+					},
+				},
 			};
 
 		case constants.FETCH_FEEDBACK_SUCCESS:
 			return {
 				...state,
-				videoDetailFocus: { ...state.videoDetailFocus, feedback: payload },
-				isFetching: false,
-				error: null,
+				videoDetailFocus: {
+					...state.videoDetailFocus,
+					feedback: {
+						...state.videoDetailFocus.feedback,
+						entries: payload,
+						isFetching: false,
+					},
+				},
 			};
 
 		case constants.FETCH_FEEDBACK_FAILURE:
 			return {
 				...state,
-				isFetching: false,
-				error: payload,
+				videoDetailFocus: {
+					...state.videoDetailFocus,
+					feedback: {
+						...state.videoDetailFocus.feedback,
+						isFetching: false,
+						error: payload,
+					},
+				},
+			};
+
+		case constants.SUBMIT_FEEDBACK_START:
+			return {
+				...state,
+				videoDetailFocus: {
+					...state.videoDetailFocus,
+					feedback: {
+						...state.videoDetailFocus.feedback,
+						isSubmitting: true,
+						error: false,
+					},
+				},
+			};
+
+		case constants.SUBMIT_FEEDBACK_SUCCESS:
+			return {
+				...state,
+				videoDetailFocus: {
+					...state.videoDetailFocus,
+					feedback: {
+						...state.videoDetailFocus.feedback,
+						isSubmitting: false,
+					},
+				},
+			};
+
+		case constants.SUBMIT_FEEDBACK_FAILURE:
+			return {
+				...state,
+				videoDetailFocus: {
+					...state.videoDetailFocus,
+					feedback: {
+						...state.videoDetailFocus.feedback,
+						isSubmitting: false,
+						error: payload,
+					},
+				},
 			};
 
 		case constants.FETCH_INVITE_START:
