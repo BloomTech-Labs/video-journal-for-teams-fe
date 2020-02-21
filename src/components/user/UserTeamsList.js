@@ -7,7 +7,7 @@ import { fetchUserTeams } from '../../redux/actions/userActions';
 import { createTeam } from "../../redux/actions/teamActions";
 import Carousel from "../Carousel";
 
-const TeamList = ({ id, teams }) => {
+const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 	const [team, setTeam] = useState({});
 	const [showModal, setShowModal] = useState(false)
 
@@ -15,7 +15,7 @@ const TeamList = ({ id, teams }) => {
 
 	useEffect(() => {
 		fetchUserTeams(id)
-	}, [id])
+	}, [id, fetchUserTeams])
 
 	const handleInput = (e) => {
 		setTeam({ ...team, [e.target.name]: e.target.value });
@@ -71,4 +71,9 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, {fetchUserTeams, createTeam})(TeamList);
+const mapActionsToProps = {
+	fetchUserTeams,
+	createTeam
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(TeamList);
