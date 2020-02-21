@@ -1,6 +1,6 @@
 .video-card {
-	min-width: 160px;
-	width: 160px;
+	min-width: $card-width;
+	width: $card-width;
 	height: 250px;
 	cursor: pointer;
 	margin: 0 0 25px;
@@ -14,6 +14,7 @@
     justify-content: center;
     background-color: black;
 	}
+	
 	.ant-card-body {
 		overflow: hidden;
 		padding: 10px;

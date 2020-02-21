@@ -1,27 +1,51 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 62.5%;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing : antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size              : 62.5%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 .app {
-  height: 100vh;
-  text-align: center;
+	height    : 100vh;
+	text-align: center;
 }
 
 .small {
 	font-size: .8rem;
 }
+
 .tiny {
-	font-size: .65rem;
+	font-size : .65rem;
 	font-style: oblique;
+}
+
+h1 {
+	font-size: $lg-heading-font-size;
+}
+
+.container {
+	max-width: 1000px;
+	width    : 100%;
+	margin   : auto;
+	position : relative;
+}
+
+.adding-button {
+	position: absolute;
+	top     : 25px;
+	left    : 25px;
+}
+
+.card-flex {
+	display        : flex;
+	flex-wrap      : wrap;
+	justify-content: flex-start;
 }
