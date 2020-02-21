@@ -12,7 +12,7 @@ import { Form, Input, Button } from "antd";
 // Additional Ant Design components
 const { TextArea } = Input;
 
-function FeedbackForm({ videoId, submitFeedback }) {
+function FeedbackForm({ videoId, submitFeedback, isSubmitting }) {
 	const [feedback, setFeedback] = useState({
 		post: "",
 	});
@@ -35,7 +35,12 @@ function FeedbackForm({ videoId, submitFeedback }) {
 				<TextArea name="post" rows={4} value={feedback.post} onChange={handleInput}></TextArea>
 			</Form.Item>
 			<Form.Item>
-				<Button type="primary" htmlType="submit" className="feedback-form-button">
+				<Button
+					loading={isSubmitting}
+					type="primary"
+					htmlType="submit"
+					className="feedback-form-button"
+					disabled={!feedback.post ? true : false}>
 					Submit Feedback
 				</Button>
 			</Form.Item>
@@ -43,8 +48,12 @@ function FeedbackForm({ videoId, submitFeedback }) {
 	);
 }
 
+const mapStateToProps = (state) => ({
+	isSubmitting: state.User.videoDetailFocus.feedback.isSubmitting,
+});
+
 const mapActionsToProps = {
 	submitFeedback,
 };
 
-export default connect(null, mapActionsToProps)(FeedbackForm);
+export default connect(mapStateToProps, mapActionsToProps)(FeedbackForm);
