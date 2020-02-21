@@ -37,3 +37,15 @@ h1 {
 	margin   : auto;
 	position : relative;
 }
+
+.adding-button {
+	position: absolute;
+	top     : 25px;
+	left    : 25px;
+}
+
+.card-flex {
+	display        : flex;
+	flex-wrap      : wrap;
+	justify-content: flex-start;
+}

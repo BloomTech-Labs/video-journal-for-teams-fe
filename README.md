@@ -5,10 +5,9 @@
 
 Project deployed here: [https://www.alpacavids.com]
 
-Group Gmail account for accessing Netlify, Heroku, and Google Analytics
+There is a group Gmail account for accessing Netlify, Heroku, and Google Analytics 
 
-- email: alpacavideojournal@gmail.com
-- password: ztMuo@ms2P6t7Gt4Efwn
+(login/password info in secure PVD Notion document)
 
 ## Contributors
 
