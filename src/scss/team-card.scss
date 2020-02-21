@@ -1,0 +1,50 @@
+.team-cards {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.add-team {
+	margin: 10px;
+	min-width: 160px;
+	button {
+		background-color: white;
+		border: 2px dashed $alpaca-green;
+		width: 50px;
+		height: 50px;
+		&:hover {
+			background-color: $alpaca-green;
+			border: 2px dashed white;
+			i {
+				color: white;
+			}
+		}
+		i {
+			color: $alpaca-green;
+		}
+	}
+	p {
+		color: $medium-grey;
+		font-size: 13px;
+		margin-top: 20px;
+	}
+}
+
+.teamCard, .add-team {
+	width: 160px;
+	height: 200px;
+	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+}
+
+.teamCard {
+	.ant-card-body {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+}
+
+.team-cards::-webkit-scrollbar {
+	display: none;
+}

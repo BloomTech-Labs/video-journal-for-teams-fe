@@ -1,10 +1,18 @@
 .video-card {
+	min-width: $card-width;
 	width: $card-width;
 	height: 250px;
 	cursor: pointer;
 	margin: 0 0 25px;
 	overflow: hidden;
+	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 	.ant-card-cover {
+		height: 127px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
 	}
 	
 	.ant-card-body {
