@@ -61,7 +61,7 @@ const Login = (props) => {
     <>
       <AuthSider>
         <span>
-          Not a Member? <Link to="/register">Register here</Link>
+          Not a Member? <Link to="/register" onClick={() => props.clearError()}>Register here</Link>
         </span>
         <div className="auth-content">
           <h1>Welcome Back!</h1>

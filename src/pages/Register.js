@@ -73,7 +73,7 @@ const Register = (props) => {
       <>
         <AuthSider>
           <span>
-            Already a member? <Link to="/">Sign in</Link>
+            Already a member? <Link to="/" onClick={() => props.clearError()}>Sign in</Link>
           </span>`
           {/* Alert will show any form validation error */}
           <div className="auth-content">
