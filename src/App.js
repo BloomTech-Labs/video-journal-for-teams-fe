@@ -47,7 +47,7 @@ function App(props) {
 
 			<PrivateRoute exact path="/user-dashboard" component={UserDashboard} />
 
-			<PrivateRoute exact path="/user-dashboard/video/:id" component={VideoDetails} />
+			<PrivateRoute exact path="/videos/:id" component={VideoDetails} />
 
 			<PrivateRoute path="/profile" component={UserProfileDashboard} />
 
