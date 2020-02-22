@@ -50,6 +50,7 @@ const Register = (props) => {
   }, [props.isLogged]);
 
   const handleInput = (e) => {
+    props.clearError();
     setApplicant({ ...applicant, [e.target.name]: e.target.value });
   };
 

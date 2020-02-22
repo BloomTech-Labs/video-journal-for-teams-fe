@@ -33,6 +33,7 @@ const Login = (props) => {
   }, [props.isLogged]);
 
   const handleInput = (e) => {
+    props.clearError();
     setUser({ ...user, [e.target.name]: e.target.value.trim() });
   };
 
