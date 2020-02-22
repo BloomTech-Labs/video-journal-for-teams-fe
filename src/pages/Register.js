@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-import Alpaca from '../imgs/alpaca-logo.png';
-import AlpacaNoText from '../imgs/alpaca-logo-no-text.png';
+import AuthSider from "../components/AuthSider";
 
 // Redux
 import { connect } from "react-redux";
 
 // Components
-import { Layout, Form, Input, Button, Alert, Row, Col } from "antd";
-
-// Styles
-import "../components/profile/tempStyles.css";
+import { Form, Input, Button, Alert } from "antd";
 
 // Actions
 import { registerUser, setError, clearError } from "../redux/actions/userActions";
-
-const { Sider, Content } = Layout;
 
 //This is the registration form schema
 //If the data doesn't look like this when we submit then it will fail with a message
@@ -76,13 +70,8 @@ const Register = (props) => {
   };
 
   return (
-    <Row className="auth-page">
-      <Col xs={2} sm={4} md={6} lg={6} xl={8} className="auth-sider">
-      <img alt="Alpaca Vids Logo" className="alpaca-logo" src={Alpaca}></img>
-        <img alt="Alpaca Vids Logo" className="alpaca-logo-no-text" src={AlpacaNoText}></img>
-        <p>Alpaca Vids</p>
-        </Col>
-        <Col xl={16} className="auth-main">
+      <>
+        <AuthSider>
           <span>
             Already a member? <Link to="/">Sign in</Link>
           </span>`
@@ -164,8 +153,8 @@ const Register = (props) => {
             </Form.Item>
           </Form>
           </div>
-        </Col>
-      </Row>
+        </AuthSider>
+      </>
   );
 };
 

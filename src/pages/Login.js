@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-import Alpaca from '../imgs/alpaca-logo.png';
-import AlpacaNoText from '../imgs/alpaca-logo-no-text.png';
+import AuthSider from "../components/AuthSider";
 
 // Redux
 import { connect } from "react-redux";
@@ -11,12 +10,7 @@ import { connect } from "react-redux";
 import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 // Components
-import { Layout, Form, Icon, Input, Button, Checkbox, Alert, Row, Col } from "antd";
-
-// Styles
-import "../components/profile/tempStyles.css";
-
-const { Sider, Content } = Layout;
+import { Form, Icon, Input, Button, Alert } from "antd";
 
 const emailLoginSchema = yup.object().shape({
   email: yup.string().email(),
@@ -64,17 +58,12 @@ const Login = (props) => {
   };
 
   return (
-    <Row className="auth-page">
-      <Col xs={2} sm={4} md={6} lg={6} xl={8} className="auth-sider">
-        <img alt="Alpaca Vids Logo" className="alpaca-logo" src={Alpaca}></img>
-        <img alt="Alpaca Vids Logo" className="alpaca-logo-no-text" src={AlpacaNoText}></img>
-        <p>Alpaca Vids</p>
-      </Col>
-        <Col xl={16} className="auth-main">
+    <>
+      <AuthSider>
         <span>
-            Not a Member? <Link to="/register">Register here</Link>
-          </span>
-          <div className="auth-content">
+          Not a Member? <Link to="/register">Register here</Link>
+        </span>
+        <div className="auth-content">
           <h1>Welcome Back!</h1>
           <p>Please sign in</p>
         {props.error ? <Alert message={props.error} type="error" /> : null}
@@ -111,8 +100,8 @@ const Login = (props) => {
           </Form.Item>
         </Form>
         </div>
-        </Col>
-      </Row>
+      </AuthSider>
+    </>
   );
 };
 
