@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-import Alpaca from '../imgs/Group 33.png';
+import Alpaca from '../imgs/alpaca-logo.png';
 
 // Redux
 import { connect } from "react-redux";
