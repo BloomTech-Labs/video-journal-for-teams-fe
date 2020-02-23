@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamVideos, createPrompt, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Card, Row, Col, Modal, Form, Input, Button, Collapse, Divider } from "antd";
+import { Layout, Modal, Form, Input, Button, Divider } from "antd";
 import "./teamTest.css";
 import PromptCard from "./PromptCard.js";
 
-const { Header, Content } = Layout;
-const { Panel } = Collapse;
+const { Content } = Layout;
 
-const PromptVideoList = (props) => {
+const PromptVideoList = ({fetchTeamVideos, newPrompt, createPrompt, teamPromptsAndVideos, userRole}) => {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false);
 	const [prompt, setPrompt] = useState({ question: "", description: "" });
 
 	let { team_id } = useParams();
-	let history = useHistory();
 
 	useEffect(() => {
-		props.fetchTeamVideos(team_id);
-	}, [team_id, props.newPrompt]);
+		fetchTeamVideos(team_id);
+	}, [team_id, newPrompt, fetchTeamVideos]);
 
 	const toggleModal = () => {
 		setShowModal(!showModal);
@@ -27,7 +25,7 @@ const PromptVideoList = (props) => {
 
 	const handleOk = (e) => {
 		toggleModal();
-		props.createPrompt(prompt, team_id);
+		createPrompt(prompt, team_id);
 	};
 
 	const handleInput = (e) => {
@@ -35,13 +33,13 @@ const PromptVideoList = (props) => {
 	};
 	//#endregion CLICK TO UNCOLLAPSE COMPONENT LOGIC
 
-	if (!props.teamPromptsAndVideos) {
+	if (!teamPromptsAndVideos) {
 		return <h2>Loading...</h2>;
 	} else {
 		return (
 			<Content>
-				<h1>Prompts({props.teamPromptsAndVideos.length})</h1>
-				{props.userRole === 1 ? null : (
+				<h1>Prompts({teamPromptsAndVideos.length})</h1>
+				{userRole === 1 ? null : (
 					<Button onClick={toggleModal} type="primary" shape="round" icon="plus" className="adding-button">
 						New Prompt
 					</Button>
@@ -57,7 +55,7 @@ const PromptVideoList = (props) => {
 						</Form.Item>
 					</Form>
 				</Modal>
-				{props.teamPromptsAndVideos.map((prompt) => (
+				{teamPromptsAndVideos.map((prompt) => (
 					<PromptCard key={prompt.id} data={prompt} />
 				))}
 			</Content>

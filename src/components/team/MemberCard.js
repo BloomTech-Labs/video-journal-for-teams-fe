@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { Card, Avatar, Icon } from 'antd';
+import { Card, Avatar } from 'antd';
 import EditMemberCard from './EditMemberCard';
 
 function MemberCard(props) {
 	const { member, userRole } = props;
 
-	const actions = () => {
-		return (userRole === 1) ? null : (<EditMemberCard member={member} />);
-	}
+	// const actions = () => {
+	// 	return (userRole === 1) ? null : (<EditMemberCard member={member} />);
+	// }
 
 	return (
 		<Card
@@ -18,7 +18,7 @@ function MemberCard(props) {
 		>
 			<div className='image-container'>
 				{(!member.avatar) ? (<Avatar size={64} icon="user" />) : (
-					<img src={`https://video-journal.herokuapp.com/public/avatars/${member.avatar}`} />)}
+					<img alt="user avatar" src={`https://video-journal.herokuapp.com/public/avatars/${member.avatar}`} />)}
 			</div>
 			<p className="small">{member.user_full_name}</p>
 			{userRole === 1 ? null : (<EditMemberCard member={member} />)}

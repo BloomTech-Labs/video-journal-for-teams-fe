@@ -29,7 +29,7 @@ const formSchema = yup.object().shape({
   confirm_password: yup.string().oneOf([yup.ref("password"), null], "Passwords must match."),
 });
 
-const Register = (props) => {
+const Register = ({isLogged, clearError, registerUser, setError, error}) => {
   const [applicant, setApplicant] = useState({
     first_name: "",
     last_name: "",
@@ -43,14 +43,14 @@ const Register = (props) => {
 
   //Redirect if logged already logged in OR on successful registration
   useEffect(() => {
-    if (props.isLogged) {
-      props.clearError();
+    if (isLogged) {
+      clearError();
       history.push("/user-dashboard");
     }
-  }, [props.isLogged]);
+  }, [isLogged, clearError, history]);
 
   const handleInput = (e) => {
-    props.clearError();
+    clearError();
     setApplicant({ ...applicant, [e.target.name]: e.target.value });
   };
 
@@ -63,10 +63,10 @@ const Register = (props) => {
       .validate(applicant, { abortEarly: true })
       .then(() => {
         //Data is good, proceed to registration action
-        props.registerUser(applicant);
+        registerUser(applicant);
       })
       .catch((validationError) => {
-        props.setError(validationError.errors);
+        setError(validationError.errors);
       });
   };
 
@@ -74,12 +74,12 @@ const Register = (props) => {
       <>
         <AuthSider>
           <span>
-            Already a member? <Link to="/" onClick={() => props.clearError()}>Sign in</Link>
+            Already a member? <Link to="/" onClick={() => clearError()}>Sign in</Link>
           </span>`
           {/* Alert will show any form validation error */}
           <div className="auth-content">
             <h1>Create Account</h1>
-          {props.error ? <Alert message={props.error} type="error" /> : null}
+          {error ? <Alert message={error} type="error" /> : null}
           <Form onSubmit={submitRegistration} className="register-form" data-testid="register-form" labelAlign="left">
           <Form.Item label="First Name"labelAlign="left">
               <Input

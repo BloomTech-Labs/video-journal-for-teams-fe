@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTeamMembers, createInvite, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Row, Col, Modal, Button, Form, Input, Divider } from 'antd';
+import { Layout, Modal, Button, Form, Input, Divider } from 'antd';
 import './teamTest.css';
 import MemberCard from './MemberCard';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 function MembersList(props) {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
@@ -26,7 +26,6 @@ function MembersList(props) {
 		props.createInvite(team_id, { team_name: props.team.name })
 	}
 
-	console.log('Comp invite link', props.invite.link)
 	const handleOk = (e) => {
 		toggleModal();
 		copyLink();
@@ -79,7 +78,7 @@ function MembersList(props) {
 				{/* Display members */}
 				<div className="card-flex">
 					{props.teamMembers.map((member) => (
-						<MemberCard key={member.id} member={member} userRole={props.userRole} />
+						<MemberCard key={member.user_id} member={member} userRole={props.userRole} />
 					))}
 				</div>
 			</Content >
