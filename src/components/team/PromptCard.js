@@ -1,8 +1,7 @@
-import React, { useParams } from "react";
-import { withRouter, Link } from "react-router-dom";
+import React from "react";
+import { withRouter } from "react-router-dom";
 import { Button, Card, Collapse, List, Divider } from "antd";
 import "antd/dist/antd.css";
-import PostTeamVideo from "../../pages/PostTeamVideo.js";
 import UserVideosCard from "../user/UserVideosCard.js";
 
 const { Panel } = Collapse;
