@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Form, Input } from "antd";
 
-const PromptModal = (props) => {
+const AddPromptModal = (props) => {
 	const [prompt, setPrompt] = useState({ question: "", description: "" });
 
 	const handleInput = (e) => {
@@ -60,4 +60,4 @@ const PromptModal = (props) => {
 	);
 }
 
-export default Form.create({ name: "add-prompt" })(PromptModal);
+export default Form.create({ name: "add-prompt" })(AddPromptModal);

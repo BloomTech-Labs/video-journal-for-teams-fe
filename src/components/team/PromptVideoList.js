@@ -7,7 +7,7 @@ import { fetchTeamVideos, createPrompt, setError, clearError } from "../../redux
 
 
 //Components
-import PromptModal from "./PromptModal.js";
+import AddPromptModal from "./AddPromptModal.js";
 import PromptCard from "./PromptCard.js";
 
 //Styling
@@ -43,7 +43,7 @@ const PromptVideoList = (props) => {
 					</Button>
 				)}
 				<Divider />
-				<PromptModal
+				<AddPromptModal
 					isVisible={showModal}
 					setVisibility={setShowModal}
 					createPrompt={props.createPrompt}
