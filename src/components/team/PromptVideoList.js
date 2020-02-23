@@ -50,7 +50,7 @@ const PromptVideoList = (props) => {
 					teamId={props.teamId}
 				/>
 				{props.teamPromptsAndVideos.map((prompt) => (
-					<PromptCard key={prompt.id} data={prompt} />
+					<PromptCard key={prompt.id} data={prompt} teamId={props.teamId} />
 				))}
 			</Content>
 		);

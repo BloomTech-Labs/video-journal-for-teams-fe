@@ -1,8 +1,8 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { Card, Collapse, List, Divider } from "antd";
+import React, { useParams } from "react";
+import { withRouter, Link } from "react-router-dom";
+import { Button, Card, Collapse, List, Divider } from "antd";
 import "antd/dist/antd.css";
-
+import PostTeamVideo from "../../pages/PostTeamVideo.js";
 import UserVideosCard from "../user/UserVideosCard.js";
 
 const { Panel } = Collapse;
@@ -18,12 +18,21 @@ const PromptCard = (props) => {
 				{/* Display videos array for a specific prompt */}
 				<Divider orientation="left">Videos</Divider>
 				<div className="card-flex">
+					<Button
+						type="primary"
+						shape="round"
+						size="large"
+						icon="plus"
+						href={`/teams/${props.teamId}/videos/post/${prompt.id}`}>
+						Record
+					</Button>
+
 					{prompt.videos.map((video) => (
 						<UserVideosCard key={video.id} data={video} />
 					))}
 				</div>
 			</Panel>
-		</Collapse>
+		</Collapse >
 	);
 };
 
