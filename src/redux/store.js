@@ -15,14 +15,14 @@ const rootPersistConfig = {
   key: 'root',
   storage: storage,
   stateReconciler: autoMergeLevel2,
-  blacklist: ['User', 'Team']
+  blacklist: ['User', 'Team', 'Data']
  };
 
 const userPersistConfig = {
   key: 'User',
   storage: storage,
   stateReconciler: autoMergeLevel2,
-  blacklist: ['error', 'invite']
+  whitelist: ['userId']
 };
 
 const teamPersistConfig = {
