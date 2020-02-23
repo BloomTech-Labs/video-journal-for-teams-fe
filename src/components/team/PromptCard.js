@@ -17,15 +17,16 @@ const PromptCard = (props) => {
 				{/* Display videos array for a specific prompt */}
 				<Divider orientation="left">Videos</Divider>
 				<div className="card-flex">
-					<Button
-						type="primary"
-						shape="round"
-						size="large"
-						icon="plus"
-						href={`/teams/${props.teamId}/videos/post/${prompt.id}`}>
-						Record
+					<div style={{ "display": "flex", "alignItems": "center" }}>
+						<Button
+							type="primary"
+							shape="round"
+							size="large"
+							icon="plus"
+							href={`/teams/${props.teamId}/videos/post/${prompt.id}`}>
+							Record
 					</Button>
-
+					</div>
 					{prompt.videos.map((video) => (
 						<UserVideosCard key={video.id} data={video} />
 					))}
