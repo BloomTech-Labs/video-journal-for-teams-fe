@@ -19,7 +19,7 @@ function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetchFeedba
 			fetchFeedback(videoId);
 			setShowFeedback(true);
 		}
-	}, [videoOwnerId]);
+	}, [videoOwnerId, fetchFeedback, loggedInUserId, videoId]);
 
 	if (showFeedback) {
 		return <FeedbackTable feedback={feedback} />;

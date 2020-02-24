@@ -38,7 +38,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 			<Carousel component={TeamCard} data={teams} name={"videos"}>
 				<Card className="add-team">
 					<Button onClick={toggleModal} type="primary" shape="circle">
-					<Icon type="plus-circle" theme="filled" />
+						<Icon type="plus-circle" theme="filled" />
 					</Button>
 					<p>Create a team</p>
 				</Card>
@@ -58,11 +58,6 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 						</Form.Item>
 					</Form>
 				</Modal>
-				{/* {
-					props.isFetching ? "Loading..." : props.teams.map(data => {
-						return <TeamCard key={data.id} data={data} />;
-					})
-				} */}
 			</Carousel>
 		</>
 	);

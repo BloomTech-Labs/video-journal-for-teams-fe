@@ -45,7 +45,7 @@ const VideoDetails = ({ video, fetchVideo }) => {
 		if (!video.id || video.id !== Number(id)) {
 			fetchVideo(id);
 		}
-	}, [id]);
+	}, [id, fetchVideo, video.id]);
 
 	if (video.id !== Number(id)) {
 		return <LoadingView />;

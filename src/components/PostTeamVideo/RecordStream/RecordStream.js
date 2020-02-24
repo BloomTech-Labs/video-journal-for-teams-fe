@@ -36,7 +36,7 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 		if (mediaRecorder) {
 			finalizeMediaRecorderSetup();
 		}
-	}, [mediaRecorder]);
+	}, [mediaRecorder, finalizeMediaRecorderSetup]);
 
 	//* Setup for media stream init, linking to video source and recorder init
 	function setupMediaStream() {
