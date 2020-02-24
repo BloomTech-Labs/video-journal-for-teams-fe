@@ -33,7 +33,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 	return (
 		<>
 			<div className="dashboard-header">
-				<h3>My&nbsp;Teams</h3>
+				<h2>My&nbsp;Teams</h2>
 			</div>
 			<Carousel component={TeamCard} data={teams} name={"videos"}>
 				<Card className="add-team">

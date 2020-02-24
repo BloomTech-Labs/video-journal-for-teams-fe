@@ -26,17 +26,16 @@ const PromptVideoList = ({createPrompt, teamPromptsAndVideos, userRole, teamId})
 		return (
 			<Content className="prompts-list">
 				<div className="dashboard-header">
-					<h3>Prompts ({teamPromptsAndVideos.length})</h3>
+					<h2>Prompts ({teamPromptsAndVideos.length})</h2>
 					{userRole === 1 ? null : (
 					<Button
 						icon="plus"
 						className="adding-button"
 						onClick={() => setShowModal(true)}>
-						New Prompt
+						Add Prompt
 					</Button>
 				)}
 				</div>
-				<Divider />
 		 			<AddPromptModal
 					isVisible={showModal}
 					setVisibility={setShowModal}

@@ -18,21 +18,17 @@ function UserVideos({fetchUserVideos, id, videos}) {
 		console.log("test")
 	}, [id, fetchUserVideos])
 
-	console.log(videos)
-
 	return (
 		<Carousel
 			component={UserVideosCard}
 			data={videos}
 		>
 			<Button
-				type="primary"
-				shape="round"
+				className="add-video-btn"
 				size="large"
-				icon="plus"
+				icon="video-camera"
 				// href={`/teams/${props.teamId}/videos/post/${prompt.id}`}
 			>
-				Record
 			</Button>
 		</Carousel>
 	)

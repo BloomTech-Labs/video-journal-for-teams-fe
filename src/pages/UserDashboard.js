@@ -21,7 +21,7 @@ function UserDashboard(props) {
 				<h1>Dashboard</h1>
 				<TeamList />
 				<div className="dashboard-header">
-					<h3>My&nbsp;Videos</h3>
+					<h2>My&nbsp;Videos</h2>
 				</div>
 				<Carousel component={UserVideosCard} data={props.videos} name={"videos"}/>
 			</div>
