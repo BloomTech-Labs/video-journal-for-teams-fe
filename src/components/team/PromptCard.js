@@ -8,7 +8,6 @@ const { Panel } = Collapse;
 
 const PromptCard = (props) => {
 	const prompt = props.data;
-	console.log(props.data)
 
 	return (
 		<Collapse className="prompt-item" key={prompt.id}>
