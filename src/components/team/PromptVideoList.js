@@ -40,7 +40,7 @@ const PromptVideoList = (props) => {
 	} else {
 		return (
 			<Content>
-				<h1>Prompts({props.teamPromptsAndVideos.length})</h1>
+				<h2>Prompts({props.teamPromptsAndVideos.length})</h2>
 				{props.userRole === 1 ? null : (
 					<Button onClick={toggleModal} type="primary" shape="round" icon="plus" className="adding-button">
 						New Prompt
