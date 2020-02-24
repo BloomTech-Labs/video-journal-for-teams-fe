@@ -1,24 +1,36 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Layout } from 'antd';
-import 'antd/dist/antd.css';
-import UserVideosCard from "./UserVideosCard";
-import { fetchUserVideos } from '../../redux/actions/userActions';
 
-const { Content } = Layout;
+//Redux
+import { connect } from "react-redux";
+import { fetchUserVideos } from "../../redux/actions/userActions";
+
+//ANTD
+import { Button } from "antd";
+
+//Components
+import UserVideosCard from "./UserVideosCard";
+import Carousel from "../shared/Carousel";
 
 
 function UserVideos({fetchUserVideos, id, videos}) {
 	useEffect(() => {
 		fetchUserVideos(id)
+		console.log("test")
 	}, [id, fetchUserVideos])
 
 	return (
-		<Content className="card-flex">
-			{videos.map(video => (
-				<UserVideosCard key={video.id} data={video} />
-			))}
-		</Content>
+		<Carousel
+			component={UserVideosCard}
+			data={videos}
+		>
+			<Button
+				className="add-video-btn"
+				size="large"
+				icon="video-camera"
+				// href={`/teams/${props.teamId}/videos/post/${prompt.id}`}
+			>
+			</Button>
+		</Carousel>
 	)
 }
 

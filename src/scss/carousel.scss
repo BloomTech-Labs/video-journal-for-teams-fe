@@ -2,16 +2,13 @@
 	display: flex;
 	align-items: center;
 	position: relative;
-	min-height: 220px;
 	.carouselItems {
 		display: flex;
 		flex-grow: 1;
 		flex-wrap: nowrap;
 		overflow-x: auto;
 		width:fit-content;
-		.video-card {
-			margin: 10px;
-		}
+		align-items: center;
 	}
 	.leftButton, .rightButton {
 		border: none;

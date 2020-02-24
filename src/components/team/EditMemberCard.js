@@ -96,7 +96,7 @@ function EditMemberCard(props) {
 					: (<Tooltip placement="bottom" title={`Demote ${member.user_full_name}`}><Icon type="down-circle" theme="twoTone" twoToneColor="#eb2f96" onClick={showRoleConfirm} /></Tooltip>)}
 			</Card.Grid>
 			<Card.Grid alt="Remove member from team" style={{ width: "50%", textAlign: 'center', padding: 0 }}>
-				<Tooltip placement="bottom" title={`REMOVE ${member.user_full_name}`}><Icon type="stop" theme="twoTone" twoToneColor="#ff0000" onClick={showDeleteConfirm} /></Tooltip>
+				<Tooltip placement="bottom" title={`Remove ${member.user_full_name}`}><Icon type="stop" theme="twoTone" twoToneColor="#ff0000" onClick={showDeleteConfirm} /></Tooltip>
 			</Card.Grid>
 		</Card>
 	)
