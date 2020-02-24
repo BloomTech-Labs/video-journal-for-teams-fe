@@ -19,9 +19,15 @@ function MembersList(props) {
 	// #endregion CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 
 		return (
+<<<<<<< HEAD
 			<>
 			<div className="dashboard-header">
 				<h3>Members ({props.teamMembers.length})</h3>
+=======
+			<Content>
+				<h2>Members({props.teamMembers.length})</h2>
+				{/* Add member invite link button */}
+>>>>>>> adb07741258160995824b45cd7c6082bcbec06e0
 				{props.userRole === 1 ? null : (
 						<Button
 							icon="user"
