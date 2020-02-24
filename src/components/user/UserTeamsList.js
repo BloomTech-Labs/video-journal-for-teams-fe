@@ -36,12 +36,14 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 				<h2>My&nbsp;Teams</h2>
 			</div>
 			<Carousel component={TeamCard} data={teams} name={"videos"}>
-				<Card className="add-team">
-					<Button onClick={toggleModal} type="primary" shape="circle">
-						<Icon type="plus-circle" theme="filled" />
-					</Button>
-					<p>Create a team</p>
-				</Card>
+				<Button className="add-team" onClick={toggleModal}>
+					<Card>
+						<div>
+							<Icon type="plus-circle" theme="filled" />
+						</div>
+						<p>Create a team</p>
+					</Card>
+				</Button>
 				<Modal
 					title="Create New Team"
 					visible={showModal}
