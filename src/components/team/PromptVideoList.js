@@ -30,7 +30,7 @@ const PromptVideoList = ({fetchTeamVideos, newPrompt, createPrompt, teamPromptsA
 	} else {
 		return (
 			<Content>
-				<h1>Prompts({teamPromptsAndVideos.length})</h1>
+				<h2>Prompts({teamPromptsAndVideos.length})</h2>
 				{userRole === 1 ? null : (
 					<Button
 						type="primary"

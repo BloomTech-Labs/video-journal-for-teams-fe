@@ -25,7 +25,7 @@ function MembersList(props) {
 
 		return (
 			<Content>
-				<h1>Members({props.teamMembers.length})</h1>
+				<h2>Members({props.teamMembers.length})</h2>
 				{/* Add member invite link button */}
 				{props.userRole === 1 ? null : (
 					<Button
