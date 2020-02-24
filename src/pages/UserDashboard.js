@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import NavAndHeader from "../components/nav/NavAndHeader";
 import TeamList from '../components/user/UserTeamsList';
-import Carousel from "../components/Carousel";
+import Carousel from "../components/shared/Carousel";
 import UserVideosCard from "../components/user/UserVideosCard";
 
 import { fetchUserVideos } from '../redux/actions/userActions';

@@ -5,7 +5,7 @@ import TeamCard from "./UserTeamsCard";
 import { Modal, Button, Form, Input, Card, Icon } from 'antd';
 import { fetchUserTeams } from '../../redux/actions/userActions';
 import { createTeam } from "../../redux/actions/teamActions";
-import Carousel from "../Carousel";
+import Carousel from "../shared/Carousel";
 
 const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 	const [team, setTeam] = useState({});
