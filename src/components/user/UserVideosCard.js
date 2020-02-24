@@ -6,7 +6,6 @@ const { Meta } = Card;
 
 const UserVideosCard = (props) => {
 	const data = props.data;
-	console.log(props)
 	const humanDate = new Date(
 		Date.parse(data.created_at))
 		.toLocaleString("en-GB", {
