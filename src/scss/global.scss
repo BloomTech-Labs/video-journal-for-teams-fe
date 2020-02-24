@@ -47,14 +47,45 @@ h1 {
 	position : relative;
 }
 
-.adding-button {
-	position: absolute;
-	top     : 25px;
-	left    : 25px;
-}
-
 .card-flex {
 	display        : flex;
 	flex-wrap      : wrap;
 	justify-content: flex-start;
+}
+
+.dashboard {
+	margin: 3%;
+	@media( max-width: 600px ) {
+    margin: 10%;
+	}
+	@media( max-width: 800px ) {
+    margin: 5%;
+  }
+	h1 {
+		font-style: normal;
+		font-weight: bold;
+		font-size: 36px;
+		line-height: 45px;
+		color: $dark-grey;
+		text-align: left;
+		margin: 20px 40px;
+	}
+	h3 {
+		text-align: left;
+		margin-top: 10px;
+		color: $dark-grey;
+		font-weight: 600;
+		font-size: 17px;
+	}
+}
+
+.dashboard-header {
+	display: flex;
+  align-items: center;
+	justify-content: space-between;
+	padding: 0 40px;
+	button {
+		@include button($alpaca-green);
+		min-width: 142px;
+	}
 }

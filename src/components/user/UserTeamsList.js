@@ -31,35 +31,40 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 	}
 
 	return (
-		<Carousel component={TeamCard} data={teams} name={"videos"}>
-			<Card className="add-team">
-				<Button onClick={toggleModal} type="primary" shape="circle">
-				<Icon type="plus-circle" theme="filled" />
-				</Button>
-				<p>Create a team</p>
-			</Card>
-			<Modal
-				title="Create New Team"
-				visible={showModal}
-				onOk={handleOk}
-				onCancel={toggleModal}
-				okText="Create Team"
-			>
-				<Form layout="vertical">
-					<Form.Item label="Team Name">
-						<Input onChange={handleInput} name="name" />
-					</Form.Item>
-					<Form.Item label="Team Description">
-						<Input onChange={handleInput} name="description" />
-					</Form.Item>
-				</Form>
-			</Modal>
-			{/* {
-				props.isFetching ? "Loading..." : props.teams.map(data => {
-					return <TeamCard key={data.id} data={data} />;
-				})
-			} */}
-		</Carousel>
+		<>
+			<div className="dashboard-header">
+				<h3>My&nbsp;Teams</h3>
+			</div>
+			<Carousel component={TeamCard} data={teams} name={"videos"}>
+				<Card className="add-team">
+					<Button onClick={toggleModal} type="primary" shape="circle">
+					<Icon type="plus-circle" theme="filled" />
+					</Button>
+					<p>Create a team</p>
+				</Card>
+				<Modal
+					title="Create New Team"
+					visible={showModal}
+					onOk={handleOk}
+					onCancel={toggleModal}
+					okText="Create Team"
+				>
+					<Form layout="vertical">
+						<Form.Item label="Team Name">
+							<Input onChange={handleInput} name="name" />
+						</Form.Item>
+						<Form.Item label="Team Description">
+							<Input onChange={handleInput} name="description" />
+						</Form.Item>
+					</Form>
+				</Modal>
+				{/* {
+					props.isFetching ? "Loading..." : props.teams.map(data => {
+						return <TeamCard key={data.id} data={data} />;
+					})
+				} */}
+			</Carousel>
+		</>
 	);
 };
 

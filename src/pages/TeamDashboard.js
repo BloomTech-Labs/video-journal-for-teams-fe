@@ -9,16 +9,17 @@ import PromptVideoList from "../components/team/PromptVideoList";
 
 // Redux 
 import { connect } from "react-redux";
-import { fetchTeamById, fetchTeamMembers, } from "../redux/actions/teamActions";
+import { fetchTeamById, fetchTeamMembers, fetchTeamVideos} from "../redux/actions/teamActions";
 
 function TeamDashboard(props) {
 	const [userRole, setUserRole] = useState();
 	let { team_id } = useParams();
 
 	useEffect(() => {
-		props.fetchTeamById(team_id)
-		props.fetchTeamMembers(team_id)
-	}, []);
+		props.fetchTeamById(team_id);
+		props.fetchTeamMembers(team_id);
+		props.fetchTeamVideos(team_id);
+	}, [team_id, props.newPrompt]);
 
 	// Sets the logged in user role for the team
 	useEffect(() => {
@@ -31,14 +32,11 @@ function TeamDashboard(props) {
 
 	return (
 		<NavAndHeader>
-			<h1 style={{ marginLeft: "20px" }}>{props.team.name}</h1>
-			<Card title="" style={{ margin: "20px" }}>
+			<div className="team-dashboard dashboard">
+				<h1>{props.team.name}</h1>
 				<MembersList userRole={userRole} />
-			</Card>
-			{/* Diplay Prompts */}
-			<Card title="" style={{ margin: "20px" }}>
 				<PromptVideoList userRole={userRole} />
-			</Card>
+			</div>
 		</NavAndHeader>
 	)
 }
@@ -46,12 +44,14 @@ function TeamDashboard(props) {
 const mapStateToProps = (state) => ({
 	userId: state.User.userId,
 	team: state.Team.team,
-	teamMembers: state.Team.teamMembers
+	teamMembers: state.Team.teamMembers,
+	teamPromptsAndVideos: state.Team.teamPromptsAndVideos
 });
 
 const mapActionsToProps = {
 	fetchTeamById,
-	fetchTeamMembers
+	fetchTeamMembers,
+	fetchTeamVideos
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(TeamDashboard);

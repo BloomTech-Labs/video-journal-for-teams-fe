@@ -17,10 +17,6 @@ const PromptVideoList = (props) => {
 	let { team_id } = useParams();
 	let history = useHistory();
 
-	useEffect(() => {
-		props.fetchTeamVideos(team_id);
-	}, [team_id, props.newPrompt]);
-
 	const toggleModal = () => {
 		setShowModal(!showModal);
 	};
@@ -35,18 +31,16 @@ const PromptVideoList = (props) => {
 	};
 	//#endregion CLICK TO UNCOLLAPSE COMPONENT LOGIC
 
-	if (!props.teamPromptsAndVideos) {
-		return <h2>Loading...</h2>;
-	} else {
 		return (
-			<Content>
-				<h1>Prompts({props.teamPromptsAndVideos.length})</h1>
-				{props.userRole === 1 ? null : (
-					<Button onClick={toggleModal} type="primary" shape="round" icon="plus" className="adding-button">
+			<Content className="prompts-list">
+				<div className="dashboard-header">
+					<h3>Prompts ({props.teamPromptsAndVideos.length})</h3>
+					{props.userRole === 1 ? null : (
+					<Button onClick={toggleModal} icon="plus" className="adding-button">
 						New Prompt
 					</Button>
 				)}
-				<Divider />
+				</div>
 				<Modal title="Add New Prompt" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Submit">
 					<Form>
 						<Form.Item label="Question">
@@ -57,22 +51,20 @@ const PromptVideoList = (props) => {
 						</Form.Item>
 					</Form>
 				</Modal>
-				{props.teamPromptsAndVideos.map((prompt) => (
-					<PromptCard key={prompt.id} data={prompt} />
+				{props.teamPromptsAndVideos.map((prompt, index) => (
+					<PromptCard key={prompt.id} data={prompt} index={index}/>
 				))}
 			</Content>
 		);
-	}
 };
 
 const mapStateToProps = (state) => ({
-	teamPromptsAndVideos: state.Team.teamPromptsAndVideos,
 	newPrompt: state.Team.newPrompt,
 	teamId: state.Team.team.id,
+	teamPromptsAndVideos: state.Team.teamPromptsAndVideos
 });
 
 const mapActionsToProps = {
-	fetchTeamVideos,
 	createPrompt,
 	setError,
 	clearError,

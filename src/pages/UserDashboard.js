@@ -17,11 +17,12 @@ function UserDashboard(props) {
 
 	return (
 		<NavAndHeader>
-			<div className="user-dashboard">
+			<div className="user-dashboard dashboard">
 				<h1>Dashboard</h1>
-				<h3>My&nbsp;Teams</h3>
 				<TeamList />
-				<h3>My&nbsp;Videos</h3>
+				<div className="dashboard-header">
+					<h3>My&nbsp;Videos</h3>
+				</div>
 				<Carousel component={UserVideosCard} data={props.videos} name={"videos"}/>
 			</div>
 		</NavAndHeader>

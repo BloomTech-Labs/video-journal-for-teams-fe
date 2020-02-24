@@ -4,6 +4,7 @@ import { Card, Collapse, List, Divider } from "antd";
 import "antd/dist/antd.css";
 
 import UserVideosCard from "../user/UserVideosCard.js";
+import Carousel from "../shared/Carousel";
 
 const { Panel } = Collapse;
 
@@ -11,17 +12,11 @@ const PromptCard = (props) => {
 	const prompt = props.data;
 
 	return (
-		<Collapse className="prompt-item" key={prompt.id}>
-			<Panel header={prompt.question} style={{ textAlign: "left" }}>
-				<Divider className="prompt-desc-header" orientation="left">Description</Divider>
+		<Collapse className="prompt-item" bordered={false} defaultActiveKey={[props.index === 0 ? prompt.id : null]}>
+			<Panel header={prompt.question} key={prompt.id} style={{ textAlign: "left" }}>
 				<div className="prompt-desc">{prompt.description}</div>
-				{/* Display videos array for a specific prompt */}
 				<Divider orientation="left">Videos</Divider>
-				<div className="card-flex">
-					{prompt.videos.map((video) => (
-						<UserVideosCard key={video.id} data={video} />
-					))}
-				</div>
+				<Carousel data={prompt.videos} component={UserVideosCard} />
 			</Panel>
 		</Collapse>
 	);
