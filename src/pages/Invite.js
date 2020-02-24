@@ -7,18 +7,18 @@ import { fetchInvite } from "../redux/actions/userActions";
 
 import LoadingView from "../components/utils/LoadingView";
 
-const Invite = (props) => {
+const Invite = ({ fetchInvite, isLoading }) => {
 	const { invite } = useParams();
 
 
 	useEffect(() => {
-		props.fetchInvite(invite)
-	}, [invite])
+		fetchInvite(invite)
+	}, [invite, fetchInvite])
 
 	return (
 		<div>
 			{
-				props.isLoading
+				isLoading
 					? <LoadingView />
 					: <Redirect to='/register' />
 			}
@@ -27,8 +27,7 @@ const Invite = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-	isLoading: state.User.isLoading,
-	error: state.User.error
+	isLoading: state.User.isLoading
 });
 
 const mapActionsToProps = {

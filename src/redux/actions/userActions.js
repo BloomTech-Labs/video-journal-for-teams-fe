@@ -11,11 +11,10 @@ export const registerUser = (applicant) => (dispatch) => {
 			dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
 		})
 		.catch((err) => {
-			const duplicateAccountError = err.response.data.error;
-			if (duplicateAccountError) {
-				dispatch({ type: constants.GENERATE_ERROR, payload: duplicateAccountError });
+			if (err.response.data.error) {
+				dispatch({ type: constants.GENERATE_ERROR, payload: err.response.data.error });
 			} else {
-				dispatch({ type: constants.GENERATE_ERROR, payload: err.response });
+				dispatch({ type: constants.GENERATE_ERROR, payload: "An unexpected error occured." });
 			}
 		});
 };
@@ -34,7 +33,8 @@ export const loginUser = (userCredentials) => (dispatch) => {
 				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 			})
 			.catch((err) => {
-				dispatch({ type: constants.GENERATE_ERROR, payload: err.response });
+				console.log(err.response)
+				dispatch({ type: constants.GENERATE_ERROR, payload: "The email address or password you entered is incorrect" });
 			});
 	} else {
 		const user = {
@@ -48,9 +48,10 @@ export const loginUser = (userCredentials) => (dispatch) => {
 				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 			})
 			.catch((err) => {
+				console.log(err.response)
 				dispatch({
 					type: constants.GENERATE_ERROR,
-					payload: err.response,
+					payload: "The username or password you entered is incorrect",
 				});
 			});
 	}

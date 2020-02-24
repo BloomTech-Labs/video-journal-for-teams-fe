@@ -11,27 +11,27 @@ import PromptVideoList from "../components/team/PromptVideoList";
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, } from "../redux/actions/teamActions";
 
-function TeamDashboard(props) {
+function TeamDashboard({team, fetchTeamById, fetchTeamMembers, teamMembers, userId}) {
 	const [userRole, setUserRole] = useState();
 	let { team_id } = useParams();
 
 	useEffect(() => {
-		props.fetchTeamById(team_id)
-		props.fetchTeamMembers(team_id)
-	}, []);
+		fetchTeamById(team_id)
+		fetchTeamMembers(team_id)
+	}, [fetchTeamById, fetchTeamMembers, team_id]);
 
 	// Sets the logged in user role for the team
 	useEffect(() => {
-		if (props.teamMembers.length > 0) {
-			const findTeamMember = props.teamMembers.find((item) => (item.user_id === props.userId));
+		if (teamMembers.length > 0) {
+			const findTeamMember = teamMembers.find((item) => (item.user_id === userId));
 			findTeamMember ? setUserRole(findTeamMember.role_id) : setUserRole(1)
 		}
-	}, [props.teamMembers, props.userId])
+	}, [teamMembers, userId])
 
 
 	return (
 		<NavAndHeader>
-			<h1 style={{ marginLeft: "20px" }}>{props.team.name}</h1>
+			<h1 style={{ marginLeft: "20px" }}>{team.name}</h1>
 			<Card title="" style={{ margin: "20px" }}>
 				<MembersList userRole={userRole} />
 			</Card>

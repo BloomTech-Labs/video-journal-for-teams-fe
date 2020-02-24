@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
-import { Form, Input, Button, Row, Col, Icon, notification } from 'antd';
+import { Form, Input, Button, Row, Col, notification } from 'antd';
 import 'antd/dist/antd.css';
 import { updateUserData, getUserData } from '../../redux/actions/userActions';
 
 function ProfileForm(props) {
-	const { id, first_name, last_name, email, username, avatar, updateUserData, getUserData, isUpdatingUserData } = props;
+	const { id, first_name, last_name, email, username, updateUserData, getUserData, isUpdatingUserData } = props;
 
 	const [userInput, setUserInput] = useState({
 		first_name: first_name,
@@ -43,7 +43,7 @@ function ProfileForm(props) {
 
 	useEffect(() => {
 		getUserData(id);
-	}, [isSaved])
+	}, [isSaved, getUserData, id])
 
 	const openSuccessNotification = () => {
 		notification.success({
