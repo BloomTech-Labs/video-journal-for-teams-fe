@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-import Alpaca from '../imgs/Group 33.png';
+import AuthSider from "../components/AuthSider";
 
 // Redux
 import { connect } from "react-redux";
 
 // Components
-import { Layout, Form, Input, Button, Alert, Row, Col } from "antd";
-
-// Styles
-import "../components/profile/tempStyles.css";
+import { Form, Input, Button, Alert } from "antd";
 
 // Actions
 import { registerUser, setError, clearError } from "../redux/actions/userActions";
-
-const { Sider, Content } = Layout;
 
 //This is the registration form schema
 //If the data doesn't look like this when we submit then it will fail with a message
@@ -34,7 +29,7 @@ const formSchema = yup.object().shape({
   confirm_password: yup.string().oneOf([yup.ref("password"), null], "Passwords must match."),
 });
 
-const Register = (props) => {
+const Register = ({isLogged, clearError, registerUser, setError, error}) => {
   const [applicant, setApplicant] = useState({
     first_name: "",
     last_name: "",
@@ -48,13 +43,14 @@ const Register = (props) => {
 
   //Redirect if logged already logged in OR on successful registration
   useEffect(() => {
-    if (props.isLogged) {
-      props.clearError();
+    if (isLogged) {
+      clearError();
       history.push("/user-dashboard");
     }
-  }, [props.isLogged]);
+  }, [isLogged, clearError, history]);
 
   const handleInput = (e) => {
+    clearError();
     setApplicant({ ...applicant, [e.target.name]: e.target.value });
   };
 
@@ -67,26 +63,23 @@ const Register = (props) => {
       .validate(applicant, { abortEarly: true })
       .then(() => {
         //Data is good, proceed to registration action
-        props.registerUser(applicant);
+        registerUser(applicant);
       })
       .catch((validationError) => {
-        props.setError(validationError.errors);
+        setError(validationError.errors);
       });
   };
 
   return (
-    <Row className="auth-page">
-      <Col xs={2} sm={4} md={6} lg={6} xl={8} className="auth-sider">
-        <img src={Alpaca}></img>
-        </Col>
-        <Col xl={16} className="auth-main">
+      <>
+        <AuthSider>
           <span>
-            Already a member? <Link to="/">Sign in</Link>
+            Already a member? <Link to="/" onClick={() => clearError()}>Sign in</Link>
           </span>`
           {/* Alert will show any form validation error */}
           <div className="auth-content">
             <h1>Create Account</h1>
-          {props.error ? <Alert message={props.error} type="error" /> : null}
+          {error ? <Alert message={error} type="error" /> : null}
           <Form onSubmit={submitRegistration} className="register-form" data-testid="register-form" labelAlign="left">
           <Form.Item label="First Name"labelAlign="left">
               <Input
@@ -161,8 +154,8 @@ const Register = (props) => {
             </Form.Item>
           </Form>
           </div>
-        </Col>
-      </Row>
+        </AuthSider>
+      </>
   );
 };
 

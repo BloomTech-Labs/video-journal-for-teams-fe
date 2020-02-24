@@ -11,21 +11,36 @@ import dataReducer from "./reducers/dataReducer";
 
 const middleware = [thunk];
 
-const persistConfig = {
+const rootPersistConfig = {
   key: 'root',
   storage: storage,
-  stateReconciler: autoMergeLevel2
+  stateReconciler: autoMergeLevel2,
+  blacklist: ['User', 'Team', 'Data']
  };
+
+const userPersistConfig = {
+  key: 'User',
+  storage: storage,
+  stateReconciler: autoMergeLevel2,
+  blacklist: ['error', 'invite']
+};
+
+const teamPersistConfig = {
+  key: 'Team',
+  storage: storage,
+  stateReconciler: autoMergeLevel2,
+  blacklist: ['error']
+};
 
 const initialState = {};
 
 const rootReducer = combineReducers({
-  User: userReducer,
-  Team: teamReducer,
+  User: persistReducer(userPersistConfig, userReducer),
+  Team: persistReducer(teamPersistConfig, teamReducer),
   Data: dataReducer,
 });
 
-const pReducer = persistReducer(persistConfig, rootReducer);
+const pReducer = persistReducer(rootPersistConfig, rootReducer);
 
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

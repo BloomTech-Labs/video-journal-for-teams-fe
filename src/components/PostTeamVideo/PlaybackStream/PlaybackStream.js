@@ -23,7 +23,7 @@ function PlaybackStream({ stream, toggleStreamPlayback, playback }) {
 				toggleStreamPlayback();
 			};
 		}
-	}, [playbackStreamHandle.current]);
+	}, [playbackStreamHandle, toggleStreamPlayback]);
 
 	if (playback) {
 		return (
