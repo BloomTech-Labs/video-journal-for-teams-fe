@@ -5,17 +5,17 @@ import 'antd/dist/antd.css';
 import UserVideosCard from "./UserVideosCard";
 import { fetchUserVideos } from '../../redux/actions/userActions';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 
-function UserVideos(props) {
+function UserVideos({fetchUserVideos, id, videos}) {
 	useEffect(() => {
-		props.fetchUserVideos(props.id)
-	}, [props.id])
+		fetchUserVideos(id)
+	}, [id, fetchUserVideos])
 
 	return (
 		<Content className="card-flex">
-			{props.videos.map(video => (
+			{videos.map(video => (
 				<UserVideosCard key={video.id} data={video} />
 			))}
 		</Content>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-import Alpaca from '../imgs/Group 33.png';
+import AuthSider from "../components/AuthSider";
 
 // Redux
 import { connect } from "react-redux";
@@ -10,18 +10,13 @@ import { connect } from "react-redux";
 import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 // Components
-import { Layout, Form, Icon, Input, Button, Checkbox, Alert, Row, Col } from "antd";
-
-// Styles
-import "../components/profile/tempStyles.css";
-
-const { Sider, Content } = Layout;
+import { Form, Icon, Input, Button, Alert } from "antd";
 
 const emailLoginSchema = yup.object().shape({
   email: yup.string().email(),
 });
 
-const Login = (props) => {
+const Login = ({isLogged, clearError, loginUser, error}) => {
   const [user, setUser] = useState({
     usernameOrEmail: "",
     password: "",
@@ -31,13 +26,14 @@ const Login = (props) => {
 
   //Redirect if logged already logged in OR on successful registration
   useEffect(() => {
-    if (props.isLogged) {
-      props.clearError();
+    if (isLogged) {
+      clearError();
       history.push("/user-dashboard");
     }
-  }, [props.isLogged]);
+  }, [isLogged, clearError, history]);
 
   const handleInput = (e) => {
+    clearError();
     setUser({ ...user, [e.target.name]: e.target.value.trim() });
   };
 
@@ -51,30 +47,27 @@ const Login = (props) => {
       .then(() => {
         userCredentials.method = "email";
 
-        props.loginUser(userCredentials);
+        loginUser(userCredentials);
       })
       .catch(() => {
         userCredentials.method = "username";
 
-        props.loginUser(userCredentials);
+        loginUser(userCredentials);
       });
 
     setUser({ usernameOrEmail: "", password: "" });
   };
 
   return (
-    <Row className="auth-page">
-      <Col xs={2} sm={4} md={6} lg={6} xl={8} className="auth-sider">
-        <img alt="Alpaca Vids Logo" src={Alpaca}></img>
-      </Col>
-        <Col xl={16} className="auth-main">
+    <>
+      <AuthSider>
         <span>
-            Not a Member? <Link to="/register">Register here</Link>
-          </span>
-          <div className="auth-content">
+          Not a Member? <Link to="/register" onClick={() => clearError()}>Register here</Link>
+        </span>
+        <div className="auth-content">
           <h1>Welcome Back!</h1>
           <p>Please sign in</p>
-        {props.error ? <Alert message={props.error} type="error" /> : null}
+        {error ? <Alert message={error} type="error" /> : null}
         <Form onSubmit={submitLogin} className="login-form" data-testid="login-form">
         <Form.Item label="Username or Email"labelAlign="left">
             <Input
@@ -108,8 +101,8 @@ const Login = (props) => {
           </Form.Item>
         </Form>
         </div>
-        </Col>
-      </Row>
+      </AuthSider>
+    </>
   );
 };
 

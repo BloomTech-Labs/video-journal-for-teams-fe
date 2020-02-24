@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Button, Card, Collapse, List, Divider } from "antd";
+import { Button, Collapse, Divider } from "antd";
 import "antd/dist/antd.css";
 import UserVideosCard from "../user/UserVideosCard.js";
 
@@ -8,6 +8,7 @@ const { Panel } = Collapse;
 
 const PromptCard = (props) => {
 	const prompt = props.data;
+	console.log(props.data)
 
 	return (
 		<Collapse className="prompt-item" key={prompt.id}>

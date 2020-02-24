@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-import { Card, Row, Col, Icon, Avatar } from "antd";
+import { Card } from "antd";
 import "antd/dist/antd.css";
 const { Meta } = Card;
 
@@ -20,7 +20,7 @@ const UserVideosCard = (props) => {
 		<Link to={`/videos/${props.data.id}`}>
 			<Card className="video-card"
 				// style={{ width: 300 }}
-				cover={<img src={data.thumbnail} />}
+				cover={<img alt ={`${data.title } video thumbnail`} src={data.thumbnail} />}
 			>
 				<Meta style={{ textAlign: "left" }}
 					title={data.title}

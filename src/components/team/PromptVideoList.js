@@ -11,28 +11,27 @@ import AddPromptModal from "./AddPromptModal.js";
 import PromptCard from "./PromptCard.js";
 
 //Styling
-import { Layout, Button, Collapse, Divider } from "antd";
+import { Layout, Button, Divider } from "antd";
 import "./teamTest.css";
 const { Content } = Layout;
-const { Panel } = Collapse;
 
-const PromptVideoList = (props) => {
+const PromptVideoList = ({fetchTeamVideos, newPrompt, createPrompt, teamPromptsAndVideos, userRole, teamId}) => {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false);
 	let { team_id } = useParams();
 
 	useEffect(() => {
-		props.fetchTeamVideos(team_id);
-	}, [team_id, props.newPrompt]);
+		fetchTeamVideos(team_id);
+	}, [team_id, newPrompt, fetchTeamVideos]);
 
 	//#endregion CLICK TO UNCOLLAPSE COMPONENT LOGIC
-	if (!props.teamPromptsAndVideos) {
+	if (!teamPromptsAndVideos) {
 		return <h2>Loading...</h2>;
 	} else {
 		return (
 			<Content>
-				<h1>Prompts({props.teamPromptsAndVideos.length})</h1>
-				{props.userRole === 1 ? null : (
+				<h1>Prompts({teamPromptsAndVideos.length})</h1>
+				{userRole === 1 ? null : (
 					<Button
 						type="primary"
 						shape="round"
@@ -46,11 +45,11 @@ const PromptVideoList = (props) => {
 				<AddPromptModal
 					isVisible={showModal}
 					setVisibility={setShowModal}
-					createPrompt={props.createPrompt}
-					teamId={props.teamId}
+					createPrompt={createPrompt}
+					teamId={teamId}
 				/>
-				{props.teamPromptsAndVideos.map((prompt) => (
-					<PromptCard key={prompt.id} data={prompt} teamId={props.teamId} />
+				{teamPromptsAndVideos.map((prompt) => (
+					<PromptCard key={prompt.id} data={prompt} teamId={teamId} />
 				))}
 			</Content>
 		);
