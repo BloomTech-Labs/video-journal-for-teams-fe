@@ -90,5 +90,8 @@ h1 {
 		&:hover {
 			@include button($alpaca-green);
 		}
+		&:focus {
+			@include button($alpaca-green);
+		}
 	}
 }
