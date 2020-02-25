@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card, Icon, Avatar } from 'antd';
+import { Card, Icon, Avatar } from "antd";
 import { Link } from "react-router-dom";
 const { Meta } = Card;
 
-const TeamCard = props => {
-	console.log(props.data)
+const TeamCard = (props) => {
 	return (
 		<Link to={`/teams/${props.data.id}`}>
 			<Card className="teamCard" size="small">
@@ -21,10 +20,9 @@ const TeamCard = props => {
 	);
 };
 
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
-		isUpdating: state.isUpdating
+		isUpdating: state.isUpdating,
 	};
 };
 export default connect(mapStateToProps, {})(TeamCard);
