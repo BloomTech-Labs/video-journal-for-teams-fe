@@ -4,7 +4,7 @@ import { shallow, mount } from "enzyme";
 
 import FeedbackTable from "../../components/VideoDetails/FeedbackTable";
 
-describe("FeedbackTable Component", () => {
+describe("<FeedbackTable>", () => {
 	const feedback = [
 		{
 			id: 1,

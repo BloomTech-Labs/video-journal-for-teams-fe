@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 
 import VideoPlayer from "../../components/VideoDetails/VideoPlayer";
 
-describe("VideoPlayer Component", () => {
+describe("<VideoPlayer>", () => {
 	const video = { video_title: "Test", owner_name: "Test Owner", created_at: new Date(Date.now()) };
 
 	test("should render without crashing", () => {
