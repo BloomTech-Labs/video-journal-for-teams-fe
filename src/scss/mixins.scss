@@ -1,6 +1,7 @@
 @mixin button($color) {
 	background-color: $color;
 	border-color    : $color;
+	color: $dark-grey;
 }
 
 @mixin outlined-button($color) {

@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
+<<<<<<< HEAD
+=======
+import { Form, Input, Button, Row, Col, notification } from 'antd';
+import 'antd/dist/antd.css';
+>>>>>>> 5fc023ce0e4dfab856a4a1b04d75a5a1f9b2aa77
 import { updateUserData, getUserData } from '../../redux/actions/userActions';
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
@@ -35,12 +40,6 @@ function ProfileForm(props) {
 				setFormError(validationError.errors);
 			});
 	}
-
-	// useEffect(() => {
-	// 	if (!error) {
-
-	// 	}
-	// }, [error])
 
 	const onCancel = () => {
 		togglePanel("0");

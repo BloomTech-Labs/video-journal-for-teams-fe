@@ -4,14 +4,9 @@ import React from "react";
 import RecordStream from "../components/PostTeamVideo/RecordStream/RecordStream";
 import PlaybackStream from "../components/PostTeamVideo/PlaybackStream/PlaybackStream";
 import NavAndHeader from "../components/nav/NavAndHeader";
-import { Layout, Card, Button, Icon, Form } from "antd";
+import { Card } from "antd";
 
 import "../userdash.css";
-
-// Additional Ant Design Components
-const { Content } = Layout;
-
-// Styles
 
 //* Requirements
 //* Ability to capture webcam and audio into a stream - RecordStream

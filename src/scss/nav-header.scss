@@ -1,5 +1,6 @@
 .nav-header {
 	height: 100vh;
+	width: 100%;
 	.userDashHeaderFont {
 		color: $alpaca-green;
 		font-family: Pacifico;
@@ -9,6 +10,9 @@
 		line-height: 63px;
 		display: flex;
 		align-items: center;
+		&:hover {
+			color: $alpaca-green;
+		}
 	}
 	.ant-layout-sider-zero-width-trigger {
 		top: 20px;
