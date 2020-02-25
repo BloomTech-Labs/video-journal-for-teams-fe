@@ -1,4 +1,15 @@
-.carouselItems > .add-video-btn, .video-card {
+.actual-player {
+	width: 720px;
+	@media screen and (max-width:820px) {
+		width: 540px;
+	}
+	@media screen and (max-width:600px) {
+		width: 320px;
+	}
+}
+
+.carouselItems > .add-video-btn,
+.video-card {
 	min-width: $card-width;
 	width: $card-width;
 	height: 240px;
@@ -14,7 +25,7 @@
 	&:hover {
 		background-color: #e4e4e4;
 		color: inherit;
-    border-color: rgb(217, 217, 217);
+		border-color: rgb(217, 217, 217);
 	}
 }
 

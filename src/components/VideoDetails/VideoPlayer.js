@@ -9,7 +9,7 @@ function VideoPlayer({ video, width }) {
 			<h4 className="video-player__subheading">
 				By {video.owner_name}, posted {Date(video.created_at)}
 			</h4>
-			<video src={`${RemoteServeDir}/videos/${video.video_url}`} width={width} controls></video>
+			<video  className="actual-player"src={`${RemoteServeDir}/videos/${video.video_url}`} controls></video>
 		</div>
 	);
 }
