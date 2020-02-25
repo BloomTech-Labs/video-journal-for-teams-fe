@@ -10,7 +10,7 @@ import { Button } from "antd";
 //Components
 import UserVideosCard from "./UserVideosCard";
 import Carousel from "../shared/Carousel";
-import PostVideoModal from "./PostVideoModal";
+import PostVideoModal from "../PostTeamVideo/PostVideoModal";
 
 
 function UserVideos({fetchUserVideos, id, videos, promptId}) {

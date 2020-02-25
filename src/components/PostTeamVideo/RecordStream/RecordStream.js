@@ -30,6 +30,7 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 	const [mediaRecorder, setMediaRecorder] = useState(null);
 	const streamElementHandle = useRef(null);
 	const [loading, setLoading] = useState(true);
+	const [visibleFeed, setVisibleFeed] = useState(true)
 
 	useEffect(() => {
 		if (!playback) {
@@ -128,6 +129,11 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 		};
 	}
 
+	function toggleFeedVisibility() {
+		streamElementHandle.current.hidden = !streamElementHandle.current.hidden;
+		setVisibleFeed(!visibleFeed);
+	}
+
 	//Check if we are in record or playback mode
 
 		return (
@@ -136,9 +142,10 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 					{loading ? 
 					<Icon type="loading"/> 
 					: null}
-					<video  style={{display: loading ? "none" : "flex"}} ref={streamElementHandle} width="560"></video>
+					{!visibleFeed ? <Icon type="user"/> : null}
+					<video  style={{display: loading ? "none" : "flex"}} ref={streamElementHandle}></video>
 				</div>
-				<StreamControls mediaRecorder={mediaRecorder} streamElementHandle={streamElementHandle} />
+				<StreamControls mediaRecorder={mediaRecorder} streamElementHandle={streamElementHandle} toggleFeedVisibility={toggleFeedVisibility} visibleFeed={visibleFeed}/>
 			</div>
 		);
 }
