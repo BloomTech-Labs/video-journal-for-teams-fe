@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const { Meta } = Card;
 
 const TeamCard = props => {
-	console.log(props.data)
 	return (
 		<Link to={`/teams/${props.data.id}`}>
 			<Card className="teamCard" size="small">

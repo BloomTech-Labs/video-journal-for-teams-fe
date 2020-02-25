@@ -41,36 +41,25 @@ function EditMemberCard(props) {
 		});
 	}
 
+	const switchRole = async (roleNum) => {
+		try {
+			const result = await props.updateUserRole(team_id, member.user_id, roleNum);
 
-	const handleRoleChange = async () => {
+			if (result) {
+				roleChangeSuccess(`${member.user_full_name}'s role has been updated!`);
+			} else {
+				roleChangeError();
+			}
+		} catch (error) {
+			roleChangeError();
+		}
+	}
+
+	const handleRoleChange = () => {
 		if (member.role_id === 1) {
-
-			try {
-				const result = await props.updateUserRole(team_id, member.user_id, 2);
-
-				if (result) {
-					roleChangeSuccess(`${member.user_full_name}'s role has been updated!`);
-				} else {
-					roleChangeError();
-				}
-			} catch (error) {
-				roleChangeError();
-			}
-
+			switchRole(2);
 		} else if (member.role_id === 2) {
-
-			try {
-				const result = await props.updateUserRole(team_id, member.user_id, 1);
-
-				if (result) {
-					roleChangeSuccess(`${member.user_full_name}'s role has been updated!`);
-				} else {
-					roleChangeError();
-				}
-			} catch (error) {
-				roleChangeError();
-			}
-
+			switchRole(1);
 		}
 	}
 
