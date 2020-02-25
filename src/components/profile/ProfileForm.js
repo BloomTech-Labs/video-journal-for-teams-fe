@@ -9,7 +9,7 @@ const { Panel } = Collapse;
 
 function ProfileForm(props) {
 	const [formError, setFormError] = useState(null);
-	const { id, first_name, last_name, email, username, updateUserData, getUserData, isUpdatingUserData } = props;
+	const { id, first_name, last_name, email, username, updateUserData, getUserData } = props;
 
 	const [userInput, setUserInput] = useState({
 		first_name: first_name,
@@ -23,7 +23,7 @@ function ProfileForm(props) {
 
 	useEffect(() => {
 		getUserData(id);
-	}, [isSaved, getUserData, id, error])
+	}, [isSaved, getUserData, id])
 
 	const togglePanel = (key) => {
 		setExpando(key)
@@ -89,8 +89,7 @@ const mapStateToProps = state => {
 		last_name: state.User.last_name,
 		email: state.User.email,
 		username: state.User.username,
-		isUpdatingUserData: state.User.isUpdatingUserData,
-		error: state.User.error
+		isUpdatingUserData: state.User.isUpdatingUserData
 	}
 };
 
