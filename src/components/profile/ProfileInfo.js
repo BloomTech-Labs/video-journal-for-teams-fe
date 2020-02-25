@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
-import { updateUserData, getUserData, setError, clearError } from '../../redux/actions/userActions';
+import { updateUserData, getUserData, clearError } from '../../redux/actions/userActions';
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
 import 'antd/dist/antd.css';
@@ -14,20 +14,18 @@ function ProfileInfo(props) {
 
 	useEffect(() => {
 		getUserData(id);
-	}, [isSaved, getUserData, id, error, clearError])
+	}, [isSaved, getUserData, id, error])
 
 	const togglePanel = (key) => {
 		setExpando(key)
 	}
 
-	const handleSubmit = async (e, changes) => {
-		e.preventDefault();
+	const handleSubmit = async (changes) => {
 		await updateUserData(id, changes);
 		if (!error) {
 			openSuccessNotification();
 			setIsSaved(!isSaved);
 			setExpando("0");
-			clearError();
 		} else {
 			openErrorNotification(error);
 		}
@@ -86,4 +84,4 @@ const mapStateToProps = state => {
 	}
 };
 
-export default connect(mapStateToProps, { updateUserData, getUserData, setError, clearError })(ProfileInfo);
+export default connect(mapStateToProps, { updateUserData, getUserData })(ProfileInfo);

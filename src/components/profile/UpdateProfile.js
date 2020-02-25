@@ -29,8 +29,7 @@ const UpdateProfile = (props) => {
 		formSchema
 			.validate(userInput, { abortEarly: true })
 			.then(() => {
-				handleSubmit(e, userInput);
-				setUserInput({});
+				handleSubmit(userInput);
 			})
 			.catch((validationError) => {
 				setFormError(validationError.errors);

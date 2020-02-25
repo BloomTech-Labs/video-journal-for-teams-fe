@@ -29,7 +29,7 @@ const ChangePassword = (props) => {
 		formSchema
 			.validate(passwordChanges, { abortEarly: true })
 			.then(() => {
-				handleSubmit(e, passwordChanges);
+				handleSubmit(passwordChanges);
 				setPasswordChanges({});
 			})
 			.catch((validationError) => {
@@ -51,7 +51,7 @@ const ChangePassword = (props) => {
 					<Col span={24}>
 						<Form.Item label="Current Password">
 							<Input
-								type="text"
+								type="password"
 								name="currentPassword"
 								onChange={handleChange}
 								value={passwordChanges.currentPassword}
@@ -62,7 +62,7 @@ const ChangePassword = (props) => {
 						</Form.Item>
 						<Form.Item label="New Password">
 							<Input
-								type="text"
+								type="password"
 								name="newPassword"
 								onChange={handleChange}
 								value={passwordChanges.newPassword}
@@ -73,7 +73,7 @@ const ChangePassword = (props) => {
 						</Form.Item>
 						<Form.Item label="Confirm Password">
 							<Input
-								type="text"
+								type="password"
 								name="confirmPassword"
 								onChange={handleChange}
 								value={passwordChanges.confirmPassword}
@@ -93,4 +93,4 @@ const ChangePassword = (props) => {
 	);
 }
 
-export default Form.create({ name: "change-password" })(ChangePassword);
+export default ChangePassword;
