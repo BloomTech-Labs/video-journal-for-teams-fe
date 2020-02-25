@@ -24,7 +24,7 @@ let chunks = [];
 //* Capture webcam and audio into a stream
 //* Record stream and update stream object URL in redux
 
-function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlayback, setStreamError, playback }) {
+function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlayback, setStreamError, playback, updateModalStep }) {
 	const [mediaRecorder, setMediaRecorder] = useState(null);
 	const streamElementHandle = useRef(null);
 
@@ -105,21 +105,19 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 			setStreamError(false);
 
 			//Enable playback feed and download/upload options
+			updateModalStep("playback")
 			toggleStreamPlayback();
 		};
 	}
 
 	//Check if we are in record or playback mode
-	if (!playback) {
+
 		return (
 			<div className="record-stream-container">
 				<StreamControls mediaRecorder={mediaRecorder} streamElementHandle={streamElementHandle} />
 				<video ref={streamElementHandle} width="560"></video>
 			</div>
 		);
-	} else {
-		return null;
-	}
 }
 
 const mapStateToProps = (state) => ({

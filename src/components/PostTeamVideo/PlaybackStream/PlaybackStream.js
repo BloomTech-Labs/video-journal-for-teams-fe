@@ -25,16 +25,12 @@ function PlaybackStream({ stream, toggleStreamPlayback, playback }) {
 		}
 	}, [playbackStreamHandle, toggleStreamPlayback]);
 
-	if (playback) {
 		return (
 			<div className="playback-stream-container">
 				<PlaybackControls toggleStreamPlayback={toggleStreamPlayback} />
 				<video ref={playbackStreamHandle} src={stream} width="560" controls></video>
 			</div>
 		);
-	} else {
-		return null;
-	}
 }
 
 const mapStateToProps = (state) => ({

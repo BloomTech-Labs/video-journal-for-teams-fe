@@ -12,7 +12,7 @@ const PromptCard = (props) => {
 		<Collapse className="prompt-item" bordered={false} defaultActiveKey={[props.index === 0 ? prompt.id : null]}>
 			<Panel header={prompt.question} key={prompt.id} style={{ textAlign: "left" }}>
 				<div className="prompt-desc">{prompt.description}</div>
-				<UserVideosList />
+				<UserVideosList promptId={prompt.id}/>
 			</Panel>
 		</Collapse >
 	);

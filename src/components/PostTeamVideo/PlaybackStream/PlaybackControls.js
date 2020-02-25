@@ -16,7 +16,6 @@ function PlaybackControls({ toggleStreamPlayback }) {
 			<Button onClick={toggleStreamPlayback} style={{ margin: "8px" }}>
 				Restart
 			</Button>
-			<UploadVideo />
 			<DownloadVideo />
 		</div>
 	);

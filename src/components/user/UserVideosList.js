@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 //Redux
 import { connect } from "react-redux";
@@ -10,9 +10,16 @@ import { Button } from "antd";
 //Components
 import UserVideosCard from "./UserVideosCard";
 import Carousel from "../shared/Carousel";
+import PostVideoModal from "./PostVideoModal";
 
 
-function UserVideos({fetchUserVideos, id, videos}) {
+function UserVideos({fetchUserVideos, id, videos, promptId}) {
+	const [showModal, setShowModal] = useState(false)
+
+	const toggleModal = () => {
+		setShowModal(!showModal)
+	}
+
 	useEffect(() => {
 		fetchUserVideos(id)
 	}, [id, fetchUserVideos])
@@ -26,9 +33,10 @@ function UserVideos({fetchUserVideos, id, videos}) {
 				className="add-video-btn"
 				size="large"
 				icon="video-camera"
-				// href={`/teams/${props.teamId}/videos/post/${prompt.id}`}
+				onClick={() => setShowModal(true)}
 			>
 			</Button>
+			<PostVideoModal showModal={showModal} toggleModal={toggleModal} promptId={promptId}/>
 		</Carousel>
 	)
 }
