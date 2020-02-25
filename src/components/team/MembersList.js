@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from "../utils/UserContext";
 import { connect } from "react-redux";
 import { createInvite } from "../../redux/actions/teamActions";
 import { Button } from 'antd';
@@ -10,6 +11,7 @@ import Carousel from "../shared/Carousel";
 function MembersList(props) {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false)
+	const { userRole } = useContext(UserContext);
 
 	const openInviteModal = () => {
 		props.createInvite(props.team.id, { team_name: props.team.name })
@@ -21,7 +23,7 @@ function MembersList(props) {
 		<>
 			<div className="dashboard-header">
 				<h2>Members ({props.teamMembers.length})</h2>
-				{props.userRole === 1 ? null : (
+				{userRole === 1 ? null : (
 					<Button
 						icon="user"
 						className="adding-button"

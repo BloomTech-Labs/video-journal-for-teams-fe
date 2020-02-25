@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../utils/UserContext";
 
 //Redux
 import { connect } from "react-redux";
@@ -13,16 +14,9 @@ import { Layout, Button, Divider } from "antd";
 import "./teamTest.css";
 const { Content } = Layout;
 
-const PromptVideoList = ({ createPrompt, teamPromptsAndVideos, userRole, teamId }) => {
-	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
+const PromptVideoList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {
 	const [showModal, setShowModal] = useState(false);
-	// let { team_id } = useParams();
-
-	// useEffect(() => {
-	// 	fetchTeamVideos(team_id);
-	// }, [team_id, newPrompt, fetchTeamVideos]);
-
-	//#endregion CLICK TO UNCOLLAPSE COMPONENT LOGIC
+	const { userRole } = useContext(UserContext)
 
 	return (
 		<Content className="prompts-list">
@@ -51,15 +45,12 @@ const PromptVideoList = ({ createPrompt, teamPromptsAndVideos, userRole, teamId 
 };
 
 const mapStateToProps = (state) => ({
-	newPrompt: state.Team.newPrompt,
 	teamId: state.Team.team.id,
 	teamPromptsAndVideos: state.Team.teamPromptsAndVideos
 });
 
 const mapActionsToProps = {
-	createPrompt,
-	setError,
-	clearError,
+	createPrompt
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(PromptVideoList);
