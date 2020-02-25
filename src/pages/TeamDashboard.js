@@ -9,7 +9,7 @@ import PromptVideoList from "../components/team/PromptVideoList";
 
 // Redux 
 import { connect } from "react-redux";
-import { fetchTeamById, fetchTeamMembers, clearError } from "../redux/actions/teamActions";
+import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
 
 function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, userId, teamError, isFetching, clearError }) {
 	const [userRole, setUserRole] = useState();
@@ -19,13 +19,10 @@ function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, use
 
 	useEffect(() => {
 		clearError();
-		fetchTeamById(team_id)
-		fetchTeamMembers(team_id)
-
-		return () => {
-			clearTimeout();
-		}
-	}, [fetchTeamById, fetchTeamMembers, team_id]);
+		fetchTeamById(team_id);
+		fetchTeamMembers(team_id);
+		fetchTeamVideos(team_id);
+	}, [team_id, fetchTeamById, fetchTeamMembers]);
 
 	// Sets the logged in user role for the team
 	useEffect(() => {
@@ -63,19 +60,14 @@ function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, use
 				</div>
 			)
 		}
-
 	} else {
-		//Display team details..
 		return (
 			<NavAndHeader>
-				<h1 style={{ marginLeft: "20px" }}>{team.name}</h1>
-				<Card title="" style={{ margin: "20px" }}>
+				<div className="team-dashboard dashboard">
+					<h1>{team.name}</h1>
 					<MembersList userRole={userRole} />
-				</Card>
-				{/* Diplay Prompts */}
-				<Card title="" style={{ margin: "20px" }}>
 					<PromptVideoList userRole={userRole} />
-				</Card>
+				</div>
 			</NavAndHeader>
 		)
 	}
@@ -86,13 +78,15 @@ const mapStateToProps = (state) => ({
 	team: state.Team.team,
 	teamMembers: state.Team.teamMembers,
 	teamError: state.Team.error,
-	isFetching: state.Team.isFetching
+	isFetching: state.Team.isFetching,
+	teamPromptsAndVideos: state.Team.teamPromptsAndVideos
 });
 
 const mapActionsToProps = {
 	fetchTeamById,
 	fetchTeamMembers,
-	clearError
+	clearError,
+	fetchTeamVideos
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(TeamDashboard);

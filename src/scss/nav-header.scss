@@ -10,6 +10,9 @@
 		line-height: 63px;
 		display: flex;
 		align-items: center;
+		&:hover {
+			color: $alpaca-green;
+		}
 	}
 	.ant-layout-sider-zero-width-trigger {
 		top: 20px;

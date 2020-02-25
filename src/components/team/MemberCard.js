@@ -4,11 +4,7 @@ import { Card, Avatar } from 'antd';
 import EditMemberCard from './EditMemberCard';
 
 function MemberCard(props) {
-	const { member, userRole } = props;
-
-	// const actions = () => {
-	// 	return (userRole === 1) ? null : (<EditMemberCard member={member} />);
-	// }
+	const { data, userRole } = props;
 
 	return (
 		<Card
@@ -17,11 +13,11 @@ function MemberCard(props) {
 			hoverable
 		>
 			<div className='image-container'>
-				{(!member.avatar) ? (<Avatar size={64} icon="user" />) : (
-					<img alt="user avatar" src={`https://video-journal.herokuapp.com/public/avatars/${member.avatar}`} />)}
+				{(!data.avatar) ? (<Avatar size={64} icon="user" />) : (
+					<img  alt="user avatar" src={`https://video-journal.herokuapp.com/public/avatars/${data.avatar}`} />)}
 			</div>
-			<p className="small">{member.user_full_name}</p>
-			{userRole === 1 ? null : (<EditMemberCard member={member} />)}
+			{userRole === 1 ? null : (<EditMemberCard member={data} />)}
+			<p className="small">{data.user_full_name}</p>
 		</Card>
 	)
 }

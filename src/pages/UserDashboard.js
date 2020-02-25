@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import NavAndHeader from "../components/nav/NavAndHeader";
 import TeamList from '../components/user/UserTeamsList';
-import Carousel from "../components/Carousel";
+import Carousel from "../components/shared/Carousel";
 import UserVideosCard from "../components/user/UserVideosCard";
 
 import { fetchUserVideos } from '../redux/actions/userActions';
@@ -19,11 +19,12 @@ function UserDashboard(props) {
 
 	return (
 		<NavAndHeader>
-			<div className="user-dashboard">
+			<div className="user-dashboard dashboard">
 				<h1>Dashboard</h1>
-				<h3>My&nbsp;Teams</h3>
 				<TeamList />
-				<h3>My&nbsp;Videos</h3>
+				<div className="dashboard-header">
+					<h2>My&nbsp;Videos</h2>
+				</div>
 				<Carousel component={UserVideosCard} data={props.videos} name={"videos"} />
 			</div>
 		</NavAndHeader>
