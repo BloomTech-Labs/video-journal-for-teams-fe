@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { fetchTeamMembers, createInvite, setError, clearError } from "../../redux/actions/teamActions";
-import { Layout, Button, Divider } from 'antd';
+import { Button } from 'antd';
 import './teamTest.css';
 import InviteModal from "./InviteModal.js";
 import MemberCard from './MemberCard';
-
-const { Content } = Layout;
+import Carousel from "../shared/Carousel";
 
 function MembersList(props) {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
@@ -19,26 +18,24 @@ function MembersList(props) {
 
 	// #endregion CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 
-	if (!props.teamMembers) {
-		return <h2>Loading...</h2>;
-	} else {
-
 		return (
-			<Content>
-				<h2>Members({props.teamMembers.length})</h2>
-				{/* Add member invite link button */}
+			<>
+			<div className="dashboard-header">
+				<h2>Members ({props.teamMembers.length})</h2>
 				{props.userRole === 1 ? null : (
-					<Button
-						type="primary"
-						shape="round"
-						icon="user"
-						className="adding-button"
-						onClick={() => setShowModal(true)}>
-						Invite Member
-					</Button>
-				)}
-				<Divider />
-				<InviteModal
+						<Button
+							icon="user"
+							className="adding-button"
+							onClick={() => setShowModal(true)}>
+							Invite Member
+						</Button>
+					)}
+			</div>
+				<Carousel
+					component={MemberCard}
+				 	data={props.teamMembers}
+				/>
+			<InviteModal
 					isVisible={showModal}
 					setVisibility={setShowModal}
 					team={props.team}
@@ -46,16 +43,9 @@ function MembersList(props) {
 					createInvite={props.createInvite}
 					invite={props.invite}
 				/>
-				{/* Display members */}
-				<div className="card-flex">
-					{props.teamMembers.map((member) => (
-						<MemberCard key={member.user_id} member={member} userRole={props.userRole} />
-					))}
-				</div>
-			</Content >
+			</>
 		)
 	}
-}
 
 const mapStateToProps = (state) => ({
 	userId: state.User.userId,

@@ -1,0 +1,30 @@
+.team-dashboard {
+	.image-container img {
+		width: 100%;
+	}
+	.carousel >.carouselItems {
+		align-items: flex-start;
+	}
+	.carousel {
+		margin-top: 25px;
+	}
+}
+
+.adding-button {
+	align-self: flex-end;
+}
+
+.prompts-list {
+	.ant-collapse {
+		margin-top: 15px;
+	}
+	.ant-collapse-header {
+		border-bottom: 1px solid #d9d9d9;
+	}
+	.prompt-desc {
+		margin: 10px 25px;
+	}
+	.carousel {
+		margin-top: 15px;
+	}
+}

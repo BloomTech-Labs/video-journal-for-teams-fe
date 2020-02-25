@@ -1,12 +1,37 @@
+.actual-player {
+	width: 720px;
+	@media screen and (max-width:820px) {
+		width: 540px;
+	}
+	@media screen and (max-width:600px) {
+		width: 320px;
+	}
+}
+
+.carouselItems > .add-video-btn,
 .video-card {
 	min-width: $card-width;
 	width: $card-width;
-	height: 250px;
-	cursor: pointer;
-	margin: 0 $card-spacing $card-row-spacing;
-	overflow: hidden;
+	height: 240px;
+	margin: $card-spacing $card-row-spacing;
 	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 	border-radius: 4px;
+}
+
+.add-video-btn {
+	i {
+		font-size: 30px;
+	}
+	&:hover {
+		background-color: #e4e4e4;
+		color: inherit;
+		border-color: rgb(217, 217, 217);
+	}
+}
+
+.video-card {
+	cursor: pointer;
+	overflow: hidden;
 	.ant-card-cover {
 		height: 127px;
 		display: flex;

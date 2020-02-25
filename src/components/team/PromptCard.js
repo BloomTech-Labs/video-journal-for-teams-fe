@@ -1,8 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Button, Collapse, Divider } from "antd";
-import "antd/dist/antd.css";
-import UserVideosCard from "../user/UserVideosCard.js";
+import { Collapse } from "antd";
+import UserVideosList from "../user/UserVideosList.js";
 
 const { Panel } = Collapse;
 
@@ -10,27 +9,10 @@ const PromptCard = (props) => {
 	const prompt = props.data;
 
 	return (
-		<Collapse className="prompt-item" key={prompt.id}>
-			<Panel header={prompt.question} style={{ textAlign: "left" }}>
-				<Divider className="prompt-desc-header" orientation="left">Description</Divider>
+		<Collapse className="prompt-item" bordered={false} defaultActiveKey={[props.index === 0 ? prompt.id : null]}>
+			<Panel header={prompt.question} key={prompt.id} style={{ textAlign: "left" }}>
 				<div className="prompt-desc">{prompt.description}</div>
-				{/* Display videos array for a specific prompt */}
-				<Divider orientation="left">Videos</Divider>
-				<div className="card-flex">
-					<div style={{ "display": "flex", "alignItems": "center" }}>
-						<Button
-							type="primary"
-							shape="round"
-							size="large"
-							icon="plus"
-							href={`/teams/${props.teamId}/videos/post/${prompt.id}`}>
-							Record
-					</Button>
-					</div>
-					{prompt.videos.map((video) => (
-						<UserVideosCard key={video.id} data={video} />
-					))}
-				</div>
+				<UserVideosList />
 			</Panel>
 		</Collapse >
 	);
