@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
-import { updateUserData, getUserData, clearError } from '../../redux/actions/userActions';
+import { updateUserData, getUserData } from '../../redux/actions/userActions';
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
 import 'antd/dist/antd.css';
-import { Collapse, notification } from 'antd';
+import { Collapse, Alert, notification } from 'antd';
 const { Panel } = Collapse;
 
 function ProfileInfo(props) {
 	const { id, updateUserData, getUserData, error } = props;
+	const [formError, setFormError] = useState(null);
 	const [isSaved, setIsSaved] = useState(false);
 	const [expando, setExpando] = useState("0");
 
@@ -20,15 +21,30 @@ function ProfileInfo(props) {
 		setExpando(key)
 	}
 
-	const handleSubmit = async (changes) => {
-		await updateUserData(id, changes);
-		if (!error) {
-			openSuccessNotification();
-			setIsSaved(!isSaved);
-			setExpando("0");
-		} else {
-			openErrorNotification(error);
-		}
+	const handleSubmit = (e, formSchema, changes) => {
+		e.preventDefault();
+		formSchema
+			.validate(changes, { abortEarly: true })
+			.then(async () => {
+				await updateUserData(id, changes);
+				if (!error) {
+					openSuccessNotification();
+					setIsSaved(!isSaved);
+					setExpando("0");
+					setFormError(null);
+				} else {
+					openErrorNotification(error);
+				};
+			})
+			.catch((validationError) => {
+				setFormError(validationError.errors);
+			});
+
+	}
+
+	const onCancel = () => {
+		togglePanel("0");
+		setFormError(null);
 	}
 
 	const openSuccessNotification = () => {
@@ -51,6 +67,7 @@ function ProfileInfo(props) {
 			<div className="form-container">
 				<Collapse activeKey={expando} onChange={(key) => togglePanel(key)}>
 					<Panel header="Update your personal info" key="1" style={{ textAlign: "left" }}>
+						{formError ? <Alert message={formError} type="error" /> : null}
 						<UpdateProfile
 							first_name={props.first_name}
 							last_name={props.last_name}
@@ -58,13 +75,14 @@ function ProfileInfo(props) {
 							username={props.username}
 							handleSubmit={handleSubmit}
 							isUpdatingUserData={props.isUpdatingUserData}
-							togglePanel={togglePanel} />
+							onCancel={onCancel} />
 					</Panel>
 					<Panel header="Change your password" key="2" style={{ textAlign: "left" }}>
+						{formError ? <Alert message={formError} type="error" /> : null}
 						<ChangePassword
 							handleSubmit={handleSubmit}
 							isUpdatingUserData={props.isUpdatingUserData}
-							togglePanel={togglePanel} />
+							onCancel={onCancel} />
 					</Panel>
 				</Collapse>
 			</div>

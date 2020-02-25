@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as yup from "yup";
-import { Form, Input, Row, Col, Alert, Button } from "antd";
+import { Form, Input, Row, Col, Button } from "antd";
 
 const formSchema = yup.object().shape({
 	currentPassword: yup
@@ -15,81 +15,62 @@ const formSchema = yup.object().shape({
 });
 
 const ChangePassword = (props) => {
-	const { handleSubmit, isUpdatingUserData, togglePanel } = props;
-	const [formError, setFormError] = useState(null);
+	const { handleSubmit, isUpdatingUserData, onCancel } = props;
 	const [passwordChanges, setPasswordChanges] = useState({});
 
 	const handleChange = (e) => {
 		setPasswordChanges({ ...passwordChanges, [e.target.name]: e.target.value });
 	};
 
-	const submitChange = (e) => {
-		e.preventDefault();
-
-		formSchema
-			.validate(passwordChanges, { abortEarly: true })
-			.then(() => {
-				handleSubmit(passwordChanges);
-				setPasswordChanges({});
-			})
-			.catch((validationError) => {
-				setFormError(validationError.errors);
-			});
-	};
-
-	const onCancel = () => {
-		togglePanel("0")
+	const cancel = () => {
+		onCancel();
 		setPasswordChanges({});
-		setFormError(null)
 	}
 
 	return (
-		<>
-			{formError ? <Alert message={formError} type="error" /> : null}
-			< Form id="change-password" onSubmit={submitChange} >
-				<Row gutter={24}>
-					<Col span={24}>
-						<Form.Item label="Current Password">
-							<Input
-								type="password"
-								name="currentPassword"
-								onChange={handleChange}
-								value={passwordChanges.currentPassword}
-								placeholder="Current Password"
-								autoComplete="off"
-								required
-							/>
-						</Form.Item>
-						<Form.Item label="New Password">
-							<Input
-								type="password"
-								name="newPassword"
-								onChange={handleChange}
-								value={passwordChanges.newPassword}
-								placeholder="New Password"
-								autoComplete="off"
-								required
-							/>
-						</Form.Item>
-						<Form.Item label="Confirm Password">
-							<Input
-								type="password"
-								name="confirmPassword"
-								onChange={handleChange}
-								value={passwordChanges.confirmPassword}
-								placeholder="Confirm Password"
-								autoComplete="off"
-								required
-							/>
-						</Form.Item>
-					</Col>
-					<Col span={24} className="button-wrapper">
-						<Button className="outlined-btn" size="large" onClick={onCancel}>Cancel</Button>
-						<Button type="primary" htmlType="submit" className="full-btn" size="large" loading={isUpdatingUserData}>Save</Button>
-					</Col>
-				</Row>
-			</Form >
-		</>
+		< Form id="change-password" onSubmit={(e) => { setPasswordChanges({}); handleSubmit(e, formSchema, passwordChanges) }} >
+			<Row gutter={24}>
+				<Col span={24}>
+					<Form.Item label="Current Password">
+						<Input
+							type="password"
+							name="currentPassword"
+							onChange={handleChange}
+							value={passwordChanges.currentPassword}
+							placeholder="Current Password"
+							autoComplete="off"
+							required
+						/>
+					</Form.Item>
+					<Form.Item label="New Password">
+						<Input
+							type="password"
+							name="newPassword"
+							onChange={handleChange}
+							value={passwordChanges.newPassword}
+							placeholder="New Password"
+							autoComplete="off"
+							required
+						/>
+					</Form.Item>
+					<Form.Item label="Confirm Password">
+						<Input
+							type="password"
+							name="confirmPassword"
+							onChange={handleChange}
+							value={passwordChanges.confirmPassword}
+							placeholder="Confirm Password"
+							autoComplete="off"
+							required
+						/>
+					</Form.Item>
+				</Col>
+				<Col span={24} className="button-wrapper">
+					<Button className="outlined-btn" size="large" onClick={cancel}>Cancel</Button>
+					<Button type="primary" htmlType="submit" className="full-btn" size="large" loading={isUpdatingUserData}>Save</Button>
+				</Col>
+			</Row>
+		</Form >
 	);
 }
 
