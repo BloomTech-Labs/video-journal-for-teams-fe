@@ -33,7 +33,6 @@ export const loginUser = (userCredentials) => (dispatch) => {
 				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 			})
 			.catch((err) => {
-				console.log(err.response)
 				dispatch({ type: constants.GENERATE_ERROR, payload: "The email address or password you entered is incorrect" });
 			});
 	} else {
@@ -48,7 +47,6 @@ export const loginUser = (userCredentials) => (dispatch) => {
 				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 			})
 			.catch((err) => {
-				console.log(err.response)
 				dispatch({
 					type: constants.GENERATE_ERROR,
 					payload: "The username or password you entered is incorrect",

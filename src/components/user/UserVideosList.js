@@ -15,7 +15,6 @@ import Carousel from "../shared/Carousel";
 function UserVideos({fetchUserVideos, id, videos}) {
 	useEffect(() => {
 		fetchUserVideos(id)
-		console.log("test")
 	}, [id, fetchUserVideos])
 
 	return (
