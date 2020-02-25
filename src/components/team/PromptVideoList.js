@@ -15,7 +15,7 @@ import { Layout, Button, Divider } from "antd";
 import "./teamTest.css";
 const { Content } = Layout;
 
-const PromptVideoList = ({fetchTeamVideos, newPrompt, createPrompt, teamPromptsAndVideos, userRole, teamId}) => {
+const PromptVideoList = ({ fetchTeamVideos, newPrompt, createPrompt, teamPromptsAndVideos, userRole, teamId }) => {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false);
 	let { team_id } = useParams();
