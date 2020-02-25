@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 import { Collapse, Alert, notification } from 'antd';
 const { Panel } = Collapse;
 
-function ProfileInfo(props) {
+function ProfileForm(props) {
 	const { id, updateUserData, getUserData, error } = props;
 	const [formError, setFormError] = useState(null);
 	const [isSaved, setIsSaved] = useState(false);
@@ -25,41 +25,27 @@ function ProfileInfo(props) {
 		e.preventDefault();
 		formSchema
 			.validate(changes, { abortEarly: true })
-			.then(async () => {
-				await updateUserData(id, changes);
-				if (!error) {
-					openSuccessNotification();
-					setIsSaved(!isSaved);
-					setExpando("0");
-					setFormError(null);
-				} else {
-					openErrorNotification(error);
-				};
+			.then(() => {
+				updateUserData(id, changes);
+				setIsSaved(!isSaved);
+				setExpando("0");
+				setFormError(null);
 			})
 			.catch((validationError) => {
 				setFormError(validationError.errors);
 			});
-
 	}
+
+	// useEffect(() => {
+	// 	if (!error) {
+
+	// 	}
+	// }, [error])
 
 	const onCancel = () => {
 		togglePanel("0");
 		setFormError(null);
 	}
-
-	const openSuccessNotification = () => {
-		notification.success({
-			message: 'Profile Updated!',
-			duration: 2,
-		});
-	};
-
-	const openErrorNotification = (errMsg) => {
-		notification.error({
-			message: `Something's wrong! Try again later. ${errMsg}`,
-			duration: 2
-		});
-	};
 
 	return (
 		<div className="profile-information">
@@ -102,4 +88,4 @@ const mapStateToProps = state => {
 	}
 };
 
-export default connect(mapStateToProps, { updateUserData, getUserData })(ProfileInfo);
+export default connect(mapStateToProps, { updateUserData, getUserData })(ProfileForm);

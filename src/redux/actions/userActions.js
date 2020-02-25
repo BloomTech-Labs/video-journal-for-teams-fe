@@ -255,9 +255,17 @@ export const updateUserData = (id, changes) => (dispatch) => {
 		.put(`/users/${id}`, changes)
 		.then(res => {
 			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS, payload: res.data.updatedUser });
+			notification.success({
+				message: 'Profile successfully updated!',
+				duration: 2,
+			});
 		})
 		.catch(error => {
 			dispatch({ type: constants.UPDATE_USER_DATA_FAILURE, payload: error });
+			notification.error({
+				message: `Something's wrong! Try again. ${error.response.data.message}`,
+				duration: 2
+			});
 		})
 }
 

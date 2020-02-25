@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 // Components
 import ProfileCarousel from './ProfileCarousel';
 import ProfileAvatar from './ProfileAvatar';
-import ProfileInfo from './ProfileInfo';
+import ProfileForm from './ProfileForm';
 
 const UserProfileContent = () => {
 
@@ -16,7 +16,7 @@ const UserProfileContent = () => {
 				<div className="container">
 					<Row gutter={20}>
 						<Col span={8}><ProfileAvatar /></Col>
-						<Col span={16}><ProfileInfo /></Col>
+						<Col span={16}><ProfileForm /></Col>
 					</Row>
 				</div>
 			</div>

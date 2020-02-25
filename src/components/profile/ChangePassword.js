@@ -11,7 +11,7 @@ const formSchema = yup.object().shape({
 		.string()
 		.min(8, "New password must be at least 8 characters.")
 		.max(72, "New password must be less than 72 characters."),
-	confirmPassword: yup.string().oneOf([yup.ref("newPassword"), null], "Passwords must match."),
+	confirmPassword: yup.string().oneOf([yup.ref("newPassword"), null], "New passwords must match."),
 });
 
 const ChangePassword = (props) => {
