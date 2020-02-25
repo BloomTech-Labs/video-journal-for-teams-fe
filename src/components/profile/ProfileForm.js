@@ -4,20 +4,12 @@ import { updateUserData, getUserData } from '../../redux/actions/userActions';
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
 import 'antd/dist/antd.css';
-import { Collapse, Alert, notification } from 'antd';
+import { Collapse, Alert } from 'antd';
 const { Panel } = Collapse;
 
 function ProfileForm(props) {
+	const { id, updateUserData, getUserData } = props;
 	const [formError, setFormError] = useState(null);
-	const { id, first_name, last_name, email, username, updateUserData, getUserData } = props;
-
-	const [userInput, setUserInput] = useState({
-		first_name: first_name,
-		last_name: last_name,
-		email: email,
-		username: username
-	});
-
 	const [isSaved, setIsSaved] = useState(false);
 	const [expando, setExpando] = useState("0");
 
@@ -43,10 +35,6 @@ function ProfileForm(props) {
 				setFormError(validationError.errors);
 			});
 	}
-
-	useEffect(() => {
-		getUserData(id);
-	}, [isSaved, getUserData, id])
 
 	const onCancel = () => {
 		togglePanel("0");
