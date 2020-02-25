@@ -8,8 +8,16 @@ import { Collapse, Alert, notification } from 'antd';
 const { Panel } = Collapse;
 
 function ProfileForm(props) {
-	const { id, updateUserData, getUserData, error } = props;
 	const [formError, setFormError] = useState(null);
+	const { id, first_name, last_name, email, username, updateUserData, getUserData, isUpdatingUserData } = props;
+
+	const [userInput, setUserInput] = useState({
+		first_name: first_name,
+		last_name: last_name,
+		email: email,
+		username: username
+	});
+
 	const [isSaved, setIsSaved] = useState(false);
 	const [expando, setExpando] = useState("0");
 
@@ -36,11 +44,9 @@ function ProfileForm(props) {
 			});
 	}
 
-	// useEffect(() => {
-	// 	if (!error) {
-
-	// 	}
-	// }, [error])
+	useEffect(() => {
+		getUserData(id);
+	}, [isSaved, getUserData, id])
 
 	const onCancel = () => {
 		togglePanel("0");

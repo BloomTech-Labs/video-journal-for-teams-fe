@@ -1,5 +1,3 @@
-import React from "react";
-
 const CopyClipboard = (domElement) => {
 	/* Get the text field */
 	var copyText = document.getElementById(`${domElement}`);

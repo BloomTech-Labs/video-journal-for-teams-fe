@@ -41,36 +41,25 @@ function EditMemberCard(props) {
 		});
 	}
 
+	const switchRole = async (roleNum) => {
+		try {
+			const result = await props.updateUserRole(team_id, member.user_id, roleNum);
 
-	const handleRoleChange = async () => {
+			if (result) {
+				roleChangeSuccess(`${member.user_full_name}'s role has been updated!`);
+			} else {
+				roleChangeError();
+			}
+		} catch (error) {
+			roleChangeError();
+		}
+	}
+
+	const handleRoleChange = () => {
 		if (member.role_id === 1) {
-
-			try {
-				const result = await props.updateUserRole(team_id, member.user_id, 2);
-
-				if (result) {
-					roleChangeSuccess(`${member.user_full_name}'s role has been updated!`);
-				} else {
-					roleChangeError();
-				}
-			} catch (error) {
-				roleChangeError();
-			}
-
+			switchRole(2);
 		} else if (member.role_id === 2) {
-
-			try {
-				const result = await props.updateUserRole(team_id, member.user_id, 1);
-
-				if (result) {
-					roleChangeSuccess(`${member.user_full_name}'s role has been updated!`);
-				} else {
-					roleChangeError();
-				}
-			} catch (error) {
-				roleChangeError();
-			}
-
+			switchRole(1);
 		}
 	}
 
@@ -96,7 +85,7 @@ function EditMemberCard(props) {
 					: (<Tooltip placement="bottom" title={`Demote ${member.user_full_name}`}><Icon type="down-circle" theme="twoTone" twoToneColor="#eb2f96" onClick={showRoleConfirm} /></Tooltip>)}
 			</Card.Grid>
 			<Card.Grid alt="Remove member from team" style={{ width: "50%", textAlign: 'center', padding: 0 }}>
-				<Tooltip placement="bottom" title={`REMOVE ${member.user_full_name}`}><Icon type="stop" theme="twoTone" twoToneColor="#ff0000" onClick={showDeleteConfirm} /></Tooltip>
+				<Tooltip placement="bottom" title={`Remove ${member.user_full_name}`}><Icon type="stop" theme="twoTone" twoToneColor="#ff0000" onClick={showDeleteConfirm} /></Tooltip>
 			</Card.Grid>
 		</Card>
 	)

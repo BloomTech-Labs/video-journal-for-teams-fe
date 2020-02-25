@@ -7,20 +7,29 @@
 .add-team {
 	margin: 10px;
 	min-width: 160px;
-	button {
-		background-color: white;
-		border: 2px dashed $alpaca-green;
-		width: 50px;
-		height: 50px;
-		&:hover {
-			background-color: $alpaca-green;
-			border: 2px dashed white;
+	padding: 0;
+	border: none;
+	.ant-card {
+		min-width: 160px;
+		height: 200px;
+	}
+	.ant-card-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		div {
+			background-color: white;
+			border: 2px dashed $alpaca-green;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			i {
-				color: white;
+				color: $alpaca-green;
 			}
-		}
-		i {
-			color: $alpaca-green;
 		}
 	}
 	p {
@@ -29,6 +38,7 @@
 		margin-top: 20px;
 	}
 }
+
 
 .teamCard, .add-team {
 	width: 160px;
@@ -41,7 +51,41 @@
 	.ant-card-body {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-end;
+		align-items: center;
+		overflow: hidden;
+		padding: 10px;
+		i {
+			align-self: flex-end;
+		}
+		.ant-card-meta {
+			width: 100%;
+			.ant-card-meta-detail {
+				.ant-card-meta-title {
+					text-align: center;
+					color: rgba(0, 0, 0, 0.85);
+					font-weight: 500;
+					font-size: 16px;
+			}
+				.ant-card-meta-title {
+					font-size: 1rem;
+					margin: 5px 0;
+				}
+				.ant-card-meta-description {
+					font-size: 0.75rem;
+					height: 75px;
+					:after {
+						content: "";
+						text-align: right;
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 3rem;
+						background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7) 99%);
+					}
+				}
+			}
+		}
 	}
 }
 

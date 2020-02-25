@@ -1,28 +1,31 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 
 import NavAndHeader from "../components/nav/NavAndHeader";
 import TeamList from '../components/user/UserTeamsList';
-import Carousel from "../components/Carousel";
+import Carousel from "../components/shared/Carousel";
 import UserVideosCard from "../components/user/UserVideosCard";
 
 import { fetchUserVideos } from '../redux/actions/userActions';
+import { clearError } from '../redux/actions/teamActions';
 
 function UserDashboard(props) {
-	const { id, fetchUserVideos } = props
+	const { id, fetchUserVideos, clearError } = props
 
 	useEffect(() => {
+		clearError();
 		fetchUserVideos(id)
 	}, [id, fetchUserVideos])
 
 	return (
 		<NavAndHeader>
-			<div className="user-dashboard">
+			<div className="user-dashboard dashboard">
 				<h1>Dashboard</h1>
-				<h3>My&nbsp;Teams</h3>
 				<TeamList />
-				<h3>My&nbsp;Videos</h3>
-				<Carousel component={UserVideosCard} data={props.videos} name={"videos"}/>
+				<div className="dashboard-header">
+					<h2>My&nbsp;Videos</h2>
+				</div>
+				<Carousel component={UserVideosCard} data={props.videos} name={"videos"} />
 			</div>
 		</NavAndHeader>
 	)
@@ -36,4 +39,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, {fetchUserVideos})(UserDashboard);
+export default connect(mapStateToProps, { fetchUserVideos, clearError })(UserDashboard);
