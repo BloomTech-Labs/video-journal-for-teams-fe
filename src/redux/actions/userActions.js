@@ -251,14 +251,13 @@ export const setStreamError = (error) => (dispatch) => {
 // Update user data
 export const updateUserData = (id, changes) => (dispatch) => {
 	dispatch({ type: constants.UPDATE_USER_DATA_START });
-
-	return AxiosWithAuth().put(`/users/${id}`, changes)
+	AxiosWithAuth()
+		.put(`/users/${id}`, changes)
 		.then(res => {
 			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS, payload: res.data.updatedUser });
-			return res.data;
 		})
 		.catch(error => {
-			dispatch({ type: constants.GENERATE_ERROR, payload: error });
+			dispatch({ type: constants.UPDATE_USER_DATA_FAILURE, payload: error });
 		})
 }
 

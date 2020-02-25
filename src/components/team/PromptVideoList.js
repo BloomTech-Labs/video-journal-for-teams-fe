@@ -11,10 +11,9 @@ import AddPromptModal from "./AddPromptModal.js";
 import PromptCard from "./PromptCard.js";
 
 //Styling
-import { Layout, Button, Collapse, Divider } from "antd";
+import { Layout, Button, Divider } from "antd";
 import "./teamTest.css";
 const { Content } = Layout;
-const { Panel } = Collapse;
 
 const PromptVideoList = (props) => {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
