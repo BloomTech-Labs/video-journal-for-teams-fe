@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import { Icon } from "antd";
+
 // Redux
 import { connect } from "react-redux";
 
@@ -24,12 +26,15 @@ let chunks = [];
 //* Capture webcam and audio into a stream
 //* Record stream and update stream object URL in redux
 
-function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlayback, setStreamError, playback, updateModalStep }) {
+function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlayback, setStreamError, playback, showModal }) {
 	const [mediaRecorder, setMediaRecorder] = useState(null);
 	const streamElementHandle = useRef(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		setupMediaStream();
+		if (!playback) {
+			setupMediaStream();
+		}
 	}, [playback]);
 
 	useEffect(() => {
@@ -37,6 +42,16 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 			finalizeMediaRecorderSetup();
 		}
 	}, [mediaRecorder, finalizeMediaRecorderSetup]);
+
+	//Cancels recording and playback when exiting out of the modal. Should probably add a confirmation alert
+	useEffect(() => {
+		if (mediaRecorder && mediaRecorder.state === 'recording' && !showModal) {
+			mediaRecorder.stop();
+			toggleStreamPlayback();
+		} else if (!showModal && playback) {
+			toggleStreamPlayback();
+		}
+	}, [showModal])
 
 	//* Setup for media stream init, linking to video source and recorder init
 	function setupMediaStream() {
@@ -66,6 +81,7 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 		//When the video element is ready, play video source.
 		streamElementHandle.current.onloadedmetadata = (e) => {
 			streamElementHandle.current.play();
+			setLoading(false);
 		};
 	}
 
@@ -104,8 +120,10 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 			//Clear errors because we are done with the stream
 			setStreamError(false);
 
+			//Turns off camera and mic
+			e.target.stream.getTracks().forEach(track => track.stop());
+
 			//Enable playback feed and download/upload options
-			updateModalStep("playback")
 			toggleStreamPlayback();
 		};
 	}
@@ -114,8 +132,13 @@ function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlaybac
 
 		return (
 			<div className="record-stream-container">
+				<div className="video-player">
+					{loading ? 
+					<Icon type="loading"/> 
+					: null}
+					<video  style={{display: loading ? "none" : "flex"}} ref={streamElementHandle} width="560"></video>
+				</div>
 				<StreamControls mediaRecorder={mediaRecorder} streamElementHandle={streamElementHandle} />
-				<video ref={streamElementHandle} width="560"></video>
 			</div>
 		);
 }

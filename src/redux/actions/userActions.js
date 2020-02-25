@@ -240,6 +240,12 @@ export const toggleStreamPlayback = () => (dispatch) => {
 	});
 };
 
+export const restartRecording = () => (dispatch) => {
+	dispatch({
+		type: constants.RESTART_RECORDING,
+	});
+};
+
 export const setStreamError = (error) => (dispatch) => {
 	dispatch({
 		type: constants.SET_STREAM_ERROR,

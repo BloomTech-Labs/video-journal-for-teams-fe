@@ -18,7 +18,7 @@ function DownloadVideo({ videoUrl }) {
 			<a ref={downloadRef} href={videoUrl} download="alpacavid.webm" hidden>
 				Download Video
 			</a>
-			<Button onClick={download} style={{ margin: "8px" }}>
+			<Button onClick={download} style={{ margin: "8px" }} icon="download">
 				Download Video
 			</Button>
 		</>

@@ -327,6 +327,12 @@ const userReducer = (state = initialState, { type, payload }) => {
 				},
 			};
 
+		case constants.RESTART_RECORDING:
+				return {
+					...state,
+					videoStream: {...initialState.videoStream},
+				};
+
 		case constants.SET_STREAM_ERROR:
 			return {
 				...state,
