@@ -1,7 +1,6 @@
 body {
 	height: 100vh;
-	.texts();
-	background-color: @color-4;
+	background-color: orange;
 	@media (max-height: 500px) {
 		height: 500px;
 		margin: 0 auto;
@@ -29,7 +28,7 @@ header {
 		position: absolute;
 		height: 900px;
 		width: 5000px;
-		background-image: url("../img/floatbg02.jpg");
+		background-image: url("../imgs/floatbg.jpg");
 		// background-position: center center;
 		// background-size: 50%;
 		animation: move 250s infinite linear;
@@ -61,7 +60,6 @@ header {
 		align-items: left;
 		width: 400px;
 		padding: 25px;
-		.hardborder();
 		h2 {
 			color: $dark-grey;
 		}
