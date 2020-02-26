@@ -9,11 +9,11 @@ Staging site deployed here: [https://staging.alpacavids.com]
 
 ## Contributors
 
-|[Kerri-Ann Bates](https://github.com/Kerri-AnnBates)|[Michael Nunes](https://github.com/TinySquid)|[Sofia Levin](https://github.com/sofialevin/)|[Darrin Lowery](https://github.com/ogrotten)|[Sam Allen](https://github.com/allensam88)|
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|[<img src="https://avatars0.githubusercontent.com/u/18246524?s=460&v=4" width = "200" />](https://github.com/Kerri-AnnBates)|[<img src="https://avatars2.githubusercontent.com/u/13441400?s=460&v=4" width = "200" width = "200" />](https://github.com/TinySquid)|[<img src="https://avatars1.githubusercontent.com/u/8367070?s=460&v=4" width = "200" width = "200" />](https://github.com/sofialevin/)|[<img src="https://media-exp1.licdn.com/dms/image/C5603AQFhuYjzAGmDdw/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=Ot5Nj4Qnu5FU6XkMFHlL1KhmWo48HxvmlYgcoX2LcdA" />](https://github.com/ogrotten)|[<img src="https://avatars2.githubusercontent.com/u/54912919?s=460&v=4" width = "200" />](https://github.com/allensam88)|
-|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Kerri-AnnBates)|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TinySquid)|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/sofialevin/)|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ogrotten)|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/allensam88)|
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/kerri-ann-bates-0b4970129/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/miketnunes/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sofia-levin-a6960682/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/darrin-lowery-70860867/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/samallen79/) |
+|                                            [Kerri-Ann Bates](https://github.com/Kerri-AnnBates)                                            |                                             [Michael Nunes](https://github.com/TinySquid)                                             |                                             [Sofia Levin](https://github.com/sofialevin/)                                              |                                                                                  [Darrin Lowery](https://github.com/ogrotten)                                                                                   |                                         [Sam Allen](https://github.com/allensam88)                                          |
+| :----------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: |
+|        [<img src="https://avatars0.githubusercontent.com/u/18246524?s=460&v=4" width = "200" />](https://github.com/Kerri-AnnBates)        | [<img src="https://avatars2.githubusercontent.com/u/13441400?s=460&v=4" width = "200" width = "200" />](https://github.com/TinySquid) | [<img src="https://avatars1.githubusercontent.com/u/8367070?s=460&v=4" width = "200" width = "200" />](https://github.com/sofialevin/) | [<img src="https://media-exp1.licdn.com/dms/image/C5603AQFhuYjzAGmDdw/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=Ot5Nj4Qnu5FU6XkMFHlL1KhmWo48HxvmlYgcoX2LcdA" />](https://github.com/ogrotten) |  [<img src="https://avatars2.githubusercontent.com/u/54912919?s=460&v=4" width = "200" />](https://github.com/allensam88)   |
+|                        [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Kerri-AnnBates)                         |                        [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TinySquid)                         |                        [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/sofialevin/)                        |                                                              [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ogrotten)                                                              |                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/allensam88)                   |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/kerri-ann-bates-0b4970129/) |      [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/miketnunes/)      | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sofia-levin-a6960682/)  |                                     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/darrin-lowery-70860867/)                                     | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/samallen79/) |
 
 <br>
 
@@ -36,29 +36,30 @@ Tagline: It's how you asynchronously record and store practice videos for interv
 
 ### Key Features
 
--    Login/Register with Passport
--    User Dashboard: shows the teams you joined and your videos
--    Team Dashboard: shows the team members, interview prompt questions, and team videos 
--	 Video Viewer: plays a video and allows members to provide feedback / view feedback
--    Update User Profile capability
--	 User can update their account info
--    Team Manager can manage teams
--    	 Modify regular team member role to manager role / vice versa
--	 Invite / Remove members from team
-- 	 Create new video prompts
--    Video Recording
-- 	 Videos can be recorded in-app and uploaded (posted) to a team
--    Video Storage / Streaming
+- Login/Register with Passport
+- User Dashboard: shows the teams you joined and your videos
+- Team Dashboard: shows the team members, interview prompt questions, and team videos
+- Video Viewer: plays a video and allows members to provide feedback / view feedback
+- Update User Profile capability
+  - User can update their account info
+- Team Manager can manage teams
+  - Modify regular team member role to manager role / vice versa
+  - Invite / Remove members from team
+- Create new video prompts
+- Video Recording
+  - Videos can be recorded in-app and uploaded (posted) to a team
+- Video Storage / Streaming
 
 ## Tech Stack
 
 ### Front End built using: React
 
 Front End libraries and dependencies can be found in package.json, but major highlights are:
--    Redux
--    Redux-Persist
--    Axios
--    Ant Design / node-sass for the UI
+
+- Redux
+- Redux-Persist
+- Axios
+- Ant Design / node-sass for the UI
 
 Testing is handled by jest / react-testing-library / enzyme / redux-mock-store
 
@@ -69,14 +70,15 @@ Back End production pipeline deployed at [Heroku-Production](https://video-journ
 Back End staging pipeline deployed at [Heroku-Staging](https://video-journal-staging.herokuapp.com/)
 
 List of major Back End dependencies:
--    Express
--    Knex
--    Postgres
--    Helmet
--    Cors
--    Passport
--	 bcrypt
--	 jsonwebtoken
+
+- Express
+- Knex
+- Postgres
+- Helmet
+- Cors
+- Passport
+- bcrypt
+- jsonwebtoken
 
 Testing is done with jest / supertest
 Development server is run with nodemon
@@ -89,16 +91,15 @@ Our API does not rely on third parties nor requires any external services
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-REACT_APP_ENV='development'
-REACT_APP_FRONT_END_URL='https://alpacavids.com/'
-REACT_APP_PRODUCTION_URL = 'https://video-journal.herokuapp.com/api/'
-REACT_APP_STAGING_URL = 'https://video-journal-staging.herokuapp.com/api/'
-REACT_APP_LOCAL_HOST = 'http://localhost:5000/api/'
+- REACT_APP_ENV='development'
+- REACT_APP_FRONT_END_URL='https://alpacavids.com/'
+- REACT_APP_PRODUCTION_URL = 'https://video-journal.herokuapp.com/api/'
+- REACT_APP_STAGING_URL = 'https://video-journal-staging.herokuapp.com/api/'
+- REACT_APP_LOCAL_HOST = 'http://localhost:5000/api/'
 
-REACT_APP_PUBLIC_URL_PRODUCTION = "https://video-journal.herokuapp.com/public"
-REACT_APP_PUBLIC_URL_STAGING = "https://video-journal-staging.herokuapp.com/public"
-REACT_APP_PUBLIC_URL_LOCAL_HOST = "http://localhost:5000/public"
-
+- REACT_APP_PUBLIC_URL_PRODUCTION = "https://video-journal.herokuapp.com/public"
+- REACT_APP_PUBLIC_URL_STAGING = "https://video-journal-staging.herokuapp.com/public"
+- REACT_APP_PUBLIC_URL_LOCAL_HOST = "http://localhost:5000/public"
 
 # Testing
 
@@ -110,13 +111,13 @@ Packages can be installed locally with either: yarn install or npm install.
 
 ## Scripts
 
--	**npm run build** used on Netlify deployment
+- **npm run build** used on Netlify deployment
 
 Can be ran with either yarn or npm.
 
--	**start**: to render a local development browser,
--	**test** to run local tests
--	**coverage** to generate test coverage report with jest
+- **start**: to render a local development browser,
+- **test** to run local tests
+- **coverage** to generate test coverage report with jest
 
 # Contributing
 
@@ -125,12 +126,13 @@ When contributing to this repository, please first discuss the change you wish t
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
 ## Issue/Bug Request
-   
- **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
- - Check first to see if your issue has already been reported.
- - Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
- - Create a live example of the problem.
- - Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes,  where you believe the issue is originating from, and any potential solutions you have considered.
+
+**If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
+
+- Check first to see if your issue has already been reported.
+- Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
+- Create a live example of the problem.
+- Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes, where you believe the issue is originating from, and any potential solutions you have considered.
 
 ### Feature Requests
 
