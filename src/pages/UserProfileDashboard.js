@@ -12,7 +12,7 @@ function EditUserDashboard() {
 				<Header className="full-header">
 					<Title level={3} className={"userDashHeaderFont"}>Alpaca Vids</Title>
 				</Header>
-				<Content>
+				<Content className="profile-page">
 					<ProfileContent />
 				</Content>
 				<Footer>Squid Syskey Productions &copy; Copyright</Footer>
