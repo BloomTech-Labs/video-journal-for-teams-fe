@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 //Redux
 import { connect } from "react-redux";
@@ -7,17 +7,13 @@ import { fetchUserVideos, restartRecording } from "../../redux/actions/userActio
 //Components
 import UserVideosCard from "./UserVideosCard";
 
-function UserVideos({fetchUserVideos, id, videos, promptId, restartRecording}) {
-	const [showModal, setShowModal] = useState(false)
-
-	const toggleModal = () => {
-		setShowModal(!showModal)
-	}
+function UserVideos({fetchUserVideos, id, videos}) {
 
 	useEffect(() => {
 		fetchUserVideos(id)
 	}, [id, fetchUserVideos])
 
+	return (
 		<div className="user-videos-list">
 			{videos.map(video => <UserVideosCard key={video.id} data={video}/>)}
 		</div>
