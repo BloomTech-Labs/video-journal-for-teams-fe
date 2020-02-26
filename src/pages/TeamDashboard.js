@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { UserContext } from "../components/utils/UserContext";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { Card } from "antd";
 
 // Components
 import NavAndHeader from "../components/nav/NavAndHeader";
 import MembersList from "../components/team/MembersList";
-import PromptVideoList from "../components/team/PromptVideoList";
+import PromptList from "../components/team/PromptList";
 
 // Redux 
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
 
-function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, userId, teamError, isFetching, clearError }) {
+function TeamDashboard(props) {
+	const { team,
+		fetchTeamById,
+		fetchTeamMembers,
+		fetchTeamVideos,
+		teamMembers,
+		userId,
+		newPrompt,
+		teamError,
+		isFetching,
+		clearError } = props;
 	const [userRole, setUserRole] = useState();
 	const [count, setCount] = useState(10);
 	let { team_id } = useParams();
@@ -25,7 +35,7 @@ function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, use
 		fetchTeamMembers(team_id);
 		fetchTeamVideos(team_id);
 
-	}, [team_id, fetchTeamById, fetchTeamMembers]);
+	}, [team_id, fetchTeamById, fetchTeamMembers, newPrompt]);
 
 	// Check if there is an error on mount.
 	useEffect(() => {
@@ -50,7 +60,7 @@ function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, use
 		}
 	}, [teamError]);
 
-	// Sets the logged in user role for the team
+	// Sets the logged in user role for the team (general team member role 1 or team lead role 2)
 	useEffect(() => {
 		if (teamMembers.length > 0) {
 			const findTeamMember = teamMembers.find((item) => (item.user_id === userId));
@@ -66,7 +76,6 @@ function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, use
 
 	// If there is a forbidden error
 	if (!isFetching && teamError) {
-
 		if (teamError.status === 403) {
 			countTimer = setTimeout(() => {
 				setCount(count - 1);
@@ -90,8 +99,10 @@ function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, use
 			<NavAndHeader>
 				<div className="team-dashboard dashboard">
 					<h1>{team.name}</h1>
-					<MembersList userRole={userRole} />
-					<PromptVideoList userRole={userRole} />
+					<UserContext.Provider value={{ userRole }} >
+						<MembersList />
+						<PromptList />
+					</UserContext.Provider>
 				</div>
 			</NavAndHeader>
 		)
@@ -104,7 +115,8 @@ const mapStateToProps = (state) => ({
 	teamMembers: state.Team.teamMembers,
 	teamError: state.Team.error,
 	isFetching: state.Team.isFetching,
-	teamPromptsAndVideos: state.Team.teamPromptsAndVideos
+	teamPromptsAndVideos: state.Team.teamPromptsAndVideos,
+	newPrompt: state.Team.newPrompt
 });
 
 const mapActionsToProps = {

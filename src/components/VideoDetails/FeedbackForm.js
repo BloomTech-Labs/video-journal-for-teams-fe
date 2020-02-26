@@ -12,7 +12,7 @@ import { Form, Input, Button } from "antd";
 // Additional Ant Design components
 const { TextArea } = Input;
 
-function FeedbackForm({ videoId, submitFeedback, isSubmitting }) {
+export function FeedbackForm({ videoId, submitFeedback, isSubmitting }) {
 	const [feedback, setFeedback] = useState({
 		post: "",
 	});

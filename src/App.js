@@ -56,8 +56,6 @@ function App(props) {
 
 			<PrivateRoute exact path="/teams/:team_id" component={TeamDashboard} />
 
-			<PrivateRoute exact path="/teams/:team_id/videos/post/:prompt_id" component={PostTeamVideo} />
-
 			<Route exact path="/videos" component={UserVideos} />
 
 			<UploadProgress />
