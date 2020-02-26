@@ -9,13 +9,12 @@ import UploadVideo from "./UploadVideo/UploadVideo";
 
 import { Modal } from 'antd';
 
-export const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, playback, videoStream, user_id, promptId, rawVideoData, uploadVideo}) => {
+export const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, videoStream, user_id, promptId, uploadVideo}) => {
 	const [videoData, setvideoData] = useState({
 				title: "",
 				description: "",
 				owner_id: user_id,
 				prompt_id: promptId,
-				raw: rawVideoData,
 			});
 
 	const formRef = useRef(null);
@@ -25,9 +24,9 @@ export const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, pl
 	}
 
 	const PostVideoMode = () => {
-		if (playback) {
+		if (videoStream && videoStream.playback) {
 			return "playback"
-		} else if (!playback && videoStream.raw && videoStream.raw[0] instanceof Blob === true) {
+		} else if (videoStream && !videoStream.playback && videoStream.raw && videoStream.raw[0] instanceof Blob === true) {
 				return "upload"
 			} else {
 				return "recording"	
@@ -41,7 +40,7 @@ export const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, pl
 			formRef.current.getForm().validateFields((err, values) => {
 				if (!err) {
 					//No errors, begin upload
-					uploadVideo(videoData);
+					uploadVideo({...videoData, raw: videoStream.rawVideoData,});
 					toggleModal();
 				}
 			});
@@ -66,10 +65,8 @@ export const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, pl
 }
 
 const mapStateToProps = (state) => ({
-	playback: state.User.videoStream.playback,
 	videoStream: state.User.videoStream,
 	user_id: state.User.userId,
-	rawVideoData: state.User.videoStream.raw,
 });
 
 const mapActionsToProps = {

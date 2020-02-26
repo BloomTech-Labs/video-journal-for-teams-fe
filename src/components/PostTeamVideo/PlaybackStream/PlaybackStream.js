@@ -36,7 +36,6 @@ function PlaybackStream({ stream, toggleStreamPlayback, restartRecording }) {
 }
 
 const mapStateToProps = (state) => ({
-	playback: state.User.videoStream.playback,
 	stream: state.User.videoStream.stream,
 });
 
