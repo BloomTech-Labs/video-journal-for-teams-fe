@@ -77,7 +77,7 @@ header.home {
 					margin: 0;
 					font-weight: bolder;
 					@include button($alpaca-green);
-					border: 3px solid $medium-grey;
+					border: 1px solid $medium-grey;
 					min-width: 142px;
 					&:hover {
 						@include button($pale-yellow);
