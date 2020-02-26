@@ -11,7 +11,6 @@ import PromptCard from "./PromptCard.js";
 
 //Styling
 import { Layout, Button, Divider } from "antd";
-import "./teamTest.css";
 const { Content } = Layout;
 
 const PromptVideoList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {

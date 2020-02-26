@@ -8,14 +8,14 @@ import { Collapse, Alert } from 'antd';
 const { Panel } = Collapse;
 
 function ProfileForm(props) {
-	const { id, updateUserData, getUserData, error } = props;
+	const { id, updateUserData, getUserData } = props;
 	const [formError, setFormError] = useState(null);
 	const [isSaved, setIsSaved] = useState(false);
 	const [expando, setExpando] = useState("0");
 
 	useEffect(() => {
 		getUserData(id);
-	}, [isSaved, getUserData, id, error])
+	}, [isSaved, getUserData, id])
 
 	const togglePanel = (key) => {
 		setExpando(key)
@@ -77,8 +77,7 @@ const mapStateToProps = state => {
 		last_name: state.User.last_name,
 		email: state.User.email,
 		username: state.User.username,
-		isUpdatingUserData: state.User.isUpdatingUserData,
-		error: state.User.error
+		isUpdatingUserData: state.User.isUpdatingUserData
 	}
 };
 
