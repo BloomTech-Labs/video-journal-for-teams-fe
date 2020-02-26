@@ -13,8 +13,8 @@ const Home = () => {
 					<img alt="Alpaca Vids Logo" className="alpaca-logo" src={Alpaca}></img>
 				</div>
 				<div className="text">
-					<h1>Success Begins Here.</h1>
-					<h2><strong>Your</strong> how-to site about how-to</h2>
+					<h1>Success<br />Begins Here.</h1>
+					<h2>Hone your presence,<br />land your dream job.</h2>
 				</div>
 			</div>
 		</header>
