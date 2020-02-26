@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Typography } from 'antd';
 import 'antd/dist/antd.css';
 import ProfileContent from '../components/profile/ProfileContent';
+import ProfileCarousel from '../components/profile/ProfileCarousel';
 const { Title } = Typography;
 const { Header, Footer, Content } = Layout;
 
@@ -12,6 +13,7 @@ function EditUserDashboard() {
 				<Header className="full-header">
 					<Title level={3} className={"userDashHeaderFont"}>Alpaca Vids</Title>
 				</Header>
+				<ProfileCarousel />
 				<Content className="profile-page">
 					<ProfileContent />
 				</Content>

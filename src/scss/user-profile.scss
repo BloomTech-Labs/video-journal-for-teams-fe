@@ -38,9 +38,13 @@
 	}
 }
 
+.profile-page.ant-layout-content {
+	min-height: auto;
+}
+
 .profile-main {
 	background-color: #fff;
-	height          : 100%;
+	height          : inherit;
 
 	.outlined-btn {
 		@include outlined-button($alpaca-green);
