@@ -40,9 +40,9 @@ function App(props) {
 	return (
 		<div className="app">
 			{props.inviteError ? <Alert message={props.inviteError} type="error" /> : null}
-			<Route exact path="/home" component={Home} />
+			<Route exact path="/" component={Home} />
 
-			<Route exact path="/" component={Login} />
+			<Route exact path="/login" component={Login} />
 
 			<Route exact path="/register" component={Register} />
 

@@ -1,11 +1,19 @@
 import React, { useEffect } from "react";
 import { Typography, Button } from "antd";
 import Alpaca from '../imgs/alpaca-logo.png';
+import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
 
 
 const Home = () => {
+	let history = useHistory();
+
+	const handleBegin = (e) => {
+		e.preventDefault();
+		history.push("/register");
+	};
+
 	return (
 		<header className="home">
 			<div className="mainbg">
@@ -23,7 +31,12 @@ const Home = () => {
 						<Button size="large"
 							// icon="caret-right"
 							className="adding-button"
-							onClick={() => true}>
+							onClick={
+								(e) => {
+									e.preventDefault();
+									history.push("/register");
+								}
+							}>
 							B E G I N
 						</Button>
 					</div>
