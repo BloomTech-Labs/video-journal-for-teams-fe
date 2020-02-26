@@ -10,8 +10,8 @@ const constraints = {
 		//Camera for mobile users
 		facingMode: "user", //Front facing camera on mobile
 		//min/ideal/max capture sizes
-		width: { min: 640, ideal: 1280, max: 1920 },
-		height: { min: 480, ideal: 720, max: 1080 },
+		width: { min: 480, ideal: 720, max: 1080 },
+		height: { min: 640, ideal: 1280, max: 1920 },
 		//Try for these framerates if possible
 		frameRate: {
 			ideal: 15,
