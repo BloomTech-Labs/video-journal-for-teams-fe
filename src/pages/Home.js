@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import { Card, Button } from "antd";
+import { Typography } from "antd";
 import Alpaca from '../imgs/alpaca-logo.png';
+
+const { Title } = Typography;
 
 
 const Home = () => {
 	return (
 		<header className="home">
-			<div className="mainbg"></div>
+			<div className="mainbg">
+			</div>
 			<div className="cover"></div>
 			<div className="header">
 				<div className="logo">
@@ -17,8 +20,11 @@ const Home = () => {
 					<h2>Hone your presence,<br />land your dream job.</h2>
 				</div>
 			</div>
+			<div className="bar">
+				<h1 className="userDashHeaderFont" >Alpaca&nbsp;Vids</h1>
+			</div>
 		</header>
 	)
 }
 
-export default Home;
+export default Home; 

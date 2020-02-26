@@ -13,3 +13,17 @@
 	color: $color-3;
 	font-size: 1.6rem;
 }
+
+@mixin userDashHeaderFont() {
+	color: $alpaca-green;
+	font-family: Pacifico;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 36px;
+	line-height: 63px;
+	display: flex;
+	align-items: center;
+	&:hover {
+		color: $alpaca-green;
+	}
+}

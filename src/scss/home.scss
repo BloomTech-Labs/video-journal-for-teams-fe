@@ -15,6 +15,7 @@ header.home {
 	position: relative;
 	height: 100vh;
 	width: 100vw;
+	// min-height: 700px;
 
 	display: flex;
 	flex-direction: row;
@@ -36,6 +37,7 @@ header.home {
 		width: 100vw;
 		// width: 400px;
 		padding: 25px;
+		margin-bottom: 150px;
 		* {
 			margin: 5%;
 		}
@@ -75,7 +77,7 @@ header.home {
 			// div.text, div.logo {
 			// 	width: 100%;
 			// }
-			div.logo {				
+			div.logo {
 				padding: 20px;
 				// min-width: 320px;
 				// img {
@@ -86,7 +88,7 @@ header.home {
 			div.text {
 				text-align: center;
 			}
-			
+
 			* {
 				margin: 0 auto;
 			}
@@ -118,18 +120,34 @@ header.home {
 		width: 100%;
 		background-image: linear-gradient(desaturate(darken($pale-yellow, 30%), 50%), lighten($pale-yellow, 20%));
 	}
+	.bar {
+		@include userDashHeaderFont();
+		color: white !important;
+		text-shadow: none;
+		position: absolute;
+		height: 100px;
+		width: 100vw;
+		bottom: 0px;
+		background-color: $alpaca-green;
+		opacity: 1;
+	}
+	@media screen and (max-height: 700px) {
+		min-height: 700px;
+		max-height: 700px;
+		overflow: visible;
+	}
 }
 
 // for the floaty headerbg
 
 @keyframes move {
 	0% {
-		transform: translateY(0px) translateX(1250px);
+		transform: translateY(0px) translateX(1500px);
 	}
 	50% {
-		transform: translateY(0px) translateX(-1250px);
+		transform: translateY(0px) translateX(-1500px);
 	}
 	100% {
-		transform: translateY(0) translateX(1250px);
+		transform: translateY(0) translateX(1500px);
 	}
 }
