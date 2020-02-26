@@ -3,7 +3,6 @@ import { Row, Col } from 'antd';
 import 'antd/dist/antd.css';
 
 // Components
-import ProfileCarousel from './ProfileCarousel';
 import ProfileAvatar from './ProfileAvatar';
 import ProfileForm from './ProfileForm';
 
@@ -11,7 +10,6 @@ const UserProfileContent = () => {
 
 	return (
 		<>
-			<ProfileCarousel />
 			<div className="profile-main">
 				<div className="container">
 					<Row gutter={20}>
