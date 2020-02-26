@@ -1,30 +1,42 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+
+//Redux
+import { connect } from "react-redux";
+import { restartRecording } from "../../redux/actions/userActions";
+
 //ANTD
 import { Button } from "antd";
 
 //Components
 import UserVideosCard from "../user/UserVideosCard";
 import Carousel from "../shared/Carousel";
+import PostVideoModal from "../PostTeamVideo/PostVideoModal";
 
+function TeamVideoList({promptId, restartRecording, videos}) {
+	const [showModal, setShowModal] = useState(false)
 
-function TeamVideoList(props) {
-	let { team_id } = useParams();
+	const toggleModal = () => {
+		setShowModal(!showModal)
+	}
 
 	return (
 		<Carousel
 			component={UserVideosCard}
-			data={props.videos}
+			data={videos}
 		>
 			<Button
 				className="add-video-btn"
 				size="large"
 				icon="video-camera"
-				href={`/teams/${team_id}/videos/post/${props.promptId}`}
+				onClick={() => {
+					setShowModal(true);
+					restartRecording();
+				}}
 			>
 			</Button>
+			<PostVideoModal showModal={showModal} toggleModal={toggleModal} promptId={promptId}/>
 		</Carousel>
 	)
 }
 
-export default TeamVideoList;
+export default connect(null, {restartRecording})(TeamVideoList);

@@ -7,7 +7,7 @@ const initialState = {
 	teamPrompts: [],
 	teamPromptsAndVideos: [],
 	deleteUserCount: 0,
-	invite: {},
+	inviteCode: {},
 	error: null,
 	isFetching: false,
 	isDeleting: false,

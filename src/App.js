@@ -4,7 +4,6 @@ import "./components/utils/AxiosDefaults";
 
 // Components
 import PrivateRoute from "./components/utils/PrivateRoute";
-import UploadProgress from "./components/PostTeamVideo/UploadVideo/UploadProgress";
 
 // Pages
 import Login from "./pages/Login";
@@ -15,7 +14,6 @@ import UserVideos from "./pages/UserVideos";
 import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
-import PostTeamVideo from "./pages/PostTeamVideo";
 
 // Styles
 import "./App.scss";
@@ -53,11 +51,7 @@ function App(props) {
 
 			<PrivateRoute exact path="/teams/:team_id" component={TeamDashboard} />
 
-			<PrivateRoute exact path="/teams/:team_id/videos/post/:prompt_id" component={PostTeamVideo} />
-
 			<Route exact path="/videos" component={UserVideos} />
-
-			<UploadProgress />
 		</div>
 	);
 }
