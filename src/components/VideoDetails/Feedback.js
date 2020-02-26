@@ -10,7 +10,7 @@ import { fetchFeedback } from "../../redux/actions/userActions";
 import FeedbackTable from "./FeedbackTable";
 import FeedbackForm from "./FeedbackForm";
 
-function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetchFeedback }) {
+export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetchFeedback }) {
 	const [showFeedback, setShowFeedback] = useState(false);
 
 	useEffect(() => {

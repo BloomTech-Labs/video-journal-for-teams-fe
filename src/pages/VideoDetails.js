@@ -36,7 +36,7 @@ prompt_question(pin): 'Tell me how you think others …ribe you.'
 owner_name(pin): 'Curr Ladley'
 */
 
-const VideoDetails = ({ video, fetchVideo }) => {
+export const VideoDetails = ({ video, fetchVideo }) => {
 	const { id } = useParams();
 	const history = useHistory();
 
