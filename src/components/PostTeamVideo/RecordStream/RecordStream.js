@@ -27,6 +27,7 @@ let chunks = [];
 //* Record stream and update stream object URL in redux
 
 export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlayback, setStreamError, playback, showModal }) {
+
 	const [mediaRecorder, setMediaRecorder] = useState(null);
 	const streamElementHandle = useRef(null);
 	const [loading, setLoading] = useState(true);

@@ -48,5 +48,6 @@ describe("<UploadVideo>", () => {
 
 		expect(wrapper.exists(Form)).toBe(true);
 		expect(wrapper.exists(Input)).toBe(true);
+
 	});
 });
