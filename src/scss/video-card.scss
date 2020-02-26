@@ -27,6 +27,11 @@
 		color: inherit;
 		border-color: rgb(217, 217, 217);
 	}
+	&:focus, &:active {
+		color: inherit;
+		border-color: rgb(217, 217, 217);
+	}
+
 }
 
 .video-card {

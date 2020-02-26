@@ -118,6 +118,7 @@ const constants = {
 	UPDATE_STREAM_RAW: "user:update-stream-raw",
 
 	TOGGLE_STREAM_PLAYBACK: "user:toggle-stream-playback",
+	RESTART_RECORDING: "user:restart-recording",
 
 	SET_STREAM_ERROR: "user:set-stream-error",
 };

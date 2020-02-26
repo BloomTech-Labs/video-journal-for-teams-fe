@@ -14,7 +14,6 @@ import UserVideos from "./pages/UserVideos";
 import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
-import PostTeamVideo from "./pages/PostTeamVideo";
 
 // Styles
 import "./App.scss";
@@ -51,8 +50,6 @@ function App(props) {
 			<PrivateRoute path="/profile" component={UserProfileDashboard} />
 
 			<PrivateRoute exact path="/teams/:team_id" component={TeamDashboard} />
-
-			<PrivateRoute exact path="/teams/:team_id/videos/post/:prompt_id" component={PostTeamVideo} />
 
 			<Route exact path="/videos" component={UserVideos} />
 		</div>

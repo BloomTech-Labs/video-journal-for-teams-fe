@@ -1,41 +1,37 @@
-import React, { useState } from "react";
-
-// Redux
-import { connect } from "react-redux";
-
-// Actions
-import { uploadVideo } from "../../../redux/actions/userActions";
+import React, { forwardRef } from "react";
 
 // Components
-import UploadModal from "./UploadModal";
-import { Button } from "antd";
+import { Form, Input } from "antd";
 
-export function UploadVideo({ user_id, uploadVideo, rawVideoData }) {
-	const [showModal, setShowModal] = useState(false);
+export const UploadVideo = forwardRef((props, ref) => {
+	
+	const { getFieldDecorator } = props.form;
 
 	return (
-		<>
-			<Button onClick={() => setShowModal(true)} style={{ marginRight: "8px" }}>
-				Upload Video
-			</Button>
-			<UploadModal
-				isVisible={showModal}
-				setVisibility={setShowModal}
-				uploadVideo={uploadVideo}
-				rawVideoData={rawVideoData}
-				user_id={user_id}
-			/>
-		</>
+			<Form id="upload" ref={ref}>
+				<Form.Item>
+					{getFieldDecorator("title", {
+						rules: [{ required: true, message: "Please enter a title for the video." }],
+					})(
+						<Input type="text" name="title" onChange={props.handleFormInput} placeholder="Video title" autoComplete="off" />
+					)}
+				</Form.Item>
+				<Form.Item>
+					{getFieldDecorator("description", {
+						rules: [{ required: true, message: "Please enter a description for the video." }],
+					})(
+						<Input
+							type="text"
+							name="description"
+							onChange={props.handleFormInput}
+							placeholder="Video description"
+							autoComplete="off"
+						/>
+					)}
+				</Form.Item>
+			</Form>
 	);
-}
+})
 
-const mapStateToProps = (state) => ({
-	user_id: state.User.userId,
-	rawVideoData: state.User.videoStream.raw,
-});
+export default Form.create({ name: "upload" })(UploadVideo);
 
-const mapActionsToProps = {
-	uploadVideo,
-};
-
-export default connect(mapStateToProps, mapActionsToProps)(UploadVideo);

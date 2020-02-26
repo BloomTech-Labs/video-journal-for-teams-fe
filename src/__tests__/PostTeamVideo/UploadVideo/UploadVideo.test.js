@@ -1,14 +1,12 @@
 import React from "react";
 
-import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 
-import UploadVideo from "../../../components/PostTeamVideo/PlaybackStream/PlaybackControls";
-import UploadModal from "../../../components/PostTeamVideo/UploadVideo/UploadModal";
+import UploadVideo from "../../../components/PostTeamVideo/UploadVideo/UploadVideo";
 
-import { Button } from "antd";
+import { Form, Input } from "antd";
 
 const mockStore = configureStore({});
 
@@ -45,19 +43,11 @@ describe("<UploadVideo>", () => {
 		wrapper = shallow(<UploadVideo />);
 	});
 
-	test("should have an upload video button", () => {
-		wrapper = shallow(<UploadVideo />);
+	test("should render a <Form> with <Input>'s", () => {
+		wrapper = shallow(<UploadVideo />).dive();
 
-		expect(wrapper.exists(Button)).toBe(true);
-	});
+		expect(wrapper.exists(Form)).toBe(true);
+		expect(wrapper.exists(Input)).toBe(true);
 
-	test("should have <UploadModal> as a child component", () => {
-		wrapper = mount(
-			<Provider store={store}>
-				<UploadVideo />
-			</Provider>
-		);
-
-		expect(wrapper.exists(UploadModal)).toBe(true);
 	});
 });

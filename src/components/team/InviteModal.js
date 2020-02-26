@@ -34,7 +34,7 @@ const InviteModal = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-	inviteCode: state.Team.invite.link
+	inviteCode: state.Team.inviteCode
 });
 
 export default connect(mapStateToProps)(InviteModal);
