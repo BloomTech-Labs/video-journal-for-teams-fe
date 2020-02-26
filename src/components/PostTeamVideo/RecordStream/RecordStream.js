@@ -162,7 +162,7 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 
 		return (
 			<div className="record-stream-container">
-				<div className="video-player">
+				<div className="new-video-player">
 					{loading ? <Icon type="loading"/> : null}
 					{!visibleFeed ? <Icon type="user"/> : null}
 					{isActive ? 
