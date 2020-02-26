@@ -156,12 +156,18 @@ const teamReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				error: payload,
+				isFetching: false,
+				isDeleting: false,
+				isUpdating: false,
 			};
 
 		case constants.CLEAR_ERROR:
 			return {
 				...state,
-				error: null,
+				error: payload,
+				isFetching: false,
+				isDeleting: false,
+				isUpdating: false,
 			};
 
 		default:

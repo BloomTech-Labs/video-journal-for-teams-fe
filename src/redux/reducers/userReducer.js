@@ -370,6 +370,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				error: null,
+				isFetching: false,
 			};
 		default:
 			return state;
