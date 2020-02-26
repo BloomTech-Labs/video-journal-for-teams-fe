@@ -15,6 +15,8 @@ import UserVideos from "./pages/UserVideos";
 import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
+import PostTeamVideo from "./pages/PostTeamVideo";
+import Home from "./pages/Home";
 
 // Styles
 import "./App.scss";
@@ -38,7 +40,9 @@ function App(props) {
 	return (
 		<div className="app">
 			{props.inviteError ? <Alert message={props.inviteError} type="error" /> : null}
-			<Route exact path="/" component={Login} />
+			<Route exact path="/" component={Home} />
+
+			<Route exact path="/login" component={Login} />
 
 			<Route exact path="/register" component={Register} />
 
