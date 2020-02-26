@@ -1,18 +1,13 @@
 import React, { useEffect } from "react";
-import { Typography, Button } from "antd";
+import { Typography, Button, Popover, Card } from "antd";
 import Alpaca from '../imgs/alpaca-logo.png';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const { Title } = Typography;
 
 
 const Home = () => {
 	let history = useHistory();
-
-	const handleBegin = (e) => {
-		e.preventDefault();
-		history.push("/register");
-	};
 
 	return (
 		<header className="home">
@@ -48,8 +43,8 @@ const Home = () => {
 					<h1 className="userDashHeaderFont" >Alpaca&nbsp;Vids</h1>
 				</div>
 				<div className="links">
-					<p>team</p>
-					<p><a href="https://github.com/Lambda-School-Labs/video-journal-for-teams-fe">github</a></p>
+					<Link to="/login">login</Link>
+					<a href="https://github.com/Lambda-School-Labs/video-journal-for-teams-fe">github</a>
 				</div>
 			</div>
 		</header>
