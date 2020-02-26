@@ -12,7 +12,7 @@ import PromptCard from "./PromptCard.js";
 import { Layout, Button, Divider } from "antd";
 const { Content } = Layout;
 
-const PromptVideoList = ({createPrompt, teamPromptsAndVideos, userRole, teamId}) => {
+const PromptVideoList = ({ createPrompt, teamPromptsAndVideos, userRole, teamId }) => {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false);
 	// let { team_id } = useParams();
@@ -23,11 +23,11 @@ const PromptVideoList = ({createPrompt, teamPromptsAndVideos, userRole, teamId})
 
 	//#endregion CLICK TO UNCOLLAPSE COMPONENT LOGIC
 
-		return (
-			<Content className="prompts-list">
-				<div className="dashboard-header">
-					<h2>Prompts ({teamPromptsAndVideos.length})</h2>
-					{userRole === 1 ? null : (
+	return (
+		<Content className="prompts-list">
+			<div className="dashboard-header">
+				<h2>Prompts ({teamPromptsAndVideos.length})</h2>
+				{userRole === 1 ? null : (
 					<Button
 						icon="plus"
 						className="adding-button"
@@ -35,18 +35,18 @@ const PromptVideoList = ({createPrompt, teamPromptsAndVideos, userRole, teamId})
 						Add Prompt
 					</Button>
 				)}
-				</div>
-		 			<AddPromptModal
-					isVisible={showModal}
-					setVisibility={setShowModal}
-					createPrompt={createPrompt}
-					teamId={teamId}
-				/>
-				{teamPromptsAndVideos.map((prompt, index) => (
-					<PromptCard key={prompt.id} data={prompt} index={index}/>
-					))}
-			</Content>
-		);
+			</div>
+			<AddPromptModal
+				isVisible={showModal}
+				setVisibility={setShowModal}
+				createPrompt={createPrompt}
+				teamId={teamId}
+			/>
+			{teamPromptsAndVideos.map((prompt, index) => (
+				<PromptCard key={prompt.id} data={prompt} index={index} />
+			))}
+		</Content>
+	);
 };
 
 const mapStateToProps = (state) => ({

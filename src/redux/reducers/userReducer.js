@@ -351,11 +351,18 @@ const userReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				isUpdatingUserData: false,
+				error: null,
 				userId: payload.id,
 				first_name: payload.first_name,
 				last_name: payload.last_name,
 				email: payload.email,
 				username: payload.username
+			}
+		case constants.UPDATE_USER_DATA_FAILURE:
+			return {
+				...state,
+				isUpdatingUserData: false,
+				error: payload
 			}
 		case constants.GENERATE_ERROR:
 			return {
@@ -369,6 +376,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				error: null,
+				isFetching: false,
 			};
 		default:
 			return state;

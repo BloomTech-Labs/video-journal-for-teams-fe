@@ -54,7 +54,7 @@ const VideoDetails = ({ video, fetchVideo }) => {
 	return (
 		<NavAndHeader>
 			<Card style={{ margin: "20px" }} className="video-detail-card">
-				<VideoPlayer video={video} width="560" />
+				<VideoPlayer video={video}/>
 				<Feedback videoId={video.id} videoOwnerId={video.owner_id} />
 				<Button onClick={() => history.goBack()}>Back to dashboard</Button>
 			</Card>

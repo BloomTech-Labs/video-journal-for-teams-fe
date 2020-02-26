@@ -15,7 +15,7 @@ function EditUserDashboard() {
 				<Content>
 					<ProfileContent />
 				</Content>
-				<Footer>Copyrigths &copy;</Footer>
+				<Footer>Squid Syskey Productions &copy; Copyright</Footer>
 			</Layout>
 		</>
 	)
