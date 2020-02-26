@@ -24,12 +24,6 @@ describe("<PlaybackControls>", () => {
 		expect(wrapper.exists(Button)).toBe(true);
 	});
 
-	test("should have <UploadVideo> as a child component", () => {
-		wrapper = shallow(<PlaybackControls />);
-
-		expect(wrapper.exists(UploadVideo)).toBe(true);
-	});
-
 	test("should have <DownloadVideo> as a child component", () => {
 		wrapper = shallow(<PlaybackControls />);
 
