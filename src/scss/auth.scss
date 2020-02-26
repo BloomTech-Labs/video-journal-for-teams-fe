@@ -96,7 +96,7 @@
 			margin-bottom: 0;
 		}
 		.register-form-button, .login-form-button {
-			@include button($red);
+			@include button($alpaca-green);
 			width: 144px;
 			margin-top: 20px;
 		}
