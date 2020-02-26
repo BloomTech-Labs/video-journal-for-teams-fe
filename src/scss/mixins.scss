@@ -7,3 +7,9 @@
 @mixin outlined-button($color) {
 	border-color: $color;
 }
+
+@mixin texts() {
+	font-family: "Merriweather", sans-serif;
+	color: $color-3;
+	font-size: 1.6rem;
+}

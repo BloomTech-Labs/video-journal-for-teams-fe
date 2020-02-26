@@ -1,0 +1,86 @@
+body {
+	height: 100vh;
+	.texts();
+	background-color: @color-4;
+	@media (max-height: 500px) {
+		height: 500px;
+		margin: 0 auto;
+	}
+	// @media (min-height: 500px) {
+	// 	height: 100vh;
+	// 	margin: 0 auto;
+	// }
+}
+
+header {
+	// .testblock();
+	position: relative;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-image: none;
+	overflow: hidden;
+	text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 1);
+	div.cover {
+		position: absolute;
+		height: 900px;
+		width: 5000px;
+		background-image: url("../img/floatbg02.jpg");
+		// background-position: center center;
+		// background-size: 50%;
+		animation: move 250s infinite linear;
+		will-change: transform;
+		opacity: .2;
+	}
+	div.mainbg {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background-image: linear-gradient(blue, green);
+	}
+	div.header {
+		// .testblock();
+		z-index: 99;
+		align-items: left;
+		width: 400px;
+		padding: 25px;
+		// .hardborder();
+		h2 {
+			color: black;
+		}
+	}
+	&.about {
+		height: 300px;
+		background-image: linear-gradient(yellow, red);
+	}
+	div.about {
+		align-items: left;
+		width: 400px;
+		padding: 25px;
+		.hardborder();
+		h2 {
+			color: $dark-grey;
+		}
+	}
+	h2.about {
+		font-size: 3rem;
+	}
+}
+
+// for the floaty headerbg
+
+@keyframes move {
+	0% {
+		transform: translateY(0px) translateX(1250px);
+	}
+	50% {
+		transform: translateY(0px) translateX(-1250px);
+	}
+	100% {
+		transform: translateY(0) translateX(1250px);
+	}	
+}
