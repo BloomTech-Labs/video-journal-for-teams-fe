@@ -21,7 +21,15 @@ const Home = () => {
 				</div>
 			</div>
 			<div className="bar">
-				<h1 className="userDashHeaderFont" >Alpaca&nbsp;Vids</h1>
+				<div className="title">
+					<h1 className="userDashHeaderFont" >Alpaca&nbsp;Vids</h1>
+				</div>
+
+				<div className="links">
+					<p>team</p>
+					<p>github</p>
+				</div>
+
 			</div>
 		</header>
 	)

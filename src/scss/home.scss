@@ -104,6 +104,7 @@ header.home {
 
 	div.cover {
 		position: absolute;
+		margin-top: -25px;
 		height: 900px;
 		width: 6000px;
 		background-image: url("../imgs/floatbg.jpg");
@@ -121,15 +122,39 @@ header.home {
 		background-image: linear-gradient(desaturate(darken($pale-yellow, 30%), 50%), lighten($pale-yellow, 20%));
 	}
 	.bar {
-		@include userDashHeaderFont();
-		color: white !important;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+
+		height: 80px;
+		width: 100vw;
+
+		padding: 20px;
+
 		text-shadow: none;
 		position: absolute;
-		height: 100px;
-		width: 100vw;
 		bottom: 0px;
 		background-color: $alpaca-green;
 		opacity: 1;
+		* {
+			margin: 0 5%; 
+		}
+		.title {
+			@include userDashHeaderFont();
+			// margin-left: 20%;
+		}
+		.links {
+			display: flex;
+			justify-content: space-around;
+
+			font-size: 1.5rem;
+			font-weight: bolder;
+			// margin-right: 20%;
+			* {
+				margin: 0 8%;
+			}
+		}
 	}
 	@media screen and (max-height: 700px) {
 		min-height: 700px;
