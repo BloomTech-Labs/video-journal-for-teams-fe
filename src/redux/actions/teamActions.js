@@ -68,7 +68,7 @@ export const createInvite = (team_id, team_name) => (dispatch) => {
 		.post(`teams/${team_id}/invite`, team_name)
 		.then(inviteResponse => {
 			console.log("Action response", inviteResponse)
-			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data })
+			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data.link })
 		})
 		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }

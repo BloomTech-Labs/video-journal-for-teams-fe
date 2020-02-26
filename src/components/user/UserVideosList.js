@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 //Redux
 import { connect } from "react-redux";
-import { fetchUserVideos } from "../../redux/actions/userActions";
+import { fetchUserVideos, restartRecording } from "../../redux/actions/userActions";
 
 //ANTD
 import { Button } from "antd";
@@ -10,9 +10,16 @@ import { Button } from "antd";
 //Components
 import UserVideosCard from "./UserVideosCard";
 import Carousel from "../shared/Carousel";
+import PostVideoModal from "../PostTeamVideo/PostVideoModal";
 
 
-function UserVideos({fetchUserVideos, id, videos}) {
+function UserVideos({fetchUserVideos, id, videos, promptId, restartRecording}) {
+	const [showModal, setShowModal] = useState(false)
+
+	const toggleModal = () => {
+		setShowModal(!showModal)
+	}
+
 	useEffect(() => {
 		fetchUserVideos(id)
 	}, [id, fetchUserVideos])
@@ -26,9 +33,13 @@ function UserVideos({fetchUserVideos, id, videos}) {
 				className="add-video-btn"
 				size="large"
 				icon="video-camera"
-				// href={`/teams/${props.teamId}/videos/post/${prompt.id}`}
+				onClick={() => {
+					setShowModal(true);
+					restartRecording();
+				}}
 			>
 			</Button>
+			<PostVideoModal showModal={showModal} toggleModal={toggleModal} promptId={promptId}/>
 		</Carousel>
 	)
 }
@@ -36,8 +47,8 @@ function UserVideos({fetchUserVideos, id, videos}) {
 const mapStateToProps = (state) => {
 	return {
 		videos: state.User.videos,
-		id: state.User.userId
+		id: state.User.userId,
 	}
 }
 
-export default connect(mapStateToProps, { fetchUserVideos })(UserVideos);
+export default connect(mapStateToProps, { fetchUserVideos, restartRecording })(UserVideos);
