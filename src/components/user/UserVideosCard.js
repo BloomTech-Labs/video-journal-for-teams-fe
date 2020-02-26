@@ -7,7 +7,7 @@ const { Meta } = Card;
 
 const UserVideosCard = (props) => {
 	const data = props.data;
-
+	
 	return (
 		<Link to={`/videos/${data.id}`}>
 			<Card className="video-card"
