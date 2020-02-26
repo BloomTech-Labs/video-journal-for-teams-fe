@@ -49,7 +49,7 @@ const Home = () => {
 				</div>
 				<div className="links">
 					<p>team</p>
-					<p>github</p>
+					<p><a href="https://github.com/Lambda-School-Labs/video-journal-for-teams-fe">github</a></p>
 				</div>
 			</div>
 		</header>

@@ -164,6 +164,8 @@ header.home {
 		.links {
 			display: flex;
 			justify-content: space-around;
+			a:link, a:visited {color: $dark-grey; }
+			a:hover {color: $medium-grey; }
 
 			font-size: 1.5rem;
 			font-weight: bolder;
