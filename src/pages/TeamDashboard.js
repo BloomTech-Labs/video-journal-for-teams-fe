@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { UserContext } from "../components/utils/UserContext";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { Card } from "antd";
 
 // Components
 import NavAndHeader from "../components/nav/NavAndHeader";
 import MembersList from "../components/team/MembersList";
-import PromptVideoList from "../components/team/PromptVideoList";
+import PromptList from "../components/team/PromptList";
 
 // Redux 
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
 
 function TeamDashboard(props) {
-	const { team, fetchTeamById, fetchTeamMembers, fetchTeamVideos, teamMembers,
-		userId, newPrompt, teamError, isFetching, clearError } = props;
+	const { team,
+		fetchTeamById,
+		fetchTeamMembers,
+		fetchTeamVideos,
+		teamMembers,
+		userId,
+		newPrompt,
+		teamError,
+		isFetching,
+		clearError } = props;
 	const [userRole, setUserRole] = useState();
 	const [count, setCount] = useState(10);
 	let { team_id } = useParams();
@@ -94,7 +101,7 @@ function TeamDashboard(props) {
 					<h1>{team.name}</h1>
 					<UserContext.Provider value={{ userRole }} >
 						<MembersList />
-						<PromptVideoList />
+						<PromptList />
 					</UserContext.Provider>
 				</div>
 			</NavAndHeader>

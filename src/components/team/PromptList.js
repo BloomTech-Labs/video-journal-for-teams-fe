@@ -3,17 +3,17 @@ import { UserContext } from "../utils/UserContext";
 
 //Redux
 import { connect } from "react-redux";
-import { createPrompt, setError, clearError } from "../../redux/actions/teamActions";
+import { createPrompt } from "../../redux/actions/teamActions";
 
 //Components
 import AddPromptModal from "./AddPromptModal.js";
 import PromptCard from "./PromptCard.js";
 
 //Styling
-import { Layout, Button, Divider } from "antd";
+import { Layout, Button } from "antd";
 const { Content } = Layout;
 
-const PromptVideoList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {
+const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {
 	const [showModal, setShowModal] = useState(false);
 	const { userRole } = useContext(UserContext)
 
@@ -52,4 +52,4 @@ const mapActionsToProps = {
 	createPrompt
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(PromptVideoList);
+export default connect(mapStateToProps, mapActionsToProps)(PromptList);

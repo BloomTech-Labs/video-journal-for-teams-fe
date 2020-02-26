@@ -9,7 +9,6 @@ import MemberCard from './MemberCard';
 import Carousel from "../shared/Carousel";
 
 function MembersList(props) {
-	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const [showModal, setShowModal] = useState(false)
 	const { userRole } = useContext(UserContext);
 
@@ -18,7 +17,6 @@ function MembersList(props) {
 		setShowModal(true)
 	}
 
-	// #endregion CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	return (
 		<>
 			<div className="dashboard-header">
