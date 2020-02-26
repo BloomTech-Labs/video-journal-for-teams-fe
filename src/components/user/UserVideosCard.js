@@ -9,7 +9,7 @@ const UserVideosCard = (props) => {
 	const data = props.data;
 
 	return (
-		<Link to={`/videos/${props.data.id}`}>
+		<Link to={`/videos/${data.id}`}>
 			<Card className="video-card"
 				cover={<img alt ={`${data.title } video thumbnail`} src={data.thumbnail} />}
 			>

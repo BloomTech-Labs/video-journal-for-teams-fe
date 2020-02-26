@@ -4,14 +4,8 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUserVideos, restartRecording } from "../../redux/actions/userActions";
 
-//ANTD
-import { Button } from "antd";
-
 //Components
 import UserVideosCard from "./UserVideosCard";
-import Carousel from "../shared/Carousel";
-import PostVideoModal from "../PostTeamVideo/PostVideoModal";
-
 
 function UserVideos({fetchUserVideos, id, videos, promptId, restartRecording}) {
 	const [showModal, setShowModal] = useState(false)
@@ -24,23 +18,9 @@ function UserVideos({fetchUserVideos, id, videos, promptId, restartRecording}) {
 		fetchUserVideos(id)
 	}, [id, fetchUserVideos])
 
-	return (
-		<Carousel
-			component={UserVideosCard}
-			data={videos}
-		>
-			<Button
-				className="add-video-btn"
-				size="large"
-				icon="video-camera"
-				onClick={() => {
-					setShowModal(true);
-					restartRecording();
-				}}
-			>
-			</Button>
-			<PostVideoModal showModal={showModal} toggleModal={toggleModal} promptId={promptId}/>
-		</Carousel>
+		<div className="user-videos-list">
+			{videos.map(video => <UserVideosCard key={video.id} data={video}/>)}
+		</div>
 	)
 }
 
