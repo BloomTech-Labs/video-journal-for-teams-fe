@@ -10,7 +10,7 @@ import { uploadVideo } from "../../../redux/actions/userActions";
 import UploadModal from "./UploadModal";
 import { Button } from "antd";
 
-function UploadVideo({ user_id, uploadVideo, rawVideoData }) {
+export function UploadVideo({ user_id, uploadVideo, rawVideoData }) {
 	const [showModal, setShowModal] = useState(false);
 
 	return (

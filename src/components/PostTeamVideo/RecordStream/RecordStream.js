@@ -24,7 +24,7 @@ let chunks = [];
 //* Capture webcam and audio into a stream
 //* Record stream and update stream object URL in redux
 
-function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlayback, setStreamError, playback }) {
+export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlayback, setStreamError, playback }) {
 	const [mediaRecorder, setMediaRecorder] = useState(null);
 	const streamElementHandle = useRef(null);
 
