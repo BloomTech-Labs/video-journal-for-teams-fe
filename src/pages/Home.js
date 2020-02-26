@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
 import { Card, Button } from "antd";
+import Alpaca from '../imgs/alpaca-logo.png';
+
 
 const Home = () => {
 	return (
-		<header>
+		<header className="home">
 			<div className="mainbg"></div>
 			<div className="cover"></div>
 			<div className="header">
-				<h1>Success Begins Here.</h1>
-				<h2><strong>Your</strong> how-to site about how-to</h2>
-			</div>
-			<div className="tweentxt">
-				<p><span className="logoEmbed">[how to]</span> is a community for people who like to make things.
-			</p><p>Come explore, share, and make your next project with us!<br />
-				</p>
+				<div className="logo">
+					<img alt="Alpaca Vids Logo" className="alpaca-logo" src={Alpaca}></img>
+				</div>
+				<div className="text">
+					<h1>Success Begins Here.</h1>
+					<h2><strong>Your</strong> how-to site about how-to</h2>
+				</div>
 			</div>
 		</header>
 	)
