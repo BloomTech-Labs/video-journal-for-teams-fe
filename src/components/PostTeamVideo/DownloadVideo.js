@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 // Components
 import { Button } from "antd";
 
-function DownloadVideo({ videoUrl }) {
+export function DownloadVideo({ videoUrl }) {
 	const downloadRef = useRef(null);
 
 	function download() {

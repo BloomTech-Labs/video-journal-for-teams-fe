@@ -3,8 +3,8 @@ import React, { forwardRef } from "react";
 // Components
 import { Form, Input } from "antd";
 
-const UploadVideo = forwardRef((props, ref) => {
-
+export const UploadVideo = forwardRef((props, ref) => {
+	
 	const { getFieldDecorator } = props.form;
 
 	return (

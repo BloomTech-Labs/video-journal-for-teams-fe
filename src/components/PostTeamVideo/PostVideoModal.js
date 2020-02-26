@@ -18,6 +18,7 @@ const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, playback,
 				raw: rawVideoData,
 			});
 
+			console.log(videoData)
 	const formRef = useRef(null);
 
 	function handleFormInput(e) {
