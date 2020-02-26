@@ -44,7 +44,7 @@
 
 .profile-main {
 	background-color: #fff;
-	height          : inherit;
+	height          : 100%;
 
 	.outlined-btn {
 		@include outlined-button($alpaca-green);
