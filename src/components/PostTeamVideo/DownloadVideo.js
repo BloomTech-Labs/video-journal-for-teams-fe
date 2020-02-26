@@ -19,7 +19,7 @@ function DownloadVideo({ videoUrl }) {
 				Download Video
 			</a>
 			<Button onClick={download} style={{ margin: "8px" }} icon="download">
-				Download Video
+				<span>Download Video</span>
 			</Button>
 		</>
 	);

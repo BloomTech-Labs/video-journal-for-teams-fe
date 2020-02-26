@@ -12,7 +12,7 @@ function PlaybackControls({ restartRecording }) {
 	return (
 		<div className="playback-stream-controls">
 			<Button onClick={restartRecording} style={{ margin: "8px" }} icon="reload">
-				Restart
+				<span>Restart</span>
 			</Button>
 			<DownloadVideo />
 		</div>

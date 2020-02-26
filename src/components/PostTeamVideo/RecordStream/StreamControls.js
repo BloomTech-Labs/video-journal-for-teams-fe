@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 
 // Components
-import { Button } from "antd";
+import { Button, Icon } from "antd";
+
+import Timer from "../Timer";
 
 //* Satisfies the requirement for:
 //* start / stop / pause / continue stream
@@ -45,21 +47,28 @@ function StreamControls({ mediaRecorder, toggleFeedVisibility, visibleFeed, star
 
 	return (
 		<>
+			{recording && !paused ? <button className="Rec">Recording</button> : null}
+			{recording ? 
+			<Timer recording={recording} paused={paused}/> : null}
 			<div className="record-stream-controls">
-				{recording && !paused ? <button className="Rec">Recording</button> : null}
-				<Button onClick={startRecording} style={{display: recording === true ? "none" : "flex", margin: "8px"}}  icon="video-camera" disabled={isActive && !recording ? true : null}>
+				<Button className="start-recording" onClick={startRecording} style={{display: recording === true ? "none" : "flex", margin: "8px"}} disabled={isActive && !recording ? true : null}>
+					<Icon type="video-camera" theme="filled" />
 					<span>Start Recording</span>
 				</Button>
-				<Button onClick={pauseRecording} style={{display: recording === true && paused === false ? "flex" : "none", margin: "8px"}}icon="pause-circle">
+				<Button className="pause-recording" onClick={pauseRecording} style={{display: recording === true && paused === false ? "flex" : "none", margin: "8px"}}>
+				<Icon type="pause-circle" theme="filled" />
 				 <span>Pause Recording</span>
 				</Button>
-				<Button onClick={resumeRecording} style={{display: recording === true && paused === true ? "flex" : "none", margin: "8px"}} icon="play-circle">
+				<Button className="resume-recording" onClick={resumeRecording} style={{display: recording === true && paused === true ? "flex" : "none", margin: "8px"}}>
+					<Icon type="play-circle" theme="filled" />
 					<span>Resume Recording</span>
 				</Button>
-				<Button onClick={stopRecording} style={{display: recording === true ? "flex" : "none", margin: "8px"}} icon="stop">
+				<Button className="stop-recording" onClick={stopRecording} style={{display: recording === true ? "flex" : "none", margin: "8px"}}>
+				<	Icon type="stop" theme="filled" />
 					<span>End Recording</span>
 				</Button>
-				<Button onClick={toggleFeedVisibility} style={{ margin: "8px" }} icon={visibleFeed ? "eye-invisible" : "eye"}>
+				<Button className="live-feed" onClick={toggleFeedVisibility} style={{ margin: "8px" }}>
+				{visibleFeed ? <Icon type="eye-invisible" theme="filled" /> : <Icon type="eye" theme="filled" />}
 					<span>Toggle Live Feed</span>
 				</Button>
 			</div>

@@ -27,8 +27,10 @@ function PlaybackStream({ stream, toggleStreamPlayback, restartRecording }) {
 
 		return (
 			<div className="playback-stream-container">
-				<video ref={playbackStreamHandle} src={stream} controls></video>
-				<PlaybackControls restartRecording={restartRecording} toggleStreamPlayback={toggleStreamPlayback}/>
+				<div>
+					<video ref={playbackStreamHandle} src={stream} controls></video>
+					<PlaybackControls restartRecording={restartRecording} toggleStreamPlayback={toggleStreamPlayback}/>
+				</div>
 			</div>
 		);
 }
