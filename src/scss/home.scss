@@ -70,6 +70,23 @@ header.home {
 					font-size: 1.7rem;
 				}
 			}
+			div.start {
+				button {
+					// padding: 15px;
+					font-size: 1rem;
+					margin: 0;
+					font-weight: bolder;
+					@include button($alpaca-green);
+					border: 3px solid $medium-grey;
+					min-width: 142px;
+					&:hover {
+						@include button($pale-yellow);
+					}
+					&:focus {
+						@include button($alpaca-green);
+					}
+				}
+			}
 		}
 		@media screen and (max-width: 800px) {
 			flex-direction: column;
@@ -138,7 +155,7 @@ header.home {
 		background-color: $alpaca-green;
 		opacity: 1;
 		* {
-			margin: 0 5%; 
+			margin: 0 5%;
 		}
 		.title {
 			@include userDashHeaderFont();
