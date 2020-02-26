@@ -7,7 +7,7 @@ import RecordStream from "./RecordStream/RecordStream";
 import PlaybackStream from "./PlaybackStream/PlaybackStream";
 import UploadVideo from "./UploadVideo/UploadVideo";
 
-import { Modal, Icon } from 'antd';
+import { Modal } from 'antd';
 
 const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, playback, videoStream, user_id, promptId, rawVideoData, uploadVideo}) => {
 	const [videoData, setvideoData] = useState({
