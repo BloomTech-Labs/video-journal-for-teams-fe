@@ -1,14 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import CopyClipboard from "../utils/CopyClipboard.js";
 import { Modal, Form, Input } from "antd";
 
 const InviteModal = (props) => {
 	let baseURL = process.env.REACT_APP_FRONT_END_URL || "https://www.alpacavids.com/";
-	let URL = baseURL.concat("invite/", props.code)
+	let URL = baseURL.concat("invite/", props.inviteCode)
 
 	const handleOk = (e) => {
 		e.preventDefault();
-		props.createInvite(props.team.id, { team_name: props.team.name })
 		props.setVisibility(false);
 		CopyClipboard("team-link")
 	};
@@ -33,4 +33,8 @@ const InviteModal = (props) => {
 	);
 }
 
-export default InviteModal;
+const mapStateToProps = (state) => ({
+	inviteCode: state.Team.invite.link
+});
+
+export default connect(mapStateToProps)(InviteModal);

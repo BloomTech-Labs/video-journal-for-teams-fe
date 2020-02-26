@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from "../utils/UserContext";
 import { connect } from "react-redux";
 import { Card, Avatar } from 'antd';
 import EditMemberCard from './EditMemberCard';
 
 function MemberCard(props) {
-	const { data, userRole } = props;
-
+	const { userRole } = useContext(UserContext)
+	const { data } = props;
+	console.log("user role", userRole)
 	return (
 		<Card
 			className="member-card"
@@ -14,7 +16,7 @@ function MemberCard(props) {
 		>
 			<div className='image-container'>
 				{(!data.avatar) ? (<Avatar size={64} icon="user" />) : (
-					<img  alt="user avatar" src={`https://video-journal.herokuapp.com/public/avatars/${data.avatar}`} />)}
+					<img alt="user avatar" src={`https://video-journal.herokuapp.com/public/avatars/${data.avatar}`} />)}
 			</div>
 			{userRole === 1 ? null : (<EditMemberCard member={data} />)}
 			<p className="small">{data.user_full_name}</p>
