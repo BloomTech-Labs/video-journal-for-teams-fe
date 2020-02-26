@@ -1,7 +1,10 @@
 //mediaRecorder video / audio capture restraints
 const constraints = {
 	//We want to capture audio,
-	audio: true,
+	audio: {
+		sampleSize: 8,
+		echoCancellation: true
+ },
 	//We want to capture video in this configuration
 	video: {
 		//Camera for mobile users

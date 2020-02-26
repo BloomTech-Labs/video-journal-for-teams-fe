@@ -167,7 +167,7 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 					{!visibleFeed ? <Icon type="user"/> : null}
 					{isActive ? 
 					<div className="video-countdown">{countdown}</div> : null}
-					<video  style={{display: loading ? "none" : "flex"}} ref={streamElementHandle}></video>
+					<video  muted style={{display: loading ? "none" : "flex"}} ref={streamElementHandle}></video>
 				</div>
 				<StreamControls mediaRecorder={mediaRecorder} toggleStreamPlayback={toggleStreamPlayback} streamElementHandle={streamElementHandle} toggleFeedVisibility={toggleFeedVisibility} visibleFeed={visibleFeed} isActive={isActive} startCountdown={startCountdown}/>
 			</div>
