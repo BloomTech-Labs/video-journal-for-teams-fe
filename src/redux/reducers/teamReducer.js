@@ -118,7 +118,7 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isFetching: false,
 				error: null,
-				invite: payload
+				inviteCode: payload
 			};
 
 		case constants.POST_TEAM_PROMPT_START:
