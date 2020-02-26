@@ -40,7 +40,7 @@ export const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, vi
 			formRef.current.getForm().validateFields((err, values) => {
 				if (!err) {
 					//No errors, begin upload
-					uploadVideo({...videoData, raw: videoStream.rawVideoData,});
+					uploadVideo({...videoData, raw: videoStream.raw});
 					toggleModal();
 				}
 			});

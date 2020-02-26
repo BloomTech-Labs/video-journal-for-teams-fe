@@ -6,6 +6,7 @@ export const createTeam = (newTeam, history) => (dispatch) => {
 	AxiosWithAuth()
 		.post('/teams/', newTeam)
 		.then(res => {
+			console.log(res)
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data })
 			history.push(`/teams/${res.data[0].id}`);
 		})

@@ -26,6 +26,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 	}
 
 	const handleOk = () => {
+		console.log("test")
 		createTeam(team, history);
 		toggleModal();
 	}
