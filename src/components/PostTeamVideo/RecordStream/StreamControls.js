@@ -7,32 +7,13 @@ import { Button } from "antd";
 //* start / stop / pause / continue stream
 //* Toggle live feed visibility
 
-function StreamControls({ mediaRecorder, toggleFeedVisibility, visibleFeed }) {
+function StreamControls({ mediaRecorder, toggleFeedVisibility, visibleFeed, startCountdown, toggleStreamPlayback, isActive }) {
 	const [recording, setRecording] = useState(false);
 	const [paused, setPaused] = useState(false);
-	const [countdown, setCountdown] = useState(3);
-	const [isActive, setIsActive] = useState(false);
-
-	useEffect(() => {
-		let interval = null;
-		if (isActive) {
-			interval = setInterval(() => {
-				if (countdown > 0) {
-					setCountdown(countdown => countdown - 1);
-				} else  {
-					setCountdown(0);
-				}
-			}, 1000);
-		} else {
-			clearInterval(interval);
-			setIsActive(false);
-		}
-		return () => clearInterval(interval);
-	}, [isActive, countdown]);
 
 	function startRecording() {
 		if (mediaRecorder && mediaRecorder.state === "inactive") {
-			setIsActive(true);
+			startCountdown()
 			setTimeout(() => {
 				setRecording(true);
 				mediaRecorder.start();
@@ -44,6 +25,7 @@ function StreamControls({ mediaRecorder, toggleFeedVisibility, visibleFeed }) {
 		if ((mediaRecorder && mediaRecorder.state === "recording") || (mediaRecorder && mediaRecorder.state === "paused")) {
 			setRecording(false);
 			mediaRecorder.stop();
+			toggleStreamPlayback();
 		}
 	}
 
@@ -63,10 +45,9 @@ function StreamControls({ mediaRecorder, toggleFeedVisibility, visibleFeed }) {
 
 	return (
 		<>
-			{isActive && !recording ? <div className="video-countdown">{countdown}</div> : null}
 			<div className="record-stream-controls">
 				{recording && !paused ? <button className="Rec">Recording</button> : null}
-				<Button onClick={startRecording} style={{display: recording === true ? "none" : "flex", margin: "8px"}}  icon="video-camera">
+				<Button onClick={startRecording} style={{display: recording === true ? "none" : "flex", margin: "8px"}}  icon="video-camera" disabled={isActive && !recording ? true : null}>
 					<span>Start Recording</span>
 				</Button>
 				<Button onClick={pauseRecording} style={{display: recording === true && paused === false ? "flex" : "none", margin: "8px"}}icon="pause-circle">

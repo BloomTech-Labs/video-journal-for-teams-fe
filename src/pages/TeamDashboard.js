@@ -11,7 +11,7 @@ import PromptVideoList from "../components/team/PromptVideoList";
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
 
-function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, userId, teamError, isFetching, clearError }) {
+function TeamDashboard({ team, fetchTeamById, fetchTeamMembers, teamMembers, userId, teamError, isFetching, clearError, fetchTeamVideos }) {
 	const [userRole, setUserRole] = useState();
 	const [count, setCount] = useState(10);
 	let { team_id } = useParams();
