@@ -12,9 +12,9 @@ body {
 }
 
 header {
-	// .testblock();
 	position: relative;
 	height: 100vh;
+	width: 100vw;
 
 	display: flex;
 	flex-direction: column;
@@ -24,6 +24,7 @@ header {
 	background-image: none;
 	overflow: hidden;
 	text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 1);
+
 	div.cover {
 		position: absolute;
 		height: 900px;
@@ -33,14 +34,23 @@ header {
 		// background-size: 50%;
 		animation: move 250s infinite linear;
 		will-change: transform;
-		opacity: .2;
+		opacity: .20;
 	}
+	
 	div.mainbg {
 		position: absolute;
 		height: 100%;
 		width: 100%;
-		background-image: linear-gradient(blue, green);
+		background-image: linear-gradient(
+			desaturate( 
+				darken($pale-yellow, 30%),
+				50%
+			),
+			
+			lighten($pale-yellow, 20%)
+		);
 	}
+	
 	div.header {
 		// .testblock();
 		z-index: 99;
@@ -52,21 +62,22 @@ header {
 			color: black;
 		}
 	}
-	&.about {
-		height: 300px;
-		background-image: linear-gradient(yellow, red);
-	}
-	div.about {
-		align-items: left;
-		width: 400px;
-		padding: 25px;
-		h2 {
-			color: $dark-grey;
-		}
-	}
-	h2.about {
-		font-size: 3rem;
-	}
+
+	// &.about {
+	// 	height: 300px;
+	// 	background-image: linear-gradient(yellow, red);
+	// }
+	// div.about {
+	// 	align-items: left;
+	// 	width: 400px;
+	// 	padding: 25px;
+	// 	h2 {
+	// 		color: $dark-grey;
+	// 	}
+	// }
+	// h2.about {
+	// 	font-size: 3rem;
+	// }
 }
 
 // for the floaty headerbg
