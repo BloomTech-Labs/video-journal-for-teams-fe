@@ -9,7 +9,7 @@ import UploadVideo from "./UploadVideo/UploadVideo";
 
 import { Modal } from 'antd';
 
-const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, playback, videoStream, user_id, promptId, rawVideoData, uploadVideo}) => {
+export const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, playback, videoStream, user_id, promptId, rawVideoData, uploadVideo}) => {
 	const [videoData, setvideoData] = useState({
 				title: "",
 				description: "",
@@ -18,7 +18,6 @@ const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, playback,
 				raw: rawVideoData,
 			});
 
-			console.log(videoData)
 	const formRef = useRef(null);
 
 	function handleFormInput(e) {

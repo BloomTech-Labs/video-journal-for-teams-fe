@@ -7,7 +7,7 @@ import EditMemberCard from './EditMemberCard';
 function MemberCard(props) {
 	const { userRole } = useContext(UserContext)
 	const { data } = props;
-	console.log("user role", userRole)
+
 	return (
 		<Card
 			className="member-card"
