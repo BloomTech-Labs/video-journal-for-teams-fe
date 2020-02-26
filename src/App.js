@@ -15,7 +15,6 @@ import UserVideos from "./pages/UserVideos";
 import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
-import PostTeamVideo from "./pages/PostTeamVideo";
 import Home from "./pages/Home";
 
 // Styles
