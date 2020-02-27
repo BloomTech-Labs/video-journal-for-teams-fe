@@ -51,8 +51,11 @@ header.home {
 				min-width: 250px;
 			}
 		}
-
 		div.text {
+			display: none;
+			opacity: 1;
+			// transition: opacity 0.5s linear;
+			animation: fade .25s linear;
 			width: 25%;
 			min-width: 320px;
 			text-align: left;
@@ -89,20 +92,29 @@ header.home {
 					}
 				}
 			}
+			@keyframes fade {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			// @keyframes fadeOut {
+			// 	0% {
+			// 		opacity: 1;
+			// 	}
+			// 	100% {
+			// 		opacity: 0;
+			// 	}
+			// }
 		}
 		@media screen and (max-width: 800px) {
 			flex-direction: column;
 			justify-content: space-evenly;
-			// div.text, div.logo {
-			// 	width: 100%;
-			// }
 			div.logo {
 				padding: 20px;
-				// min-width: 320px;
-				// img {
-				// 	max-width: 100%;
-				// 	min-width: 250px;
-				// }
 			}
 			div.text {
 				text-align: center;
@@ -163,10 +175,9 @@ header.home {
 			@include userDashHeaderFont();
 			width: 25%;
 			min-width: 320px;
-			text-align: right; 
+			text-align: right;
 			display: flex;
 			justify-content: center;
-
 		}
 		.links {
 			width: 25%;
@@ -176,14 +187,20 @@ header.home {
 
 			font-size: 1.5rem;
 			font-weight: bolder;
-			
+
 			p:hover {
 				cursor: pointer;
 			}
-			a, a:link, a:visited {color: $dark-grey; }
-			a:hover {color: $medium-grey; }
+			a,
+			a:link,
+			a:visited {
+				color: $dark-grey;
+			}
+			a:hover {
+				color: $medium-grey;
+			}
 			// margin-right: 20%;
-			* { 
+			* {
 				margin: 0 3%;
 			}
 		}

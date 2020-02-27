@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
-import { Typography, Button, Popover, Card } from "antd";
+import React, { useState } from "react";
+import { Button } from "antd";
 import Alpaca from '../imgs/alpaca-logo.png';
 import { useHistory, Link } from "react-router-dom";
 
-const { Title } = Typography;
-
-
 const Home = () => {
+	const [show, setShow] = useState(false);
 	let history = useHistory();
 
 	return (
@@ -18,7 +16,11 @@ const Home = () => {
 				<div className="logo">
 					<img alt="Alpaca Vids Logo" className="alpaca-logo" src={Alpaca}></img>
 				</div>
-				<div className="text">
+				<div style={{
+					display: (show ? "block" : "none")
+				}}
+					className="text"
+				>
 					<h1>Success<br />Begins Here.</h1>
 					<h2>Hone your presence,<br />land your dream job.</h2>
 					<div className="start">
@@ -36,6 +38,12 @@ const Home = () => {
 						</Button>
 					</div>
 				</div>
+				<div style={{
+					display: (show ? "none" : "block")
+				}}
+					className="text"
+				>					<h1>Success<br />Begins Here.</h1>
+				</div>
 
 			</div>
 			<div className="bar">
@@ -44,7 +52,7 @@ const Home = () => {
 				</div>
 				<div className="links">
 					<Link to="/login">login</Link>
-					<a href="https://github.com/Lambda-School-Labs/video-journal-for-teams-fe">github</a>
+					<a onClick={() => setShow(!show)}>dev team</a>
 				</div>
 			</div>
 		</header>
