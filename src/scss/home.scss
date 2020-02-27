@@ -43,7 +43,7 @@ header.home {
 		// width: 400px;
 		padding: 25px;
 		margin-bottom: 150px;
-		div {
+		& > div {
 			margin: 5%;
 		}
 		div.logo {
@@ -57,16 +57,22 @@ header.home {
 			}
 		}
 		.box {
-			margin: 0px;
-			width: 320px;
+			width: 80%;
+			max-width: 800px;
+	
 			background-color: $pale-yellow-alpha;
+			.person {
+				margin: 15px;
+				width: 165px;
+			}
 			& > .ant-card-body {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: center;
 				margin: 0px;
 				padding: 0px;
 			}
-			// .ant-card-body {
-			// 	padding: 0px;
-			// }
 		}
 		@keyframes fade {
 			0% {

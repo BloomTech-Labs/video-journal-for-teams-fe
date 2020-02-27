@@ -4,7 +4,7 @@ import Alpaca from '../imgs/alpaca-logo.png';
 import { useHistory, Link } from "react-router-dom";
 
 const Home = () => {
-	const [show, setShow] = useState(true);
+	const [show, setShow] = useState(false);
 	let history = useHistory();
 
 	return (
