@@ -59,6 +59,18 @@ header.home {
 			width: 25%;
 			min-width: 320px;
 			text-align: left;
+			.box {
+				margin: 0px;
+				width: 320px;
+				background-color: $pale-yellow-alpha;
+				&> .ant-card-body {
+					margin: 0px;
+					padding: 0px;
+				}
+				// .ant-card-body {
+				// 	padding: 0px;
+				// }
+			}
 			h1 {
 				font-weight: bolder;
 				font-size: 3rem;
@@ -101,15 +113,6 @@ header.home {
 					opacity: 1;
 				}
 			}
-
-			// @keyframes fadeOut {
-			// 	0% {
-			// 		opacity: 1;
-			// 	}
-			// 	100% {
-			// 		opacity: 0;
-			// 	}
-			// }
 		}
 		@media screen and (max-width: 800px) {
 			flex-direction: column;

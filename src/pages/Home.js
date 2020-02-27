@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "antd";
+import { Button, Card } from "antd";
 import Alpaca from '../imgs/alpaca-logo.png';
 import { useHistory, Link } from "react-router-dom";
 
@@ -38,13 +38,17 @@ const Home = () => {
 						</Button>
 					</div>
 				</div>
-				<div style={{
-					display: (show ? "none" : "block")
-				}}
-					className="text"
-				>					<h1>Success<br />Begins Here.</h1>
+				<div style={{ display: (show ? "none" : "block") }} className="text">
+					<Card size="small" className="box">
+						<Card className="person">thing</Card>
+						<Card className="person">thing</Card>
+						<Card className="person">thing</Card>
+						<Card className="person">thing</Card>
+						<Card className="person">thing</Card>
+						<Card className="person">thing</Card>
+						<Card className="person">thing</Card>
+					</Card>
 				</div>
-
 			</div>
 			<div className="bar">
 				<div className="title">
