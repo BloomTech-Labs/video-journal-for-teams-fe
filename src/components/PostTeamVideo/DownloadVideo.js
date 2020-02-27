@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 // Components
 import { Button } from "antd";
 
-function DownloadVideo({ videoUrl }) {
+export function DownloadVideo({ videoUrl }) {
 	const downloadRef = useRef(null);
 
 	function download() {
@@ -18,8 +18,8 @@ function DownloadVideo({ videoUrl }) {
 			<a ref={downloadRef} href={videoUrl} download="alpacavid.webm" hidden>
 				Download Video
 			</a>
-			<Button onClick={download} style={{ margin: "8px" }}>
-				Download Video
+			<Button onClick={download} style={{ margin: "8px" }} icon="download">
+				<span>Download Video</span>
 			</Button>
 		</>
 	);

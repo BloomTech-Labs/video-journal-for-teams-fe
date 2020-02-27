@@ -40,6 +40,7 @@
 
 .profile-main {
 	background-color: #fff;
+	height          : 100%;
 
 	.outlined-btn {
 		@include outlined-button($alpaca-green);
@@ -55,6 +56,19 @@
 		color    : $alpaca-blue;
 		font-size: 16px;
 	}
+
+	.ant-col-16 {
+		@media (max-width: 800px) {
+			width     : 100%;
+			margin-top: 130px;
+		}
+	}
+
+	.ant-col-8 {
+		@media (max-width: 800px) {
+			width: 100%;
+		}
+	}
 }
 
 .profile-information {
@@ -63,10 +77,6 @@
 
 .profile-information h1 {
 	text-align: left;
-}
-
-.form-container {
-	margin-top: 40px;
 }
 
 /* Avatar section */
@@ -87,6 +97,11 @@
 
 	a {
 		font-size: $sm-text-size;
+	}
+
+	@media (max-width: 800px) {
+		left     : 50%;
+		transform: translateX(-50%);
 	}
 }
 
