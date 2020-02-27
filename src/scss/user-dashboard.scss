@@ -1,11 +1,6 @@
-.user-dashboard {
-	h1 {
-		font-style: normal;
-		font-weight: bold;
-		font-size: 36px;
-		line-height: 45px;
-		color: $dark-grey;
-		text-align: left;
-		margin: 20px 40px;
-	}
+.userDashList {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin: 20px 30px;
 }

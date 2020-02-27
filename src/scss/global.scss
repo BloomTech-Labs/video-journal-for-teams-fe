@@ -1,124 +1,106 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing : antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size              : 62.5%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 .app {
-  height: 100vh;
-  text-align: center;
+	display         : flex;
+	height          : 100%;
+	width           : 100%;
+	text-align      : center;
+	background-color: $pale-yellow;
+	min-height      : 500px;
 }
 
-.Dropzone {
-  height: 200px;
-  width: 200px;
-  background-color: #fff;
-  border: 2px dashed rgb(187, 186, 186);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 16px;
+#root {
+	background-color: $pale-yellow;
+	height          : 100%;
 }
 
-.FileInput {
-  display: none;
+.small {
+	font-size: .8rem;
 }
 
-.Highlight {
-  background-color: rgb(188, 185, 236);
+.tiny {
+	font-size : .65rem;
+	font-style: oblique;
 }
 
-.Upload {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: flex-start;
-  text-align: left;
-  overflow: hidden;
+h1 {
+	font-size: $lg-heading-font-size;
 }
 
-.Content {
-  display: flex;
-  flex-direction: row;
-  padding-top: 16px;
-  box-sizing: border-box;
-  width: 100%;
+.container {
+	max-width: 1000px;
+	width    : 100%;
+	margin   : auto;
+	padding  : 0 20px;
+	position : relative;
 }
 
-.Files {
-  margin-left: 15px;
-  align-items: flex-start;
-  justify-items: flex-start;
-  flex: 1;
-  overflow-y: auto;
+.card-flex {
+	display        : flex;
+	flex-wrap      : wrap;
+	justify-content: flex-start;
 }
 
-.Actions {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  align-items: flex-end;
-  flex-direction: column;
-  margin-top: 32px;
+.dashboard,
+.my-videos {
+	margin: 2% 3%;
+
+	@media(max-width: 600px) {
+		margin: 10%;
+	}
+
+	@media(max-width: 800px) {
+		margin: 5%;
+	}
+
+	h1 {
+		font-style : normal;
+		font-weight: bold;
+		font-size  : 36px;
+		line-height: 45px;
+		color      : $dark-grey;
+		text-align : left;
+		margin     : 15px 40px;
+	}
+
+	h2 {
+		text-align : left;
+		margin-top : 10px;
+		color      : $dark-grey;
+		font-weight: 600;
+		font-size  : 17px;
+	}
 }
 
-.Title {
-  margin-bottom: 32px;
-  color: #555;
-}
+.dashboard-header {
+	display        : flex;
+	align-items    : center;
+	justify-content: space-between;
+	padding        : 0 40px;
 
-.Filename {
-  margin-left: 10px;
-  font-size: 16px;
-  color: #555;
-}
+	button {
+		@include button($alpaca-green);
+		min-width: 142px;
 
-.Row {
-  align-items: center;
-  display: flex;
-  flex: 1 1;
-  flex-direction: row;
-  padding: 8px;
-  overflow: hidden;
-  box-sizing: border-box;
-  img {
-    max-width: 10%;
-  }
-}
+		&:hover {
+			@include button($alpaca-green);
+		}
 
-.ProgressBar {
-  width: 100%;
-  height: 8px;
-  background-color: rgb(183, 155, 229);
-  border-radius: 5px;
-}
-
-.Progress {
-  background-color: rgba(103, 58, 183, 1);
-  height: 100%;
-  margin: 0;
-  border-radius: 5px;
-}
-
-.CheckIcon {
-  opacity: 0.5;
-  margin-left: 32px;
-}
-
-.ProgressWrapper {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 20px;
+		&:focus {
+			@include button($alpaca-green);
+		}
+	}
 }

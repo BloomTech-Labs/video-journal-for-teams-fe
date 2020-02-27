@@ -7,11 +7,11 @@ const initialState = {
 	teamPrompts: [],
 	teamPromptsAndVideos: [],
 	deleteUserCount: 0,
-	inviteLink: {},
+	inviteCode: {},
 	error: null,
 	isFetching: false,
 	isDeleting: false,
-	isUpdating: false
+	isUpdating: false,
 };
 
 const teamReducer = (state = initialState, { type, payload }) => {
@@ -118,7 +118,7 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isFetching: false,
 				error: null,
-				inviteLink: payload
+				inviteCode: payload
 			};
 
 		case constants.POST_TEAM_PROMPT_START:
@@ -156,12 +156,18 @@ const teamReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				error: payload,
+				isFetching: false,
+				isDeleting: false,
+				isUpdating: false,
 			};
 
 		case constants.CLEAR_ERROR:
 			return {
 				...state,
-				error: null,
+				error: payload,
+				isFetching: false,
+				isDeleting: false,
+				isUpdating: false,
 			};
 
 		default:

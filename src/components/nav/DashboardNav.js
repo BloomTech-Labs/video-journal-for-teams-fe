@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Layout, Menu, Icon, Typography } from 'antd';
 import { Link, withRouter } from "react-router-dom";
 
@@ -12,9 +12,10 @@ const DashboardNav = withRouter(props => {
 
 	return (
 		<>
-			<Sider>
+			<Sider breakpoint="lg"
+      collapsedWidth="0" width="240">
 				<div className={"userDashHeader"}>
-					<Title level={3} className={"userDashHeaderFont"}>Alpaca Vids</Title>
+					<Title level={3}><Link to="/user-dashboard" className={"userDashHeaderFont"} style={{marginTop: "12px" }}>Alpaca&nbsp;Vids</Link></Title>
 				</div>
 				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
 					<Menu.Item key="/user-dashboard">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Icon } from 'antd';
+import { Icon, Avatar, Button } from 'antd';
 
 const Dropzone = (props) => {
 	const [hightlight, setHighlight] = useState(false)
@@ -57,24 +57,25 @@ const fileListToArray = (list) => {
 
 
 	return (
-		<div
-			className={`Dropzone ${hightlight ? "Highlight" : ""}`}
-			onDragOver={onDragOver}
-      onDragLeave={onDragLeave}
-      onDrop={onDrop}
-			onClick={openFileDialog}
-			style={{ cursor: props.disabled ? "default" : "pointer" }}
-			>
-        <Icon type="cloud-upload" />
+		<div className="dropzone-component">
+			<Avatar alt="user avatar" size={216} className="user-avatar" src={`https://p198.p4.n0.cdn.getcloudapp.com/items/04uKPBWz/IMG_1128.JPG?v=74fe2f37c51ea7ace1ebd771b394c237`} />
+			<Icon type="cloud-upload" className={`Dropzone ${hightlight ? "Highlight" : ""}`}
+				onDragOver={onDragOver}
+				onDragLeave={onDragLeave}
+				onDrop={onDrop}
+				onClick={openFileDialog}
+				style={{ cursor: props.disabled ? "default" : "pointer" }}/>
 				<input
-          ref={fileInputRef}
-          className="FileInput"
-          type="file"
-          multiple
-          onChange={onFileAdded}
-        />
-        <span>Upload Photo</span>
-      </div>
+					ref={fileInputRef}
+					className="FileInput"
+					type="file"
+					multiple
+					onChange={onFileAdded}
+				/>
+			<Button onClick={openFileDialog}>
+				<span>Change profile picture</span>
+			</Button>
+		</div>
 	);
 }
  

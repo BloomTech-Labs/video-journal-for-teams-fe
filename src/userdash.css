@@ -44,15 +44,6 @@ main.userDashMain {
 
 .teamCard {
 	margin: 10px;
-	width: 225px;
-	height: 110px;
-	border-radius: 5px;
-}
-
-.videoCard{
-	margin: 10px;
-	width: 420px;
-	height: 125px;
 	border-radius: 5px;
 }
 

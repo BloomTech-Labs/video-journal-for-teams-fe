@@ -1,32 +1,30 @@
 import React, { useEffect } from "react";
+
+//Redux
 import { connect } from "react-redux";
-import { Layout } from 'antd';
-import 'antd/dist/antd.css';
+import { fetchUserVideos, restartRecording } from "../../redux/actions/userActions";
+
+//Components
 import UserVideosCard from "./UserVideosCard";
-import { fetchUserVideos } from '../../redux/actions/userActions';
 
-const { Header, Content } = Layout;
+function UserVideos({fetchUserVideos, id, videos}) {
 
-
-function UserVideos(props) {
 	useEffect(() => {
-		props.fetchUserVideos(props.id)
-	}, [props.id])
+		fetchUserVideos(id)
+	}, [id, fetchUserVideos])
 
 	return (
-		<Content className="userDashList">
-			{props.videos.map(video => (
-				<UserVideosCard key={video.id} data={video} />
-			))}
-		</Content>
+		<div className="user-videos-list">
+			{videos.map(video => <UserVideosCard key={video.id} data={video}/>)}
+		</div>
 	)
 }
 
 const mapStateToProps = (state) => {
 	return {
 		videos: state.User.videos,
-		id: state.User.userId
+		id: state.User.userId,
 	}
 }
 
-export default connect(mapStateToProps, { fetchUserVideos })(UserVideos);
+export default connect(mapStateToProps, { fetchUserVideos, restartRecording })(UserVideos);

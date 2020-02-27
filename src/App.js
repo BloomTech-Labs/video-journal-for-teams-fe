@@ -15,8 +15,7 @@ import UserVideos from "./pages/UserVideos";
 import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
-import PostTeamVideo from "./pages/PostTeamVideo";
-import Upload from "./components/utils/Upload";
+import Home from "./pages/Home";
 
 // Styles
 import "./App.scss";
@@ -40,7 +39,9 @@ function App(props) {
 	return (
 		<div className="app">
 			{props.inviteError ? <Alert message={props.inviteError} type="error" /> : null}
-			<Route exact path="/" component={Login} />
+			<Route exact path="/" component={Home} />
+
+			<Route exact path="/login" component={Login} />
 
 			<Route exact path="/register" component={Register} />
 
@@ -48,13 +49,11 @@ function App(props) {
 
 			<PrivateRoute exact path="/user-dashboard" component={UserDashboard} />
 
-			<PrivateRoute exact path="/user-dashboard/video/:id" component={VideoDetails} />
+			<PrivateRoute exact path="/videos/:id" component={VideoDetails} />
 
-			<Route path="/profile" component={UserProfileDashboard} />
+			<PrivateRoute path="/profile" component={UserProfileDashboard} />
 
 			<PrivateRoute exact path="/teams/:team_id" component={TeamDashboard} />
-
-			<PrivateRoute exact path="/teams/:team_id/videos/post/:prompt_id" component={PostTeamVideo} />
 
 			<Route exact path="/videos" component={UserVideos} />
 

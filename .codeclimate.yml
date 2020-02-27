@@ -9,3 +9,11 @@ exclude_patterns:
   - "*.json"
   - "**/database/"
   - "**/coverage"
+plugins:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        javascript:
+          count_threshold: 5
+          mass_threshold: 75

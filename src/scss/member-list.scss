@@ -1,0 +1,34 @@
+.member-card {
+	width: $card-width * 0.6;
+	min-width: $card-width * 0.6;
+	margin: 0 0.5rem;
+	background-color: transparent;
+	&:hover {
+		border: none;
+		box-shadow: none;
+	}
+	p {
+		// margin-bottom: 10px;
+	}
+	.ant-card-body {
+		padding: 0;
+		.edit-card {
+			background-color: transparent;
+			border: none;
+			margin: 4px 0 3px;
+    	width: 100%;
+			.ant-card-body {
+				display: flex;
+				justify-content: space-between;
+			}
+			.ant-card-grid {
+				box-shadow: none;
+				-webkit-box-shadow: none;
+			}
+		}
+	}
+	.edit-card {
+		width: 75%;
+		margin: auto;
+	}
+}

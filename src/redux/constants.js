@@ -28,6 +28,27 @@ const constants = {
 	FETCH_FEEDBACK_SUCCESS: "user:fetch-feedback-success",
 	FETCH_FEEDBACK_FAILURE: "user:fetch-feedback-failure",
 
+
+	SUBMIT_FEEDBACK_START: "user:submit-feedback-start",
+	SUBMIT_FEEDBACK_SUCCESS: "user:submit-feedback-success",
+	SUBMIT_FEEDBACK_FAILURE: "user:submit-feedback-failure",
+  
+	// Update user data
+	UPDATE_USER_DATA_START: "user:update-user-data-start",
+	UPDATE_USER_DATA_SUCCESS: "user:update-user-data-success",
+	UPDATE_USER_DATA_FAILURE: "user:update-user-data-failure",
+
+	UPDATE_PROFILE_PICTURE_START: "user:update-profile-picture-start",
+	UPDATE_PROFILE_PICTURE_SUCCESS: "user:update-profile-picture-success",
+	UPDATE_PROFILE_PICTURE_FAILURE: "user:update-profile-picture-failure",
+	UPDATE_PROFILE_PICTURE_PROGRESS: "user:update-profile-picture-progress",
+	UPDATE_PROFILE_PICTURE_CLEAR: "user:update-profile-picture-clear",
+
+	// Get user data
+	FETCH_USER_DATA_START: "user:fetch-user-data-start",
+	FETCH_USER_DATA_SUCCESS: "user:fetch-user-data-success",
+	FETCH_USER_DATA_FAILURE: "user:fetch-user-data-failure",
+
 	//TEAM CONSTANTS
 	// POST create team
 	CREATE_TEAM_START: "teams:create-team-start",
@@ -103,6 +124,7 @@ const constants = {
 	UPDATE_STREAM_RAW: "user:update-stream-raw",
 
 	TOGGLE_STREAM_PLAYBACK: "user:toggle-stream-playback",
+	RESTART_RECORDING: "user:restart-recording",
 
 	SET_STREAM_ERROR: "user:set-stream-error",
 };

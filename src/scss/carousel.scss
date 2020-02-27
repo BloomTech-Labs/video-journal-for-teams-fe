@@ -1,0 +1,38 @@
+.carousel {
+	display: flex;
+	align-items: center;
+	position: relative;
+	.carouselItems {
+		display: flex;
+		flex-grow: 1;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		width:fit-content;
+		align-items: center;
+	}
+	.leftButton, .rightButton {
+		border: none;
+		background-color: transparent;
+		&:focus {
+			color: $alpaca-green;
+		}
+		&:hover {
+			background-color: transparent;
+			color: $alpaca-green;
+		}
+		&:disabled {
+			cursor: auto;
+			color: rgba(0, 0, 0, 0.25);
+		}
+	}
+	.leftButton {
+		padding-left: 0
+	}
+	.rightButton {
+		padding-right: 0
+	}
+}
+
+.carouselItems::-webkit-scrollbar {
+	display: none;
+}

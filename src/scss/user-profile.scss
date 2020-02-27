@@ -1,0 +1,119 @@
+.full-header {
+	text-align    : left;
+	padding-top   : 10px;
+	padding-bottom: 10px;
+
+	.userDashHeaderFont {
+		color      : $alpaca-green;
+		font-family: Pacifico;
+		font-style : normal;
+		font-weight: normal;
+		font-size  : 36px;
+		line-height: 36px;
+	}
+}
+
+
+.jumbotron {
+	height          : 185px;
+	background-color: $pale-yellow;
+	text-align      : right;
+
+	.breadcrumb {
+		font-size      : $md-text-size;
+		display        : inline-flex;
+		align-items    : center;
+		justify-content: flex-end;
+		padding-top    : 20px;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		.anticon {
+			font-size   : 17px;
+			margin-right: 10px;
+			font-weight : bold;
+		}
+	}
+}
+
+.profile-page.ant-layout-content {
+	min-height: auto;
+}
+
+.profile-main {
+	background-color: #fff;
+	height          : 100%;
+
+	.outlined-btn {
+		@include outlined-button($alpaca-green);
+		color: $black;
+	}
+
+	.full-btn {
+		@include button($alpaca-green);
+		color: $black;
+	}
+
+	label {
+		color    : $alpaca-blue;
+		font-size: 16px;
+	}
+
+	.ant-col-16 {
+		@media (max-width: 800px) {
+			width     : 100%;
+			margin-top: 130px;
+		}
+	}
+
+	.ant-col-8 {
+		@media (max-width: 800px) {
+			width: 100%;
+		}
+	}
+}
+
+.profile-information {
+	padding: 20px 0;
+}
+
+.profile-information h1 {
+	text-align: left;
+}
+
+/* Avatar section */
+
+.avatar-img {
+	margin-bottom: 10px;
+
+	img {
+		border-radius: 50%;
+		border       : 3px solid #fff;
+	}
+}
+
+.avatar-wrapper {
+	text-align: center;
+	position  : absolute;
+	top       : -75px;
+
+	a {
+		font-size: $sm-text-size;
+	}
+
+	@media (max-width: 800px) {
+		left     : 50%;
+		transform: translateX(-50%);
+	}
+}
+
+// Buttons
+.button-wrapper {
+	text-align: right;
+
+	button {
+		margin-left: 15px;
+	}
+}

@@ -1,0 +1,138 @@
+.new-video-player {
+	height: 100%;
+	max-width: 560px;
+	width: 100%;
+	background-color: #f0f2f5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+	i {
+		margin: 0 auto;
+		font-size: 100px;
+	}
+	&:after {
+    content: '';
+    display: block;
+    margin-top: 100%;
+}
+}
+
+.record-stream-container, .playback-stream-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	button > i {
+		@media( max-width: 600px ) {
+			font-size: 30px;
+		}
+	}
+	span {
+		@media( max-width: 600px ) {
+			display: none;
+		}
+	}
+}
+
+.ant-modal-footer {
+	.ant-btn-primary {
+		background-color: $alpaca-green;
+		border-color: $alpaca-green;
+		color: $dark-grey;
+		&:disabled, .ant-btn-primary-disabled, .ant-btn-primary[disabled]  {
+			color: rgba(0, 0, 0, 0.25);
+			background-color: #f5f5f5;
+			border-color: #d9d9d9;
+			text-shadow: none;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+	}
+	
+}
+
+.record-stream-controls, .playback-stream-controls {
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+	.ant-btn {
+		display: flex;
+		align-items: center;
+		&:disabled, .ant-btn-primary-disabled, .ant-btn-primary[disabled] {
+			color: rgba(0, 0, 0, 0.25);
+			background-color: transparent;
+			border-color: #d9d9d9;
+			text-shadow: none;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			&:hover {
+				color: rgba(0, 0, 0, 0.25);
+				background-color: transparent;
+				border-color: #d9d9d9;
+				text-shadow: none;
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+		}
+		&:hover {
+			color: $alpaca-green;
+			border-color: $alpaca-green;
+		}
+		@media( max-width: 600px) {
+			border: none;
+		}
+	}
+}
+
+.Rec{
+	position: absolute;
+	bottom: 180px;
+	left: 25px;
+	width: 20px;
+	height: 20px;
+	font-size: 0;
+	background-color: red;
+	border: 0;
+	border-radius: 35px;
+	margin: 18px;
+	outline: none;
+	animation-name: pulse;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes pulse{
+	0%{
+		box-shadow: 0px 0px 5px 0px rgba(173,0,0,.3);
+	}
+	65%{
+		box-shadow: 0px 0px 5px 13px rgba(173,0,0,.3);
+	}
+	90%{
+		box-shadow: 0px 0px 5px 13px rgba(173,0,0,0);
+	}
+}
+
+.timer {
+	font-size: 25px;
+	padding: 5px;
+}
+
+.video-countdown {
+	position: absolute;
+	color: rgba(255,255,255, 0.3);
+	height: calc(100% - 224px);
+	max-width: 560px;
+	width: calc(100% - 48px);
+	background-color: rgba(0,0,0,0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 100px;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}

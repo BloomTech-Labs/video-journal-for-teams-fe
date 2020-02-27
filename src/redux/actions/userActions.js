@@ -1,6 +1,7 @@
 import constants from "../constants";
 import axios from "axios";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
+import { notification } from "antd";
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
@@ -10,11 +11,10 @@ export const registerUser = (applicant) => (dispatch) => {
 			dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
 		})
 		.catch((err) => {
-			const duplicateAccountError = err.response.data.error;
-			if (duplicateAccountError) {
-				dispatch({ type: constants.GENERATE_ERROR, payload: duplicateAccountError });
+			if (err.response.data.error) {
+				dispatch({ type: constants.GENERATE_ERROR, payload: err.response.data.error });
 			} else {
-				dispatch({ type: constants.GENERATE_ERROR, payload: err.response });
+				dispatch({ type: constants.GENERATE_ERROR, payload: "An unexpected error occured." });
 			}
 		});
 };
@@ -33,7 +33,7 @@ export const loginUser = (userCredentials) => (dispatch) => {
 				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 			})
 			.catch((err) => {
-				dispatch({ type: constants.GENERATE_ERROR, payload: err.response });
+				dispatch({ type: constants.GENERATE_ERROR, payload: "The email address or password you entered is incorrect" });
 			});
 	} else {
 		const user = {
@@ -48,7 +48,8 @@ export const loginUser = (userCredentials) => (dispatch) => {
 			})
 			.catch((err) => {
 				dispatch({
-					type: constants.GENERATE_ERROR, payload: err.response
+					type: constants.GENERATE_ERROR,
+					payload: "The username or password you entered is incorrect",
 				});
 			});
 	}
@@ -65,7 +66,7 @@ export const createTeam = (data) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
+		.catch((err) => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
 };
 
 // FETCH TEAMS FOR USER
@@ -110,6 +111,26 @@ export const fetchFeedback = (videoId) => (dispatch) => {
 		.catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err.response }));
 };
 
+export const submitFeedback = (videoId, feedback) => (dispatch) => {
+	dispatch({ type: constants.SUBMIT_FEEDBACK_START });
+	AxiosWithAuth()
+		.post(`/videos/${videoId}/feedback`, feedback)
+		.then(() => {
+			dispatch({
+				type: constants.SUBMIT_FEEDBACK_SUCCESS,
+			});
+			notification["success"]({
+				message: "Feedback Submitted!",
+			});
+		})
+		.catch((err) => {
+			dispatch({ type: constants.SUBMIT_FEEDBACK_FAILURE, payload: err.response });
+			notification["error"]({
+				message: "Could not submit feedback :( Try again later.",
+			});
+		});
+};
+
 export const fetchInvite = (invite) => (dispatch) => {
 	dispatch({ type: constants.FETCH_INVITE_START, payload: invite });
 	axios
@@ -122,7 +143,7 @@ export const fetchInvite = (invite) => (dispatch) => {
 			}
 		})
 		.catch((err) => {
-			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: err.response })
+			dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: err.response });
 		});
 };
 
@@ -141,7 +162,7 @@ export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
 		.then(() => dispatch({ type: constants.CLEAR_INVITE }))
 		.catch((err) => {
 			dispatch({ type: constants.ADD_INVITED_MEMBER_FAILURE, payload: err.response });
-		})
+		});
 };
 
 export const uploadVideo = (video) => (dispatch) => {
@@ -219,12 +240,86 @@ export const toggleStreamPlayback = () => (dispatch) => {
 	});
 };
 
+export const restartRecording = () => (dispatch) => {
+	dispatch({
+		type: constants.RESTART_RECORDING,
+	});
+};
+
 export const setStreamError = (error) => (dispatch) => {
 	dispatch({
 		type: constants.SET_STREAM_ERROR,
 		payload: error,
 	});
 };
+
+// Update user data
+export const updateUserData = (id, changes) => (dispatch) => {
+	dispatch({ type: constants.UPDATE_USER_DATA_START });
+	AxiosWithAuth()
+		.put(`/users/${id}`, changes)
+		.then(res => {
+			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS, payload: res.data.updatedUser });
+			notification.success({
+				message: 'Profile successfully updated!',
+				duration: 2,
+			});
+		})
+		.catch(error => {
+			dispatch({ type: constants.UPDATE_USER_DATA_FAILURE, payload: error });
+			notification.error({
+				message: `Something's wrong! Try again. ${error.response.data.message}`,
+				duration: 2
+			});
+		})
+}
+
+export const updateUProfilePicture = (id, photo) => (dispatch) => {
+	const config = {
+		onUploadProgress: (event) => {
+			if (event.lengthComputable) {
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: (event.loaded / event.total) * 100 })
+			 }
+			}
+		}
+
+	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_START });
+	AxiosWithAuth()
+			.post(`/users/${id}/photo`, photo, config)
+			.then(res => {
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: 100 })
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_SUCCESS, payload: res.data.avatar });
+			notification.success({
+				message: 'Profile picture successfully updated!',
+				duration: 2,
+			});
+				console.log(res)
+			})
+			.catch(err => {
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_FAILURE, payload: err });
+			notification.error({
+				message: `Something went wrong wrong! Try again. ${err.response.data.message}`,
+				duration: 2
+			});
+		})
+}
+
+export const clearPhotoUpload = () => (dispatch) => {
+	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_CLEAR })
+}
+
+// Get user data
+export const getUserData = (id) => (dispatch) => {
+	dispatch({ type: constants.FETCH_USER_DATA_START });
+
+	AxiosWithAuth().get(`/users/${id}`)
+		.then(res => {
+			dispatch({ type: constants.FETCH_USER_DATA_SUCCESS, payload: res.data });
+		})
+		.catch(error => {
+			dispatch({ type: constants.GENERATE_ERROR, payload: error });
+		})
+}
 
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {
