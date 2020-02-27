@@ -32,6 +32,11 @@ header.home {
 		justify-content: center;
 		align-items: center;
 
+		display: none;
+		opacity: 1;
+		// transition: opacity 0.5s linear;
+		animation: fade 0.25s linear;
+		
 		z-index: 99;
 		// align-items: left;
 		width: 100vw;
@@ -51,26 +56,30 @@ header.home {
 				min-width: 250px;
 			}
 		}
+		.box {
+			margin: 0px;
+			width: 320px;
+			background-color: $pale-yellow-alpha;
+			& > .ant-card-body {
+				margin: 0px;
+				padding: 0px;
+			}
+			// .ant-card-body {
+			// 	padding: 0px;
+			// }
+		}
+		@keyframes fade {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
 		div.text {
-			display: none;
-			opacity: 1;
-			// transition: opacity 0.5s linear;
-			animation: fade 0.25s linear;
 			width: 25%;
 			min-width: 320px;
 			text-align: left;
-			.box {
-				margin: 0px;
-				width: 320px;
-				background-color: $pale-yellow-alpha;
-				&> .ant-card-body {
-					margin: 0px;
-					padding: 0px;
-				}
-				// .ant-card-body {
-				// 	padding: 0px;
-				// }
-			}
 			h1 {
 				font-weight: bolder;
 				font-size: 3rem;
@@ -103,14 +112,6 @@ header.home {
 					&:focus {
 						@include button($alpaca-green);
 					}
-				}
-			}
-			@keyframes fade {
-				0% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
 				}
 			}
 		}
@@ -215,7 +216,7 @@ header.home {
 			.title {
 				display: none;
 			}
-			.links{
+			.links {
 				justify-content: center;
 			}
 		}
