@@ -55,7 +55,7 @@ header.home {
 			display: none;
 			opacity: 1;
 			// transition: opacity 0.5s linear;
-			animation: fade .25s linear;
+			animation: fade 0.25s linear;
 			width: 25%;
 			min-width: 320px;
 			text-align: left;
@@ -84,6 +84,7 @@ header.home {
 					@include button($alpaca-green);
 					border: 1px solid $medium-grey;
 					min-width: 142px;
+					margin-top: 15px;
 					&:hover {
 						@include button($pale-yellow);
 					}
@@ -202,6 +203,17 @@ header.home {
 			// margin-right: 20%;
 			* {
 				margin: 0 3%;
+			}
+		}
+		@media screen and (max-width: 800px) {
+			* {
+				font-size: 85%;
+			}
+			.title {
+				display: none;
+			}
+			.links{
+				justify-content: center;
 			}
 		}
 	}
