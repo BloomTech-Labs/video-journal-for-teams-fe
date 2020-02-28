@@ -36,7 +36,7 @@ header.home {
 		opacity: 1;
 		// transition: opacity 0.5s linear;
 		animation: fade 0.25s linear;
-		
+
 		z-index: 99;
 		// align-items: left;
 		width: 100vw;
@@ -58,18 +58,25 @@ header.home {
 		}
 		.box {
 			width: 80%;
-			max-width: 800px;
-	
+			max-width: 900px;
+			min-width: 900px;
+			overflow: visible;
+
 			background-color: $pale-yellow-alpha;
 			.person {
 				margin: 15px;
-				width: 165px;
+				width: 191px;
+				text-align: left;
+				.ant-card-body {
+					padding: 10px;
+					background-color: $pale-yellow-alpha;
+				}
 			}
 			& > .ant-card-body {
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: row;
-			justify-content: center;
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row;
+				justify-content: center;
 				margin: 0px;
 				padding: 0px;
 			}
