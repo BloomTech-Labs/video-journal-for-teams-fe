@@ -12,7 +12,7 @@ const initialState = {
 	imageUpload: {
 		isUploading: false,
 		progress: 0,
-		error: false,
+		error: null
 	},
 	invite: {
 		invite_code: null,
@@ -383,6 +383,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 				imageUpload: {
 					...state.imageUpload, isUploading: false, progress: 100
 				},
+				avatar: payload,
 				error: null
 			}	
 		case constants.UPDATE_PROFILE_PICTURE_FAILURE:

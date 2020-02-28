@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Icon, Avatar, Button } from 'antd';
 
+import { connect } from "react-redux";
+
+import { RemoteServeDir } from "../utils/RemoteServeDir";
+
 const Dropzone = (props) => {
 	const [hightlight, setHighlight] = useState(false)
 	const fileInputRef = React.createRef();
@@ -55,10 +59,13 @@ const fileListToArray = (list) => {
 		setHighlight(false);
 	}
 
+	console.log(props.avatar)
+	console.log(process.env.REACT_APP_S3_STORAGE_PATH)
+
 
 	return (
 		<div className="dropzone-component">
-			<Avatar alt="user avatar" size={216} className="user-avatar" src={`https://p198.p4.n0.cdn.getcloudapp.com/items/04uKPBWz/IMG_1128.JPG?v=74fe2f37c51ea7ace1ebd771b394c237`} />
+			<Avatar alt="user avatar" size={216} className="user-avatar" src={`${process.env.REACT_APP_S3_STORAGE_PATH}${props.avatar}`} />
 			<Icon type="cloud-upload" className={`Dropzone ${hightlight ? "Highlight" : ""}`}
 				onDragOver={onDragOver}
 				onDragLeave={onDragLeave}
@@ -78,5 +85,9 @@ const fileListToArray = (list) => {
 		</div>
 	);
 }
+
+const mapStateToProps = (state) => ({
+	avatar: state.User.avatar
+});
  
-export default Dropzone;
+export default connect(mapStateToProps, {})(Dropzone);

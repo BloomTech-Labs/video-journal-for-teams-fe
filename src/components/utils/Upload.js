@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Dropzone from './Dropzone';
 import Progress from './Progress';
-import { Icon, Modal, Button } from 'antd';
+import { Icon, Modal, Button, Alert } from 'antd';
 
 import { connect } from "react-redux";
 import { updateUProfilePicture, clearPhotoUpload } from "../../redux/actions/userActions";
@@ -64,6 +64,7 @@ const Upload = ({ updateUProfilePicture, user_id, imageUpload, clearPhotoUpload}
 					/>
 				</div>
 				<Modal
+					className="upload-modal"
 					title="Upload Profile Picture"
 					visible={showModal}
 					onOk={handleOk}
@@ -74,7 +75,7 @@ const Upload = ({ updateUProfilePicture, user_id, imageUpload, clearPhotoUpload}
               {imageUpload.progress === 100 ? "Done" : "Upload"}
             </Button>,
           ]}
-				>
+				>{imageUpload.error ? <Alert message={imageUpload.error} type="error" /> : null}
 					<div className="Files">
 				{file ? <div key={file.name} className="Row">
 					<img src={file.path}/>
