@@ -3,8 +3,6 @@ import { Icon, Avatar, Button } from 'antd';
 
 import { connect } from "react-redux";
 
-import { RemoteServeDir } from "../utils/RemoteServeDir";
-
 const Dropzone = (props) => {
 	const [hightlight, setHighlight] = useState(false)
 	const fileInputRef = React.createRef();
@@ -58,10 +56,6 @@ const fileListToArray = (list) => {
 		}
 		setHighlight(false);
 	}
-
-	console.log(props.avatar)
-	console.log(process.env.REACT_APP_S3_STORAGE_PATH)
-
 
 	return (
 		<div className="dropzone-component">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Upload from '../utils/Upload';
+import Upload from './Upload';
 import { connect } from "react-redux";
 
 function ProfileAvatar() {
