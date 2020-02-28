@@ -19,7 +19,7 @@ const UserVideosCard = (props) => {
 						data.description &&
 						<>
 							<p className="tiny">{humanDate(data.created_at)}</p>
-							<p className="small">{data.description}{data.description}</p>
+							<p className="small">{data.description}</p>
 						</>
 					}
 				/>
