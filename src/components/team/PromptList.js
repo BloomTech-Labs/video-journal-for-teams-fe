@@ -10,7 +10,7 @@ import AddPromptModal from "./AddPromptModal.js";
 import PromptCard from "./PromptCard.js";
 
 //Styling
-import { Layout, Button } from "antd";
+import { Layout, Button, Empty } from "antd";
 const { Content } = Layout;
 
 const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {
@@ -36,9 +36,10 @@ const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {
 				createPrompt={createPrompt}
 				teamId={teamId}
 			/>
-			{teamPromptsAndVideos.map((prompt, index) => (
-				<PromptCard key={prompt.id} data={prompt} index={index} />
-			))}
+			{teamPromptsAndVideos.length > 0
+			? teamPromptsAndVideos.map((prompt, index) => (<PromptCard key={prompt.id} data={prompt} index={index} />))
+			: <Empty />
+		}
 		</Content>
 	);
 };
