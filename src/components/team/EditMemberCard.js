@@ -78,8 +78,6 @@ function EditMemberCard(props) {
 	}
 	// #endregion CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 
-	const { userRole } = useContext(UserContext)
-
 	return (isSelf === false &&
 		<Card className="edit-card">
 			<Card.Grid style={{ width: "50%", textAlign: 'center', padding: 0 }}>
