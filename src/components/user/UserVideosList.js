@@ -19,7 +19,7 @@ function UserVideos({ fetchUserVideos, id, videos }) {
 		<div className="user-videos-list">
 			{videos.length > 0
 				? videos.map(video => <UserVideosCard key={video.id} data={video} />)
-				: <Empty>No Data</Empty>
+				: <Empty />
 			}
 		</div>
 	)

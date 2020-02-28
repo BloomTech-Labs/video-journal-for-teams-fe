@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Layout, Icon, Button } from 'antd';
+import { Layout, Icon, Button, Empty } from 'antd';
 import 'antd/dist/antd.css';
 
 const { Content } = Layout;
@@ -8,10 +8,10 @@ function Carousel({ component: Component, ...props }) {
 	const [axis, setAxis] = useState(0);
 	const [width, setWidth] = useState(window.innerWidth)
 	const carouselList = useRef(null);
-	
+
 	useEffect(() => {
 		function handleResize() {
-      setWidth(window.innerWidth)
+			setWidth(window.innerWidth)
 		}
 
 		window.addEventListener('resize', handleResize)
@@ -39,7 +39,7 @@ function Carousel({ component: Component, ...props }) {
 			left: newAxis,
 			behavior: 'smooth'
 		});
-		setAxis(newAxis)	
+		setAxis(newAxis)
 	}
 
 	return (
@@ -53,13 +53,14 @@ function Carousel({ component: Component, ...props }) {
 			</Button>
 			<div className="carouselItems" ref={carouselList}>
 				{props.children}
-				{props.data.map(item => (
-					<Component key={item.id} data={item}/>
-				))}
+				{props.data.length > 0
+					? props.data.map(item => <Component key={item.id} data={item} />)
+					: <Empty />
+				}
 			</div>
-			<Button 
+			<Button
 				onClick={() => { scroll(1) }}
-				disabled={carouselList.current && axis === carouselList.current.scrollWidth - carouselList.current.clientWidth ? true : false }
+				disabled={carouselList.current && axis === carouselList.current.scrollWidth - carouselList.current.clientWidth ? true : false}
 				className="rightButton"
 			>
 				<Icon type="right" />
