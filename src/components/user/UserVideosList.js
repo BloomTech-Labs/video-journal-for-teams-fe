@@ -7,15 +7,20 @@ import { fetchUserVideos, restartRecording } from "../../redux/actions/userActio
 //Components
 import UserVideosCard from "./UserVideosCard";
 
-function UserVideos({fetchUserVideos, id, videos}) {
+import { Empty } from "antd"
 
+function UserVideos({ fetchUserVideos, id, videos }) {
+	console.log(13, videos);
 	useEffect(() => {
 		fetchUserVideos(id)
 	}, [id, fetchUserVideos])
 
 	return (
 		<div className="user-videos-list">
-			{videos.map(video => <UserVideosCard key={video.id} data={video}/>)}
+			{videos.length > 0
+				? videos.map(video => <UserVideosCard key={video.id} data={video} />)
+				: <Empty />
+			}
 		</div>
 	)
 }
