@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from "../utils/UserContext";
 import { useParams } from "react-router-dom";
 import { Card, Modal, Icon, Tooltip } from 'antd';
 import { connect } from 'react-redux';
@@ -9,7 +10,7 @@ const { confirm } = Modal;
 function EditMemberCard(props) {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const { team_id } = useParams();
-	const { member } = props;
+	const { member, isSelf } = props;
 
 	const handleDelete = () => {
 		props.deleteTeamMember(team_id, member.user_id);
@@ -77,7 +78,9 @@ function EditMemberCard(props) {
 	}
 	// #endregion CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 
-	return (
+	const { userRole } = useContext(UserContext)
+
+	return (isSelf === false &&
 		<Card className="edit-card">
 			<Card.Grid style={{ width: "50%", textAlign: 'center', padding: 0 }}>
 				{member.role_id === 1

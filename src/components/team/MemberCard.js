@@ -7,6 +7,7 @@ import EditMemberCard from './EditMemberCard';
 function MemberCard(props) {
 	const { userRole } = useContext(UserContext)
 	const { data } = props;
+	const isSelf = data.user_id === props.userId
 
 	return (
 		<Card
@@ -18,8 +19,8 @@ function MemberCard(props) {
 				{(!data.avatar) ? (<Avatar size={64} icon="user" />) : (
 					<img alt="user avatar" src={`https://video-journal.herokuapp.com/public/avatars/${data.avatar}`} />)}
 			</div>
-			{userRole === 1 ? null : (<EditMemberCard member={data} />)}
 			<p className="small">{data.user_full_name}</p>
+			{userRole === 1 ? null : (<EditMemberCard member={data} isSelf={isSelf} />)}
 		</Card>
 	)
 }
