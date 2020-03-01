@@ -1,20 +1,21 @@
-import React from 'react'
+import React from 'react';
+import Upload from './Upload';
+import { connect } from "react-redux";
 
 function ProfileAvatar() {
    return (
       <>
          <div className="avatar-wrapper">
-            <div className="avatar-img">
-               <div className="img-wrapper">
-                  <img alt="user avatar" src="https://via.placeholder.com/150" />
-               </div>
-            </div>
-            <div className="av-link">
-               <a href="#">Change Profile Picture</a>
-            </div>
+            <Upload />
          </div>
       </>
    )
 }
 
-export default ProfileAvatar
+const mapStateToProps = state => {
+	return {
+		avatar: state.User.avatar,
+	}
+};
+
+export default connect(mapStateToProps, {})(ProfileAvatar);

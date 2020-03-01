@@ -9,6 +9,11 @@ const initialState = {
 	email: "",
 	username: "",
 	avatar: "",
+	imageUpload: {
+		isUploading: false,
+		progress: 0,
+		error: null
+	},
 	invite: {
 		invite_code: null,
 		invited_team_id: null,
@@ -364,6 +369,47 @@ const userReducer = (state = initialState, { type, payload }) => {
 				isUpdatingUserData: false,
 				error: payload
 			}
+		case constants.UPDATE_PROFILE_PICTURE_START:
+			return {
+				...state,
+				imageUpload: {
+					...state.imageUpload, isUploading: true, progress: 0
+				},
+				error: null
+			}	
+		case constants.UPDATE_PROFILE_PICTURE_SUCCESS:
+			return {
+				...state,
+				imageUpload: {
+					...state.imageUpload, isUploading: false, progress: 100
+				},
+				avatar: payload,
+				error: null
+			}	
+		case constants.UPDATE_PROFILE_PICTURE_FAILURE:
+			return {
+				...state,
+				imageUpload: {
+					...state.imageUpload, isUploading: false, progress: 0
+				},
+				error: payload
+			}
+		case constants.UPDATE_PROFILE_PICTURE_PROGRESS:
+			return {
+				...state,
+				imageUpload: {
+					...state.imageUpload, isUploading: true, progress: payload
+				},
+				error: null
+			}	
+			case constants.UPDATE_PROFILE_PICTURE_CLEAR:
+			return {
+				...state,
+				imageUpload: {
+					...state.imageUpload, isUploading: false, progress: 0
+				},
+				error: null
+			}		
 		case constants.GENERATE_ERROR:
 			return {
 				...state,

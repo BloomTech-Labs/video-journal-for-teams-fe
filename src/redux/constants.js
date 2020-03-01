@@ -38,6 +38,12 @@ const constants = {
 	UPDATE_USER_DATA_SUCCESS: "user:update-user-data-success",
 	UPDATE_USER_DATA_FAILURE: "user:update-user-data-failure",
 
+	UPDATE_PROFILE_PICTURE_START: "user:update-profile-picture-start",
+	UPDATE_PROFILE_PICTURE_SUCCESS: "user:update-profile-picture-success",
+	UPDATE_PROFILE_PICTURE_FAILURE: "user:update-profile-picture-failure",
+	UPDATE_PROFILE_PICTURE_PROGRESS: "user:update-profile-picture-progress",
+	UPDATE_PROFILE_PICTURE_CLEAR: "user:update-profile-picture-clear",
+
 	// Get user data
 	FETCH_USER_DATA_START: "user:fetch-user-data-start",
 	FETCH_USER_DATA_SUCCESS: "user:fetch-user-data-success",
