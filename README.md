@@ -100,6 +100,7 @@ In order for the app to function correctly, the user must set up their own envir
 - REACT_APP_PUBLIC_URL_PRODUCTION = "https://video-journal.herokuapp.com/public"
 - REACT_APP_PUBLIC_URL_STAGING = "https://video-journal-staging.herokuapp.com/public"
 - REACT_APP_PUBLIC_URL_LOCAL_HOST = "http://localhost:5000/public"
+- REACT_APP_S3_STORAGE_PATH=https://alpaca-vids-storage-staging.s3-us-west-1.amazonaws.com/
 
 # Testing
 
