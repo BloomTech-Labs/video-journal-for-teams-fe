@@ -274,6 +274,40 @@ export const updateUserData = (id, changes) => (dispatch) => {
 		})
 }
 
+export const updateUProfilePicture = (id, photo) => (dispatch) => {
+	const config = {
+		onUploadProgress: (event) => {
+			if (event.lengthComputable) {
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: (event.loaded / event.total) * 100 })
+			 }
+			}
+		}
+
+	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_START });
+	AxiosWithAuth()
+			.post(`/users/${id}/photo`, photo, config)
+			.then(res => {
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: 100 })
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_SUCCESS, payload: res.data.avatar });
+			notification.success({
+				message: 'Profile picture successfully updated!',
+				duration: 2,
+			});
+				console.log(res)
+			})
+			.catch(err => {
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_FAILURE, payload: err });
+			notification.error({
+				message: `Something went wrong wrong! Try again. ${err.response.data.message}`,
+				duration: 2
+			});
+		})
+}
+
+export const clearPhotoUpload = () => (dispatch) => {
+	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_CLEAR })
+}
+
 // Get user data
 export const getUserData = (id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_DATA_START });

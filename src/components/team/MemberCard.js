@@ -17,7 +17,7 @@ function MemberCard(props) {
 		>
 			<div className='image-container'>
 				{(!data.avatar) ? (<Avatar size={64} icon="user" />) : (
-					<img alt="user avatar" src={`https://video-journal.herokuapp.com/public/avatars/${data.avatar}`} />)}
+					<img alt="user avatar" src={`${process.env.REACT_APP_S3_STORAGE_PATH}${data.avatar}`} />)}
 			</div>
 			<p className="small">{data.user_full_name}</p>
 			{userRole === 1 ? null : (<EditMemberCard member={data} isSelf={isSelf} />)}
