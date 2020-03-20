@@ -1,7 +1,7 @@
-import io from 'socket.io-client';
 
 
-const host = function() {
+
+ const  host = function() {
     switch (process.env.REACT_APP_ENV) {
       case "development":
         return process.env.REACT_APP_LOCAL_HOST;
@@ -13,18 +13,14 @@ const host = function() {
         return process.env.REACT_APP_LOCAL_HOST;
     }
   };
-const ENDPOINT = host();
+export const ENDPOINT = host();
 
-const socket = io(ENDPOINT);
 
-socket.on('connect', () => {
-    
-} )
 
-export function establishSocketConnect(){
-    socket.on('connected', (data)=> {
-        console.log(data);
-    })
-}
 
-  
+
+
+
+
+
+
