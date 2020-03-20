@@ -47,6 +47,7 @@ export const VideoDetails = ({ video, fetchVideo }) => {
 		}
 	}, [id, fetchVideo, video.id]);
 
+	console.log('this is a video',video)
 	if (video.id !== Number(id)) {
 		return <LoadingView />;
 	}
