@@ -102,6 +102,12 @@ In order for the app to function correctly, the user must set up their own envir
 - REACT_APP_PUBLIC_URL_LOCAL_HOST = "http://localhost:5000/public"
 - REACT_APP_S3_STORAGE_PATH=https://alpaca-vids-storage-staging.s3-us-west-1.amazonaws.com/
 
+
+
+- REACT_APP_SOCKET_PRODUCTION_URL=https://video-journal.herokuapp.com
+- REACT_APP_SOCKET_STAGING_URL=https://video-journal-staging.herokuapp.com
+- REACT_APP_SOCKET_LOCAL_HOST=http://localhost:5000
+
 # Testing
 
 Jest testing environment along with Enzyme dev dependency for testing React-Redux
