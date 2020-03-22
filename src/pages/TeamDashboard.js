@@ -15,6 +15,7 @@ import { socket } from '../socket/socket';
 
 function TeamDashboard(props) {
 	const { team,
+		hello,
 		fetchTeamById,
 		fetchTeamMembers,
 		fetchTeamVideos,
@@ -49,7 +50,7 @@ function TeamDashboard(props) {
 
 	})
 		
-	
+	console.log('helllllllllllllllllo' , teamMembers)
 
 	// Check if there is an error on mount.
 	useEffect(() => {
@@ -115,13 +116,14 @@ function TeamDashboard(props) {
 					<h1>{team.name}</h1>
 					<UserContext.Provider value={{ userRole }} >
 						<MembersList />
-						<PromptList />
+						<PromptList teamMembersEmail={teamMembers.email}/>
 					</UserContext.Provider>
 				</div>
 			</NavAndHeader>
 		)
 	}
 }
+
 
 const mapStateToProps = (state) => ({
 	userId: state.User.userId,

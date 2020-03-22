@@ -26,7 +26,7 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 	if (showFeedback) {
 		return <FeedbackTable feedback={feedback} />;
 	} else {
-		return <FeedbackForm videoId={videoId} />;
+		return <FeedbackForm videoId={videoId} videoOwnerId={videoOwnerId} all={all}/>;
 	}
 }
 
