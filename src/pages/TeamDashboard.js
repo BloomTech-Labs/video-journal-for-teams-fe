@@ -52,6 +52,10 @@ function TeamDashboard(props) {
 		fetchTeamVideos(team_id)
 	})
 
+	socket.on('registeredUser',() => {
+		fetchTeamMembers(team_id)
+	})
+
 	})
 		
 	console.log('helllllllllllllllllo' , teamMembers)
