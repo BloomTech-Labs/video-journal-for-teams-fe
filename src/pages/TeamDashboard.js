@@ -53,7 +53,8 @@ function TeamDashboard(props) {
 	})
 
 	socket.on('registeredUser',() => {
-		fetchTeamMembers(team_id)
+		console.log('registertered User socket triggered')
+		fetchTeamMembers(team_id);
 	})
 
 	})
