@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Card } from "antd";
 import "antd/dist/antd.css";
 import { humanDate } from "../utils/HumanDate";
+import { BellFilled } from "@ant-design/icons"
 const { Meta } = Card;
 
 const UserVideosCard = (props) => {
@@ -13,6 +14,7 @@ const UserVideosCard = (props) => {
 			<Card className="video-card"
 				cover={<img alt ={`${data.title } video thumbnail`} src={data.thumbnail} style={{display: !data.thumbnail ? "none" : "block"}}/>}
 			>
+				
 				<Meta style={{ textAlign: "left" }}
 					title={data.title}
 					description={
@@ -23,6 +25,8 @@ const UserVideosCard = (props) => {
 						</>
 					}
 				/>
+
+				<p style={{textAlign: "left"}}><BellFilled /></p>
 			</Card>
 		</Link>
 	);
