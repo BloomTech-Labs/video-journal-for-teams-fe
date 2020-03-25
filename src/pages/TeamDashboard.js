@@ -53,13 +53,13 @@ function TeamDashboard(props) {
 	})
 
 	socket.on('registeredUser',() => {
-		console.log('registertered User socket triggered')
+		
 		fetchTeamMembers(team_id);
 	})
 
 	})
 		
-	console.log('helllllllllllllllllo' , teamMembers)
+	
 
 	// Check if there is an error on mount.
 	useEffect(() => {
