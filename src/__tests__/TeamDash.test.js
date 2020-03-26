@@ -139,7 +139,17 @@ describe("Team Dashboard Page", () => {
 							video_url: "https://www.youtube.com/embed/fc3c3OrpKSI",
 							title: "porttitor lacus at turpis donec",
 							created_at: "2019-08-03T16:51:48.000Z",
-							user_full_name: "Myrwyn Spellicy"
+							user_full_name: "Myrwyn Spellicy",
+							feedback: [
+								{
+									"id": 101,
+									"post": "test",
+									"video_id": 81,
+									"owner_id": 102,
+									"created_at": "2020-03-22T00:13:14.561Z",
+									"updated_at": "2020-03-22T00:13:14.561Z"
+								}
+							]
 						},
 						{
 							prompt_id: 1,
@@ -147,7 +157,8 @@ describe("Team Dashboard Page", () => {
 							video_url: "https://www.youtube.com/embed/6Gw5dK48MtI",
 							title: "massa tempor convallis nulla",
 							created_at: "2019-02-25T03:37:02.000Z",
-							user_full_name: "Selinda Tritton"
+							user_full_name: "Selinda Tritton",
+							feedback: []
 						},
 						{
 							prompt_id: 1,
@@ -155,7 +166,8 @@ describe("Team Dashboard Page", () => {
 							video_url: "https://www.youtube.com/embed/ssR-RguvjHo",
 							title: "in leo maecenas",
 							created_at: "2019-10-09T06:45:43.000Z",
-							user_full_name: "Augie Tomasz"
+							user_full_name: "Augie Tomasz",
+							feedback: []
 						},
 						{
 							prompt_id: 1,
@@ -163,7 +175,8 @@ describe("Team Dashboard Page", () => {
 							video_url: "https://www.youtube.com/embed/6Gw5dK48MtI",
 							title: "primis",
 							created_at: "2019-08-17T17:06:04.000Z",
-							user_full_name: "Gizela Dufer"
+							user_full_name: "Gizela Dufer",
+							feedback: []
 						},
 						{
 							prompt_id: 1,
@@ -171,7 +184,8 @@ describe("Team Dashboard Page", () => {
 							video_url: "https://www.youtube.com/embed/LQMLFryA_7k",
 							title: "lacus morbi",
 							created_at: "2019-12-10T00:27:05.000Z",
-							user_full_name: "Claire Meagh"
+							user_full_name: "Claire Meagh",
+							feedback: []
 						}
 					]
 				},
@@ -189,7 +203,8 @@ describe("Team Dashboard Page", () => {
 							video_url: "https://www.youtube.com/embed/ssR-RguvjHo",
 							title: "id consequat in consequat ut",
 							created_at: "2019-12-24T12:19:42.000Z",
-							user_full_name: "Valera Corking"
+							user_full_name: "Valera Corking",
+							feedback: []
 						},
 						{
 							prompt_id: 2,
@@ -197,7 +212,8 @@ describe("Team Dashboard Page", () => {
 							video_url: "https://www.youtube.com/embed/13zN4-MVM9g",
 							title: "vivamus",
 							created_at: "2019-11-09T14:55:29.000Z",
-							user_full_name: "Patrice Cornthwaite"
+							user_full_name: "Patrice Cornthwaite",
+							feedback: []
 						},
 						{
 							prompt_id: 2,
@@ -205,7 +221,8 @@ describe("Team Dashboard Page", () => {
 							video_url: "https://www.youtube.com/embed/LQMLFryA_7k",
 							title: "mauris eget",
 							created_at: "2019-12-10T04:19:39.000Z",
-							user_full_name: "Natalee Wyllis"
+							user_full_name: "Natalee Wyllis",
+							feedback: []
 						}
 					]
 				}

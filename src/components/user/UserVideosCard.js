@@ -1,13 +1,36 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import "antd/dist/antd.css";
 import { humanDate } from "../utils/HumanDate";
+import { connect } from "react-redux";
+import { fetchFeedback } from "../../redux/actions/userActions";
+
 import { BellFilled } from "@ant-design/icons"
 const { Meta } = Card;
 
 const UserVideosCard = (props) => {
+	
 	const data = props.data;
+	// const feedback = props.feedback;
+	// const fetchFeedback = props.fetchFeedback;
+
+	// useEffect(() => {
+		
+	// 	if (!isCancelled) {
+	// 		console.log(`useEffect running at ${data.id}`, Date.now())
+	// 		fetchFeedback(data.id);
+	// 		return () => {
+	// 			setIsCancelled(true)
+	// 		};
+	// 	}
+		
+		
+			
+	// },[])
+	// //isCancelled, data.id
+
+	console.log("Feedback", data.feedback)
 	
 	return (
 		<Link to={`/videos/${data.id}`}>
@@ -25,8 +48,8 @@ const UserVideosCard = (props) => {
 						</>
 					}
 				/>
-
-				<p style={{textAlign: "left"}}><BellFilled /></p>
+				{ (data.feedback !== 'undefined' && data.feedback.length > 0) ? "Feedback": null}
+			
 			</Card>
 		</Link>
 	);
