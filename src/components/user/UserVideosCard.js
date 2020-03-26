@@ -2,12 +2,12 @@ import React,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import "antd/dist/antd.css";
-import { humanDate } from "../utils/HumanDate";
-import { connect } from "react-redux";
-import { fetchFeedback } from "../../redux/actions/userActions";
-
 import { BellFilled } from "@ant-design/icons"
+import { humanDate } from "../utils/HumanDate";
+
+
 const { Meta } = Card;
+
 
 const UserVideosCard = (props) => {
 	
@@ -48,7 +48,7 @@ const UserVideosCard = (props) => {
 						</>
 					}
 				/>
-				{ (data.feedback !== 'undefined' && data.feedback.length > 0) ? "Feedback": null}
+				{ (data.feedback !== 'undefined' && data.feedback.length > 0) ? <BellFilled />: null}
 			
 			</Card>
 		</Link>
