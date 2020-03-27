@@ -101,6 +101,16 @@ describe("Examining the User dashboard component", () => {
 					updated_at: "2019 - 10 - 02T04: 31: 10.000Z",
 					video_url: "https://www.youtube.com/embed/6Gw5dK48MtI",
 					prompt_id: 22,
+					feedback:[
+						{
+							"id": 101,
+							"post": "test",
+							"video_id": 9,
+							"owner_id": 1,
+							"created_at": "2020-03-22T00:13:14.561Z",
+							"updated_at": "2020-03-22T00:13:14.561Z"
+						}
+					]
 				},
 				{
 					id: 19,
@@ -111,6 +121,7 @@ describe("Examining the User dashboard component", () => {
 					updated_at: "2019-10-28T01:15:43.000Z",
 					video_url: "https://www.youtube.com/embed/LQMLFryA_7k",
 					prompt_id: 10,
+					feedback:[]
 				},
 			],
 			videoDetailFocus: {
