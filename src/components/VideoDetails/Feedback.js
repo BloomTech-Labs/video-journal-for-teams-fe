@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import {socket} from "../../socket/socket";
+
 // Redux
 import { connect } from "react-redux";
 
@@ -22,6 +24,19 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 			setShowFeedback(true);
 		}
 	}, [videoOwnerId, fetchFeedback, loggedInUserId, videoId]);
+
+	useEffect(() => {
+		console.log('socket useeffect')
+		
+		//If viewer is video uploader, show the feedback for the video. Otherwise just show a feedback form
+		if (loggedInUserId === videoOwnerId) {
+			socket.on('insertedFeedback',()=> {
+				fetchFeedback(videoId)
+				setShowFeedback(true);
+			});
+			
+		}
+	}, []);
 
 	if (showFeedback) {
 		return <FeedbackTable feedback={feedback} />;
