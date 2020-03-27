@@ -2,7 +2,7 @@ import React,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import "antd/dist/antd.css";
-import { CheckCircleOutlined } from "@ant-design/icons"
+import { CheckCircleOutlined } from "@ant-design/icons";
 import { humanDate } from "../utils/HumanDate";
 
 
