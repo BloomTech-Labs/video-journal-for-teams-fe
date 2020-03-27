@@ -48,6 +48,10 @@ function TeamDashboard(props) {
 		fetchTeamVideos(team_id)
 	})
 
+	socket.on('insertedFeedback', () => {
+		fetchTeamVideos(team_id)
+	})
+
 	socket.on('createdPrompt', () => {
 		fetchTeamVideos(team_id)
 	})
@@ -57,7 +61,7 @@ function TeamDashboard(props) {
 		fetchTeamMembers(team_id);
 	})
 
-	})
+	}, [])
 		
 	console.log('helllllllllllllllllo' , teamMembers)
 

@@ -6,7 +6,7 @@ import { fetchUserVideos, restartRecording } from "../../redux/actions/userActio
 
 //Components
 import UserVideosCard from "./UserVideosCard";
-
+import {socket} from '../../socket/socket'
 import { Empty } from "antd"
 
 function UserVideos({ fetchUserVideos, id, videos }) {
@@ -15,7 +15,12 @@ function UserVideos({ fetchUserVideos, id, videos }) {
 		fetchUserVideos(id)
 	}, [id, fetchUserVideos])
 	
+	useEffect(() => {
+		socket.on('insertedFeedback', () => {
+			fetchUserVideos(id)
+		})
 
+	}, [])
 	
 	return (
 		<div className="user-videos-list">

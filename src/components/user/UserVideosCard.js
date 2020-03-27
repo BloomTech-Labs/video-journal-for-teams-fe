@@ -43,10 +43,11 @@ const UserVideosCard = (props) => {
 					description={
 						data.description &&
 						<>
+						<p style={{textAlign: 'left',
+						color:'green'}}>{(data.feedback !== 'undefined' && data.feedback.length > 0) ? <CheckCircleOutlined/>: null}</p>
 							<p className="tiny">{humanDate(data.created_at)}</p>
 							<p className="small">{data.description}</p>
-							<p style={{textAlign: 'left',
-						color:'green'}}>{(data.feedback !== 'undefined' && data.feedback.length > 0) ? <CheckCircleOutlined/>: null}</p>
+							
 						</>
 					}
 				/>
