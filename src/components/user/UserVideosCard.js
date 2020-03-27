@@ -2,7 +2,7 @@ import React,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import "antd/dist/antd.css";
-import { BellFilled } from "@ant-design/icons"
+import { CheckCircleOutlined } from "@ant-design/icons"
 import { humanDate } from "../utils/HumanDate";
 
 
@@ -48,7 +48,8 @@ const UserVideosCard = (props) => {
 						</>
 					}
 				/>
-				{ (data.feedback !== 'undefined' && data.feedback.length > 0) ? <BellFilled />: null}
+				<p style={{textAlign: 'left',
+			color:'green'}}>{(data.feedback !== 'undefined' && data.feedback.length > 0) ? <CheckCircleOutlined/>: null}</p>
 			
 			</Card>
 		</Link>
