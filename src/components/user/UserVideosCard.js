@@ -48,8 +48,8 @@ const UserVideosCard = (props) => {
 						</>
 					}
 				/>
-				<p style={{textAlign: 'left',
-			color:'green'}}>{(data.feedback !== 'undefined' && data.feedback.length > 0) ? <CheckCircleOutlined/>: null}</p>
+				{/* <p style={{textAlign: 'left',
+			color:'green'}}>{(data.feedback !== 'undefined' && data.feedback.length > 0) ? <CheckCircleOutlined/>: null}</p> */}
 			
 			</Card>
 		</Link>
