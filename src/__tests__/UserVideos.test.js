@@ -8,7 +8,7 @@ import configureStore from "redux-mock-store";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
-import UserVideosList from "../components/user/UserVideosList";
+import UserVideos from "../pages/UserVideos";
 import { fetchUserVideos } from "../redux/actions/userActions";
 
 const mockStore = configureStore([thunk]);
@@ -17,45 +17,27 @@ describe("Examining the User dashboard component", () => {
 	it("should render without crashing", () => {
 		shallow(
 			<Provider store={mockStore(defaultStore)}>
-				<UserVideosList />
+				<UserVideos />
 			</Provider>
 		);
 	});
 
-	// it("renders add team button", () => {
-	// 	const userVideoList = mount(
-	// 		<Provider store={mockStore(defaultStore)}>
-	// 			<Router>
-	// 				<UserDashobard />
-	// 			</Router>
-	// 		</Provider>
-	// 	);
-	// 	expect(userDash.exists("button")).toBeTruthy();
-	// });
+	it("renders add team button", () => {
+		const wrapper = mount(
+			<Provider store={mockStore(defaultStore)}>
+				<Router>
+				<UserVideos/>
+				</Router>
+			</Provider>
+		);
+		
+	
+		const { getAllByText } = render(wrapper);
+		getAllByText(/My Videos/i)
+		
+	});
 
-	// it("should render 'Your Teams' on DOM", () => {
-	// 	const wrapper = mount(
-	// 		<Provider store={mockStore(defaultStore)}>
-	// 			<Router>
-	// 				<UserDashobard />
-	// 			</Router>
-	// 		</Provider>
-	// 	);
-	// 	const { getAllByText } = render(wrapper);
-	// 	getAllByText(/My Teams/i);
-	// });
-
-	// it("should render 'Your Videos' on DOM", () => {
-	// 	const wrapper = mount(
-	// 		<Provider store={mockStore(defaultStore)}>
-	// 			<Router>
-	// 				<UserDashobard />
-	// 			</Router>
-	// 		</Provider>
-	// 	);
-	// 	const { getAllByText } = render(wrapper);
-	// 	getAllByText(/My Videos/i);
-	// });
+	
 
 	const defaultStore = {
 		User: {
