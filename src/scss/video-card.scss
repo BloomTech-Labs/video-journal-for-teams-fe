@@ -12,7 +12,7 @@
 .video-card {
 	min-width: $card-width;
 	width: $card-width;
-	height: 330px;
+	height: 280px;
 	margin: $card-spacing $card-row-spacing;
 	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 	border-radius: 4px;
@@ -46,7 +46,7 @@
 		flex-direction: column;
 		justify-content: center;
 		background-color: black;
-		margin-bottom:  60px;
+		margin-bottom:  20px;
 	}
 	.ant-card-body {
 		overflow: hidden;
