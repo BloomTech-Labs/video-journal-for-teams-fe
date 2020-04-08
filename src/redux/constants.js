@@ -32,6 +32,10 @@ const constants = {
 	SUBMIT_FEEDBACK_START: "user:submit-feedback-start",
 	SUBMIT_FEEDBACK_SUCCESS: "user:submit-feedback-success",
 	SUBMIT_FEEDBACK_FAILURE: "user:submit-feedback-failure",
+
+	UPDATE_FEEDBACK_START: "user:update-feedback-start",
+	UPDATE_FEEDBACK_SUCCESS: "user:update-feedback-success",
+	UPDATE_FEEDBACK_FAILURE: "user:update-feedback-failure",
   
 	// Update user data
 	UPDATE_USER_DATA_START: "user:update-user-data-start",

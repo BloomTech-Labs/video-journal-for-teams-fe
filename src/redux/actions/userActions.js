@@ -132,6 +132,26 @@ export const submitFeedback = (videoId, feedback) => (dispatch) => {
 		});
 };
 
+
+
+export const updateViewedFeedback = (videoId, feedback) => (dispatch) => {
+	dispatch({ type: constants.UPDATE_FEEDBACK_START });
+	AxiosWithAuth()
+		.put(`/videos/${videoId}/feedback`, feedback)
+		.then(() => {
+			dispatch({
+				type: constants.UPDATE_FEEDBACK_SUCCESS,
+			});
+		})
+		.catch((err) => {
+			dispatch({ type: constants.UPDATE_FEEDBACK_FAILURE, payload: err.response });
+		});
+};
+
+
+
+
+
 export const fetchInvite = (invite) => (dispatch) => {
 	dispatch({ type: constants.FETCH_INVITE_START, payload: invite });
 	axios

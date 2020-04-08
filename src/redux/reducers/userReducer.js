@@ -23,6 +23,7 @@ const initialState = {
 	isFetching: false,
 	teams: [],
 	videos: [],
+	
 
 	videoDetailFocus: {
 		feedback: {

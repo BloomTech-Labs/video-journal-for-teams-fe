@@ -1,18 +1,32 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link} from "react-router-dom";
 
 import { BellOutlined } from '@ant-design/icons';
 import { Layout, Avatar, Popover } from "antd";
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
-import { logoutUser } from "../../redux/actions/userActions";
+import { logoutUser, fetchUserVideos, updateViewedFeedback } from "../../redux/actions/userActions";
 
 const { Header } = Layout;
 
 function DashboardHeader(props) {
+
+	const [feedbackUpdate, setFeedbackUpdate] = useState(false);
 	let history = useHistory();
+	console.log('userID' , props.userId)
+
+	useEffect(()=>{
+		fetchUserVideos(props.userId);
+		//updateViewedFeedback(video.id)
+		console.log('useEffect dashboard header', )
+	},[feedbackUpdate])
+
+	function handleClick(){
+		
+		setFeedbackUpdate(!feedbackUpdate)
+	}
 
 	const handleLogout = (e) => {
 		e.preventDefault();
@@ -40,17 +54,18 @@ function DashboardHeader(props) {
 	
 
 	let userFeedback = gatherFeedback(feedback);
-	console.log('userFeedback ', userFeedback)
+	
 	
 	function gatherFeedback(arr){
 		
 		let newArray = []
 		for(let i=0; i < arr.length; i++) {
-			if(arr[i].length > 0){
+			if(arr[i].length > 0){ 
 			for (let k=0; k < arr[i].length; k++) {
+				if(arr[i][k].viewed === false){
 				newArray.push(arr[i][k])
-				console.log('hhhhhh',arr[i][k])
 			}
+		}
 		}
 	}
 	return newArray;
@@ -63,11 +78,13 @@ function DashboardHeader(props) {
 	const menu = (
 				<Menu>
 					{userFeedback.map(item => (
-		  			<Menu.Item>
-						<a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-			  			{item.first_name} {item.last_name} left a feedback on video {item.video_title}
-					</a>
-		  			</Menu.Item>
+					
+						<Menu.Item onClick={handleClick}>
+							<Link to={`/videos/${item.video_id}`}>
+								{item.first_name} {item.last_name} left a feedback on video {item.video_title}
+							</Link>
+						</Menu.Item>
+					
 					))}
 				</Menu>
 	)
@@ -96,13 +113,17 @@ const mapStateToProps = (state) => {
 		fullName: `${state.User.first_name} ${state.User.last_name}`,
 		username: state.User.username,
 		avatar: state.User.avatar,
-		videos: state.User.videos
+		videos: state.User.videos,
+		userId: state.User.userId,
 	};
 };
 
 const mapActionsToProps = {
 	logoutUser,
+	fetchUserVideos,
+	updateViewedFeedback,
 	
+
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(DashboardHeader);

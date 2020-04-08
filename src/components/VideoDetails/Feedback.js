@@ -16,9 +16,9 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 	const [showFeedback, setShowFeedback] = useState(false);
 
 	useEffect(() => {
-		console.log('this is the state',all)
-		console.log(videoOwnerId)
+	
 		//If viewer is video uploader, show the feedback for the video. Otherwise just show a feedback form
+		
 		if (loggedInUserId === videoOwnerId) {
 			fetchFeedback(videoId);
 			setShowFeedback(true);
