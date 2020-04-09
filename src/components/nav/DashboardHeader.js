@@ -9,6 +9,8 @@ import { DownOutlined } from '@ant-design/icons';
 
 import { logoutUser, fetchUserVideos, updateViewedFeedback } from "../../redux/actions/userActions";
 
+import NotificationNav from "./NotificationNav";
+
 const { Header } = Layout;
 
 function DashboardHeader(props) {
@@ -17,16 +19,16 @@ function DashboardHeader(props) {
 	let history = useHistory();
 	console.log('userID' , props.userId)
 
-	useEffect(()=>{
-		fetchUserVideos(props.userId);
-		//updateViewedFeedback(video.id)
-		console.log('useEffect dashboard header', )
-	},[feedbackUpdate])
+	// useEffect(()=>{
+	// 	fetchUserVideos(props.userId);
+	// 	//updateViewedFeedback(video.id)
+	// 	console.log('useEffect dashboard header', )
+	// },[feedbackUpdate])
 
-	function handleClick(){
+	// function handleClick(){
 		
-		setFeedbackUpdate(!feedbackUpdate)
-	}
+	// 	setFeedbackUpdate(!feedbackUpdate)
+	// }
 
 	const handleLogout = (e) => {
 		e.preventDefault();
@@ -47,57 +49,59 @@ function DashboardHeader(props) {
 
 		
 	
-	let feedback = props.videos.map(item => {
-		return item.feedback
-	})
+	// let feedback = props.videos.map(item => {
+	// 	return item.feedback
+	// })
 
 	
 
-	let userFeedback = gatherFeedback(feedback);
+	// let userFeedback = gatherFeedback(feedback);
 	
 	
-	function gatherFeedback(arr){
+	// function gatherFeedback(arr){
 		
-		let newArray = []
-		for(let i=0; i < arr.length; i++) {
-			if(arr[i].length > 0){ 
-			for (let k=0; k < arr[i].length; k++) {
-				if(arr[i][k].viewed === false){
-				newArray.push(arr[i][k])
-			}
-		}
-		}
-	}
-	return newArray;
-	}
+	// 	let newArray = []
+	// 	for(let i=0; i < arr.length; i++) {
+	// 		if(arr[i].length > 0){ 
+	// 		for (let k=0; k < arr[i].length; k++) {
+	// 			if(arr[i][k].viewed === false){
+	// 			newArray.push(arr[i][k])
+	// 		}
+	// 	}
+	// 	}
+	// }
+	// return newArray;
+	// }
 
  
 
  
 
-	const menu = (
-				<Menu>
-					{userFeedback.map(item => (
+	// const menu = (
+	// 			<Menu>
+	// 				{userFeedback.map(item => (
 					
-						<Menu.Item onClick={handleClick}>
-							<Link to={`/videos/${item.video_id}`}>
-								{item.first_name} {item.last_name} left a feedback on video {item.video_title}
-							</Link>
-						</Menu.Item>
+	// 					<Menu.Item onClick={handleClick}>
+	// 						<Link to={`/videos/${item.video_id}`}>
+	// 							{item.first_name} {item.last_name} left a feedback on video {item.video_title}
+	// 						</Link>
+	// 					</Menu.Item>
 					
-					))}
-				</Menu>
-	)
+	// 				))}
+	// 			</Menu>
+	// )
 
 	return (
 		<Header className="userDashHeader">
 			<div className="userDashContentHeader">
 
-				<Dropdown overlay={menu}>
+				{/* <Dropdown overlay={menu}>
     				<a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
 					<BellOutlined style={{ fontSize: '40px' }} /> <DownOutlined />
    					 </a>
-  				</Dropdown>,
+  				</Dropdown> */}
+				<NotificationNav />
+
 
 				<Popover content={content} trigger="click">
 					<Avatar size="large" icon="user" src={`${process.env.REACT_APP_S3_STORAGE_PATH}${props.avatar}`} />

@@ -134,19 +134,31 @@ export const submitFeedback = (videoId, feedback) => (dispatch) => {
 
 
 
-export const updateViewedFeedback = (videoId, feedback) => (dispatch) => {
+export const updateViewedFeedback = (videoId, userId) => (dispatch) => {
 	dispatch({ type: constants.UPDATE_FEEDBACK_START });
 	AxiosWithAuth()
-		.put(`/videos/${videoId}/feedback`, feedback)
-		.then(() => {
-			dispatch({
+		.put(`/videos/${videoId}/feedback`, {userId})
+// 		.then((res) => {
+// 			console.log('updatefeedback ran: ', res)
+// 			dispatch({
+// 				type: constants.UPDATE_FEEDBACK_SUCCESS,
+// 				payload: res.data
+// 			});
+// 		})
+// 		.catch((err) => {
+// 			dispatch({ type: constants.UPDATE_FEEDBACK_FAILURE, payload: err.response });
+// 		});
+// };
+
+		.then((res) => {
+			console.log('updatefeedback ran')
+			dispatch({ 
 				type: constants.UPDATE_FEEDBACK_SUCCESS,
-			});
+				 payload: res.data 
+				});
 		})
-		.catch((err) => {
-			dispatch({ type: constants.UPDATE_FEEDBACK_FAILURE, payload: err.response });
-		});
-};
+		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+		}
 
 
 

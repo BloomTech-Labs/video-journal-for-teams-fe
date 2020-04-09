@@ -37,23 +37,26 @@ prompt_question(pin): 'Tell me how you think others …ribe you.'
 owner_name(pin): 'Curr Ladley'
 */
 
-export const VideoDetails = ({ video, fetchVideo, updateViewedFeedback }) => {
+export const VideoDetails = ({ video, fetchVideo,userId, updateViewedFeedback }) => {
 	const { id } = useParams();
 	const history = useHistory();
 
+
+
 	useEffect(() => {
-		updateViewedFeedback(video.id) 
+		
+		updateViewedFeedback(video.id, userId)
 
 		//If we haven't fetched a video OR we have previously and it doesn't match the one in params, fetch it.
 		if (!video.id || video.id !== Number(id)) {
 			fetchVideo(id);
 		}
-		console.log('frome useeffect videodetails',video.id)
+		
 		
 		
 	}, [id, fetchVideo, video.id]);
 
-	console.log('this is a video',video)
+	console.log('user ID',userId)
 	if (video.id !== Number(id)) {
 		return <LoadingView />;
 	}
@@ -71,7 +74,8 @@ export const VideoDetails = ({ video, fetchVideo, updateViewedFeedback }) => {
 
 const mapStateToProps = (state) => ({
 	video: state.User.videoDetailFocus,
-	
+	userId: state.User.userId,
+
 });
 
 const mapActionsToProps = {

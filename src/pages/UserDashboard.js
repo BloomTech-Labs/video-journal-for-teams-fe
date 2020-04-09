@@ -17,6 +17,8 @@ function UserDashboard(props) {
 		fetchUserVideos(id)
 	}, [id, fetchUserVideos])
 
+	console.log('userId: ', id)
+
 	return (
 		<NavAndHeader>
 			<div className="user-dashboard dashboard">
