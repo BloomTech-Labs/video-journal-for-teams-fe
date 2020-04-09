@@ -51,14 +51,20 @@ function NotificationNav(props) {
 	);
   
         return (
-        
-            <Dropdown overlay={menu}>
+        <>
+		
+            <Dropdown overlay={menu} className='margin-right'>
                 <a className="ant-dropdown-link" style={{ color: "grey" }} onClick={(e) => e.preventDefault()}>
-                   <Badge count={userFeedback.length}>
-                       <BellOutlined style={{ fontSize: "30px" }} /> 
-                   </Badge> 
+				<Badge count={userFeedback.length} className="badger">
+                       <BellOutlined style={{ fontSize: "40px" }} /> 
+					   </Badge>
                 </a>
-            </Dropdown>
+			</Dropdown>
+		</>
+
+			
+                      
+                   
         )
     
 	

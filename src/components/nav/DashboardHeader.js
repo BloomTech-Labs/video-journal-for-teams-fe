@@ -102,11 +102,13 @@ function DashboardHeader(props) {
   				</Dropdown> */}
 				<NotificationNav />
 
-
+ 			<div className='bbb'>
 				<Popover content={content} trigger="click">
-					<Avatar size="large" icon="user" src={`${process.env.REACT_APP_S3_STORAGE_PATH}${props.avatar}`} />
+					<Avatar className='bbb' size="large" icon="user" src={`${process.env.REACT_APP_S3_STORAGE_PATH}${props.avatar}`} />
 					{<p>{getInitials()}</p>}
 				</Popover>
+				</div>
+			
 			</div>
 		</Header>
 	);
