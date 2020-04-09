@@ -110,6 +110,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 				error: null,
 				videos: payload,
 			};
+			
 		//updating feedback viewed to true and returning the all videos for the user
 		case constants.UPDATE_FEEDBACK_SUCCESS:
 			return {
@@ -134,6 +135,8 @@ const userReducer = (state = initialState, { type, payload }) => {
 				isFetching: false,
 				error: null,
 			};
+
+			
 
 		case constants.FETCH_VIDEO_FAILURE:
 			return {

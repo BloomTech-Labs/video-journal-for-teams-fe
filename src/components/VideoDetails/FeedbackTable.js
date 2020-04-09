@@ -20,7 +20,7 @@ const columns = [
 ];
 
 function FeedbackTable({ feedback }) {
-	return <Table columns={columns} dataSource={feedback} rowKey="id" />;
+	return <Table columns={columns} dataSource={feedback} pagination={{pageSize: 100}}rowKey="id" />;
 }
 
 export default FeedbackTable;

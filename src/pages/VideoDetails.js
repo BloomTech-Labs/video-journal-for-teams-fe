@@ -44,8 +44,10 @@ export const VideoDetails = ({ video, fetchVideo,userId, updateViewedFeedback })
 
 
 	useEffect(() => {
+		if(userId === video.owner_id ){
+			updateViewedFeedback(video.id, userId)
+		}
 		
-		updateViewedFeedback(video.id, userId)
 
 		//If we haven't fetched a video OR we have previously and it doesn't match the one in params, fetch it.
 		if (!video.id || video.id !== Number(id)) {
