@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../utils/UserContext";
 
 //Redux
@@ -9,18 +9,13 @@ import { createPrompt } from "../../redux/actions/teamActions";
 import AddPromptModal from "./AddPromptModal.js";
 import PromptCard from "./PromptCard.js";
 
-//custom functions
-
-
 //Styling
 import { Layout, Button, Empty } from "antd";
 const { Content } = Layout;
 
-const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId, fetchTeamVideos}) => {
+const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {
 	const [showModal, setShowModal] = useState(false);
 	const { userRole } = useContext(UserContext)
-
-	
 
 	return (
 		<Content className="prompts-list">
@@ -55,9 +50,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-	createPrompt,
-	
-
+	createPrompt
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(PromptList);
