@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, withRouter } from "react-router-dom";
 import "./components/utils/AxiosDefaults";
 
+
 // Components
 import PrivateRoute from "./components/utils/PrivateRoute";
 import UploadProgress from "./components/PostTeamVideo/UploadVideo/UploadProgress";
@@ -30,7 +31,10 @@ import { addToInvitedTeam } from "./redux/actions/userActions";
 function App(props) {
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history } = props;
 
+	
+
 	useEffect(() => {
+		
 		if (isLogged && invited_team_id && invite_code) {
 			addToInvitedTeam(invited_team_id, userId, history);
 		}

@@ -6,7 +6,7 @@ import { useHistory, Link } from "react-router-dom";
 const Home = () => {
 	const [show, setShow] = useState(true);
 	let history = useHistory();
-
+//hi
 	return (
 		<header className="home">
 			<div className="mainbg">
