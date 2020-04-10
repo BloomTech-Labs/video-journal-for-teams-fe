@@ -49,7 +49,7 @@ describe("<Feedback>", () => {
 
 		wrapper = mount(
 			<Provider store={store}>
-				<Feedback {...props} />
+				<Feedback {...props} fetchFeedback={jest.fn()} />
 			</Provider>
 		);
 

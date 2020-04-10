@@ -7,8 +7,18 @@ import { BellOutlined } from "@ant-design/icons";
 import { Menu, Dropdown, Badge } from "antd";
 
 import { logoutUser, fetchUserVideos, updateViewedFeedback } from "../../redux/actions/userActions";
+import { socket } from "../../socket/socket";
 
 function NotificationNav(props) {
+	
+	useEffect(() => {
+		socket.on('insertedFeedback', () => {
+			props.fetchUserVideos(props.userId)
+		})
+		
+	}, [])
+
+
 	//getting feedback data for each video
 	let feedback = props.videos.map((item) => {
 		return item.feedback;
