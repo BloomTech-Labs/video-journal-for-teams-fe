@@ -31,7 +31,7 @@ const UserVideosCard = (props) => {
 	// },[])
 	// //isCancelled, data.id
 
-	console.log("Feedback", data.feedback)
+	
 	// <img alt ={`${data.title } video thumbnail`} src={<VideoPlayer videoUrl={`${process.env.REACT_APP_S3_STORAGE_PATH}${data.video_url}`} snapshotAt={2} />} style={{display: !data.thumbnail ? "none" : "block"}}/>
 	return (
 		<Link to={`/videos/${data.id}`}>

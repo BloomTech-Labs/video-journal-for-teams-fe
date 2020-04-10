@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import {socket} from "../../socket/socket";
+import { socket } from "../../socket/socket";
 
 // Redux
 import { connect } from "react-redux";
@@ -16,32 +16,28 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 	const [showFeedback, setShowFeedback] = useState(false);
 
 	useEffect(() => {
-		console.log('this is the state',all)
-		console.log(videoOwnerId)
-		//If viewer is video uploader, show the feedback for the video. Otherwise just show a feedback form
-		if (loggedInUserId === videoOwnerId) {
-			fetchFeedback(videoId);
-			setShowFeedback(true);
-		}
+		fetchFeedback(videoId);
+		setShowFeedback(true);
 	}, [videoOwnerId, fetchFeedback, loggedInUserId, videoId]);
 
 	useEffect(() => {
-		console.log('socket useeffect')
-		
-		//If viewer is video uploader, show the feedback for the video. Otherwise just show a feedback form
-		if (loggedInUserId === videoOwnerId) {
-			socket.on('insertedFeedback',()=> {
-				fetchFeedback(videoId)
-				setShowFeedback(true);
-			});
-			
-		}
+		console.log("socket useeffect");
+
+		socket.on("insertedFeedback", () => {
+			fetchFeedback(videoId);
+			setShowFeedback(true);
+		});
 	}, []);
 
-	if (showFeedback) {
+	if (loggedInUserId === videoOwnerId) {
 		return <FeedbackTable feedback={feedback} />;
 	} else {
-		return <FeedbackForm videoId={videoId} videoOwnerId={videoOwnerId} all={all}/>;
+		return (
+			<>
+				<FeedbackTable feedback={feedback} />
+				<FeedbackForm videoId={videoId} videoOwnerId={videoOwnerId} all={all} />;
+			</>
+		);
 	}
 }
 
