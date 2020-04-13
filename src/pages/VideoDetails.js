@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Actions
-import { fetchVideo } from "../redux/actions/userActions";
+import { fetchVideo, updateViewedFeedback  } from "../redux/actions/userActions";
 
 // Components
 import VideoPlayer from "../components/VideoDetails/VideoPlayer";
@@ -16,6 +16,7 @@ import { Card, Button } from "antd";
 import LoadingView from "../components/utils/LoadingView";
 // Styles
 import "./videoDetailsTemp.css";
+
 
 //* Requirements
 //* Card component centered in page
@@ -36,17 +37,28 @@ prompt_question(pin): 'Tell me how you think others …ribe you.'
 owner_name(pin): 'Curr Ladley'
 */
 
-export const VideoDetails = ({ video, fetchVideo }) => {
+export const VideoDetails = ({ video, fetchVideo,userId, updateViewedFeedback }) => {
 	const { id } = useParams();
 	const history = useHistory();
 
+
+
 	useEffect(() => {
+		if(userId === video.owner_id ){
+			updateViewedFeedback(video.id, userId)
+		}
+		
+
 		//If we haven't fetched a video OR we have previously and it doesn't match the one in params, fetch it.
 		if (!video.id || video.id !== Number(id)) {
 			fetchVideo(id);
 		}
+		
+		
+		
 	}, [id, fetchVideo, video.id]);
 
+	console.log('user ID',userId)
 	if (video.id !== Number(id)) {
 		return <LoadingView />;
 	}
@@ -64,10 +76,13 @@ export const VideoDetails = ({ video, fetchVideo }) => {
 
 const mapStateToProps = (state) => ({
 	video: state.User.videoDetailFocus,
+	userId: state.User.userId,
+
 });
 
 const mapActionsToProps = {
 	fetchVideo,
+	updateViewedFeedback 
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(VideoDetails);

@@ -1,6 +1,7 @@
 .nav-header {
 	height: 100vh;
 	width: 100%;
+	//border: red 1px solid;
 	.userDashHeaderFont {
 		color: $alpaca-green;
 		font-family: Pacifico;
@@ -20,24 +21,33 @@
 	.userDashHeader {
 		height: 83px;
 		padding: 0;
+		//border: red 1px solid;
 		.userDashHeaderFont {
 			margin-bottom: 0;
 		}
 		.userDashContentHeader {
 			padding: 0 50px;
 			background-color: $white;
-			span {
-				.ant-avatar {
-					cursor: pointer;
-					border: 1px solid $alpaca-green;
-				}
-				p {
-					line-height: 0;
-					font-size: 13px;
-				}
-			}
+			//border: red 1px solid;
+			//justify-content: space-between;
 		}
 	}
+}
+.bbb {
+	display: flex;
+	//flex-direction: column;
+	//justify-content: center;
+}
+
+.ant-avatar {
+	margin-top: 15px;
+	cursor: pointer;
+	border: 1px solid $alpaca-green;
+}
+
+p {
+	line-height: 20px;
+	font-size: 13px;
 }
 
 .ant-popover-inner-content {

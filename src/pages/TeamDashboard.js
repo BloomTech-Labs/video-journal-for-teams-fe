@@ -6,13 +6,16 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import NavAndHeader from "../components/nav/NavAndHeader";
 import MembersList from "../components/team/MembersList";
 import PromptList from "../components/team/PromptList";
-
 // Redux 
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
+//socket
+import { socket } from '../socket/socket';
+
 
 function TeamDashboard(props) {
 	const { team,
+		hello,
 		fetchTeamById,
 		fetchTeamMembers,
 		fetchTeamVideos,
@@ -29,13 +32,38 @@ function TeamDashboard(props) {
 	let redirectTimer = null;
 	let countTimer = null;
 
+	
+
+
 	useEffect(() => {
 		clearError();
 		fetchTeamById(team_id);
-		fetchTeamMembers(team_id);
-		fetchTeamVideos(team_id);
+		fetchTeamMembers(team_id);	
+		fetchTeamVideos(team_id)
+	}, [team_id, fetchTeamById, fetchTeamMembers,newPrompt]);
 
-	}, [team_id, fetchTeamById, fetchTeamMembers, newPrompt]);
+	useEffect(() => {
+
+	socket.on('videoPosted', () => {
+		fetchTeamVideos(team_id)
+	})
+
+	socket.on('insertedFeedback', () => {
+		fetchTeamVideos(team_id)
+	})
+
+	socket.on('createdPrompt', () => {
+		fetchTeamVideos(team_id)
+	})
+
+	socket.on('registeredUser', () => {
+		console.log('registertered User socket triggered')
+		fetchTeamMembers(team_id);
+	})
+
+	}, [])
+		
+	console.log('helllllllllllllllllo' , teamMembers)
 
 	// Check if there is an error on mount.
 	useEffect(() => {
@@ -101,13 +129,14 @@ function TeamDashboard(props) {
 					<h1>{team.name}</h1>
 					<UserContext.Provider value={{ userRole }} >
 						<MembersList />
-						<PromptList />
+						<PromptList teamMembersEmail={teamMembers.email}/>
 					</UserContext.Provider>
 				</div>
 			</NavAndHeader>
 		)
 	}
 }
+
 
 const mapStateToProps = (state) => ({
 	userId: state.User.userId,

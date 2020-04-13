@@ -11,6 +11,7 @@ export const registerUser = (applicant) => (dispatch) => {
 			dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
 		})
 		.catch((err) => {
+			console.log(err);
 			if (err.response.data.error) {
 				dispatch({ type: constants.GENERATE_ERROR, payload: err.response.data.error });
 			} else {
@@ -129,6 +130,20 @@ export const submitFeedback = (videoId, feedback) => (dispatch) => {
 				message: "Could not submit feedback :( Try again later.",
 			});
 		});
+};
+
+export const updateViewedFeedback = (videoId, userId) => (dispatch) => {
+	dispatch({ type: constants.UPDATE_FEEDBACK_START });
+	AxiosWithAuth()
+		.put(`/videos/${videoId}/feedback`, { userId })
+		.then((res) => {
+			console.log("updatefeedback ran");
+			dispatch({
+				type: constants.UPDATE_FEEDBACK_SUCCESS,
+				payload: res.data,
+			});
+		})
+		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
 export const fetchInvite = (invite) => (dispatch) => {
@@ -258,68 +273,69 @@ export const updateUserData = (id, changes) => (dispatch) => {
 	dispatch({ type: constants.UPDATE_USER_DATA_START });
 	AxiosWithAuth()
 		.put(`/users/${id}`, changes)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS, payload: res.data.updatedUser });
 			notification.success({
-				message: 'Profile successfully updated!',
+				message: "Profile successfully updated!",
 				duration: 2,
 			});
 		})
-		.catch(error => {
+		.catch((error) => {
 			dispatch({ type: constants.UPDATE_USER_DATA_FAILURE, payload: error });
 			notification.error({
 				message: `Something's wrong! Try again. ${error.response.data.message}`,
-				duration: 2
+				duration: 2,
 			});
-		})
-}
+		});
+};
 
 export const updateUProfilePicture = (id, photo) => (dispatch) => {
 	const config = {
 		onUploadProgress: (event) => {
 			if (event.lengthComputable) {
-				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: (event.loaded / event.total) * 100 })
-			 }
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: (event.loaded / event.total) * 100 });
 			}
-		}
+		},
+	};
 
 	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_START });
 	AxiosWithAuth()
-			.post(`/users/${id}/photo`, photo, config)
-			.then(res => {
-				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: 100 })
-				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_SUCCESS, payload: res.data.avatar });
+		.post(`/users/${id}/photo`, photo, config)
+		.then((res) => {
+			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: 100 });
+			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_SUCCESS, payload: res.data.avatar });
 			notification.success({
-				message: 'Profile picture successfully updated!',
+				message: "Profile picture successfully updated!",
 				duration: 2,
 			});
-				console.log(res)
-			})
-			.catch(err => {
-				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_FAILURE, payload: err });
+			console.log(res);
+		})
+		.catch((err) => {
+			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_FAILURE, payload: err });
 			notification.error({
 				message: `Something went wrong wrong! Try again. ${err.response.data.message}`,
-				duration: 2
+				duration: 2,
 			});
-		})
-}
+		});
+};
 
 export const clearPhotoUpload = () => (dispatch) => {
-	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_CLEAR })
-}
+	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_CLEAR });
+};
 
 // Get user data
 export const getUserData = (id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_DATA_START });
 
-	AxiosWithAuth().get(`/users/${id}`)
-		.then(res => {
+	AxiosWithAuth()
+		.get(`/users/${id}`)
+		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_DATA_SUCCESS, payload: res.data });
 		})
-		.catch(error => {
+		.catch((error) => {
 			dispatch({ type: constants.GENERATE_ERROR, payload: error });
-		})
-}
+		});
+};
 
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {

@@ -23,6 +23,7 @@ const initialState = {
 	isFetching: false,
 	teams: [],
 	videos: [],
+	
 
 	videoDetailFocus: {
 		feedback: {
@@ -109,6 +110,15 @@ const userReducer = (state = initialState, { type, payload }) => {
 				error: null,
 				videos: payload,
 			};
+			
+		//updating feedback viewed to true and returning the all videos for the user
+		case constants.UPDATE_FEEDBACK_SUCCESS:
+			return {
+				...state,
+				isFetching: false,
+				error: null,
+				videos: payload,
+			};
 
 		//* VIDEO FETCHING (Individual video)
 		case constants.FETCH_VIDEO_START:
@@ -125,6 +135,8 @@ const userReducer = (state = initialState, { type, payload }) => {
 				isFetching: false,
 				error: null,
 			};
+
+			
 
 		case constants.FETCH_VIDEO_FAILURE:
 			return {
