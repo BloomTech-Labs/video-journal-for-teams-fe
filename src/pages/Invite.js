@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams, useHistory } from 'react-router-dom';
 
 import { connect } from "react-redux";
 
@@ -10,6 +10,7 @@ import LoadingView from "../components/utils/LoadingView";
 const Invite = ({ fetchInvite, isLoading }) => {
 	const { invite } = useParams();
 
+	const history = useHistory()
 
 	useEffect(() => {
 		fetchInvite(invite)
@@ -20,7 +21,8 @@ const Invite = ({ fetchInvite, isLoading }) => {
 			{
 				isLoading
 					? <LoadingView />
-					: <Redirect to='/register' />
+					: history.push('/register')
+					// : <Redirect to='/register' />
 			}
 		</div>
 	);
