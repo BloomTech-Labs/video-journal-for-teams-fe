@@ -12,10 +12,11 @@ import { fetchFeedback } from "../../redux/actions/userActions";
 import FeedbackTable from "./FeedbackTable";
 import FeedbackForm from "./FeedbackForm";
 
-export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetchFeedback, all }) {
+export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetchFeedback }) {
 	const [showFeedback, setShowFeedback] = useState(false);
 
 	useEffect(() => {
+
 		fetchFeedback(videoId);
 		setShowFeedback(true);
 	}, [videoOwnerId, fetchFeedback, loggedInUserId, videoId]);
@@ -24,6 +25,7 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 		console.log("socket useeffect");
 
 		socket.on("insertedFeedback", () => {
+
 			fetchFeedback(videoId);
 			setShowFeedback(true);
 		});
@@ -42,7 +44,6 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 }
 
 const mapStateToProps = (state) => ({
-	all: state,
 	loggedInUserId: state.User.userId,
 	feedback: state.User.videoDetailFocus.feedback.entries,
 });

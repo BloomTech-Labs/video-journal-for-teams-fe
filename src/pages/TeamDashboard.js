@@ -6,12 +6,10 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import NavAndHeader from "../components/nav/NavAndHeader";
 import MembersList from "../components/team/MembersList";
 import PromptList from "../components/team/PromptList";
+
 // Redux 
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
-//socket
-import { socket } from '../socket/socket';
-
 
 function TeamDashboard(props) {
 	const { team,
@@ -32,21 +30,12 @@ function TeamDashboard(props) {
 	let redirectTimer = null;
 	let countTimer = null;
 
-	
-
-
 	useEffect(() => {
 		clearError();
 		fetchTeamById(team_id);
-		fetchTeamMembers(team_id);	
-		fetchTeamVideos(team_id)
-	}, [team_id, fetchTeamById, fetchTeamMembers,newPrompt]);
+		fetchTeamMembers(team_id);
+		fetchTeamVideos(team_id);
 
-	useEffect(() => {
-
-	socket.on('videoPosted', () => {
-		fetchTeamVideos(team_id)
-	})
 
 	socket.on('insertedFeedback', () => {
 		fetchTeamVideos(team_id)
@@ -64,6 +53,7 @@ function TeamDashboard(props) {
 	}, [])
 		
 	console.log('helllllllllllllllllo' , teamMembers)
+
 
 	// Check if there is an error on mount.
 	useEffect(() => {
