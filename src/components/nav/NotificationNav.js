@@ -40,7 +40,7 @@ function NotificationNav(props) {
 		}
 		return newArray;
     }
-    //populate feedback data into the menu item
+    //populate feedback data into the menu itemm
 
 	const menu = (
 		<Menu>
