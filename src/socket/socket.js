@@ -15,6 +15,8 @@ import socketio from 'socket.io-client'
   };
 export const ENDPOINT = host();
 
+//please work
+
 export const socket = socketio(ENDPOINT)
 
 
