@@ -9,6 +9,7 @@ import LoadingView from "../components/utils/LoadingView";
 
 const Invite = ({ fetchInvite, isLoading }) => {
 	const { invite } = useParams();
+		console.log('from invite',invite)
 
 	const history = useHistory()
 

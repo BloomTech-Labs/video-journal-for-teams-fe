@@ -30,7 +30,7 @@ import { addToInvitedTeam } from "./redux/actions/userActions";
 
 function App(props) {
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history } = props;
-
+	console.log('this is history ',props)
 	
 
 	useEffect(() => {
