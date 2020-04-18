@@ -64,8 +64,15 @@ export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
 
 export const createInvite = (team_id, team_name, org_id) => (dispatch) => {
 	dispatch({ type: constants.POST_INVITE_LINK_START })
+	console.log('we here', team_id, team_name, org_id)
+	const objj = {
+		team_id: team_id,
+		team_name: team_name,
+		org_id: org_id
+	}
+	console.log(objj)
 	AxiosWithAuth()
-		.post(`teams/${team_id}/invite`, team_name, org_id)
+		.post(`teams/${team_id}/invite`, objj)
 		.then(inviteResponse => {
 			console.log("Action response", inviteResponse)
 			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data.link })

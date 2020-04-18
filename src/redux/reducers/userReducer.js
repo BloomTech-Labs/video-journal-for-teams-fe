@@ -9,6 +9,7 @@ const initialState = {
 	email: "",
 	username: "",
 	avatar: "",
+	organzation_id: "",
 	imageUpload: {
 		isUploading: false,
 		progress: 0,
@@ -76,6 +77,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 				email: payload.user.email,
 				username: payload.user.username,
 				avatar: payload.user.avatar,
+				organization_id: payload.user.organization_id,
 				isLogged: true,
 			};
 

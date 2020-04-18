@@ -13,8 +13,8 @@ function MembersList(props) {
 	const { userRole } = useContext(UserContext);
 
 	const openInviteModal = () => {
-		console.log(props)
-		props.createInvite(props.team.id, { team_name: props.team.name, org_id: props.team.organization_id })
+		console.log(props.team.id)
+		props.createInvite(props.team.id, props.team.name, props.team.organization_id )
 		setShowModal(true)
 	}
 
