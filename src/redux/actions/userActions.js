@@ -153,7 +153,7 @@ export const fetchInvite = (invite) => (dispatch) => {
 		.then((invite) => {
 			console.log(invite)
 			if (invite.data.team_id > 0) {
-				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data.team_id });
+				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data });
 			} else {
 				dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: invite.data.message });
 			}

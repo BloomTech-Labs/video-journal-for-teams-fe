@@ -18,6 +18,7 @@ const initialState = {
 	invite: {
 		invite_code: null,
 		invited_team_id: null,
+		invited_organizatoin_id: null,
 		error: null,
 	},
 	error: null,
@@ -235,7 +236,8 @@ const userReducer = (state = initialState, { type, payload }) => {
 		case constants.FETCH_INVITE_SUCCESS:
 			return {
 				...state,
-				invite: { ...state.invite, invited_team_id: payload, error: null },
+				invite: { ...state.invite, invited_team_id: payload.team_id, invited_organizatoin_id: payload.organization_id, error: null },
+
 				isFetching: false,
 			};
 
