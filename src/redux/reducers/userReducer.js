@@ -9,7 +9,7 @@ const initialState = {
 	email: "",
 	username: "",
 	avatar: "",
-	organzation_id: "",
+	organization_id: "",
 	imageUpload: {
 		isUploading: false,
 		progress: 0,
@@ -21,6 +21,8 @@ const initialState = {
 		invited_organizatoin_id: null,
 		error: null,
 	},
+	organizations: [],
+
 	error: null,
 	isFetching: false,
 	teams: [],
@@ -100,6 +102,22 @@ const userReducer = (state = initialState, { type, payload }) => {
 				error: null,
 				teams: payload,
 			};
+
+		case constants.FETCH_USER_ORGANIZATIONS_START:
+			return {
+				...state,
+				isFetching: true,
+				error:null 
+			}
+		case constants.FETCH_USER_ORGANIZATIONS_SUCCESS:
+				return {
+					...state,
+					isFetching: false,
+					error:null, 
+					organizations: payload
+				}
+	
+
 		case constants.FETCH_USER_VIDEOS_START:
 			return {
 				...state,

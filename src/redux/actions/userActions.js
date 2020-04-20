@@ -81,6 +81,19 @@ export const fetchUserTeams = (userId) => (dispatch) => {
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
+// FETCH USER ORGANIZATOINS
+
+export const fetchUserOrganizations = (userId) => (dispatch) => {
+	dispatch({type: constants.FETCH_USER_ORGANIZATIONS_START});
+	AxiosWithAuth()
+	.get(`/users/${userId}/organizations`)
+	.then((res) => {
+		dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
+	})
+	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+};
+
+
 // FETCH VIDEOS FOR USER
 export const fetchUserVideos = (userId) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_VIDEOS_START });

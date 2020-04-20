@@ -7,7 +7,7 @@ import { fetchUserTeams } from '../../redux/actions/userActions';
 import { createTeam } from "../../redux/actions/teamActions";
 import Carousel from "../shared/Carousel";
 
-const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
+const TeamList = ({ id, teams, fetchUserTeams, createTeam , organization_id}) => {
 	const [team, setTeam] = useState({});
 	const [showModal, setShowModal] = useState(false)
 
@@ -18,7 +18,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam }) => {
 	}, [id, fetchUserTeams])
 
 	const handleInput = (e) => {
-		setTeam({ ...team, [e.target.name]: e.target.value });
+		setTeam({ ...team, [e.target.name]: e.target.value, organization_id: organization_id });
 	};
 
 	const toggleModal = () => {
@@ -69,7 +69,8 @@ const mapStateToProps = (state) => {
 	return {
 		teams: state.User.teams,
 		id: state.User.userId,
-		isFetching: state.User.isFetching
+		isFetching: state.User.isFetching,
+		organization_id: state.User.organization_id
 	}
 }
 

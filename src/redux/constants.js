@@ -23,6 +23,11 @@ const constants = {
 	FETCH_VIDEO_SUCCESS: "user:fetch-video-success",
 	FETCH_VIDEO_FAILURE: "user:fetch-video-failure",
 
+	
+	//GET fetch users organizations
+	FETCH_USER_ORGANIZATIONS_START: "user:fetch-user-organiztions-start",
+	FETCH_USER_ORGANIZATIONS_SUCCESS: "user:fetch-user-organiztions-success",
+
 	//GET feedback on single user video
 	FETCH_FEEDBACK_START: "user:fetch-feedback-start",
 	FETCH_FEEDBACK_SUCCESS: "user:fetch-feedback-success",
