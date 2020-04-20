@@ -71,10 +71,10 @@ export const createTeam = (data) => (dispatch) => {
 };
 
 // FETCH TEAMS FOR USER
-export const fetchUserTeams = (userId) => (dispatch) => {
+export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_TEAMS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/teams`)
+		.get(`/users/${userId}/teams/${organization_id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data });
 		})

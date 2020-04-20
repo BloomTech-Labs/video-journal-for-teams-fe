@@ -1,5 +1,4 @@
 import constants from "../constants";
-
 const initialState = {
 	isUpdatingUserData: false,
 	isLogged: false,
@@ -10,10 +9,12 @@ const initialState = {
 	username: "",
 	avatar: "",
 	organization_id: "",
+	defaultOrganization: {},
+	selectedOrganization: {},
 	imageUpload: {
 		isUploading: false,
 		progress: 0,
-		error: null
+		error: null,
 	},
 	invite: {
 		invite_code: null,
@@ -22,13 +23,10 @@ const initialState = {
 		error: null,
 	},
 	organizations: [],
-
 	error: null,
 	isFetching: false,
 	teams: [],
 	videos: [],
-	
-
 	videoDetailFocus: {
 		feedback: {
 			entries: [],
@@ -39,13 +37,11 @@ const initialState = {
 		isFetching: false,
 		error: false,
 	},
-
 	videoUpload: {
 		isUploading: false,
 		progress: 0,
 		error: false,
 	},
-
 	videoStream: {
 		stream: null,
 		raw: null,
@@ -53,7 +49,6 @@ const initialState = {
 		error: false,
 	},
 };
-
 const userReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case constants.REGISTER_USER:
@@ -68,7 +63,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				username: payload.user.username,
 				isLogged: true,
 			};
-
 		case constants.LOGIN_USER:
 			//Store login token in browser localStorage
 			localStorage.setItem("token", payload.token);
@@ -83,12 +77,10 @@ const userReducer = (state = initialState, { type, payload }) => {
 				organization_id: payload.user.organization_id,
 				isLogged: true,
 			};
-
 		case constants.LOGOUT_USER:
 			localStorage.removeItem("token");
 			localStorage.removeItem("persist:root");
 			return initialState;
-
 		case constants.FETCH_USER_TEAMS_START:
 			return {
 				...state,
@@ -102,22 +94,20 @@ const userReducer = (state = initialState, { type, payload }) => {
 				error: null,
 				teams: payload,
 			};
-
 		case constants.FETCH_USER_ORGANIZATIONS_START:
 			return {
 				...state,
 				isFetching: true,
-				error:null 
-			}
+				error: null,
+			};
 		case constants.FETCH_USER_ORGANIZATIONS_SUCCESS:
-				return {
-					...state,
-					isFetching: false,
-					error:null, 
-					organizations: payload
-				}
-	
-
+			return {
+				...state,
+				isFetching: false,
+				error: null,
+				organizations: payload,
+				defaultOrganization: payload[0],
+			};
 		case constants.FETCH_USER_VIDEOS_START:
 			return {
 				...state,
@@ -131,7 +121,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				error: null,
 				videos: payload,
 			};
-			
 		//updating feedback viewed to true and returning the all videos for the user
 		case constants.UPDATE_FEEDBACK_SUCCESS:
 			return {
@@ -140,7 +129,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				error: null,
 				videos: payload,
 			};
-
 		//* VIDEO FETCHING (Individual video)
 		case constants.FETCH_VIDEO_START:
 			return {
@@ -148,7 +136,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				isFetching: true,
 				error: null,
 			};
-
 		case constants.FETCH_VIDEO_SUCCESS:
 			return {
 				...state,
@@ -156,16 +143,12 @@ const userReducer = (state = initialState, { type, payload }) => {
 				isFetching: false,
 				error: null,
 			};
-
-			
-
 		case constants.FETCH_VIDEO_FAILURE:
 			return {
 				...state,
 				isFetching: false,
 				error: payload,
 			};
-
 		//* FETCHING FEEDBACK FOR A VIDEO
 		case constants.FETCH_FEEDBACK_START:
 			return {
@@ -179,7 +162,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					},
 				},
 			};
-
 		case constants.FETCH_FEEDBACK_SUCCESS:
 			return {
 				...state,
@@ -192,7 +174,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					},
 				},
 			};
-
 		case constants.FETCH_FEEDBACK_FAILURE:
 			return {
 				...state,
@@ -205,7 +186,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					},
 				},
 			};
-
 		case constants.SUBMIT_FEEDBACK_START:
 			return {
 				...state,
@@ -218,7 +198,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					},
 				},
 			};
-
 		case constants.SUBMIT_FEEDBACK_SUCCESS:
 			return {
 				...state,
@@ -230,7 +209,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					},
 				},
 			};
-
 		case constants.SUBMIT_FEEDBACK_FAILURE:
 			return {
 				...state,
@@ -243,22 +221,23 @@ const userReducer = (state = initialState, { type, payload }) => {
 					},
 				},
 			};
-
 		case constants.FETCH_INVITE_START:
 			return {
 				...state,
 				invite: { ...state.invite, invite_code: payload, error: null },
 				isFetching: true,
 			};
-
 		case constants.FETCH_INVITE_SUCCESS:
 			return {
 				...state,
-				invite: { ...state.invite, invited_team_id: payload.team_id, invited_organizatoin_id: payload.organization_id, error: null },
-
+				invite: {
+					...state.invite,
+					invited_team_id: payload.team_id,
+					invited_organizatoin_id: payload.organization_id,
+					error: null,
+				},
 				isFetching: false,
 			};
-
 		case constants.FETCH_INVITE_FAILURE:
 			return {
 				...state,
@@ -292,7 +271,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					error: null,
 				},
 			};
-
 		case constants.UPLOAD_VIDEO_START:
 			return {
 				...state,
@@ -301,7 +279,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					isUploading: true,
 				},
 			};
-
 		case constants.UPLOAD_VIDEO_PROGRESS:
 			return {
 				...state,
@@ -310,7 +287,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					progress: payload,
 				},
 			};
-
 		case constants.UPLOAD_VIDEO_FAILURE:
 			return {
 				...state,
@@ -320,7 +296,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					error: payload,
 				},
 			};
-
 		case constants.UPLOAD_VIDEO_SUCCESS:
 			return {
 				...state,
@@ -333,13 +308,11 @@ const userReducer = (state = initialState, { type, payload }) => {
 					...initialState.videoStream,
 				},
 			};
-
 		case constants.UPDATE_STREAM_OBJECT:
 			//Revoke previous blob so the browser can delete it to a prevent memory leak
 			if (state.videoStream.stream) {
 				window.URL.revokeObjectURL(state.videoStream.stream);
 			}
-
 			return {
 				...state,
 				videoStream: {
@@ -347,7 +320,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					stream: payload,
 				},
 			};
-
 		case constants.UPDATE_STREAM_RAW:
 			return {
 				...state,
@@ -356,7 +328,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 					raw: payload,
 				},
 			};
-
 		case constants.TOGGLE_STREAM_PLAYBACK:
 			return {
 				...state,
@@ -365,13 +336,11 @@ const userReducer = (state = initialState, { type, payload }) => {
 					playback: !state.videoStream.playback,
 				},
 			};
-
 		case constants.RESTART_RECORDING:
-				return {
-					...state,
-					videoStream: {...initialState.videoStream},
-				};
-
+			return {
+				...state,
+				videoStream: { ...initialState.videoStream },
+			};
 		case constants.SET_STREAM_ERROR:
 			return {
 				...state,
@@ -380,12 +349,11 @@ const userReducer = (state = initialState, { type, payload }) => {
 					error: payload,
 				},
 			};
-
 		case constants.UPDATE_USER_DATA_START:
 			return {
 				...state,
-				isUpdatingUserData: true
-			}
+				isUpdatingUserData: true,
+			};
 		case constants.UPDATE_USER_DATA_SUCCESS:
 			return {
 				...state,
@@ -395,55 +363,65 @@ const userReducer = (state = initialState, { type, payload }) => {
 				first_name: payload.first_name,
 				last_name: payload.last_name,
 				email: payload.email,
-				username: payload.username
-			}
+				username: payload.username,
+			};
 		case constants.UPDATE_USER_DATA_FAILURE:
 			return {
 				...state,
 				isUpdatingUserData: false,
-				error: payload
-			}
+				error: payload,
+			};
 		case constants.UPDATE_PROFILE_PICTURE_START:
 			return {
 				...state,
 				imageUpload: {
-					...state.imageUpload, isUploading: true, progress: 0
+					...state.imageUpload,
+					isUploading: true,
+					progress: 0,
 				},
-				error: null
-			}	
+				error: null,
+			};
 		case constants.UPDATE_PROFILE_PICTURE_SUCCESS:
 			return {
 				...state,
 				imageUpload: {
-					...state.imageUpload, isUploading: false, progress: 100
+					...state.imageUpload,
+					isUploading: false,
+					progress: 100,
 				},
 				avatar: payload,
-				error: null
-			}	
+				error: null,
+			};
 		case constants.UPDATE_PROFILE_PICTURE_FAILURE:
 			return {
 				...state,
 				imageUpload: {
-					...state.imageUpload, isUploading: false, progress: 0
+					...state.imageUpload,
+					isUploading: false,
+					progress: 0,
 				},
-				error: payload
-			}
+				error: payload,
+			};
 		case constants.UPDATE_PROFILE_PICTURE_PROGRESS:
 			return {
 				...state,
 				imageUpload: {
-					...state.imageUpload, isUploading: true, progress: payload
+					...state.imageUpload,
+					isUploading: true,
+					progress: payload,
 				},
-				error: null
-			}	
-			case constants.UPDATE_PROFILE_PICTURE_CLEAR:
+				error: null,
+			};
+		case constants.UPDATE_PROFILE_PICTURE_CLEAR:
 			return {
 				...state,
 				imageUpload: {
-					...state.imageUpload, isUploading: false, progress: 0
+					...state.imageUpload,
+					isUploading: false,
+					progress: 0,
 				},
-				error: null
-			}		
+				error: null,
+			};
 		case constants.GENERATE_ERROR:
 			return {
 				...state,
@@ -451,7 +429,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				isFetching: false,
 				isUpdatingUserData: false,
 			};
-
 		case constants.CLEAR_ERROR:
 			return {
 				...state,
@@ -462,5 +439,4 @@ const userReducer = (state = initialState, { type, payload }) => {
 			return state;
 	}
 };
-
 export default userReducer;

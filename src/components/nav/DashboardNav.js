@@ -1,48 +1,43 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Menu, Icon, Typography, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import {fetchUserOrganizations} from "../../redux/actions/userActions"
+import { fetchUserOrganizations } from "../../redux/actions/userActions";
 const { Sider } = Layout;
 const { Title } = Typography;
-
-const DashboardNav = withRouter((props ) => {
+const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
-	const { location, organization_id, organizations, userId, fetchUserOrganizations } = props;
+	const {
+		location,
+		organization_id,
+		organizations,
+		userId,
+		fetchUserOrganizations,
+		defaultOrganization,
+		selectedOrganization,
+	} = props;
 
- 	const [selectedOrganization, setSelectedOrganization]=useState();
-	
-	
+
+	// const [selectedOrganization, setSelectedOrganization]=useState(organizations[0].name);
+
+
 	useEffect(() => {
-		let result;
-		async function fetchData(){
-			result = await fetchUserOrganizations(userId) 
-			
-		}
-		fetchData()
-		setSelectedOrganization(result[0].name);
-	}, [])
+		fetchUserOrganizations(userId);
+	}, []);
 
-
-console.log('hello2', selectedOrganization)
-console.log('hello1', organizations)
-
-function handleClick(item){
-	setSelectedOrganization(item.name)
-	fetchUserOrganizations(userId)
-}
-
-// const handleClick = (name) => {
-// 	setSelectedOrganization(name)
-// }
-
+	function handleClick(item){
+		// setSelectedOrganization(item.name)
+		fetchUserOrganizations(userId)
+	}
+	
 	const menu = (
 		<Menu>
-			{organizations.map(item => <Menu.Item key={item.id} onClick={()=> handleClick(item)} >
+			{organizations.map((item) => (
+				<Menu.Item key={item.id} >
 					{item.name}
-			</Menu.Item>)}
-			
+				</Menu.Item>
+			))}
 		</Menu>
 	);
 
@@ -59,7 +54,8 @@ function handleClick(item){
 				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
 					<Dropdown overlay={menu}>
 						<a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-							{selectedOrganization}<DownOutlined />
+							{selectedOrganization.name ? selectedOrganization.name : defaultOrganization.name}
+							<DownOutlined />
 						</a>
 					</Dropdown>
 					,
@@ -105,11 +101,12 @@ function handleClick(item){
 const mapStateToProps = (state) => ({
 	organization_id: state.User.organization_id,
 	userId: state.User.userId,
-	organizations: state.User.organizations
+	organizations: state.User.organizations,
+	defaultOrganization: state.User.defaultOrganization,
+	selectedOrganization: state.User.selectedOrganization,
 });
 
 const mapActionsToProps = {
-	fetchUserOrganizations
+	fetchUserOrganizations,
 };
-
 export default connect(mapStateToProps, mapActionsToProps)(DashboardNav);

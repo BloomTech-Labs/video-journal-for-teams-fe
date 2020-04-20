@@ -7,15 +7,18 @@ import { fetchUserTeams } from '../../redux/actions/userActions';
 import { createTeam } from "../../redux/actions/teamActions";
 import Carousel from "../shared/Carousel";
 
-const TeamList = ({ id, teams, fetchUserTeams, createTeam , organization_id}) => {
+const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization, selectedOrganization}) => {
 	const [team, setTeam] = useState({});
 	const [showModal, setShowModal] = useState(false)
-
+	const organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
 	let history = useHistory();
 
+ console.log('asdsadsad',organization_id)
+	
+	
 	useEffect(() => {
-		fetchUserTeams(id)
-	}, [id, fetchUserTeams])
+		fetchUserTeams(id, organization_id)
+	}, [id, fetchUserTeams, organization_id])
 
 	const handleInput = (e) => {
 		setTeam({ ...team, [e.target.name]: e.target.value, organization_id: organization_id });
@@ -70,7 +73,9 @@ const mapStateToProps = (state) => {
 		teams: state.User.teams,
 		id: state.User.userId,
 		isFetching: state.User.isFetching,
-		organization_id: state.User.organization_id
+		//organization_id: state.User.organization_id,
+		defaultOrganization: state.User.defaultOrganization,
+		selectedOrganization: state.User.selectedOrganization
 	}
 }
 

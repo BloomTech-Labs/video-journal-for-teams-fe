@@ -5,6 +5,8 @@ import DashboardNav from './DashboardNav';
 const { Content } = Layout;
 
 const NavAndHeader = (props) => {
+
+	
     return (
 				<Layout className="nav-header">
 					<DashboardNav />
