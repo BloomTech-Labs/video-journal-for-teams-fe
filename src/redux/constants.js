@@ -28,6 +28,13 @@ const constants = {
 	FETCH_USER_ORGANIZATIONS_START: "user:fetch-user-organiztions-start",
 	FETCH_USER_ORGANIZATIONS_SUCCESS: "user:fetch-user-organiztions-success",
 
+	//Set selected organization
+	SET_USER_SELECTED_ORGANIZATION_START: "user:set-user-organization-start",
+	SET_USER_SELECTED_ORGANIZATION_SUCCESS: "user:set-user-organization-success",
+
+	CREATE_USER_ORGANIZATION_START: "user:create_user_organization_start",
+	CREATE_USER_ORGANIZATION_SUCCESS: "user:create_user_organization_start",
+
 	//GET feedback on single user video
 	FETCH_FEEDBACK_START: "user:fetch-feedback-start",
 	FETCH_FEEDBACK_SUCCESS: "user:fetch-feedback-success",

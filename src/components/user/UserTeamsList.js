@@ -13,7 +13,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 	const organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
 	let history = useHistory();
 
- console.log('asdsadsad',organization_id)
+
 	
 	
 	useEffect(() => {

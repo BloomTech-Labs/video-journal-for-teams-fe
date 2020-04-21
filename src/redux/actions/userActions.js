@@ -2,6 +2,7 @@ import constants from "../constants";
 import axios from "axios";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 import { notification } from "antd";
+import { createTeam } from '../actions/teamActions'
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
@@ -60,15 +61,15 @@ export const logoutUser = () => (dispatch) => {
 	dispatch({ type: constants.LOGOUT_USER });
 };
 
-export const createTeam = (data) => (dispatch) => {
-	dispatch({ type: constants.CREATE_TEAM_START });
-	AxiosWithAuth()
-		.post("/api/teams/")
-		.then((res) => {
-			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
-		})
-		.catch((err) => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
-};
+// export const createTeam = (data) => (dispatch) => {
+// 	dispatch({ type: constants.CREATE_TEAM_START });
+// 	AxiosWithAuth()
+// 		.post("/api/teams/")
+// 		.then((res) => {
+// 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
+// 		})
+// 		.catch((err) => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
+// };
 
 // FETCH TEAMS FOR USER
 export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
@@ -92,6 +93,30 @@ export const fetchUserOrganizations = (userId) => (dispatch) => {
 	})
 	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
+
+export const setUserSelectedOrganization = (organization) => (dispatch) => {
+	dispatch({type: constants.SET_USER_SELECTED_ORGANIZATION_START});
+	dispatch({type: constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS, payload: organization});
+
+};
+
+
+//create an orgainzation for after registration 
+export const createUserOrganization = (organization_name, history) => (dispatch) => {
+	dispatch({type: constants.CREATE_USER_ORGANIZATION_START});
+	AxiosWithAuth()
+	.post(`/organizations`, organization_name)
+	.then((res) => {
+		dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data });
+	})
+	.then(res => {
+		createTeam({name: 'General', description: 'This is a general team for all members'}, history)
+	})
+	
+
+	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+};
+
 
 
 // FETCH VIDEOS FOR USER

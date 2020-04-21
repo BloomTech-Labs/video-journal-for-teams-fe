@@ -9,8 +9,8 @@ const initialState = {
 	username: "",
 	avatar: "",
 	organization_id: "",
-	defaultOrganization: {},
-	selectedOrganization: {},
+	defaultOrganization: null,
+	selectedOrganization: null,
 	imageUpload: {
 		isUploading: false,
 		progress: 0,
@@ -108,6 +108,38 @@ const userReducer = (state = initialState, { type, payload }) => {
 				organizations: payload,
 				defaultOrganization: payload[0],
 			};
+
+		case constants.SET_USER_SELECTED_ORGANIZATION_START:
+			return {
+				...state,
+				isFetching: true,
+				error: null,
+			};
+
+		case constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS:
+			return {
+				...state,
+				isFetching: false,
+				error: null,
+				selectedOrganization: payload,
+			};
+
+		case constants.CREATE_USER_ORGANIZATION_START:
+			return {
+				...state,
+				isFetching: true,
+				error: null,
+			};
+
+		case constants.CREATE_USER_ORGANIZATION_SUCCESS:
+			return {
+				...state,
+				isFetching: false,
+				error: null,
+				organizations: [...state.organizations, payload],
+				selectedOrganization: payload,
+			};
+
 		case constants.FETCH_USER_VIDEOS_START:
 			return {
 				...state,

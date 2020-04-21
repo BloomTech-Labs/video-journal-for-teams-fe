@@ -3,7 +3,7 @@ import { Layout, Menu, Icon, Typography, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUserOrganizations } from "../../redux/actions/userActions";
+import { fetchUserOrganizations, fetchUserTeams, setUserSelectedOrganization } from "../../redux/actions/userActions";
 const { Sider } = Layout;
 const { Title } = Typography;
 const DashboardNav = withRouter((props) => {
@@ -16,6 +16,8 @@ const DashboardNav = withRouter((props) => {
 		fetchUserOrganizations,
 		defaultOrganization,
 		selectedOrganization,
+		fetchUserTeams,
+		setUserSelectedOrganization
 	} = props;
 
 
@@ -24,17 +26,19 @@ const DashboardNav = withRouter((props) => {
 
 	useEffect(() => {
 		fetchUserOrganizations(userId);
+		console.log('hi')
 	}, []);
 
 	function handleClick(item){
-		// setSelectedOrganization(item.name)
-		fetchUserOrganizations(userId)
+		setUserSelectedOrganization(item)
+		console.log(item)
+		console.log('hello')
 	}
 	
 	const menu = (
 		<Menu>
 			{organizations.map((item) => (
-				<Menu.Item key={item.id} >
+				<Menu.Item key={item.id} onClick={()=> handleClick(item)} >        
 					{item.name}
 				</Menu.Item>
 			))}
@@ -54,11 +58,17 @@ const DashboardNav = withRouter((props) => {
 				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
 					<Dropdown overlay={menu}>
 						<a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-							{selectedOrganization.name ? selectedOrganization.name : defaultOrganization.name}
+						 {
+							   defaultOrganization ? "undefined"  :  'hello' 
+							
+								}
+
+								// (selectedOrganization.name ? selectedOrganization.name : defaultOrganization.name) :
+								
 							<DownOutlined />
 						</a>
 					</Dropdown>
-					,
+					
 					<hr style={{ margin: "40px 0" }} />
 					<Menu.Item key="/user-dashboard">
 						<Link to="/user-dashboard" style={{ color: "#fff", display: "block" }}>
@@ -108,5 +118,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
 	fetchUserOrganizations,
+	fetchUserTeams,
+	setUserSelectedOrganization 
 };
 export default connect(mapStateToProps, mapActionsToProps)(DashboardNav);

@@ -42,7 +42,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
   
   console.log('this is applicant',applicant)
   let history = useHistory();
-  console.log('this is from register org id', invited_organizatoin_id)
+  console.log('this is from register org id')
   //Redirect if logged already logged in OR on successful registration
   useEffect(() => {
     if (isLogged) {
@@ -53,7 +53,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
 
   const handleInput = (e) => {
     clearError();
-    setApplicant({ ...applicant, [e.target.name]: e.target.value, organization_id: invited_organizatoin_id });
+    setApplicant({ ...applicant, [e.target.name]: e.target.value});
   };
 
   //Attempt to register new user with provided info
@@ -67,6 +67,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
         //Data is good, proceed to registration action
         registerUser(applicant);
       })
+      
       .catch((validationError) => {
         setError(validationError.errors);
       });
