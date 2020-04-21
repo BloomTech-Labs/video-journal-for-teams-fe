@@ -104,16 +104,21 @@ export const setUserSelectedOrganization = (organization) => (dispatch) => {
 //create an orgainzation for after registration 
 export const createUserOrganization = (organization_name, history) => (dispatch) => {
 	dispatch({type: constants.CREATE_USER_ORGANIZATION_START});
+	let id = ''
 	AxiosWithAuth()
 	.post(`/organizations`, organization_name)
 	.then((res) => {
-		dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data });
+		console.log("This is from user action", res)
+		dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data })
+		id = res.data.id
 	})
-	.then(res => {
-		createTeam({name: 'General', description: 'This is a general team for all members'}, history)
-	})
+	.then(()=> {
+		console.log(id)
+		dispatch(createTeam({name: 'General', description: 'This is a general team for all members', organization_id: id}, history))
+		
+	}
+	)
 	
-
 	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 

@@ -3,7 +3,7 @@ import { Layout, Menu, Icon, Typography, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUserOrganizations, fetchUserTeams, setUserSelectedOrganization } from "../../redux/actions/userActions";
+import { fetchUserOrganizations, fetchUserTeams, setUserSelectedOrganization, createUserOrganization } from "../../redux/actions/userActions";
 const { Sider } = Layout;
 const { Title } = Typography;
 const DashboardNav = withRouter((props) => {
@@ -27,7 +27,7 @@ const DashboardNav = withRouter((props) => {
 	useEffect(() => {
 		fetchUserOrganizations(userId);
 		console.log('hi')
-	}, []);
+	}, [selectedOrganization]);
 
 	function handleClick(item){
 		setUserSelectedOrganization(item)
@@ -58,13 +58,7 @@ const DashboardNav = withRouter((props) => {
 				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
 					<Dropdown overlay={menu}>
 						<a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-						 {
-							   defaultOrganization ? "undefined"  :  'hello' 
-							
-								}
-
-								// (selectedOrganization.name ? selectedOrganization.name : defaultOrganization.name) :
-								
+						 {	typeof defaultOrganization !== "undefined"  ? (selectedOrganization.name ? selectedOrganization.name : defaultOrganization.name) : 'hello' }				
 							<DownOutlined />
 						</a>
 					</Dropdown>

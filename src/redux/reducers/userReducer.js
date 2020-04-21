@@ -9,8 +9,8 @@ const initialState = {
 	username: "",
 	avatar: "",
 	organization_id: "",
-	defaultOrganization: null,
-	selectedOrganization: null,
+	defaultOrganization: {},
+	selectedOrganization: {},
 	imageUpload: {
 		isUploading: false,
 		progress: 0,

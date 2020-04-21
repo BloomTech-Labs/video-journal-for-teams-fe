@@ -10,15 +10,18 @@ import Carousel from "../shared/Carousel";
 const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization, selectedOrganization}) => {
 	const [team, setTeam] = useState({});
 	const [showModal, setShowModal] = useState(false)
-	const organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
 	let history = useHistory();
-
-
+	let organization_id = ''
 	
+	if(typeof selectedOrganization  === "undefined" ||  typeof defaultOrganization === "undefined"){
+		organization_id = ''
+	} else {
+		organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
+	}
 	
 	useEffect(() => {
 		fetchUserTeams(id, organization_id)
-	}, [id, fetchUserTeams, organization_id])
+	}, [id, fetchUserTeams, organization_id,selectedOrganization,defaultOrganization])
 
 	const handleInput = (e) => {
 		setTeam({ ...team, [e.target.name]: e.target.value, organization_id: organization_id });
@@ -45,7 +48,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 							<Icon type="plus-circle" theme="filled" />
 						</div>
 						<p>Create a team</p>
-					</Card>
+					</Card>	
 				</Button>
 				<Modal
 					title="Create New Team"
