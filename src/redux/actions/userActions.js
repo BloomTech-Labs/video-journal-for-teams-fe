@@ -206,13 +206,14 @@ export const fetchInvite = (invite) => (dispatch) => {
 		});
 };
 
-export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
+export const addToInvitedTeam = (team_id, user_id, history, organization_id) => (dispatch) => {
 	dispatch({ type: constants.ADD_INVITED_MEMBER_START });
 	AxiosWithAuth()
 		.post(`/teams/${team_id}/users`, {
 			user_id: user_id,
 			role_id: 1,
 			team_id: team_id,
+			organization_id: organization_id
 		})
 		.then((res) => {
 			dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res });

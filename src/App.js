@@ -27,16 +27,17 @@ import { Alert } from "antd";
 // Redux
 import { connect } from "react-redux";
 import { addToInvitedTeam } from "./redux/actions/userActions";
+import Organization from "./components/organization/Organization";
 
 function App(props) {
-	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history } = props;
+	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	console.log('this is history ',props)
 	
 
 	useEffect(() => {
 		
-		if (isLogged && invited_team_id && invite_code) {
-			addToInvitedTeam(invited_team_id, userId, history);
+		if (isLogged && invited_team_id && invite_code && organization_id) {
+			addToInvitedTeam(invited_team_id, userId, history, organization_id);
 		}
 	}, [isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history]);
 
@@ -72,6 +73,7 @@ const mapStateToProps = (state) => ({
 	userId: state.User.userId,
 	isLogged: state.User.isLogged,
 	inviteError: state.User.invite.error,
+	organization_id: state.User.invite.invited_organization_id
 });
 
 const mapActionsToProps = {

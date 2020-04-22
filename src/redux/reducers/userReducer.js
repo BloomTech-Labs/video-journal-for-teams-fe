@@ -19,7 +19,7 @@ const initialState = {
 	invite: {
 		invite_code: null,
 		invited_team_id: null,
-		invited_organizatoin_id: null,
+		invited_organization_id: null,
 		error: null,
 	},
 	organizations: [],
@@ -265,7 +265,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 				invite: {
 					...state.invite,
 					invited_team_id: payload.team_id,
-					invited_organizatoin_id: payload.organization_id,
+					invited_organization_id: payload.organization_id,
 					error: null,
 				},
 				isFetching: false,
