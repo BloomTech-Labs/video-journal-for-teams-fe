@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Menu, Icon, Typography, Dropdown } from "antd";
+import { Layout, Menu, Typography, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchUserOrganizations, fetchUserTeams, setUserSelectedOrganization, createUserOrganization } from "../../redux/actions/userActions";
-const { Sider } = Layout;
-const { Title } = Typography;
+import { Modal, Button, Form, Input, Card, Icon } from 'antd';
+
+
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
@@ -19,7 +20,9 @@ const DashboardNav = withRouter((props) => {
 		fetchUserTeams,
 		setUserSelectedOrganization
 	} = props;
-
+	const { Sider } = Layout;
+	const { Title } = Typography;
+	const [showModal, setShowModal] = useState(false);
 
 	// const [selectedOrganization, setSelectedOrganization]=useState(organizations[0].name);
 
@@ -41,7 +44,17 @@ const DashboardNav = withRouter((props) => {
 				<Menu.Item key={item.id} onClick={()=> handleClick(item)} >        
 					{item.name}
 				</Menu.Item>
+				
 			))}
+			<Menu.Item >        
+			<Button type="primary" onClick={()=> alert('You clicked me!!')}>
+				<div>
+			 		<Icon type="plus-circle" theme="filled" />
+				</div>
+          		<p>Create a New Organization</p>
+          </Button>
+		</Menu.Item>
+			
 		</Menu>
 	);
 

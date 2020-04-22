@@ -6,9 +6,12 @@ import { Modal, Button, Form, Input, Card, Icon } from 'antd';
 import { fetchUserTeams } from '../../redux/actions/userActions';
 import { createTeam } from "../../redux/actions/teamActions";
 import Carousel from "../shared/Carousel";
+import { Select } from 'antd';
 
-const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization, selectedOrganization}) => {
-	const [team, setTeam] = useState({});
+
+
+const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization, selectedOrganization, team}) => {
+	const [teamData, setTeamData] = useState({name:'', description: '',team_type:'private'});
 	const [showModal, setShowModal] = useState(false)
 	let history = useHistory();
 	let organization_id = ''
@@ -21,20 +24,29 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 	
 	useEffect(() => {
 		fetchUserTeams(id, organization_id)
-	}, [id, fetchUserTeams, organization_id,selectedOrganization,defaultOrganization])
+	}, [id, fetchUserTeams, organization_id, selectedOrganization, defaultOrganization, team ] )
 
 	const handleInput = (e) => {
-		setTeam({ ...team, [e.target.name]: e.target.value, organization_id: organization_id });
+		setTeamData({ ...teamData, [e.target.name]: e.target.value, organization_id: organization_id });
 	};
+
+	const handleInput2 = (value) => {
+		setTeamData({...teamData, team_type: value})
+		console.log(value)
+	}
 
 	const toggleModal = () => {
 		setShowModal(!showModal)
 	}
 
 	const handleOk = () => {
-		createTeam(team, history);
+		createTeam(teamData, history);
 		toggleModal();
 	}
+
+	
+
+	const { Option } = Select;
 
 	return (
 		<>
@@ -64,6 +76,12 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 						<Form.Item label="Team Description">
 							<Input onChange={handleInput} name="description" />
 						</Form.Item>
+						<Form.Item label="Select">
+						<Select name='team_type' defaultValue={teamData.team_type} style={{ width: 120 }} onChange={handleInput2} >
+							<Option value="public">Public Team</Option>
+							<Option value="private">Private Team</Option>
+						</Select>
+						</Form.Item>
 					</Form>
 				</Modal>
 			</Carousel>
@@ -78,7 +96,8 @@ const mapStateToProps = (state) => {
 		isFetching: state.User.isFetching,
 		//organization_id: state.User.organization_id,
 		defaultOrganization: state.User.defaultOrganization,
-		selectedOrganization: state.User.selectedOrganization
+		selectedOrganization: state.User.selectedOrganization,
+		team: state.Team.team
 	}
 }
 
