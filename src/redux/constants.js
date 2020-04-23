@@ -143,6 +143,14 @@ const constants = {
 	RESTART_RECORDING: "user:restart-recording",
 
 	SET_STREAM_ERROR: "user:set-stream-error",
+
+	FETCH_ORGANIZATION_TEAMS_START: "organization:fetch-organization-teams-start",
+	FETCH_ORGANIZATION_TEAMS_SUCCESS: "organization:fetch-organization-teams-success",
+
+
+	FETCH_ORGANIZATION_USERS_START: "organization:fetch-organization-users-start",
+	FETCH_ORGANIZATION_USERS_SUCCESS: "organization:fetch-organization-users-success",
+
 };
 
 export default constants;

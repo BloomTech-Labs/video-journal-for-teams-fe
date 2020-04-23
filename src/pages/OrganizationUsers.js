@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react'
 import NavAndHeader from '../components/nav/NavAndHeader'
-import TeamCard from "../components/user/UserTeamsCard";
-import {fetchOrganizationTeams} from '../redux/actions/organizationActions'
+import {fetchOrganizationUsers} from '../redux/actions/organizationActions'
 import { connect } from "react-redux";
+import MemberCard from "../components/team/MemberCard"
 
-const OrganizationTeams = (props) => {
+const OrganizationUsers = (props) => {
     
-    const {defaultOrganization, selectedOrganization, fetchOrganizationTeams, organization_teams} = props
+    const {defaultOrganization, selectedOrganization, fetchOrganizationUsers, organization_users} = props
     
     
     let organization_id = ''
@@ -19,19 +19,19 @@ const OrganizationTeams = (props) => {
     
     
     useEffect(() => {
-        fetchOrganizationTeams(organization_id)
+        fetchOrganizationUsers(organization_id)
     }, [organization_id])
-
+    console.log('sdfsdfdsfd',organization_users)
 
     return (
         
         <NavAndHeader>
             <div class="user-dashboard dashboard">
-            <h1>All Teams</h1>
+            <h1>All Users</h1>
             <div className="flexy">
                 
-        {organization_teams.map(team =>  {
-          return  <TeamCard data={team}/>
+        {organization_users.map(user =>  {
+          return  <MemberCard  data={user}/>
         })}
         </div>
         </div>
@@ -46,12 +46,12 @@ const mapStateToProps = (state) => ({
     organizations: state.User.organizations,
     defaultOrganization: state.User.defaultOrganization,
     selectedOrganization: state.User.selectedOrganization,
-    organization_teams: state.Organization.teams
+    organization_users: state.Organization.users
 });
 const mapActionsToProps = {
-    fetchOrganizationTeams,
+    fetchOrganizationUsers,
 
 };
-export default connect(mapStateToProps, mapActionsToProps)(OrganizationTeams);
+export default connect(mapStateToProps, mapActionsToProps)(OrganizationUsers);
 
 
