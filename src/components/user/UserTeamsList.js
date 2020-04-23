@@ -10,7 +10,7 @@ import { Select } from 'antd';
 
 
 
-const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization, selectedOrganization, team}) => {
+const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization, selectedOrganization, team, organizations}) => {
 	const [teamData, setTeamData] = useState({name:'', description: '',team_type:'private'});
 	const [showModal, setShowModal] = useState(false)
 	let history = useHistory();
@@ -21,6 +21,11 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 	} else {
 		organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
 	}
+	
+
+	let filteredOrg = organizations.filter(x => x.id === selectedOrganization.id ||  x.id === defaultOrganization.id )
+
+
 	
 	useEffect(() => {
 		fetchUserTeams(id, organization_id)
@@ -76,12 +81,15 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 						<Form.Item label="Team Description">
 							<Input onChange={handleInput} name="description" />
 						</Form.Item>
-						<Form.Item label="Select">
+						{filteredOrg[0].role_id === 3 ?
+						(<Form.Item label="Select">
 						<Select name='team_type' defaultValue={teamData.team_type} style={{ width: 120 }} onChange={handleInput2} >
 							<Option value="public">Public Team</Option>
 							<Option value="private">Private Team</Option>
 						</Select>
-						</Form.Item>
+						</Form.Item> ) 
+						: null
+						}
 					</Form>
 				</Modal>
 			</Carousel>
@@ -97,6 +105,7 @@ const mapStateToProps = (state) => {
 		//organization_id: state.User.organization_id,
 		defaultOrganization: state.User.defaultOrganization,
 		selectedOrganization: state.User.selectedOrganization,
+		organizations: state.User.organizations,
 		team: state.Team.team
 	}
 }

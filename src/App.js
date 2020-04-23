@@ -17,6 +17,7 @@ import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
 import Home from "./pages/Home";
+import OrganizationTeams from "./pages/OrganizationTeams"
 
 // Styles
 import "./App.scss";
@@ -59,6 +60,8 @@ function App(props) {
 			<PrivateRoute path="/profile" component={UserProfileDashboard} />
 
 			<PrivateRoute exact path="/teams/:team_id" component={TeamDashboard} />
+
+			<PrivateRoute exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
 
 			<Route exact path="/videos" component={UserVideos} />
 

@@ -89,6 +89,7 @@ export const fetchUserOrganizations = (userId) => (dispatch) => {
 	AxiosWithAuth()
 	.get(`/users/${userId}/organizations`)
 	.then((res) => {
+		console.log('we are finding role', res.data)
 		dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
 	})
 	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));

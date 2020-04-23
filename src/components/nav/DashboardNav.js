@@ -6,7 +6,6 @@
 // import { fetchUserOrganizations, fetchUserTeams, setUserSelectedOrganization, createUserOrganization } from "../../redux/actions/userActions";
 // import { Modal, Button, Form, Input, Card, Icon } from 'antd';
 
-
 // const DashboardNav = withRouter((props) => {
 // 	// Use location from router as a key to show that link is selected.
 // 	const {
@@ -26,7 +25,6 @@
 
 // 	// const [selectedOrganization, setSelectedOrganization]=useState(organizations[0].name);
 
-
 // 	useEffect(() => {
 // 		fetchUserOrganizations(userId);
 // 		console.log('hi')
@@ -37,16 +35,16 @@
 // 		console.log(item)
 // 		console.log('hello')
 // 	}
-	
+
 // 	const menu = (
 // 		<Menu>
 // 			{organizations.map((item) => (
-// 				<Menu.Item key={item.id} onClick={()=> handleClick(item)} >        
+// 				<Menu.Item key={item.id} onClick={()=> handleClick(item)} >
 // 					{item.name}
 // 				</Menu.Item>
-				
+
 // 			))}
-// 			<Menu.Item >        
+// 			<Menu.Item >
 // 			<Button type="primary" onClick={()=> alert('You clicked me!!')}>
 // 				<div>
 // 			 		<Icon type="plus-circle" theme="filled" />
@@ -54,7 +52,7 @@
 //           		<p>Create a New Organization</p>
 //           </Button>
 // 		</Menu.Item>
-			
+
 // 		</Menu>
 // 	);
 
@@ -71,11 +69,11 @@
 // 				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
 // 					<Dropdown overlay={menu}>
 // 						<a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-// 						 {	typeof defaultOrganization !== "undefined"  ? (selectedOrganization.name ? selectedOrganization.name : defaultOrganization.name) : 'hello' }				
+// 						 {	typeof defaultOrganization !== "undefined"  ? (selectedOrganization.name ? selectedOrganization.name : defaultOrganization.name) : 'hello' }
 // 							<DownOutlined />
 // 						</a>
 // 					</Dropdown>
-					
+
 // 					<hr style={{ margin: "40px 0" }} />
 // 					<Menu.Item key="/user-dashboard">
 // 						<Link to="/user-dashboard" style={{ color: "#fff", display: "block" }}>
@@ -126,64 +124,73 @@
 // const mapActionsToProps = {
 // 	fetchUserOrganizations,
 // 	fetchUserTeams,
-// 	setUserSelectedOrganization 
+// 	setUserSelectedOrganization
 // };
 // export default connect(mapStateToProps, mapActionsToProps)(DashboardNav);
-
 
 import React, { useEffect, useState } from "react";
 import { Layout, Menu, Typography, Dropdown } from "antd";
 import { DownOutlined, BankOutlined } from "@ant-design/icons";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUserOrganizations, fetchUserTeams, setUserSelectedOrganization, createUserOrganization } from "../../redux/actions/userActions";
-import { Modal, Button, Form, Input, Card, Icon } from 'antd';
+import {
+	fetchUserOrganizations,
+	fetchUserTeams,
+	setUserSelectedOrganization,
+	createUserOrganization,
+} from "../../redux/actions/userActions";
+import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
 		location,
-		organization_id,
+		// organization_id,
 		organizations,
 		userId,
 		fetchUserOrganizations,
 		defaultOrganization,
 		selectedOrganization,
 		fetchUserTeams,
-		setUserSelectedOrganization
+		setUserSelectedOrganization,
 	} = props;
 	const { Sider } = Layout;
 	const { Title } = Typography;
 	const [showModal, setShowModal] = useState(false);
-	// const [selectedOrganization, setSelectedOrganization]=useState(organizations[0].name);
-	useEffect(() => {
-		fetchUserOrganizations(userId);
-		console.log('hi')
-	}, [selectedOrganization]);
-	function handleClick(item){
-		setUserSelectedOrganization(item)
-		console.log(item)
-		console.log('hello')
+
+	let organization_id = ''
+	
+	if(typeof selectedOrganization  === "undefined" ||  typeof defaultOrganization === "undefined"){
+		organization_id = ''
+	} else {
+		organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
 	}
+	
+
+	function handleClick(item) {
+		setUserSelectedOrganization(item);
+		console.log(item);
+		console.log("hello");
+	}
+
 	const toggleModal = () => {
-		setShowModal(!showModal)
-	}
+		setShowModal(!showModal);
+	};
+
+	let filteredOrg = organizations.filter(x => x.id === selectedOrganization.id ||  x.id === defaultOrganization.id )
+
+	
+	
 	const menu = (
 		<Menu theme="dark">
 			{organizations.map((item) => (
-				<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={()=> handleClick(item)} >        
+				<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
 					{item.name}
 				</Menu.Item>
 			))}
-			<Menu.Item >  
-			   <Organization />       
-			{/* <Button type="primary"  onClick={toggleModal}>
-				<div>
-			 		<Icon type="plus-circle" theme="filled" />
-				</div>
-          		<p>Create a New Organization</p>
-          </Button> */}
-		</Menu.Item>
+			<Menu.Item>
+				<Organization />
+			</Menu.Item>
 		</Menu>
 	);
 	return (
@@ -197,12 +204,20 @@ const DashboardNav = withRouter((props) => {
 					</Title>
 				</div>
 				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
-					<Dropdown overlay={menu} >
-						<a className="ant-dropdown-link" onClick={(e) => e.preventDefault()} style={{display:'block', width:'500' }}>
-							<div style={{ paddingLeft:'25px',color: "white", width:'200px' }}>
-							<BankOutlined  style={{ paddingRight: '16px' }} />
-						 {	typeof defaultOrganization !== "undefined"  ? (selectedOrganization.name ? selectedOrganization.name : defaultOrganization.name) : 'Create an Organization' }	<DownOutlined />
-						 </div>			
+					<Dropdown overlay={menu}>
+						<a
+							className="ant-dropdown-link"
+							onClick={(e) => e.preventDefault()}
+							style={{ display: "block", width: "500" }}>
+							<div style={{ paddingLeft: "25px", color: "white", width: "200px" }}>
+								<BankOutlined style={{ paddingRight: "16px" }} />
+								{typeof defaultOrganization !== "undefined"
+									? selectedOrganization.name
+										? selectedOrganization.name
+										: defaultOrganization.name
+									: "Create an Organization"}{" "}
+								<DownOutlined />
+							</div>
 						</a>
 					</Dropdown>
 					<hr style={{ margin: "25px 0" }} />
@@ -221,9 +236,14 @@ const DashboardNav = withRouter((props) => {
 							<Icon type="play-circle" theme="filled" /> My Videos
 						</Link>
 					</Menu.Item>
-					<Menu.Item key="/teams" disabled>
+
+					{(filteredOrg.length > 0 && filteredOrg[0].role_id === 3) ?
+					(<Menu.Item key="/teams" >
+						<Link to={`/organizations/${organization_id}/teams`} style={{ color: "#fff", display: "block" }}>
 						<Icon type="calendar" theme="filled" /> My Teams
-					</Menu.Item>
+						</Link>
+					</Menu.Item>) : null
+					}
 					<Menu.Item key="/setting" disabled>
 						<Icon type="setting" theme="filled" />
 						Teams Settings
@@ -244,7 +264,7 @@ const DashboardNav = withRouter((props) => {
 	);
 });
 const mapStateToProps = (state) => ({
-	organization_id: state.User.organization_id,
+	// organization_id: state.User.organization_id,
 	userId: state.User.userId,
 	organizations: state.User.organizations,
 	defaultOrganization: state.User.defaultOrganization,
@@ -253,6 +273,6 @@ const mapStateToProps = (state) => ({
 const mapActionsToProps = {
 	fetchUserOrganizations,
 	fetchUserTeams,
-	setUserSelectedOrganization 
+	setUserSelectedOrganization,
 };
 export default connect(mapStateToProps, mapActionsToProps)(DashboardNav);
