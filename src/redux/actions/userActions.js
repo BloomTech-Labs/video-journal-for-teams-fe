@@ -114,7 +114,7 @@ export const createUserOrganization = (organization_name, history) => (dispatch)
 	})
 	.then(()=> {
 		console.log(id)
-		dispatch(createTeam({name: 'General', description: 'This is a general team for all members', organization_id: id}, history))
+		dispatch(createTeam({name: 'General', description: 'This is a general team for all members', organization_id: id, team_type: 'public'}, history))
 		
 	}
 	)
