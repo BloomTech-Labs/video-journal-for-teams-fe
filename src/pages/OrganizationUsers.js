@@ -17,10 +17,11 @@ const OrganizationUsers = (props) => {
 		organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
 	}
     
+    console.log('these are my users',organization_users)
     
     useEffect(() => {
         fetchOrganizationUsers(organization_id)
-    }, [organization_id])
+    }, [organization_id, organization_users.length])
     console.log('sdfsdfdsfd',organization_users)
 
     return (

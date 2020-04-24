@@ -18,7 +18,13 @@ const organizationReducer = (state = initialState, { type, payload }) => {
 				...state,
 				users: payload,
 			};
-			
+
+		case constants.DELETE_ORGANIZATION_USER_SUCCESS:
+			return {
+				...state,
+				users:  state.users.filter(x=> x.user_id !== payload)
+			};
+
 		default:
 			return state;
 	}

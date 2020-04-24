@@ -151,6 +151,8 @@ const constants = {
 	FETCH_ORGANIZATION_USERS_START: "organization:fetch-organization-users-start",
 	FETCH_ORGANIZATION_USERS_SUCCESS: "organization:fetch-organization-users-success",
 
+	DELETE_ORGANIZATION_USER_SUCCESS: "organization:delete-organization-users-success",
+
 };
 
 export default constants;

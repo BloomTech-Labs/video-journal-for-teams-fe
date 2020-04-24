@@ -4,17 +4,31 @@ import { useParams } from "react-router-dom";
 import { Card, Modal, Icon, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import { deleteTeamMember, updateUserRole, } from '../../redux/actions/teamActions';
+import {deleteOrganizationUser} from '../../redux/actions/organizationActions'
 
 const { confirm } = Modal;
 
 function OrgEditMemberCard(props) {
 	// #region CLICK UNCOLLAPSE ICON TO SHOW COMPONENT LOGIC
 	const { team_id } = useParams();
-	const { member, isSelf } = props;
-
-	const handleDelete = () => {
-		props.deleteTeamMember(team_id, member.user_id);
+    const { member, isSelf, defaultOrganization, selectedOrganization } = props;
+    
+    let organization_id = ''
+	
+	if(typeof selectedOrganization  === "undefined" ||  typeof defaultOrganization === "undefined"){
+		organization_id = ''
+	} else {
+		organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
 	}
+	
+	// const handleDelete = () => {
+	// 	props.deleteTeamMember(team_id, member.user_id);
+    // }
+    
+    const handleDelete = () => {
+		props.deleteOrganizationUser(organization_id, member.user_id);
+    }
+    
 
 	// Show confirmation modal when deleting member.
 	const showDeleteConfirm = () => {
@@ -93,12 +107,20 @@ function OrgEditMemberCard(props) {
 }
 
 const mapStateToProps = (state) => ({
-	deleteCount: state.Team.deletedUserCount,
+    deleteCount: state.Team.deletedUserCount,
+    id: state.User.userId,
+	//organization_id: state.User.organization_id,
+	defaultOrganization: state.User.defaultOrganization,
+	selectedOrganization: state.User.selectedOrganization,
+	organizations: state.User.organizations,
+	team: state.Team.team
+    
 });
 
 const mapActionsToProps = {
 	deleteTeamMember,
-	updateUserRole,
+    updateUserRole,
+    deleteOrganizationUser
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(OrgEditMemberCard);
