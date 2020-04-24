@@ -65,6 +65,9 @@ describe("Examining the User dashboard component", () => {
 			last_name: "Ladley",
 			email: "asculpher0@independent.co.uk",
 			username: "fwilloughley0",
+			defaultOrganization: {id: 1, name: "orgOne"},
+			selectedOrganization: {id: 1, name: "orgOne"},
+			organizations: [{id: 1, name: 'orgOne'}],
 			invite: {
 				invite_code: null,
 				invited_team_id: null,
@@ -128,5 +131,9 @@ describe("Examining the User dashboard component", () => {
 				feedback: [],
 			},
 		},
+
+		Team: {
+			team: {}
+		}
 	};
 });

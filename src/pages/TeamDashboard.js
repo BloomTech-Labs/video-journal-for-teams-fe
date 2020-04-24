@@ -33,7 +33,7 @@ function TeamDashboard(props) {
 	let countTimer = null;
 
 	
-
+console.log('this is role id from team dashboard', userRole)
 
 	useEffect(() => {
 		clearError();
@@ -63,7 +63,7 @@ function TeamDashboard(props) {
 
 	}, [])
 		
-	console.log('helllllllllllllllllo' , teamMembers)
+	
 
 	// Check if there is an error on mount.
 	useEffect(() => {
@@ -93,6 +93,7 @@ function TeamDashboard(props) {
 		if (teamMembers.length > 0) {
 			const findTeamMember = teamMembers.find((item) => (item.user_id === userId));
 			findTeamMember ? setUserRole(findTeamMember.role_id) : setUserRole(1)
+			console.log('findteammember', findTeamMember)
 		}
 	}, [teamMembers, userId])
 

@@ -81,7 +81,8 @@ describe("Register form tests", () => {
 			username: getByPlaceholderText("Username").value,
 			email: getByPlaceholderText("Email").value,
 			password: getByPlaceholderText("Password").value,
-			confirm_password: getByPlaceholderText("Confirm Password").value
+			confirm_password: getByPlaceholderText("Confirm Password").value,
+			organization_id: ""
 		}
 
 		const result = { data: { user: user, token: '12345' }}
