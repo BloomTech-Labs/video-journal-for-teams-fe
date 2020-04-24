@@ -23,8 +23,8 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 	}
 	
 
-	let filteredOrg = organizations.filter(x => x.id === selectedOrganization.id ||  x.id === defaultOrganization.id )
-
+	let filteredOrg = organizations.filter(x => x.id === organization_id)
+	console.log('teamlst filtered', filteredOrg)
 
 	
 	useEffect(() => {

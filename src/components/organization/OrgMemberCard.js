@@ -2,15 +2,17 @@ import React, { useContext } from 'react';
 import { UserContext } from "../utils/UserContext";
 import { connect } from "react-redux";
 import { Card, Avatar } from 'antd';
-import EditMemberCard from './EditMemberCard';
+import OrgEditMemberCard from './OrgEditMemberCard'
 
-function MemberCard(props) {
+function OrgMemberCard(props) {
 
-	const   userRole = useContext(UserContext)
+
+	// const   userRole = useContext(UserContext)
 	// console.log('member card', userRole.userRole)
 	
 	const { data } = props;
-	const isSelf = data.user_id === props.userId
+    const isSelf = data.user_id === props.userId
+    console.log('isself', isSelf)
 
 	return (
 		<Card
@@ -24,14 +26,15 @@ function MemberCard(props) {
 			</div>
 			<p className="small">{data.user_full_name}</p>
 			 
-			{typeof userRole == 'undefined'  ? null   :  (userRole.userRole === 1 ? null : (<EditMemberCard member={data} isSelf={isSelf} />))}
+			<OrgEditMemberCard member={data} isSelf={isSelf} />
 		</Card>
 	)
 }
 
 const mapStateToProps = (state) => ({
 	userId: state.User.userId,
-	teamMembers: state.Team.teamMembers,
+    teamMembers: state.Team.teamMembers,
+    userRole:state.Organization.role_id
 });
 
-export default connect(mapStateToProps)(MemberCard);
+export default connect(mapStateToProps)(OrgMemberCard);

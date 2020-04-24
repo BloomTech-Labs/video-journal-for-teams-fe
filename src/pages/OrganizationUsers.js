@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import NavAndHeader from '../components/nav/NavAndHeader'
 import {fetchOrganizationUsers} from '../redux/actions/organizationActions'
 import { connect } from "react-redux";
-import MemberCard from "../components/team/MemberCard"
+import OrgMemberCard from "../components/organization/OrgMemberCard"
 
 const OrganizationUsers = (props) => {
     
@@ -31,7 +31,7 @@ const OrganizationUsers = (props) => {
             <div className="flexy">
                 
         {organization_users.map(user =>  {
-          return  <MemberCard  data={user}/>
+          return  <OrgMemberCard  data={user}/>
         })}
         </div>
         </div>

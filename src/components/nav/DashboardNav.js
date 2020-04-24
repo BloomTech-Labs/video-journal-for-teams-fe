@@ -46,8 +46,8 @@ const DashboardNav = withRouter((props) => {
 		setShowModal(!showModal);
 	};
 
-	let filteredOrg = organizations.filter((x) => x.id === selectedOrganization.id || x.id === defaultOrganization.id);
-
+	let filteredOrg = organizations.filter((x) => (x.id === organization_id ));
+	console.log('filtered', filteredOrg)
 	const menu = (
 		<Menu theme="dark">
 			{organizations.map((item) => (
