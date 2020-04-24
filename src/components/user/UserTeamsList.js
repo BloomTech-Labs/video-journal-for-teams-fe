@@ -29,7 +29,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 	
 	useEffect(() => {
 		fetchUserTeams(id, organization_id)
-	}, [id, fetchUserTeams, organization_id, selectedOrganization, defaultOrganization, team ] )
+	}, [id, fetchUserTeams, organization_id, selectedOrganization, defaultOrganization] )
 
 	const handleInput = (e) => {
 		setTeamData({ ...teamData, [e.target.name]: e.target.value, organization_id: organization_id });
@@ -106,7 +106,7 @@ const mapStateToProps = (state) => {
 		defaultOrganization: state.User.defaultOrganization,
 		selectedOrganization: state.User.selectedOrganization,
 		organizations: state.User.organizations,
-		team: state.Team.team
+		
 	}
 }
 

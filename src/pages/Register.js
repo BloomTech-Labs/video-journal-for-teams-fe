@@ -40,9 +40,9 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
     organization_id: ""
   });
   
-  console.log('this is applicant',applicant)
+  
   let history = useHistory();
-  console.log('this is from register org id')
+ 
   //Redirect if logged already logged in OR on successful registration
   useEffect(() => {
     if (isLogged) {
