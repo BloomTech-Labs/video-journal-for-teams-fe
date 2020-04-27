@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Menu, Typography, Dropdown } from "antd";
 import { DownOutlined, BankOutlined } from "@ant-design/icons";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import {
 	fetchUserOrganizations,
@@ -11,6 +11,10 @@ import {
 } from "../../redux/actions/userActions";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
+
+
+
+
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
@@ -27,6 +31,8 @@ const DashboardNav = withRouter((props) => {
 	const { Sider } = Layout;
 	const { Title } = Typography;
 	const [showModal, setShowModal] = useState(false);
+	const history = useHistory()
+
 
 	let organization_id = "";
 
@@ -38,8 +44,7 @@ const DashboardNav = withRouter((props) => {
 
 	function handleClick(item) {
 		setUserSelectedOrganization(item);
-		console.log(item);
-		console.log("hello");
+		// history.push('/user-dashboard');
 	}
 
 	const toggleModal = () => {
@@ -76,9 +81,9 @@ const DashboardNav = withRouter((props) => {
 							className="ant-dropdown-link"
 							onClick={(e) => e.preventDefault()}
 							style={{ display: "block", width: "500" }}>
-							<div style={{ paddingLeft: "25px", color: "white", width: "200px" }}>
+							<div style={{ paddingLeft: "25px", color: "white", width: "200px", textOverflow: "ellipsis" }}>
 								<BankOutlined style={{ paddingRight: "16px" }} />
-								{typeof defaultOrganization !== "undefined"
+								{typeof defaultOrganization !== "undefined"  
 									? selectedOrganization.name
 										? selectedOrganization.name
 										: defaultOrganization.name
@@ -151,3 +156,6 @@ const mapActionsToProps = {
 	setUserSelectedOrganization,
 };
 export default connect(mapStateToProps, mapActionsToProps)(DashboardNav);
+
+
+//hi
