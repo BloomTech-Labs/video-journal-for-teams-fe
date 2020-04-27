@@ -53,6 +53,8 @@ const DashboardNav = withRouter((props) => {
 
 	let filteredOrg = organizations.filter((x) => (x.id === organization_id ));
 	console.log('filtered', filteredOrg)
+
+	
 	const menu = (
 		<Menu theme="dark">
 			{organizations.map((item) => (

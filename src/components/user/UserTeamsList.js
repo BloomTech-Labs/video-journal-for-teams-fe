@@ -10,7 +10,7 @@ import { Select } from 'antd';
 
 
 
-const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization, selectedOrganization, team, organizations}) => {
+const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization, selectedOrganization, organizations, team}) => {
 	const [teamData, setTeamData] = useState({name:'', description: '',team_type:'private'});
 	const [showModal, setShowModal] = useState(false)
 	let history = useHistory();
@@ -29,8 +29,8 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 	
 	useEffect(() => {
 		fetchUserTeams(id, organization_id)
-	}, [id, fetchUserTeams, organization_id, selectedOrganization, defaultOrganization] )
-
+	}, [id, fetchUserTeams, organization_id, selectedOrganization, defaultOrganization, team] )
+	
 	const handleInput = (e) => {
 		setTeamData({ ...teamData, [e.target.name]: e.target.value, organization_id: organization_id });
 	};
@@ -49,7 +49,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 		toggleModal();
 	}
 
-	
+
 
 	const { Option } = Select;
 
@@ -81,7 +81,7 @@ const TeamList = ({ id, teams, fetchUserTeams, createTeam , defaultOrganization,
 						<Form.Item label="Team Description">
 							<Input onChange={handleInput} name="description" />
 						</Form.Item>
-						{filteredOrg[0].role_id === 3 ?
+						{filteredOrg.length > 0 && filteredOrg[0].role_id === 3 ?
 						(<Form.Item label="Select">
 						<Select name='team_type' defaultValue={teamData.team_type} style={{ width: 120 }} onChange={handleInput2} >
 							<Option value="public">Public Team</Option>
@@ -106,6 +106,7 @@ const mapStateToProps = (state) => {
 		defaultOrganization: state.User.defaultOrganization,
 		selectedOrganization: state.User.selectedOrganization,
 		organizations: state.User.organizations,
+		team: state.Team.team
 		
 	}
 }

@@ -19,17 +19,6 @@ function DashboardHeader(props) {
 	let history = useHistory();
 	console.log('userID' , props.userId)
 
-	// useEffect(()=>{
-	// 	fetchUserVideos(props.userId);
-	// 	//updateViewedFeedback(video.id)
-	// 	console.log('useEffect dashboard header', )
-	// },[feedbackUpdate])
-
-	// function handleClick(){
-		
-	// 	setFeedbackUpdate(!feedbackUpdate)
-	// }
-
 	const handleLogout = (e) => {
 		e.preventDefault();
 		props.logoutUser();
