@@ -58,9 +58,11 @@ const DashboardNav = withRouter((props) => {
 	const menu = (
 		<Menu theme="dark">
 			{organizations.map((item) => (
-				<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
-					{item.name}
-				</Menu.Item>
+				<Link to="/user-dashboard">
+					<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
+						{item.name}
+					</Menu.Item>
+				</Link>
 			))}
 			<Menu.Item>
 				<Organization />
