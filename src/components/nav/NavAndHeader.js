@@ -22,8 +22,6 @@ const NavAndHeader = (props) => {
 		
 	}, [selectedOrganization]);
 
-	console.log('hihihihi')
-
 	
     return (
 				<Layout className="nav-header">
