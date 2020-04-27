@@ -29,7 +29,7 @@ const formSchema = yup.object().shape({
   confirm_password: yup.string().oneOf([yup.ref("password"), null], "Passwords must match."),
 });
 
-const Register = ({isLogged, clearError, registerUser, setError, error}) => {
+const Register = ({isLogged, clearError, registerUser, setError, error, invited_organizatoin_id }) => {
   const [applicant, setApplicant] = useState({
     first_name: "",
     last_name: "",
@@ -37,10 +37,12 @@ const Register = ({isLogged, clearError, registerUser, setError, error}) => {
     username: "",
     password: "",
     confirm_password: "",
+    organization_id: ""
   });
-
+  
+  
   let history = useHistory();
-
+ 
   //Redirect if logged already logged in OR on successful registration
   useEffect(() => {
     if (isLogged) {
@@ -51,7 +53,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error}) => {
 
   const handleInput = (e) => {
     clearError();
-    setApplicant({ ...applicant, [e.target.name]: e.target.value });
+    setApplicant({ ...applicant, [e.target.name]: e.target.value});
   };
 
   //Attempt to register new user with provided info
@@ -65,6 +67,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error}) => {
         //Data is good, proceed to registration action
         registerUser(applicant);
       })
+      
       .catch((validationError) => {
         setError(validationError.errors);
       });
@@ -162,6 +165,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error}) => {
 const mapStateToProps = (state) => ({
   isLogged: state.User.isLogged,
   error: state.User.error,
+  invited_organizatoin_id: state.User.invite.invited_organizatoin_id
 });
 
 const mapActionsToProps = {

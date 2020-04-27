@@ -2,6 +2,7 @@ import constants from "../constants";
 import axios from "axios";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 import { notification } from "antd";
+import { createTeam } from '../actions/teamActions'
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
@@ -60,32 +61,75 @@ export const logoutUser = () => (dispatch) => {
 	dispatch({ type: constants.LOGOUT_USER });
 };
 
-export const createTeam = (data) => (dispatch) => {
-	dispatch({ type: constants.CREATE_TEAM_START });
-	AxiosWithAuth()
-		.post("/api/teams/")
-		.then((res) => {
-			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
-		})
-		.catch((err) => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
-};
+// export const createTeam = (data) => (dispatch) => {
+// 	dispatch({ type: constants.CREATE_TEAM_START });
+// 	AxiosWithAuth()
+// 		.post("/api/teams/")
+// 		.then((res) => {
+// 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
+// 		})
+// 		.catch((err) => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
+// };
 
 // FETCH TEAMS FOR USER
-export const fetchUserTeams = (userId) => (dispatch) => {
+export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_TEAMS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/teams`)
+		.get(`/users/${userId}/teams/${organization_id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
+// FETCH USER ORGANIZATOINS
+
+export const fetchUserOrganizations = (userId) => (dispatch) => {
+	dispatch({type: constants.FETCH_USER_ORGANIZATIONS_START});
+	AxiosWithAuth()
+	.get(`/users/${userId}/organizations`)
+	.then((res) => {
+		console.log('we are finding role', res.data)
+		dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
+	})
+	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+};
+
+export const setUserSelectedOrganization = (organization) => (dispatch) => {
+	dispatch({type: constants.SET_USER_SELECTED_ORGANIZATION_START});
+	dispatch({type: constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS, payload: organization});
+
+};
+
+
+//create an orgainzation for after registration 
+export const createUserOrganization = (organization_name, history) => (dispatch) => {
+	dispatch({type: constants.CREATE_USER_ORGANIZATION_START});
+	let id = ''
+	AxiosWithAuth()
+	.post(`/organizations`, organization_name)
+	.then((res) => {
+		console.log("This is from user action", res)
+		dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data })
+		id = res.data.id
+	})
+	.then(()=> {
+		console.log(id)
+		dispatch(createTeam({name: 'General', description: 'This is a general team for all members', organization_id: id, team_type: 'public'}, history))
+		
+	}
+	)
+	
+	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+};
+
+
+
 // FETCH VIDEOS FOR USER
-export const fetchUserVideos = (userId) => (dispatch) => {
+export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_VIDEOS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/videos`)
+		.get(`/users/${userId}/videos/${organization_id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data });
 		})
@@ -151,8 +195,9 @@ export const fetchInvite = (invite) => (dispatch) => {
 	axios
 		.get(`/invites/${invite}`)
 		.then((invite) => {
+			console.log(invite)
 			if (invite.data.team_id > 0) {
-				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data.team_id });
+				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data });
 			} else {
 				dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: invite.data.message });
 			}
@@ -162,13 +207,14 @@ export const fetchInvite = (invite) => (dispatch) => {
 		});
 };
 
-export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
+export const addToInvitedTeam = (team_id, user_id, history, organization_id) => (dispatch) => {
 	dispatch({ type: constants.ADD_INVITED_MEMBER_START });
 	AxiosWithAuth()
 		.post(`/teams/${team_id}/users`, {
 			user_id: user_id,
 			role_id: 1,
 			team_id: team_id,
+			organization_id: organization_id
 		})
 		.then((res) => {
 			dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res });

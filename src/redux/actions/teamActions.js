@@ -6,8 +6,9 @@ export const createTeam = (newTeam, history) => (dispatch) => {
 	AxiosWithAuth()
 		.post('/teams/', newTeam)
 		.then(res => {
+			console.log("this is from createTeamAction", res.data)
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data })
-			history.push(`/teams/${res.data[0].id}`);
+			history.push("/user-dashboard");
 		})
 		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
@@ -62,10 +63,17 @@ export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
 		.catch(err => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 }
 
-export const createInvite = (team_id, team_name) => (dispatch) => {
+export const createInvite = (team_id, team_name, org_id) => (dispatch) => {
 	dispatch({ type: constants.POST_INVITE_LINK_START })
+	console.log('we here', team_id, team_name, org_id)
+	const objj = {
+		team_id: team_id,
+		team_name: team_name,
+		org_id: org_id
+	}
+	console.log(objj)
 	AxiosWithAuth()
-		.post(`teams/${team_id}/invite`, team_name)
+		.post(`teams/${team_id}/invite`, objj)
 		.then(inviteResponse => {
 			console.log("Action response", inviteResponse)
 			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data.link })

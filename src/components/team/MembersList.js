@@ -8,12 +8,14 @@ import InviteModal from "./InviteModal.js";
 import MemberCard from './MemberCard';
 import Carousel from "../shared/Carousel";
 
+
 function MembersList(props) {
 	const [showModal, setShowModal] = useState(false)
 	const { userRole } = useContext(UserContext);
 
 	const openInviteModal = () => {
-		props.createInvite(props.team.id, { team_name: props.team.name })
+		console.log(props.team.id)
+		props.createInvite(props.team.id, props.team.name, props.team.organization_id )
 		setShowModal(true)
 	}
 

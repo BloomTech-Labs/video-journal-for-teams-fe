@@ -9,30 +9,10 @@ import VideoPlayer from 'simple-react-video-thumbnail'
 
 const { Meta } = Card;
 
-
 const UserVideosCard = (props) => {
 	
 	const data = props.data;
-	// const feedback = props.feedback;
-	// const fetchFeedback = props.fetchFeedback;
 
-	// useEffect(() => {
-		
-	// 	if (!isCancelled) {
-	// 		console.log(`useEffect running at ${data.id}`, Date.now())
-	// 		fetchFeedback(data.id);
-	// 		return () => {
-	// 			setIsCancelled(true)
-	// 		};
-	// 	}
-		
-	
-			
-	// },[])
-	// //isCancelled, data.id
-
-	
-	// <img alt ={`${data.title } video thumbnail`} src={<VideoPlayer videoUrl={`${process.env.REACT_APP_S3_STORAGE_PATH}${data.video_url}`} snapshotAt={2} />} style={{display: !data.thumbnail ? "none" : "block"}}/>
 	return (
 		<Link to={`/videos/${data.id}`}>
 			<Card className="video-card"
