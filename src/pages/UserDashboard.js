@@ -11,14 +11,23 @@ import { fetchUserVideos } from '../redux/actions/userActions';
 import { clearError } from '../redux/actions/teamActions';
 
 function UserDashboard(props) {
-	const { id, fetchUserVideos, clearError, organizations } = props
+	const { id, fetchUserVideos, videos, clearError, organizations, defaultOrganization, selectedOrganization } = props
 
+	let organization_id = ""
+
+	if (typeof selectedOrganization === "undefined" || typeof defaultOrganization === "undefined") {
+		organization_id = "";
+	} else {
+		organization_id = selectedOrganization.id ? selectedOrganization.id : defaultOrganization.id;
+	}
+
+	console.log('org id id ididi',organization_id)
 	useEffect(() => {
 		clearError();
-		fetchUserVideos(id)
-	}, [id, fetchUserVideos])
+		fetchUserVideos(id, organization_id)
+	}, [id, fetchUserVideos, organization_id , defaultOrganization, selectedOrganization])
 
-
+ console.log('ddddd',videos)
 	return (
 		<NavAndHeader>
 			<div className="user-dashboard dashboard">
@@ -27,7 +36,7 @@ function UserDashboard(props) {
 				<div className="dashboard-header">
 					<h2>My&nbsp;Videos</h2>
 				</div>
-				<Carousel component={UserVideosCard} data={props.videos} name={"videos"} /> </>)
+				<Carousel component={UserVideosCard} data={videos} name={"videos"} /> </>)
 				: <Organization /> }
 			</div>
 		</NavAndHeader>
@@ -40,7 +49,9 @@ const mapStateToProps = (state) => {
 		username: state.User.username,
 		videos: state.User.videos,
 		id: state.User.userId,
-		organizations: state.User.organizations
+		organizations: state.User.organizations,
+		defaultOrganization: state.User.defaultOrganization,
+		selectedOrganization: state.User.selectedOrganization,
 	}
 }
 

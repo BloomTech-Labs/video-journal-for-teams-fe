@@ -126,10 +126,10 @@ export const createUserOrganization = (organization_name, history) => (dispatch)
 
 
 // FETCH VIDEOS FOR USER
-export const fetchUserVideos = (userId) => (dispatch) => {
+export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_VIDEOS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/videos`)
+		.get(`/users/${userId}/videos/${organization_id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data });
 		})

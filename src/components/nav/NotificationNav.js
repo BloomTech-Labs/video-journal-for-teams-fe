@@ -11,16 +11,28 @@ import { socket } from "../../socket/socket";
 
 function NotificationNav(props) {
 	
+
+	const {fetchUserVideos,userId,videos, organizations,defaultOrganization,selectedOrganization} = props
+
+
 	useEffect(() => {
 		socket.on('insertedFeedback', () => {
-			props.fetchUserVideos(props.userId)
+			fetchUserVideos(userId, organization_id)
 		})
 		
 	}, [])
 
+	let organization_id = ""
+
+		if (typeof selectedOrganization === "undefined" || typeof defaultOrganization === "undefined") {
+			organization_id = "";
+		} else {
+			organization_id = selectedOrganization.id ? selectedOrganization.id : defaultOrganization.id;
+		}
+	
 
 	//getting feedback data for each video
-	let feedback = props.videos.map((item) => {
+	let feedback = videos.map((item) => {
 		return item.feedback;
 	});
 
@@ -70,13 +82,9 @@ function NotificationNav(props) {
 					   </Badge>
                 </a>
 			</Dropdown>
-		</>
-
-			
-                      
+		</>                 
                    
         )
-    
 	
 }
 
@@ -84,6 +92,9 @@ const mapStateToProps = (state) => {
 	return {
 		videos: state.User.videos,
 		userId: state.User.userId,
+		organizations: state.User.organizations,
+		defaultOrganization: state.User.defaultOrganization,
+		selectedOrganization: state.User.selectedOrganization,
 	};
 };
 
