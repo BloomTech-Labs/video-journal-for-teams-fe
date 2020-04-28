@@ -25,7 +25,7 @@ export const fetchOrganizationUsers = (orgId) => (dispatch) => {
 
 export const deleteOrganizationUser = (orgId, userId) => (dispatch) => {
     dispatch({type: constants.FETCH_ORGANIZATION_USERS_START});
-    console.log(orgId, userId)
+    
 	AxiosWithAuth()
     .delete(`/organizations/${orgId}/users`,  {
         data: { user_id: userId }
@@ -37,3 +37,55 @@ export const deleteOrganizationUser = (orgId, userId) => (dispatch) => {
 	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
+export const updateUserRole = (organization_id, user_id, role_id) => dispatch => {
+	dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_START });
+
+	const changes = {
+		role_id: role_id
+	}
+	//dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_START });
+	
+	
+	
+	return AxiosWithAuth()
+	.put(`/organizations/${organization_id}/users/${user_id}/role`, changes)
+		.then(updateResponse => {
+			console.log("triggered",updateResponse)
+			dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_SUCCESS, payload: updateResponse.data.updatedRole });
+			return updateResponse.data;
+		})
+		.catch(err => {
+			dispatch({ type: constants.GENERATE_ERROR, payload: err.response })
+		});
+}
+
+// export const updateUserRole = (organization_id, user_id, role_id) => dispatch => {
+	
+// 	// dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_SUCCESS})
+	
+// 	const changes = {
+// 		role_id: role_id
+// 	}
+// 	console.log("triggered",organization_id, user_id, changes)
+
+// 	return AxiosWithAuth().put(`/organizations/${organization_id}/users/${user_id}/role`, changes)
+// 		.then(updateResponse => {
+			
+// 			dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_SUCCESS, payload: updateResponse.data.updatedRole });
+		
+// 			return updateResponse.data;
+// 		})
+// 		.catch(err => {
+// 			dispatch({ type: constants.GENERATE_ERROR, payload: err.response })
+// 		});
+// }
+
+// SET AN ERROR
+export const setError = (errorMessage) => (dispatch) => {
+	dispatch({ type: constants.GENERATE_ERROR, payload: errorMessage });
+};
+
+// CLEAR AN ERROR
+export const clearError = () => (dispatch) => {
+	dispatch({ type: constants.CLEAR_ERROR, payload: null });
+};

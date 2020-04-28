@@ -100,6 +100,12 @@ const constants = {
 	UPDATE_TEAM_MEMBER_ROLE_START: "team:update_team_member_role_start",
 	UPDATE_TEAM_MEMBER_ROLE_SUCCESS: "team:update_team_member_role_success",
 	UPDATE_TEAM_MEMBER_ROLE_FAILURE: "team:update_team_member_role_failure",
+	
+	//PUT update org member role
+	UPDATE_ORG_MEMBER_ROLE_START: "organization:update_org_member_role_start",
+	UPDATE_ORG_MEMBER_ROLE_SUCCESS: 
+	"organization:update_org_member_role_success",
+	UPDATE_ORG_MEMBER_ROLE_FAILURE: "organization:update_org_member_role_failure",
 
 	//POST create team member
 	ADD_INVITED_MEMBER_START: "team:add-invited-member-start",

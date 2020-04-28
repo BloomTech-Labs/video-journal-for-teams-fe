@@ -46,12 +46,15 @@ function EditMemberCard(props) {
 		try {
 			const result = await props.updateUserRole(team_id, member.user_id, roleNum);
 
+			console.log("team result", result)
+
 			if (result) {
 				roleChangeSuccess(`${member.user_full_name}'s role has been updated!`);
 			} else {
 				roleChangeError();
 			}
 		} catch (error) {
+			console.log(error)
 			roleChangeError();
 		}
 	}
@@ -71,6 +74,7 @@ function EditMemberCard(props) {
 	}
 
 	const roleChangeError = () => {
+		
 		Modal.error({
 			title: 'Error!',
 			content: "Uh oh, something's gone wrong. Try again later.",

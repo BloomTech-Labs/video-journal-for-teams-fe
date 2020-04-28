@@ -101,6 +101,7 @@ export const updateUserRole = (team_id, user_id, role_id) => dispatch => {
 	return AxiosWithAuth().put(`/teams/${team_id}/users/${user_id}/role`, changes)
 		.then(updateResponse => {
 			dispatch({ type: constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS, payload: updateResponse.data.updatedRole });
+			console.log("update Response", updateResponse.data)
 			return updateResponse.data;
 		})
 		.catch(err => {
