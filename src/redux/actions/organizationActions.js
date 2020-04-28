@@ -52,7 +52,7 @@ export const updateUserRole = (organization_id, user_id, role_id) => dispatch =>
 		.then(updateResponse => {
 			console.log("triggered",updateResponse)
 			dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_SUCCESS, payload: updateResponse.data.updatedRole });
-			return 1;
+			return updateResponse.data;
 		})
 		.catch(err => {
 			dispatch({ type: constants.GENERATE_ERROR, payload: err.response })

@@ -32,7 +32,7 @@ function OrgMemberCard(props) {
 
 const mapStateToProps = (state) => ({
 	userId: state.User.userId,
-    // teamMembers: state.Team.teamMembers,
+    organization_users: state.Organization.users,
     //userRole:state.Organization.role_id
 });
 
