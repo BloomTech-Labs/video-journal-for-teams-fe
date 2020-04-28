@@ -40,7 +40,7 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 		);
 	}
 }
-
+//
 const mapStateToProps = (state) => ({
 	all: state,
 	loggedInUserId: state.User.userId,
