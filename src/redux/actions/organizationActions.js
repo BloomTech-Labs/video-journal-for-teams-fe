@@ -43,7 +43,7 @@ export const updateUserRole = (organization_id, user_id, role_id) => dispatch =>
 	const changes = {
 		role_id: role_id
 	}
-	//dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_START });
+	
 	
 	
 	
@@ -59,26 +59,7 @@ export const updateUserRole = (organization_id, user_id, role_id) => dispatch =>
 		});
 }
 
-// export const updateUserRole = (organization_id, user_id, role_id) => dispatch => {
-	
-// 	// dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_SUCCESS})
-	
-// 	const changes = {
-// 		role_id: role_id
-// 	}
-// 	console.log("triggered",organization_id, user_id, changes)
 
-// 	return AxiosWithAuth().put(`/organizations/${organization_id}/users/${user_id}/role`, changes)
-// 		.then(updateResponse => {
-			
-// 			dispatch({ type: constants.UPDATE_ORG_MEMBER_ROLE_SUCCESS, payload: updateResponse.data.updatedRole });
-		
-// 			return updateResponse.data;
-// 		})
-// 		.catch(err => {
-// 			dispatch({ type: constants.GENERATE_ERROR, payload: err.response })
-// 		});
-// }
 
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {
