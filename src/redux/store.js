@@ -7,7 +7,7 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 // - Reducers
 import userReducer from "./reducers/userReducer";
 import teamReducer from "./reducers/teamReducer";
-import dataReducer from "./reducers/dataReducer";
+import organizationReducer from "./reducers/organizationReducer";
 
 const middleware = [thunk];
 
@@ -15,7 +15,7 @@ const rootPersistConfig = {
   key: 'root',
   storage: storage,
   stateReconciler: autoMergeLevel2,
-  blacklist: ['User', 'Team', 'Data']
+  blacklist: ['User', 'Team', 'Organization']
  };
 
 const userPersistConfig = {
@@ -32,12 +32,20 @@ const teamPersistConfig = {
   blacklist: ['error']
 };
 
+const organizationPersistConfig = {
+  key: 'Organizaiton',
+  storage: storage,
+  stateReconciler: autoMergeLevel2,
+  blacklist: ['error']
+};
+
+
 const initialState = {};
 
 const rootReducer = combineReducers({
   User: persistReducer(userPersistConfig, userReducer),
   Team: persistReducer(teamPersistConfig, teamReducer),
-  Data: dataReducer,
+  Organization: persistReducer(organizationPersistConfig, organizationReducer),
 });
 
 const pReducer = persistReducer(rootPersistConfig, rootReducer);

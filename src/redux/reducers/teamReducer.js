@@ -27,7 +27,7 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isFetching: false,
 				error: '',
-				teams: payload
+				team: payload
 			}
 		case constants.FETCH_TEAM_BY_ID_START:
 			return {

@@ -1,14 +1,14 @@
 .carousel {
 	display: flex;
-	align-items: center;
+	//align-items: center;
 	position: relative;
 	.carouselItems {
 		display: flex;
-		flex-grow: 1;
+		//flex-grow: 1;
 		flex-wrap: nowrap;
 		overflow-x: auto;
-		width:fit-content;
-		align-items: center;
+		//width:fit-content;
+		//align-items: center;
 	}
 	.leftButton, .rightButton {
 		border: none;

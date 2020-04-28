@@ -23,6 +23,18 @@ const constants = {
 	FETCH_VIDEO_SUCCESS: "user:fetch-video-success",
 	FETCH_VIDEO_FAILURE: "user:fetch-video-failure",
 
+	
+	//GET fetch users organizations
+	FETCH_USER_ORGANIZATIONS_START: "user:fetch-user-organiztions-start",
+	FETCH_USER_ORGANIZATIONS_SUCCESS: "user:fetch-user-organiztions-success",
+
+	//Set selected organization
+	SET_USER_SELECTED_ORGANIZATION_START: "user:set-user-organization-start",
+	SET_USER_SELECTED_ORGANIZATION_SUCCESS: "user:set-user-organization-success",
+
+	CREATE_USER_ORGANIZATION_START: "user:create_user_organization_start",
+	CREATE_USER_ORGANIZATION_SUCCESS: "user:create_user_organization_success",
+
 	//GET feedback on single user video
 	FETCH_FEEDBACK_START: "user:fetch-feedback-start",
 	FETCH_FEEDBACK_SUCCESS: "user:fetch-feedback-success",
@@ -32,6 +44,10 @@ const constants = {
 	SUBMIT_FEEDBACK_START: "user:submit-feedback-start",
 	SUBMIT_FEEDBACK_SUCCESS: "user:submit-feedback-success",
 	SUBMIT_FEEDBACK_FAILURE: "user:submit-feedback-failure",
+
+	UPDATE_FEEDBACK_START: "user:update-feedback-start",
+	UPDATE_FEEDBACK_SUCCESS: "user:update-feedback-success",
+	UPDATE_FEEDBACK_FAILURE: "user:update-feedback-failure",
   
 	// Update user data
 	UPDATE_USER_DATA_START: "user:update-user-data-start",
@@ -84,6 +100,12 @@ const constants = {
 	UPDATE_TEAM_MEMBER_ROLE_START: "team:update_team_member_role_start",
 	UPDATE_TEAM_MEMBER_ROLE_SUCCESS: "team:update_team_member_role_success",
 	UPDATE_TEAM_MEMBER_ROLE_FAILURE: "team:update_team_member_role_failure",
+	
+	//PUT update org member role
+	UPDATE_ORG_MEMBER_ROLE_START: "organization:update_org_member_role_start",
+	UPDATE_ORG_MEMBER_ROLE_SUCCESS: 
+	"organization:update_org_member_role_success",
+	UPDATE_ORG_MEMBER_ROLE_FAILURE: "organization:update_org_member_role_failure",
 
 	//POST create team member
 	ADD_INVITED_MEMBER_START: "team:add-invited-member-start",
@@ -127,6 +149,16 @@ const constants = {
 	RESTART_RECORDING: "user:restart-recording",
 
 	SET_STREAM_ERROR: "user:set-stream-error",
+
+	FETCH_ORGANIZATION_TEAMS_START: "organization:fetch-organization-teams-start",
+	FETCH_ORGANIZATION_TEAMS_SUCCESS: "organization:fetch-organization-teams-success",
+
+
+	FETCH_ORGANIZATION_USERS_START: "organization:fetch-organization-users-start",
+	FETCH_ORGANIZATION_USERS_SUCCESS: "organization:fetch-organization-users-success",
+
+	DELETE_ORGANIZATION_USER_SUCCESS: "organization:delete-organization-users-success",
+
 };
 
 export default constants;

@@ -16,6 +16,8 @@ import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
 import Home from "./pages/Home";
+import OrganizationTeams from "./pages/OrganizationTeams"
+import OrganizationUsers from "./pages/OrganizationUsers"
 
 // Styles
 import "./App.scss";
@@ -26,13 +28,16 @@ import { Alert } from "antd";
 // Redux
 import { connect } from "react-redux";
 import { addToInvitedTeam } from "./redux/actions/userActions";
+import Organization from "./components/organization/Organization";
 
 function App(props) {
-	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history } = props;
-
+	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
+	console.log('this is history ',props)
+	
 	useEffect(() => {
-		if (isLogged && invited_team_id && invite_code) {
-			addToInvitedTeam(invited_team_id, userId, history);
+		
+		if (isLogged && invited_team_id && invite_code && organization_id) {
+			addToInvitedTeam(invited_team_id, userId, history, organization_id);
 		}
 	}, [isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history]);
 
@@ -55,6 +60,10 @@ function App(props) {
 
 			<PrivateRoute exact path="/teams/:team_id" component={TeamDashboard} />
 
+			<PrivateRoute exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
+
+			<PrivateRoute exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
+
 			<Route exact path="/videos" component={UserVideos} />
 
 			<UploadProgress />
@@ -68,6 +77,7 @@ const mapStateToProps = (state) => ({
 	userId: state.User.userId,
 	isLogged: state.User.isLogged,
 	inviteError: state.User.invite.error,
+	organization_id: state.User.invite.invited_organization_id
 });
 
 const mapActionsToProps = {

@@ -13,7 +13,7 @@ import PromptCard from "./PromptCard.js";
 import { Layout, Button, Empty } from "antd";
 const { Content } = Layout;
 
-const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {
+const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId, fetchTeamVideos, teamMembersEmail}) => {
 	const [showModal, setShowModal] = useState(false);
 	const { userRole } = useContext(UserContext)
 
@@ -35,6 +35,7 @@ const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId }) => {
 				setVisibility={setShowModal}
 				createPrompt={createPrompt}
 				teamId={teamId}
+				teamMembersEmail={teamMembersEmail}
 			/>
 			{teamPromptsAndVideos.length > 0
 			? teamPromptsAndVideos.map((prompt, index) => (<PromptCard key={prompt.id} data={prompt} index={index} />))

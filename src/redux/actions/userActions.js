@@ -2,6 +2,7 @@ import constants from "../constants";
 import axios from "axios";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 import { notification } from "antd";
+import { createTeam } from '../actions/teamActions'
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
@@ -59,32 +60,75 @@ export const logoutUser = () => (dispatch) => {
 	dispatch({ type: constants.LOGOUT_USER });
 };
 
-export const createTeam = (data) => (dispatch) => {
-	dispatch({ type: constants.CREATE_TEAM_START });
-	AxiosWithAuth()
-		.post("/api/teams/")
-		.then((res) => {
-			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
-		})
-		.catch((err) => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
-};
+// export const createTeam = (data) => (dispatch) => {
+// 	dispatch({ type: constants.CREATE_TEAM_START });
+// 	AxiosWithAuth()
+// 		.post("/api/teams/")
+// 		.then((res) => {
+// 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
+// 		})
+// 		.catch((err) => dispatch({ type: constants.CREATE_TEAM_FAILURE, payload: err.response }));
+// };
 
 // FETCH TEAMS FOR USER
-export const fetchUserTeams = (userId) => (dispatch) => {
+export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_TEAMS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/teams`)
+		.get(`/users/${userId}/teams/${organization_id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
+// FETCH USER ORGANIZATOINS
+
+export const fetchUserOrganizations = (userId) => (dispatch) => {
+	dispatch({type: constants.FETCH_USER_ORGANIZATIONS_START});
+	AxiosWithAuth()
+	.get(`/users/${userId}/organizations`)
+	.then((res) => {
+		console.log('we are finding role', res.data)
+		dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
+	})
+	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+};
+
+export const setUserSelectedOrganization = (organization) => (dispatch) => {
+	dispatch({type: constants.SET_USER_SELECTED_ORGANIZATION_START});
+	dispatch({type: constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS, payload: organization});
+
+};
+
+
+//create an orgainzation for after registration 
+export const createUserOrganization = (organization_name, history) => (dispatch) => {
+	dispatch({type: constants.CREATE_USER_ORGANIZATION_START});
+	let id = ''
+	AxiosWithAuth()
+	.post(`/organizations`, organization_name)
+	.then((res) => {
+		console.log("This is from user action", res)
+		dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data })
+		id = res.data.id
+	})
+	.then(()=> {
+		console.log(id)
+		dispatch(createTeam({name: 'General', description: 'This is a general team for all members', organization_id: id, team_type: 'public'}, history))
+		
+	}
+	)
+	
+	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+};
+
+
+
 // FETCH VIDEOS FOR USER
-export const fetchUserVideos = (userId) => (dispatch) => {
+export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_VIDEOS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/videos`)
+		.get(`/users/${userId}/videos/${organization_id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data });
 		})
@@ -131,13 +175,28 @@ export const submitFeedback = (videoId, feedback) => (dispatch) => {
 		});
 };
 
+export const updateViewedFeedback = (videoId, userId) => (dispatch) => {
+	dispatch({ type: constants.UPDATE_FEEDBACK_START });
+	AxiosWithAuth()
+		.put(`/videos/${videoId}/feedback`, { userId })
+		.then((res) => {
+			console.log("updatefeedback ran");
+			dispatch({
+				type: constants.UPDATE_FEEDBACK_SUCCESS,
+				payload: res.data,
+			});
+		})
+		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+};
+
 export const fetchInvite = (invite) => (dispatch) => {
 	dispatch({ type: constants.FETCH_INVITE_START, payload: invite });
 	axios
 		.get(`/invites/${invite}`)
 		.then((invite) => {
+			console.log(invite)
 			if (invite.data.team_id > 0) {
-				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data.team_id });
+				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data });
 			} else {
 				dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: invite.data.message });
 			}
@@ -147,13 +206,14 @@ export const fetchInvite = (invite) => (dispatch) => {
 		});
 };
 
-export const addToInvitedTeam = (team_id, user_id, history) => (dispatch) => {
+export const addToInvitedTeam = (team_id, user_id, history, organization_id) => (dispatch) => {
 	dispatch({ type: constants.ADD_INVITED_MEMBER_START });
 	AxiosWithAuth()
 		.post(`/teams/${team_id}/users`, {
 			user_id: user_id,
 			role_id: 1,
 			team_id: team_id,
+			organization_id: organization_id
 		})
 		.then((res) => {
 			dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res });
@@ -258,68 +318,69 @@ export const updateUserData = (id, changes) => (dispatch) => {
 	dispatch({ type: constants.UPDATE_USER_DATA_START });
 	AxiosWithAuth()
 		.put(`/users/${id}`, changes)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: constants.UPDATE_USER_DATA_SUCCESS, payload: res.data.updatedUser });
 			notification.success({
-				message: 'Profile successfully updated!',
+				message: "Profile successfully updated!",
 				duration: 2,
 			});
 		})
-		.catch(error => {
+		.catch((error) => {
 			dispatch({ type: constants.UPDATE_USER_DATA_FAILURE, payload: error });
 			notification.error({
 				message: `Something's wrong! Try again. ${error.response.data.message}`,
-				duration: 2
+				duration: 2,
 			});
-		})
-}
+		});
+};
 
 export const updateUProfilePicture = (id, photo) => (dispatch) => {
 	const config = {
 		onUploadProgress: (event) => {
 			if (event.lengthComputable) {
-				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: (event.loaded / event.total) * 100 })
-			 }
+				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: (event.loaded / event.total) * 100 });
 			}
-		}
+		},
+	};
 
 	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_START });
 	AxiosWithAuth()
-			.post(`/users/${id}/photo`, photo, config)
-			.then(res => {
-				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: 100 })
-				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_SUCCESS, payload: res.data.avatar });
+		.post(`/users/${id}/photo`, photo, config)
+		.then((res) => {
+			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: 100 });
+			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_SUCCESS, payload: res.data.avatar });
 			notification.success({
-				message: 'Profile picture successfully updated!',
+				message: "Profile picture successfully updated!",
 				duration: 2,
 			});
-				console.log(res)
-			})
-			.catch(err => {
-				dispatch({ type: constants.UPDATE_PROFILE_PICTURE_FAILURE, payload: err });
+			console.log(res);
+		})
+		.catch((err) => {
+			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_FAILURE, payload: err });
 			notification.error({
 				message: `Something went wrong wrong! Try again. ${err.response.data.message}`,
-				duration: 2
+				duration: 2,
 			});
-		})
-}
+		});
+};
 
 export const clearPhotoUpload = () => (dispatch) => {
-	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_CLEAR })
-}
+	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_CLEAR });
+};
 
 // Get user data
 export const getUserData = (id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_DATA_START });
 
-	AxiosWithAuth().get(`/users/${id}`)
-		.then(res => {
+	AxiosWithAuth()
+		.get(`/users/${id}`)
+		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_DATA_SUCCESS, payload: res.data });
 		})
-		.catch(error => {
+		.catch((error) => {
 			dispatch({ type: constants.GENERATE_ERROR, payload: error });
-		})
-}
+		});
+};
 
 // SET AN ERROR
 export const setError = (errorMessage) => (dispatch) => {

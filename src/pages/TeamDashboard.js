@@ -13,6 +13,7 @@ import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "..
 
 function TeamDashboard(props) {
 	const { team,
+		hello,
 		fetchTeamById,
 		fetchTeamMembers,
 		fetchTeamVideos,
@@ -35,7 +36,22 @@ function TeamDashboard(props) {
 		fetchTeamMembers(team_id);
 		fetchTeamVideos(team_id);
 
-	}, [team_id, fetchTeamById, fetchTeamMembers, newPrompt]);
+	socket.on('insertedFeedback', () => {
+		fetchTeamVideos(team_id)
+	})
+
+	socket.on('createdPrompt', () => {
+		fetchTeamVideos(team_id)
+	})
+
+	socket.on('registeredUser', () => {
+		console.log('registertered User socket triggered')
+		fetchTeamMembers(team_id);
+	})
+
+	}, [])
+		
+	
 
 	// Check if there is an error on mount.
 	useEffect(() => {
@@ -65,6 +81,7 @@ function TeamDashboard(props) {
 		if (teamMembers.length > 0) {
 			const findTeamMember = teamMembers.find((item) => (item.user_id === userId));
 			findTeamMember ? setUserRole(findTeamMember.role_id) : setUserRole(1)
+			console.log('findteammember', findTeamMember)
 		}
 	}, [teamMembers, userId])
 
@@ -101,13 +118,14 @@ function TeamDashboard(props) {
 					<h1>{team.name}</h1>
 					<UserContext.Provider value={{ userRole }} >
 						<MembersList />
-						<PromptList />
+						<PromptList teamMembersEmail={teamMembers.email}/>
 					</UserContext.Provider>
 				</div>
 			</NavAndHeader>
 		)
 	}
 }
+
 
 const mapStateToProps = (state) => ({
 	userId: state.User.userId,

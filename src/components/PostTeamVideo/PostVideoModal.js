@@ -52,6 +52,7 @@ export const PostVideoModal = ({toggleStreamPlayback, showModal, toggleModal, vi
 			centered
 			title="Post New Video"
 			visible={showModal}
+			bodyStyle={{ height: '10%' }}
 			onOk={handleOk}
 			onCancel={toggleModal}
 			okButtonProps={{ form: "upload", htmlType: "submit", disabled: PostVideoMode() === "recording" ? true : false} }

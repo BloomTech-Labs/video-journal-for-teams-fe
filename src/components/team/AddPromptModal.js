@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Form, Input } from "antd";
 
+import axiosWithAuth from '../utils/AxiosWithAuth';
+
 const AddPromptModal = (props) => {
 	const [prompt, setPrompt] = useState({ question: "", description: "" });
 
@@ -10,12 +12,29 @@ const AddPromptModal = (props) => {
 
 	const submitPrompt = (e) => {
 		e.preventDefault();
+
 		props.form.validateFields((err, values) => {
 			if (!err) {
-				props.createPrompt(prompt, props.teamId);
+
+			   props.createPrompt(prompt, props.teamId);
+
 				props.setVisibility(false);
 			}
+
+			
 		});
+
+		axiosWithAuth()
+				.post(`/email/teams`, {
+					teamId: props.teamId,
+					post: prompt.question
+				})
+				 .then((hello) => {
+				console.log('hellllllllloo', hello)
+				})
+				.catch((err) => {
+				console.log('error', err)
+			  })
 	};
 
 	function handleCancel() {
