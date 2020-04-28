@@ -217,7 +217,7 @@ export const addToInvitedTeam = (team_id, user_id, history, organization_id) => 
 		})
 		.then((res) => {
 			dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res });
-			history.push(`/teams/${team_id}`);
+			// history.push(`/teams/${team_id}`);
 		})
 		.then(() => dispatch({ type: constants.CLEAR_INVITE }))
 		.catch((err) => {
