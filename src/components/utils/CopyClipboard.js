@@ -14,5 +14,3 @@ const CopyClipboard = (domElement) => {
 }
 
 export default CopyClipboard;
-
-//hii
