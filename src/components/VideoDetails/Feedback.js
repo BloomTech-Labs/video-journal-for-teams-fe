@@ -33,7 +33,7 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 		return (
 			<>
 				<FeedbackTable feedback={feedback} />
-				<FeedbackForm videoId={videoId} videoOwnerId={videoOwnerId} all={all} />;
+				<FeedbackForm videoId={videoId} videoOwnerId={videoOwnerId} />;
 			</>
 		);
 	}
