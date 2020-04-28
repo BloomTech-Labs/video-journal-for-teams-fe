@@ -12,7 +12,6 @@ export const registerUser = (applicant) => (dispatch) => {
 			dispatch({ type: constants.REGISTER_USER, payload: registerResponse.data });
 		})
 		.catch((err) => {
-			console.log(err);
 			if (err.response.data.error) {
 				dispatch({ type: constants.GENERATE_ERROR, payload: err.response.data.error });
 			} else {

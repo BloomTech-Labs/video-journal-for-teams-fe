@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Route, withRouter } from "react-router-dom";
 import "./components/utils/AxiosDefaults";
 
-
 // Components
 import PrivateRoute from "./components/utils/PrivateRoute";
 import UploadProgress from "./components/PostTeamVideo/UploadVideo/UploadProgress";
@@ -35,7 +34,6 @@ function App(props) {
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	console.log('this is history ',props)
 	
-
 	useEffect(() => {
 		
 		if (isLogged && invited_team_id && invite_code && organization_id) {
