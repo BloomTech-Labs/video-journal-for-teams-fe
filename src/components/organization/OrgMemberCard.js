@@ -7,12 +7,11 @@ import OrgEditMemberCard from './OrgEditMemberCard'
 function OrgMemberCard(props) {
 
 
-	// const   userRole = useContext(UserContext)
-	// console.log('member card', userRole.userRole)
 	
-	const { data } = props;
+	
+	const { data, organization_id } = props;
     const isSelf = data.user_id === props.userId
-    console.log('isself', isSelf)
+    
 
 	return (
 		<Card
@@ -26,15 +25,15 @@ function OrgMemberCard(props) {
 			</div>
 			<p className="small">{data.user_full_name}</p>
 			 
-			<OrgEditMemberCard member={data} isSelf={isSelf} />
+			<OrgEditMemberCard member={data} isSelf={isSelf} organization_id = {organization_id} />
 		</Card>
 	)
 }
 
 const mapStateToProps = (state) => ({
 	userId: state.User.userId,
-    teamMembers: state.Team.teamMembers,
-    userRole:state.Organization.role_id
+    // teamMembers: state.Team.teamMembers,
+    //userRole:state.Organization.role_id
 });
 
 export default connect(mapStateToProps)(OrgMemberCard);
