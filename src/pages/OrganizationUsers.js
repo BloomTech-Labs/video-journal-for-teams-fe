@@ -17,12 +17,11 @@ const OrganizationUsers = (props) => {
 		organization_id = selectedOrganization.id ? selectedOrganization.id  : defaultOrganization.id
 	}
     
-    console.log('these are my users',organization_users)
     
     useEffect(() => {
         fetchOrganizationUsers(organization_id)
     }, [organization_id, organization_users.length])
-    console.log('sdfsdfdsfd',organization_users)
+   
 
     return (
         
@@ -32,7 +31,8 @@ const OrganizationUsers = (props) => {
             <div className="flexy">
                 
         {organization_users.map(user =>  {
-          return  <OrgMemberCard  data={user}/>
+            
+          return  <OrgMemberCard  data={user} organization_id={organization_id}/>
         })}
         </div>
         </div>
