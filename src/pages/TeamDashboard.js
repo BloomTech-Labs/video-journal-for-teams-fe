@@ -53,6 +53,11 @@ function TeamDashboard(props) {
 		fetchTeamMembers(team_id);
 	})
 
+	socket.on('videoPosted',()=> {
+		console.log("videoposted")
+		fetchTeamVideos(team_id);
+	})
+
 	}, [])
 		
 	
