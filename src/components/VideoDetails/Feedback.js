@@ -33,12 +33,12 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 		return (
 			<>
 				<FeedbackTable feedback={feedback} />
-				<FeedbackForm videoId={videoId} videoOwnerId={videoOwnerId} all={all} />;
+				<FeedbackForm videoId={videoId} videoOwnerId={videoOwnerId} />;
 			</>
 		);
 	}
 }
-
+//
 const mapStateToProps = (state) => ({
 	loggedInUserId: state.User.userId,
 	feedback: state.User.videoDetailFocus.feedback.entries,
