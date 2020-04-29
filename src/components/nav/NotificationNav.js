@@ -17,6 +17,7 @@ function NotificationNav(props) {
 
 	useEffect(() => {
 		socket.on('insertedFeedback', () => {
+			console.log("insertedfeedback socket triggered")
 			fetchUserVideos(userId, organization_id)
 		})
 		
@@ -52,8 +53,8 @@ function NotificationNav(props) {
 		}
 		return newArray;
     }
-    //populate feedback data into the menu itemm
-
+	//populate feedback data into the menu itemm
+	
 	const menu = (
 		<Menu>
 			{userFeedback.length > 0 ? userFeedback.map((item) => (
