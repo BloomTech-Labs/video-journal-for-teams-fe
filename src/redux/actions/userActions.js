@@ -175,10 +175,14 @@ export const submitFeedback = (videoId, feedback) => (dispatch) => {
 		});
 };
 
-export const updateViewedFeedback = (videoId, userId) => (dispatch) => {
+export const updateViewedFeedback = (videoId, userId, organizationId) => (dispatch) => {
 	dispatch({ type: constants.UPDATE_FEEDBACK_START });
+	const changes = {
+		userId: userId,
+		organizationId:organizationId
+	}
 	AxiosWithAuth()
-		.put(`/videos/${videoId}/feedback`, { userId })
+		.put(`/videos/${videoId}/feedback`, changes)
 		.then((res) => {
 			console.log("updatefeedback ran");
 			dispatch({

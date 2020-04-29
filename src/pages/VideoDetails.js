@@ -37,15 +37,22 @@ prompt_question(pin): 'Tell me how you think others …ribe you.'
 owner_name(pin): 'Curr Ladley'
 */
 
-export const VideoDetails = ({ video, fetchVideo,userId, updateViewedFeedback }) => {
+export const VideoDetails = ({ video, fetchVideo,userId, updateViewedFeedback, selectedOrganization,defaultOrganization }) => {
 	const { id } = useParams();
 	const history = useHistory();
 
+	let organization_id = ""
+
+		if (typeof selectedOrganization === "undefined" || typeof defaultOrganization === "undefined") {
+			organization_id = "";
+		} else {
+			organization_id = selectedOrganization.id ? selectedOrganization.id : defaultOrganization.id;
+		}
 
 
 	useEffect(() => {
 		if(userId === video.owner_id ){
-			updateViewedFeedback(video.id, userId)
+			updateViewedFeedback(video.id, userId, organization_id)
 		}
 		
 
@@ -74,6 +81,9 @@ export const VideoDetails = ({ video, fetchVideo,userId, updateViewedFeedback })
 const mapStateToProps = (state) => ({
 	video: state.User.videoDetailFocus,
 	userId: state.User.userId,
+	organizations: state.User.organizations,
+	defaultOrganization: state.User.defaultOrganization,
+	selectedOrganization: state.User.selectedOrganization,
 
 });
 
