@@ -175,10 +175,14 @@ export const submitFeedback = (videoId, feedback) => (dispatch) => {
 		});
 };
 
-export const updateViewedFeedback = (videoId, userId) => (dispatch) => {
+export const updateViewedFeedback = (videoId, userId, organizationId) => (dispatch) => {
 	dispatch({ type: constants.UPDATE_FEEDBACK_START });
+	const changes = {
+		userId: userId,
+		organizationId:organizationId
+	}
 	AxiosWithAuth()
-		.put(`/videos/${videoId}/feedback`, { userId })
+		.put(`/videos/${videoId}/feedback`, changes)
 		.then((res) => {
 			console.log("updatefeedback ran");
 			dispatch({
@@ -217,7 +221,7 @@ export const addToInvitedTeam = (team_id, user_id, history, organization_id) => 
 		})
 		.then((res) => {
 			dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res });
-			history.push(`/teams/${team_id}`);
+			// history.push(`/teams/${team_id}`);
 		})
 		.then(() => dispatch({ type: constants.CLEAR_INVITE }))
 		.catch((err) => {

@@ -38,6 +38,7 @@ function App(props) {
 		
 		if (isLogged && invited_team_id && invite_code && organization_id) {
 			addToInvitedTeam(invited_team_id, userId, history, organization_id);
+			history.push(`/teams/${invited_team_id}`)
 		}
 	}, [isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history]);
 
