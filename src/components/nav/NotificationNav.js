@@ -10,34 +10,28 @@ import { logoutUser, fetchUserVideos, updateViewedFeedback } from "../../redux/a
 import { socket } from "../../socket/socket";
 
 function NotificationNav(props) {
-	
-
-	const {fetchUserVideos,userId,videos, organizations,defaultOrganization,selectedOrganization} = props
-
+	const { fetchUserVideos, userId, videos, organizations, defaultOrganization, selectedOrganization } = props;
 
 	useEffect(() => {
-		socket.on('insertedFeedback', () => {
-			console.log("insertedfeedback socket triggered")
-			fetchUserVideos(userId, organization_id)
-		})
-		
-	}, [])
+		socket.on("insertedFeedback", () => {
+			fetchUserVideos(userId, organization_id);
+		});
+	}, []);
 
-	let organization_id = ""
+	let organization_id = "";
 
-		if (typeof selectedOrganization === "undefined" || typeof defaultOrganization === "undefined") {
-			organization_id = "";
-		} else {
-			organization_id = selectedOrganization.id ? selectedOrganization.id : defaultOrganization.id;
-		}
-	
+	if (typeof selectedOrganization === "undefined" || typeof defaultOrganization === "undefined") {
+		organization_id = "";
+	} else {
+		organization_id = selectedOrganization.id ? selectedOrganization.id : defaultOrganization.id;
+	}
 
 	//getting feedback data for each video
 	let feedback = videos.map((item) => {
 		return item.feedback;
 	});
 
-	let userFeedback = gatherFeedback(feedback); 
+	let userFeedback = gatherFeedback(feedback);
 
 	// loop through Array or array for feedback and then obtain one single array
 	function gatherFeedback(arr) {
@@ -52,41 +46,36 @@ function NotificationNav(props) {
 			}
 		}
 		return newArray;
-    }
+	}
 	//populate feedback data into the menu itemm
-	
+
 	const menu = (
 		<Menu>
-			{userFeedback.length > 0 ? userFeedback.map((item) => (
-				<Menu.Item>
-					<Link to={`/videos/${item.video_id}`}>
-						{item.first_name} {item.last_name} left a feedback on video {item.video_title}
-					</Link>
-				</Menu.Item>
-			)) : (
-				<Menu.Item>
-					
-						No new comments
-					
-				</Menu.Item>
+			{userFeedback.length > 0 ? (
+				userFeedback.map((item) => (
+					<Menu.Item>
+						<Link to={`/videos/${item.video_id}`}>
+							{item.first_name} {item.last_name} left a feedback on video {item.video_title}
+						</Link>
+					</Menu.Item>
+				))
+			) : (
+				<Menu.Item>No new comments</Menu.Item>
 			)}
 		</Menu>
 	);
-  
-        return (
-        <>
-		
-            <Dropdown overlay={menu} className='margin-right'>
-                <a className="ant-dropdown-link" style={{ color: "grey" }} onClick={(e) => e.preventDefault()}>
-				<Badge count={userFeedback.length} className="badger">
-                       <BellOutlined style={{ fontSize: "40px" }} /> 
-					   </Badge>
-                </a>
+
+	return (
+		<>
+			<Dropdown overlay={menu} className="margin-right">
+				<a className="ant-dropdown-link" style={{ color: "grey" }} onClick={(e) => e.preventDefault()}>
+					<Badge count={userFeedback.length} className="badger">
+						<BellOutlined style={{ fontSize: "40px" }} />
+					</Badge>
+				</a>
 			</Dropdown>
-		</>                 
-                   
-        )
-	
+		</>
+	);
 }
 
 const mapStateToProps = (state) => {

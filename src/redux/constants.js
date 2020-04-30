@@ -25,8 +25,8 @@ const constants = {
 
 	
 	//GET fetch users organizations
-	FETCH_USER_ORGANIZATIONS_START: "user:fetch-user-organiztions-start",
-	FETCH_USER_ORGANIZATIONS_SUCCESS: "user:fetch-user-organiztions-success",
+	FETCH_USER_ORGANIZATIONS_START: "user:fetch-user-organizations-start",
+	FETCH_USER_ORGANIZATIONS_SUCCESS: "user:fetch-user-organizations-success",
 
 	//Set selected organization
 	SET_USER_SELECTED_ORGANIZATION_START: "user:set-user-organization-start",
