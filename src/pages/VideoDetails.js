@@ -64,7 +64,7 @@ export const VideoDetails = ({ video, fetchVideo,userId, updateViewedFeedback, s
 	}, [id, fetchVideo, video.id]);
 
 	if (video.id !== Number(id)) {
-		return <LoadingView />;
+		return <LoadingView />
 	}
 
 	return (

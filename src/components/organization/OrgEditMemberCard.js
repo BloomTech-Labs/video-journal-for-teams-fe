@@ -53,18 +53,15 @@ function OrgEditMemberCard(props) {
 		try {
 			const result = await props.updateUserRole(organization_id, member.user_id, roleNum);
 
-			console.log("org update result", result)
-
 			if (result) {
 				roleChangeSuccess(`${member.user_full_name}'s role has been updated!`);
 			} else {
 				roleChangeError();
 			}
 		} catch (error) {
-			console.log(error)
 			roleChangeError();
 		}
-	}
+	};
 
 	const handleRoleChange = () => {
 		if (member.role_id === 4) {

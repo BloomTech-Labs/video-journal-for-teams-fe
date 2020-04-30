@@ -88,7 +88,7 @@ export const fetchUserOrganizations = (userId) => (dispatch) => {
 	AxiosWithAuth()
 	.get(`/users/${userId}/organizations`)
 	.then((res) => {
-		console.log('we are finding role', res.data)
+		
 		dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
 	})
 	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
@@ -108,12 +108,12 @@ export const createUserOrganization = (organization_name, history) => (dispatch)
 	AxiosWithAuth()
 	.post(`/organizations`, organization_name)
 	.then((res) => {
-		console.log("This is from user action", res)
+		
 		dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data })
 		id = res.data.id
 	})
 	.then(()=> {
-		console.log(id)
+
 		dispatch(createTeam({name: 'General', description: 'This is a general team for all members', organization_id: id, team_type: 'public'}, history))
 		
 	}
@@ -184,7 +184,7 @@ export const updateViewedFeedback = (videoId, userId, organizationId) => (dispat
 	AxiosWithAuth()
 		.put(`/videos/${videoId}/feedback`, changes)
 		.then((res) => {
-			console.log("updatefeedback ran");
+		
 			dispatch({
 				type: constants.UPDATE_FEEDBACK_SUCCESS,
 				payload: res.data,
@@ -198,7 +198,7 @@ export const fetchInvite = (invite) => (dispatch) => {
 	axios
 		.get(`/invites/${invite}`)
 		.then((invite) => {
-			console.log(invite)
+		
 			if (invite.data.team_id > 0) {
 				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data });
 			} else {
@@ -357,7 +357,7 @@ export const updateUProfilePicture = (id, photo) => (dispatch) => {
 				message: "Profile picture successfully updated!",
 				duration: 2,
 			});
-			console.log(res);
+		
 		})
 		.catch((err) => {
 			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_FAILURE, payload: err });

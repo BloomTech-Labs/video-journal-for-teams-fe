@@ -20,20 +20,20 @@ const teamReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				isFetching: true,
-				error: ''
-			}
+				error: "",
+			};
 		case constants.CREATE_TEAM_SUCCESS:
 			return {
 				...state,
 				isFetching: false,
-				error: '',
-				team: payload
-			}
+				error: "",
+				team: payload,
+			};
 		case constants.FETCH_TEAM_BY_ID_START:
 			return {
 				...state,
 				isFetching: true,
-				error: null
+				error: null,
 			};
 
 		case constants.FETCH_TEAM_BY_ID_SUCCESS:
@@ -41,14 +41,14 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isFetching: false,
 				error: null,
-				team: payload
+				team: payload,
 			};
 
 		case constants.FETCH_TEAM_MEMBERS_START:
 			return {
 				...state,
 				isFetching: true,
-				error: null
+				error: null,
 			};
 
 		case constants.FETCH_TEAM_MEMBERS_SUCCESS:
@@ -56,14 +56,14 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isFetching: false,
 				error: null,
-				teamMembers: payload
+				teamMembers: payload,
 			};
 
 		case constants.FETCH_TEAM_PROMPTS_START:
 			return {
 				...state,
 				isFetching: true,
-				error: null
+				error: null,
 			};
 
 		case constants.FETCH_TEAM_PROMPTS_SUCCESS:
@@ -71,14 +71,14 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isFetching: false,
 				error: null,
-				teamPrompts: payload
+				teamPrompts: payload,
 			};
 
 		case constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_START:
 			return {
 				...state,
 				isFetching: true,
-				error: null
+				error: null,
 			};
 
 		case constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_SUCCESS:
@@ -86,14 +86,14 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isFetching: false,
 				error: null,
-				teamPromptsAndVideos: payload
+				teamPromptsAndVideos: payload,
 			};
 
 		case constants.DELETE_TEAM_MEMBER_START:
 			return {
 				...state,
 				isDeleting: true,
-				error: null
+				error: null,
 			};
 
 		case constants.DELETE_TEAM_MEMBER_SUCCESS:
@@ -102,54 +102,53 @@ const teamReducer = (state = initialState, { type, payload }) => {
 				error: null,
 				isDeleting: false,
 				deletedUserCount: payload,
-				teamMembers: state.teamMembers.filter(member => member.user_id !== payload.user_id)
-			}
+				teamMembers: state.teamMembers.filter((member) => member.user_id !== payload.user_id),
+			};
 
 		case constants.POST_INVITE_LINK_START:
 			return {
 				...state,
 				isFetching: true,
-				error: null
+				error: null,
 			};
 
 		case constants.POST_INVITE_LINK_SUCCESS:
-			console.log('Reducer', payload)
 			return {
 				...state,
 				isFetching: false,
 				error: null,
-				inviteCode: payload
+				inviteCode: payload,
 			};
 
 		case constants.POST_TEAM_PROMPT_START:
 			return {
 				...state,
 				isFetching: true,
-				error: null
-			}
+				error: null,
+			};
 
 		case constants.POST_TEAM_PROMPT_SUCCESS:
 			return {
 				...state,
 				isFetching: false,
 				error: null,
-				newPrompt: payload
+				newPrompt: payload,
 			};
 
 		case constants.UPDATE_TEAM_MEMBER_ROLE_START:
 			return {
 				...state,
 				isUpdating: true,
-				error: null
-			}
+				error: null,
+			};
 		case constants.UPDATE_TEAM_MEMBER_ROLE_SUCCESS:
 			return {
 				...state,
-				teamMembers: state.teamMembers.map(member => {
+				teamMembers: state.teamMembers.map((member) => {
 					return member.user_id === payload.user_id ? { ...member, role_id: payload.role_id } : member;
 				}),
 				isUpdating: false,
-				error: null
+				error: null,
 			};
 
 		case constants.GENERATE_ERROR:

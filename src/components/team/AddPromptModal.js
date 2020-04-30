@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Form, Input } from "antd";
 
-import axiosWithAuth from '../utils/AxiosWithAuth';
+import axiosWithAuth from "../utils/AxiosWithAuth";
 
 const AddPromptModal = (props) => {
 	const [prompt, setPrompt] = useState({ question: "", description: "" });
@@ -15,26 +15,23 @@ const AddPromptModal = (props) => {
 
 		props.form.validateFields((err, values) => {
 			if (!err) {
-
-			   props.createPrompt(prompt, props.teamId);
+				props.createPrompt(prompt, props.teamId);
 
 				props.setVisibility(false);
 			}
-
-			
 		});
 
 		axiosWithAuth()
-				.post(`/email/teams`, {
-					teamId: props.teamId,
-					post: prompt.question
-				})
-				 .then((hello) => {
-				console.log('hellllllllloo', hello)
-				})
-				.catch((err) => {
-				console.log('error', err)
-			  })
+			.post(`/email/teams`, {
+				teamId: props.teamId,
+				post: prompt.question,
+			})
+			.then((hello) => {
+				console.log("email posted");
+			})
+			.catch((err) => {
+				console.log("error", err);
+			});
 	};
 
 	function handleCancel() {
@@ -55,28 +52,16 @@ const AddPromptModal = (props) => {
 				<Form.Item label="Question">
 					{getFieldDecorator("question", {
 						rules: [{ required: true, message: "Please enter a prompt question." }],
-					})(<Input
-						type="text"
-						name="question"
-						onChange={handleInput}
-						placeholder="required"
-						autoComplete="off" />
-					)}
+					})(<Input type="text" name="question" onChange={handleInput} placeholder="required" autoComplete="off" />)}
 				</Form.Item>
 				<Form.Item label="Description">
 					{getFieldDecorator("Description", {
 						rules: [{ required: true, message: "Please enter a prompt description." }],
-					})(<Input
-						type="text"
-						name="description"
-						onChange={handleInput}
-						placeholder="required"
-						autoComplete="off" />
-					)}
+					})(<Input type="text" name="description" onChange={handleInput} placeholder="required" autoComplete="off" />)}
 				</Form.Item>
 			</Form>
-		</Modal >
+		</Modal>
 	);
-}
+};
 
 export default Form.create({ name: "add-prompt" })(AddPromptModal);

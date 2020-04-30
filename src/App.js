@@ -16,8 +16,8 @@ import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
 import Home from "./pages/Home";
-import OrganizationTeams from "./pages/OrganizationTeams"
-import OrganizationUsers from "./pages/OrganizationUsers"
+import OrganizationTeams from "./pages/OrganizationTeams";
+import OrganizationUsers from "./pages/OrganizationUsers";
 
 // Styles
 import "./App.scss";
@@ -32,13 +32,11 @@ import Organization from "./components/organization/Organization";
 
 function App(props) {
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
-	console.log('this is history ',props)
-	
+
 	useEffect(() => {
-		
 		if (isLogged && invited_team_id && invite_code && organization_id) {
 			addToInvitedTeam(invited_team_id, userId, history, organization_id);
-			history.push(`/teams/${invited_team_id}`)
+			history.push(`/teams/${invited_team_id}`);
 		}
 	}, [isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history]);
 
@@ -78,7 +76,7 @@ const mapStateToProps = (state) => ({
 	userId: state.User.userId,
 	isLogged: state.User.isLogged,
 	inviteError: state.User.invite.error,
-	organization_id: state.User.invite.invited_organization_id
+	organization_id: state.User.invite.invited_organization_id,
 });
 
 const mapActionsToProps = {
