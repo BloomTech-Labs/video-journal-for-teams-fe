@@ -12,9 +12,6 @@ import {
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
 
-
-
-
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
@@ -31,8 +28,7 @@ const DashboardNav = withRouter((props) => {
 	const { Sider } = Layout;
 	const { Title } = Typography;
 	const [showModal, setShowModal] = useState(false);
-	const history = useHistory()
-
+	const history = useHistory();
 
 	let organization_id = "";
 
@@ -51,10 +47,8 @@ const DashboardNav = withRouter((props) => {
 		setShowModal(!showModal);
 	};
 
-	let filteredOrg = organizations.filter((x) => (x.id === organization_id ));
-	console.log('filtered', filteredOrg)
+	let filteredOrg = organizations.filter((x) => x.id === organization_id);
 
-	
 	const menu = (
 		<Menu theme="dark">
 			{organizations.map((item) => (
@@ -87,7 +81,7 @@ const DashboardNav = withRouter((props) => {
 							style={{ display: "block", width: "500" }}>
 							<div style={{ paddingLeft: "25px", color: "white", width: "200px", textOverflow: "ellipsis" }}>
 								<BankOutlined style={{ paddingRight: "16px" }} />
-								{typeof defaultOrganization !== "undefined"  
+								{typeof defaultOrganization !== "undefined"
 									? selectedOrganization.name
 										? selectedOrganization.name
 										: defaultOrganization.name
@@ -160,6 +154,5 @@ const mapActionsToProps = {
 	setUserSelectedOrganization,
 };
 export default connect(mapStateToProps, mapActionsToProps)(DashboardNav);
-
 
 //hi

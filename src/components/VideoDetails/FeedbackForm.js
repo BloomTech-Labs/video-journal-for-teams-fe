@@ -8,13 +8,11 @@ import { submitFeedback } from "../../redux/actions/userActions";
 
 // Components
 import { Form, Input, Button } from "antd";
-import axios from 'axios'
-import axiosWithAuth from '../utils/AxiosWithAuth'
+import axios from "axios";
+import axiosWithAuth from "../utils/AxiosWithAuth";
 
 // Additional Ant Design components
 const { TextArea } = Input;
-
-
 
 export function FeedbackForm({ videoId, videoOwnerId, submitFeedback, isSubmitting, all }) {
 	const [feedback, setFeedback] = useState({
@@ -29,19 +27,19 @@ export function FeedbackForm({ videoId, videoOwnerId, submitFeedback, isSubmitti
 		e.preventDefault();
 		if (feedback.post) {
 			submitFeedback(videoId, feedback);
-			
+
 			axiosWithAuth()
-			.post(`/email`, {
-				id: videoOwnerId,
-				post: feedback.post
-			})
-		.then((hello) => {
-			console.log('hellllllllloo', hello)
-		})
-		.catch((err) => {
-		console.log('error', err)
-		});
-		setFeedback({ post: "" });
+				.post(`/email`, {
+					id: videoOwnerId,
+					post: feedback.post,
+				})
+				.then((hello) => {
+					console.log("submitted email");
+				})
+				.catch((err) => {
+					console.log("error", err);
+				});
+			setFeedback({ post: "" });
 		}
 	};
 
