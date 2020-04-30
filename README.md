@@ -5,7 +5,7 @@
 
 Project deployed here: [https://www.alpacavids.com]
 
-Staging site deployed here: [https://staging.alpacavids.com]
+Staging site deployed here: [https://https://staging.d23dkh8vfs5lyf.amplifyapp.com/]
 
 ## Contributors
 |                                            [Prem Puttegowda](https://github.com/premputtegowda)                                            |                                             [Isabella Guo](https://github.com/IsabellaGuo)                                             |                                             [Chris Oakes](https://github.com/oakes680)                                              |                                                                                  [Johnathan Perkins](https://www.linkedin.com/in/johnathantperkins/)                                                                                   |                                         [Jessica Morrison](https://github.com/namistarr)                                          |
@@ -23,7 +23,7 @@ Staging site deployed here: [https://staging.alpacavids.com]
 
 <br>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/00a05fd6-c2bf-4c20-8f42-99d4e717cb90/deploy-status)](https://app.netlify.com/sites/alpacavids/deploys)
+
 ![React](https://img.shields.io/badge/react-v16.12.0-blue.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
@@ -32,7 +32,7 @@ Staging site deployed here: [https://staging.alpacavids.com]
 
 Tagline: It's how you asynchronously record and store practice videos for interviews then get feedback from team members.
 
-[Trello Board](https://trello.com/b/GbkgxMJV/labs-20-video-journal-for-teams)
+
 
 [Product Canvas](https://www.notion.so/Video-Journal-for-Teams-6388875366074df4a553b884c848f02e)
 
@@ -43,6 +43,7 @@ Tagline: It's how you asynchronously record and store practice videos for interv
 ### Key Features
 
 - Login/Register with Passport
+- Ability to manage multiple orgs and the respective teams
 - User Dashboard: shows the teams you joined and your videos
 - Team Dashboard: shows the team members, interview prompt questions, and team videos
 - Video Viewer: plays a video and allows members to provide feedback / view feedback
@@ -55,6 +56,8 @@ Tagline: It's how you asynchronously record and store practice videos for interv
 - Video Recording
   - Videos can be recorded in-app and uploaded (posted) to a team
 - Video Storage / Streaming
+- Real time app updates using socket.io
+- SendGrid for email notifications
 
 ## Tech Stack
 
@@ -66,6 +69,8 @@ Front End libraries and dependencies can be found in package.json, but major hig
 - Redux-Persist
 - Axios
 - Ant Design / node-sass for the UI
+- socket.io
+- simple-react-video-thumbnail
 
 Testing is handled by jest / react-testing-library / enzyme / redux-mock-store
 
@@ -85,6 +90,7 @@ List of major Back End dependencies:
 - Passport
 - bcrypt
 - jsonwebtoken
+- sendgrid
 
 Testing is done with jest / supertest
 Development server is run with nodemon
@@ -107,6 +113,11 @@ In order for the app to function correctly, the user must set up their own envir
 - REACT_APP_PUBLIC_URL_STAGING = "https://video-journal-staging.herokuapp.com/public"
 - REACT_APP_PUBLIC_URL_LOCAL_HOST = "http://localhost:5000/public"
 - REACT_APP_S3_STORAGE_PATH=https://alpaca-vids-storage-staging.s3-us-west-1.amazonaws.com/
+
+- REACT_APP_SOCKET_PRODUCTION_URL=https://video-journal.herokuapp.com
+- REACT_APP_SOCKET_STAGING_URL=https://video-journal-staging.herokuapp.com
+- REACT_APP_SOCKET_LOCAL_HOST=http://localhost:5000
+
 
 # Testing
 
