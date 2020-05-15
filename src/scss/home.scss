@@ -1,10 +1,10 @@
 body {
-	height: 100vh;
+	
 	background-color: orange;
-	@media (max-height: 500px) {
-		height: 500px;
-		margin: 0 auto;
-	}
+	// @media (max-height: 500px) {
+	// 	height: 500px;
+	// 	margin: 0 auto;
+	// }
 	// @media (min-height: 500px) {
 	// 	height: 100vh;
 	// 	margin: 0 auto;
@@ -12,18 +12,12 @@ body {
 }
 
 header.home {
-	position: relative;
-	height: 100vh;
-	width: 100vw;
-	// min-height: 700px;
-
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 
-	background-image: none;
-	overflow: hidden;
+	//overflow: hidden;
 	text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 1);
 
 	div.header {
@@ -32,12 +26,10 @@ header.home {
 		justify-content: center;
 		align-items: center;
 
-		display: none;
+		
 		opacity: 1;
 		// transition: opacity 0.5s linear;
-		animation: fade 0.25s linear;
-
-		z-index: 99;
+		
 		// align-items: left;
 		width: 100vw;
 		// width: 400px;
@@ -56,11 +48,19 @@ header.home {
 				min-width: 250px;
 			}
 		}
+		.TitleAndCards{
+			display:flex;
+			flex-direction:column;
+
+			h1{
+				justify-content:left;
+			}
+		}
 		.box {
 			width: 80%;
 			max-width: 900px;
 			min-width: 900px;
-			overflow: visible;
+			
 
 			background-color: $pale-yellow-alpha;
 			.person {
@@ -81,21 +81,18 @@ header.home {
 				padding: 0px;
 			}
 		}
-		@keyframes fade {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
+		
 		div.text {
-			width: 25%;
+			width: 50%;
 			min-width: 320px;
 			text-align: left;
 			h1 {
 				font-weight: bolder;
 				font-size: 3rem;
+
+				.text-red{
+					color:#FF7F50;
+				}
 			}
 			h2 {
 				font-size: 2rem;
@@ -115,17 +112,33 @@ header.home {
 					// padding: 15px;
 					font-size: 1rem;
 					font-weight: bolder;
-					@include button($alpaca-green);
 					border: 1px solid $medium-grey;
-					min-width: 142px;
+					width: 80%;
 					margin-top: 15px;
 					&:hover {
-						@include button($pale-yellow);
+						color:#FF7F50;
+						background-color: white;
 					}
 					&:focus {
-						@include button($alpaca-green);
+						color: #98FB98;
+						background-color:white;	
 					}
+					background-color: #7B68EE;
+					color: white;
 				}
+			}
+			div.navStart{
+				button {
+					background-color: white;
+					color:#7B68EE;
+					&:hover{
+						color:#FF7F50;
+					}
+					&:focus {
+						color: #98FB98;
+					}	
+				}	
+				
 			}
 		}
 		@media screen and (max-width: 800px) {
@@ -151,25 +164,7 @@ header.home {
 		}
 	}
 
-	div.cover {
-		position: absolute;
-		margin-top: -25px;
-		height: 900px;
-		width: 6000px;
-		background-image: url("../imgs/floatbg.jpg");
-		// background-position: center center;
-		// background-size: 50%;
-		animation: move 250s infinite linear;
-		will-change: transform;
-		opacity: 0.2;
-	}
-
-	div.mainbg {
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		background-image: linear-gradient(desaturate(darken($pale-yellow, 30%), 50%), lighten($pale-yellow, 20%));
-	}
+	
 	.bar {
 		display: flex;
 		flex-direction: row;
@@ -177,14 +172,13 @@ header.home {
 		align-items: center;
 
 		height: 80px;
-		width: 100vw;
+		width: 100%;
 
 		padding: 20px;
 
 		text-shadow: none;
-		position: absolute;
 		bottom: 0px;
-		background-color: $alpaca-green;
+		background-color: #7B68EE;
 		opacity: 1;
 		* {
 			margin: 0 5%;
@@ -205,17 +199,32 @@ header.home {
 
 			font-size: 1.5rem;
 			font-weight: bolder;
+			color: white;
 
 			p:hover {
 				cursor: pointer;
 			}
+			Link,
+			Link:link,
+			Link{
+				color:white;
+			}
+			Link:visited{
+				color:#98FB98;
+			}
+			Link:hover{
+				color:#FF7F50;
+			}
 			a,
 			a:link,
+			a:link {
+				color: white;
+			}
 			a:visited {
-				color: $dark-grey;
+				color: #98FB98;				;
 			}
 			a:hover {
-				color: $medium-grey;
+				color:#FF7F50 ;
 			}
 			// margin-right: 20%;
 			* {
@@ -241,16 +250,5 @@ header.home {
 	}
 }
 
-// for the floaty headerbg
 
-@keyframes move {
-	0% {
-		transform: translateY(0px) translateX(1500px);
-	}
-	50% {
-		transform: translateY(0px) translateX(-1500px);
-	}
-	100% {
-		transform: translateY(0) translateX(1500px);
-	}
-}
+

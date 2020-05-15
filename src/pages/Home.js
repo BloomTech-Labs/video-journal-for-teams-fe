@@ -9,20 +9,64 @@ const Home = () => {
 
 	return (
 		<header className="home">
-			<div className="mainbg">
+			<div className="bar">
+				<div className="title">
+					<h1 className="userDashHeaderFont" >Team&nbsp;Reels</h1>
+				</div>
+				<div className="links">
+					<Link to="/login">Sign in</Link>
+					<a onClick={() => setShow(!show)}>About us</a>
+				</div>
+				<div className="navStart">
+						{/* <Button>Get Started</Button> */}
+						<Button size="medium"
+							// icon="caret-right"
+							className="adding-button"
+							onClick={
+								(e) => {
+									e.preventDefault();
+									history.push("/register");
+								}
+							}>
+							GET STARTED 
+						</Button>
+					</div>
 			</div>
-			<div className="cover"></div>
+			
+			
 			<div style={{
 				display: (show ? "inherit" : "none")
 			}}
 				className="header"
 			>
-				<div className="logo">
+				{/* <div className="logo">
 					<img alt="Alpaca Vids Logo" className="alpaca-logo" src={Alpaca}></img>
-				</div>
+				</div> */}
 				<div className="text">
-					<h1>Success<br />Begins Here.</h1>
-					<h2>Hone your presence,<br />land your dream job.</h2>
+					<h1>Practice your speaking skills<br/>with your team <br/><h1 className="text-red">no matter where you are.</h1></h1>
+					<h3>See how it works</h3>
+					<div className="text-blobs">
+						<div className="blob1">
+							<h1>Join or create an organization</h1>
+							<h2>You can start your own, or join an already existing organization.</h2>
+						</div>
+						<div className="blob2">
+							<h1>Team up with others</h1>
+							<h2>Team up with coworkers or classmates, and leave feedback on eachothers videos!</h2>
+						</div>
+						<div className="blob3">
+							<h1>Create prompts for others to answer</h1>
+							<h2>Channel leaders can create prompts for other teammates to answer and practice their speaking skills.</h2>
+						</div>
+						<div className="blob4">
+							<h1>Improve your speaking skills!</h1>
+							<h2>With TeamReels, you can answer prompts created by channel leaders every week, and get better through critical feedback and repitition!</h2>
+						</div>
+					</div>
+					<div className="footNote">
+						<h2>Ready to get started?</h2>
+						<h4>We are ready for you to join the TeamReels community, click the button and get started now!</h4>
+					</div>
 					<div className="start">
 						{/* <Button>Get Started</Button> */}
 						<Button size="large"
@@ -34,12 +78,14 @@ const Home = () => {
 									history.push("/register");
 								}
 							}>
-							B E G I N
+							GET STARTED 
 						</Button>
 					</div>
 				</div>
 			</div>
 			<div style={{ display: (show ? "none" : "inherit") }} className="header">
+				<div className="TitleAndCards">
+				<h1>Version One Team</h1>
 				<Card size="small" className="box">
 					<Card bordered className="person" hoverable cover={<img src="https://ca.slack-edge.com/T4JUEB3ME-UMQM20RB9-672e81ad9979-512" />}>
 						<h3>Darrin Lowery</h3><Tag>Web</Tag><Tag>BEST</Tag><Tag>10/10</Tag>
@@ -74,16 +120,9 @@ const Home = () => {
 						<p>DeLenn Lowery</p>
 					</Card>
 				</Card>
-			</div>
-			<div className="bar">
-				<div className="title">
-					<h1 className="userDashHeaderFont" >Alpaca&nbsp;Vids</h1>
-				</div>
-				<div className="links">
-					<Link to="/login">login</Link>
-					<a onClick={() => setShow(!show)}>dev team</a>
 				</div>
 			</div>
+			
 		</header>
 	)
 }

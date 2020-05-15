@@ -98,6 +98,9 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
             <Button type="primary" htmlType="submit" className="login-form-button">
               Sign In
             </Button>
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              Forgot Password?
+            </Button>
           </Form.Item>
         </Form>
         </div>
