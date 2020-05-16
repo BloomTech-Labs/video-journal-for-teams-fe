@@ -4,7 +4,6 @@ import { Button } from "antd";
 import { useHistory, Link } from "react-router-dom";
 
 const Home = () => {
-	
 	let history = useHistory();
 	return (
 		<div>
@@ -67,7 +66,6 @@ const Home = () => {
 					<h2>We are ready for you to join the TeamReels community, click the button and get started now!</h2>
 					<div className="start">
 					<Button size="large"
-						// icon="caret-right"
 						className="adding-button"
 						onClick={
 							(e) => {

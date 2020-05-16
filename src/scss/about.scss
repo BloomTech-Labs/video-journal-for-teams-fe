@@ -1,0 +1,37 @@
+div.header{
+    display:flex; 
+    flex-direction:row;
+    background-color: #FFFAFA;
+
+    nav.bar {
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        background-color: #7B68EE;
+        color: white;
+        
+			div.navStart{
+			button {
+				background-color: white;
+				color:#7B68EE;
+				display:flex;
+				justify-content:center;
+				align-items:center;
+				&:hover{
+					color:#FF7F50;
+				}
+				&:focus {
+					color: #98FB98;
+				}	
+			}	
+			
+			}
+		}
+		
+	
+    .cards{
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+    }
+}

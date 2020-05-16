@@ -165,10 +165,6 @@ header.home {
 			display: flex;
 			justify-content: center;
 		}
-		.linksandnav{
-			display:flex;
-			flex-direction:row;
-		}
 		.links {
 			width: 30%;
 			min-width: 320px;
@@ -181,8 +177,6 @@ header.home {
 			p:hover {
 				cursor: pointer;
 			}
-			Link,
-			Link:link,
 			Link{
 				color:white;
 			}
