@@ -1,53 +1,24 @@
-body {
-	
-	background-color: orange;
-	// @media (max-height: 500px) {
-	// 	height: 500px;
-	// 	margin: 0 auto;
-	// }
-	// @media (min-height: 500px) {
-	// 	height: 100vh;
-	// 	margin: 0 auto;
-	// }
-}
 
 header.home {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	justify-content: center;
 	align-items: center;
-
-	//overflow: hidden;
-	text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 1);
+	background-color: #F5F5F5;
+	height: 2200px;
 
 	div.header {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-
-		
-		opacity: 1;
-		// transition: opacity 0.5s linear;
-		
-		// align-items: left;
 		width: 100vw;
-		// width: 400px;
 		padding: 25px;
 		margin-bottom: 150px;
 		& > div {
 			margin: 5%;
 		}
-		div.logo {
-			width: 25%;
-			min-width: 320px;
-			img {
-				padding: 0;
-				margin: 0;
-				max-width: 100%;
-				min-width: 250px;
-			}
-		}
+		
 		.TitleAndCards{
 			display:flex;
 			flex-direction:column;
@@ -97,24 +68,15 @@ header.home {
 			h2 {
 				font-size: 2rem;
 			}
-			@media screen and (max-width: 1200px) {
-				h1 {
-					font-weight: bolder;
-					font-size: 2.5rem;
-				}
-				h2 {
-					font-size: 1.7rem;
-				}
-			}
+		
 			div.start {
 				margin: 0;
-				button {
+				Button {
 					// padding: 15px;
 					font-size: 1rem;
 					font-weight: bolder;
 					border: 1px solid $medium-grey;
 					width: 80%;
-					margin-top: 15px;
 					&:hover {
 						color:#FF7F50;
 						background-color: white;
@@ -127,19 +89,7 @@ header.home {
 					color: white;
 				}
 			}
-			div.navStart{
-				button {
-					background-color: white;
-					color:#7B68EE;
-					&:hover{
-						color:#FF7F50;
-					}
-					&:focus {
-						color: #98FB98;
-					}	
-				}	
-				
-			}
+			
 		}
 		@media screen and (max-width: 800px) {
 			flex-direction: column;
@@ -165,23 +115,22 @@ header.home {
 	}
 
 	
-	.bar {
+	nav.bar {
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
-
 		height: 80px;
-		width: 100%;
-
+		width: 100vw;
 		padding: 20px;
-
 		text-shadow: none;
 		bottom: 0px;
 		background-color: #7B68EE;
 		opacity: 1;
+		position: fixed;
+		top: 0px;
 		* {
-			margin: 0 5%;
+			margin:10px;
 		}
 		.title {
 			@include userDashHeaderFont();
@@ -191,12 +140,15 @@ header.home {
 			display: flex;
 			justify-content: center;
 		}
+		.linksandnav{
+			display:flex;
+			flex-direction:row;
+		}
 		.links {
-			width: 25%;
+			width: 30%;
 			min-width: 320px;
 			display: flex;
 			justify-content: flex-start;
-
 			font-size: 1.5rem;
 			font-weight: bolder;
 			color: white;
@@ -226,28 +178,29 @@ header.home {
 			a:hover {
 				color:#FF7F50 ;
 			}
-			// margin-right: 20%;
 			* {
 				margin: 0 3%;
 			}
+			div.navStart{
+			button {
+				background-color: white;
+				color:#7B68EE;
+				display:flex;
+				justify-content:center;
+				align-items:center;
+				&:hover{
+					color:#FF7F50;
+				}
+				&:focus {
+					color: #98FB98;
+				}	
+			}	
+			
+			}
 		}
-		@media screen and (max-width: 800px) {
-			* {
-				font-size: 85%;
-			}
-			.title {
-				display: none;
-			}
-			.links {
-				justify-content: center;
-			}
-		}
+		
 	}
-	@media screen and (max-height: 700px) {
-		min-height: 700px;
-		max-height: 700px;
-		overflow: visible;
-	}
+	
 }
 
 
