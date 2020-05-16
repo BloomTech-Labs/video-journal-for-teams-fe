@@ -48,7 +48,7 @@ function App(props) {
 
 			<Route exact path="/login" component={Login} />
 
-			<Route exact patch="/devteam" component={DevTeam} />
+			<Route exact path="/devteam" component={DevTeam} />
 
 			<Route exact path="/register" component={Register} />
 
