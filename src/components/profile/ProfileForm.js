@@ -4,7 +4,7 @@ import { updateUserData, getUserData } from '../../redux/actions/userActions';
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
 import 'antd/dist/antd.css';
-import { Collapse, Alert, Badge } from 'antd';
+import { Collapse, Alert } from 'antd';
 
 
 const { Panel } = Collapse;

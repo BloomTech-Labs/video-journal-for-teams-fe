@@ -78,7 +78,7 @@ const Upload = ({ updateUProfilePicture, user_id, imageUpload, clearPhotoUpload}
 				>{imageUpload.error ? <Alert message={imageUpload.error} type="error" /> : null}
 					<div className="Files">
 				{file ? <div key={file.name} className="Row">
-					<img src={file.path}/>
+					<img src={file.path} alt=''/>
 					<span className="Filename">{file.name}</span>
 					{renderProgress(file)}
 					</div> : null

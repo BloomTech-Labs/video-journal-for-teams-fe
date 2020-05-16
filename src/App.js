@@ -7,6 +7,7 @@ import PrivateRoute from "./components/utils/PrivateRoute";
 import UploadProgress from "./components/PostTeamVideo/UploadVideo/UploadProgress";
 
 // Pages
+import DevTeam from "./pages/DevTeam";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
@@ -46,6 +47,8 @@ function App(props) {
 			<Route exact path="/" component={Home} />
 
 			<Route exact path="/login" component={Login} />
+
+			<Route exact patch="/devteam" component={DevTeam} />
 
 			<Route exact path="/register" component={Register} />
 

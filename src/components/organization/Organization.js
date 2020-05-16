@@ -66,9 +66,9 @@
 
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
-import { Modal, Button, Form, Input, Card, Icon } from 'antd';
+import { Modal, Button, Form, Input } from 'antd';
 import {connect} from "react-redux";
 import { createUserOrganization} from "../../redux/actions/userActions";
 const Organization = ({createUserOrganization}) => {

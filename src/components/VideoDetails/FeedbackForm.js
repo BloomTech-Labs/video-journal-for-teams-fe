@@ -8,7 +8,6 @@ import { submitFeedback } from "../../redux/actions/userActions";
 
 // Components
 import { Form, Input, Button } from "antd";
-import axios from "axios";
 import axiosWithAuth from "../utils/AxiosWithAuth";
 
 // Additional Ant Design components

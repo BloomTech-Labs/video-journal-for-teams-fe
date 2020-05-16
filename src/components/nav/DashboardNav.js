@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Layout, Menu, Typography, Dropdown } from "antd";
 import { DownOutlined, BankOutlined } from "@ant-design/icons";
 import { Link, withRouter, useHistory } from "react-router-dom";
@@ -9,7 +9,7 @@ import {
 	setUserSelectedOrganization,
 	createUserOrganization,
 } from "../../redux/actions/userActions";
-import { Modal, Button, Form, Input, Card, Icon } from "antd";
+import { Icon } from "antd";
 import Organization from "../organization/Organization.js";
 
 const DashboardNav = withRouter((props) => {
