@@ -1,21 +1,15 @@
-import React, { useState } from "react";
-import { Button, Card, Tag, Divider } from "antd";
+import React from "react";
+import { Button } from "antd";
 //import Alpaca from '../imgs/alpaca-logo.png';
 import { useHistory, Link } from "react-router-dom";
 
 const Home = () => {
-	const [show, setShow] = useState(true);
+	
 	let history = useHistory();
-
 	return (
 		<div>
 		<header className="home">
-			
-			<div style={{
-				display: (show ? "inherit" : "none")
-			}}
-				className="header"
-			>
+			<div className="header">
 				{/* NAVBAR */}
 				<nav className="bar">
 				<div className="title">
@@ -23,7 +17,7 @@ const Home = () => {
 				</div>
 					<div className="links">
 					<Link to="/login">Sign in</Link>
-					<a onClick={() => setShow(!show)}>About us</a>
+					<Link to="/about">About us</Link>
 					
 					<div className="navStart">
 						<Button size="medium"
@@ -40,8 +34,16 @@ const Home = () => {
 				</div>
 				</nav>
 			<div className="text">
-				<h1>Practice your speaking skills<br/>with your team <br/><h1 className="text-red">no matter where you are.</h1></h1>
-				<h3>See how it works</h3>
+				<div className="reel-logo">
+					<h1 className="h1">Practice your speaking skills with your team,<h1 className="text-red">no matter where you are.</h1></h1>
+					<img src="https://cdn5.vectorstock.com/i/1000x1000/93/44/film-reel-flat-icon-vector-7989344.jpg" alt="film reel"/> 
+				</div>
+				
+				<div className="arrow-down">
+					<h2>See how it works</h2>
+					<img src="https://img.icons8.com/plasticine/2x/down.png" alt="arrow down"/>
+				</div>
+				
 				<div className="text-blobs">
 					<div className="blob1">
 						<h1>Join or create an organization</h1>
@@ -63,8 +65,7 @@ const Home = () => {
 				<div className="footNote">
 					<h1>Ready to get started?</h1>
 					<h2>We are ready for you to join the TeamReels community, click the button and get started now!</h2>
-				</div>
-				<div className="start">
+					<div className="start">
 					<Button size="large"
 						// icon="caret-right"
 						className="adding-button"
@@ -77,45 +78,10 @@ const Home = () => {
 						GET STARTED 
 					</Button>
 				</div>
-			</div>
-			<div style={{ display: (show ? "none" : "inherit") }} className="header">
-				<div className="TitleAndCards">
-				<Card size="small" className="box">
-					<Card bordered className="person" hoverable cover={<img src="https://ca.slack-edge.com/T4JUEB3ME-UMQM20RB9-672e81ad9979-512" />}>
-						<h3>Darrin Lowery</h3><Tag>Web</Tag><Tag>BEST</Tag><Tag>10/10</Tag>
-					</Card>
-					<Card className="person" hoverable cover={<img src="https://avatars0.githubusercontent.com/u/18246524?s=460&v=4" />}>
-						<h3>Kerri-Ann Bates</h3><Tag>Web</Tag>
-					</Card>
-					<Card className="person" hoverable cover={<img src="https://avatars2.githubusercontent.com/u/54912919?s=460&v=4" />}>
-						<h3>Sam Allen</h3><Tag>Web</Tag>
-					</Card>
-					<Card className="person" hoverable cover={<img src="https://avatars1.githubusercontent.com/u/8367070?s=460&v=4" />}>
-						<h3>Sofia Levin</h3><Tag>Web</Tag>
-					</Card>
-					<Card className="person" hoverable cover={<img src="https://avatars2.githubusercontent.com/u/13441400?s=460&v=4" />}>
-						<h3>Michael Nunes</h3><Tag>Web</Tag>
-					</Card>
-					<Card className="person" hoverable cover={<img src="https://ca.slack-edge.com/T4JUEB3ME-UHV65B6UA-1eea077dbe2f-512" />}>
-						<h3>Kyla Oyamot</h3><Tag>UX</Tag>
-					</Card>
-					<Card className="person" hoverable cover={<img src="https://ca.slack-edge.com/T4JUEB3ME-UJB5Y3VS4-52dc043b8f1e-512" />}>
-						<h3>Marcus Jones</h3><Tag>Team Lead</Tag>
-					</Card>
-					<Card className="person" hoverable>
-						<h3>Github</h3>
-						<a href="https://github.com/Lambda-School-Labs/video-journal-for-teams-fe" target="_blank">Frontend</a>
-						<br />
-						<a href="https://github.com/Lambda-School-Labs/video-journal-for-teams-be" target="_blank">Backend</a>
-						<br /> 
-						<a href="https://alpacavid-api-doc.netlify.com/" target="_blank">API Documentation</a>
-						<Divider />
-						<h3>Alpaca Drawing</h3>
-						<p>DeLenn Lowery</p>
-					</Card>
-				</Card>
 				</div>
+				
 			</div>
+			
 		</div>	
 		</header>
 		</div>

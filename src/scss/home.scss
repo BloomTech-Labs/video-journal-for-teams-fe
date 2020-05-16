@@ -5,7 +5,7 @@ header.home {
 	justify-content: center;
 	align-items: center;
 	background-color: #F5F5F5;
-	height: 2200px;
+	//height: 200px;
 
 	div.header {
 		display: flex;
@@ -18,45 +18,10 @@ header.home {
 		& > div {
 			margin: 5%;
 		}
-		
-		.TitleAndCards{
-			display:flex;
-			flex-direction:column;
-
-			h1{
-				justify-content:left;
-			}
-		}
-		.box {
-			width: 80%;
-			max-width: 900px;
-			min-width: 900px;
-			
-
-			background-color: $pale-yellow-alpha;
-			.person {
-				margin: 15px;
-				width: 191px;
-				text-align: left;
-				.ant-card-body {
-					padding: 10px;
-					background-color: $pale-yellow-alpha;
-				}
-			}
-			& > .ant-card-body {
-				display: flex;
-				flex-wrap: wrap;
-				flex-direction: row;
-				justify-content: center;
-				margin: 0px;
-				padding: 0px;
-			}
-		}
-		
 		div.text {
-			width: 50%;
+			//width: 50%;
 			min-width: 320px;
-			text-align: left;
+			text-align: center;
 			h1 {
 				font-weight: bolder;
 				font-size: 3rem;
@@ -69,6 +34,66 @@ header.home {
 				font-size: 2rem;
 			}
 		
+			div.reel-logo{
+				display:flex;
+				justify-content:space-evenly;
+				width: 100%;
+				font-size: 2rem;
+				margin-top: 30px;
+
+				.h1{
+					display:flex;
+					flex-direction:column;
+					justify-content:center;
+					align-items:center;
+					margin-top:50px;
+					font-size: 50px;
+					width: 40%;
+				}
+
+				img{
+					width: 30%;
+				}
+			}
+			div.arrow-down{
+				display:flex;
+				flex-direction:column;
+				justify-content:center;
+				align-items:center;
+				margin-top: 100px;
+				padding: 40px;
+
+				h2{
+					font-size: 2.5rem;
+				}
+				img{
+					width: 50px;
+				}
+			}
+			div.text-blobs{
+				display:flex;
+				flex-direction:column;
+				justify-content: space-evenly;
+				align-items:center;
+				width: 100%;
+				
+
+				.blob1, .blob2, .blob3, .blob4{
+					display:flex;
+					flex-direction:column;
+					justify-content:center;
+					text-align: center;
+					width: 50%;
+					margin: 40px;
+				}
+			}
+			div.footNote{
+				display:flex;
+				flex-direction:column;
+				justify-content:center;
+				max-width: 50%;
+				margin-left:325px;
+			}
 			div.start {
 				margin: 0;
 				Button {
@@ -76,7 +101,7 @@ header.home {
 					font-size: 1rem;
 					font-weight: bolder;
 					border: 1px solid $medium-grey;
-					width: 80%;
+					width: 50%;
 					&:hover {
 						color:#FF7F50;
 						background-color: white;
