@@ -7,10 +7,17 @@ import Carousel from "../components/shared/Carousel";
 import UserVideosCard from "../components/user/UserVideosCard";
 import Organization from "../components/organization/Organization";
 
-import { fetchUserVideos } from "../redux/actions/userActions";
+import { fetchUserVideos, loginUser } from "../redux/actions/userActions";
 import { clearError } from "../redux/actions/teamActions";
+import { useOktaAuth } from "@okta/okta-react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function UserDashboard(props) {
+	const { authService, authState } = useOktaAuth();
+	const dispatch = useDispatch();
+	const history = useHistory();
+
 	const { id, fetchUserVideos, videos, clearError, organizations, defaultOrganization, selectedOrganization } = props;
 
 	let organization_id = "";
@@ -20,6 +27,12 @@ function UserDashboard(props) {
 	} else {
 		organization_id = selectedOrganization.id ? selectedOrganization.id : defaultOrganization.id;
 	}
+
+	useEffect(() => {
+		authState.isAuthenticated
+			? authService.getUser().then((user) => dispatch(loginUser(user.email)))
+			: history.push("/login");
+	}, [authState]);
 
 	useEffect(() => {
 		clearError();

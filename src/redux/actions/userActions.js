@@ -2,7 +2,7 @@ import constants from "../constants";
 import axios from "axios";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 import { notification } from "antd";
-import { createTeam } from '../actions/teamActions'
+import { createTeam } from "../actions/teamActions";
 
 // REGISTER A NEW USER
 export const registerUser = (applicant) => (dispatch) => {
@@ -22,38 +22,39 @@ export const registerUser = (applicant) => (dispatch) => {
 
 // LOGIN A USER
 export const loginUser = (userCredentials) => (dispatch) => {
-	if (userCredentials.method === "email") {
-		const user = {
-			email: userCredentials.usernameOrEmail,
-			password: userCredentials.password,
-		};
+	console.log(userCredentials);
+	// if (userCredentials.method === "email") {
+	const user = {
+		email: userCredentials,
+	};
 
-		axios
-			.post("/auth/login/email", user)
-			.then((loginResponse) => {
-				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
-			})
-			.catch((err) => {
-				dispatch({ type: constants.GENERATE_ERROR, payload: "The email address or password you entered is incorrect" });
-			});
-	} else {
-		const user = {
-			username: userCredentials.usernameOrEmail,
-			password: userCredentials.password,
-		};
+	axios
+		.post("/auth/login/email", user)
+		.then((loginResponse) => {
+			console.log(loginResponse);
+			dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
+		})
+		.catch((err) => {
+			dispatch({ type: constants.GENERATE_ERROR, payload: "The email address or password you entered is incorrect" });
+		});
+	// } else {
+	// 	const user = {
+	// 		username: userCredentials.usernameOrEmail,
+	// 		password: userCredentials.password,
+	// 	};
 
-		axios
-			.post("/auth/login/username", user)
-			.then((loginResponse) => {
-				dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
-			})
-			.catch((err) => {
-				dispatch({
-					type: constants.GENERATE_ERROR,
-					payload: "The username or password you entered is incorrect",
-				});
-			});
-	}
+	// 	axios
+	// 		.post("/auth/login/username", user)
+	// 		.then((loginResponse) => {
+	// 			dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
+	// 		})
+	// 		.catch((err) => {
+	// 			dispatch({
+	// 				type: constants.GENERATE_ERROR,
+	// 				payload: "The username or password you entered is incorrect",
+	// 			});
+	// 		});
+	// }
 };
 
 export const logoutUser = () => (dispatch) => {
@@ -84,45 +85,46 @@ export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 // FETCH USER ORGANIZATOINS
 
 export const fetchUserOrganizations = (userId) => (dispatch) => {
-	dispatch({type: constants.FETCH_USER_ORGANIZATIONS_START});
+	dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_START });
 	AxiosWithAuth()
-	.get(`/users/${userId}/organizations`)
-	.then((res) => {
-		
-		dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
-	})
-	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+		.get(`/users/${userId}/organizations`)
+		.then((res) => {
+			dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
+		})
+		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
 export const setUserSelectedOrganization = (organization) => (dispatch) => {
-	dispatch({type: constants.SET_USER_SELECTED_ORGANIZATION_START});
-	dispatch({type: constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS, payload: organization});
-
+	dispatch({ type: constants.SET_USER_SELECTED_ORGANIZATION_START });
+	dispatch({ type: constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS, payload: organization });
 };
 
-
-//create an orgainzation for after registration 
+//create an orgainzation for after registration
 export const createUserOrganization = (organization_name, history) => (dispatch) => {
-	dispatch({type: constants.CREATE_USER_ORGANIZATION_START});
-	let id = ''
+	dispatch({ type: constants.CREATE_USER_ORGANIZATION_START });
+	let id = "";
 	AxiosWithAuth()
-	.post(`/organizations`, organization_name)
-	.then((res) => {
-		
-		dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data })
-		id = res.data.id
-	})
-	.then(()=> {
+		.post(`/organizations`, organization_name)
+		.then((res) => {
+			dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data });
+			id = res.data.id;
+		})
+		.then(() => {
+			dispatch(
+				createTeam(
+					{
+						name: "General",
+						description: "This is a general team for all members",
+						organization_id: id,
+						team_type: "public",
+					},
+					history
+				)
+			);
+		})
 
-		dispatch(createTeam({name: 'General', description: 'This is a general team for all members', organization_id: id, team_type: 'public'}, history))
-		
-	}
-	)
-	
-	.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
-
-
 
 // FETCH VIDEOS FOR USER
 export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
@@ -179,12 +181,11 @@ export const updateViewedFeedback = (videoId, userId, organizationId) => (dispat
 	dispatch({ type: constants.UPDATE_FEEDBACK_START });
 	const changes = {
 		userId: userId,
-		organizationId:organizationId
-	}
+		organizationId: organizationId,
+	};
 	AxiosWithAuth()
 		.put(`/videos/${videoId}/feedback`, changes)
 		.then((res) => {
-		
 			dispatch({
 				type: constants.UPDATE_FEEDBACK_SUCCESS,
 				payload: res.data,
@@ -198,7 +199,6 @@ export const fetchInvite = (invite) => (dispatch) => {
 	axios
 		.get(`/invites/${invite}`)
 		.then((invite) => {
-		
 			if (invite.data.team_id > 0) {
 				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data });
 			} else {
@@ -217,7 +217,7 @@ export const addToInvitedTeam = (team_id, user_id, history, organization_id) => 
 			user_id: user_id,
 			role_id: 1,
 			team_id: team_id,
-			organization_id: organization_id
+			organization_id: organization_id,
 		})
 		.then((res) => {
 			dispatch({ type: constants.ADD_INVITED_MEMBER_SUCCESS, payload: res });
@@ -357,7 +357,6 @@ export const updateUProfilePicture = (id, photo) => (dispatch) => {
 				message: "Profile picture successfully updated!",
 				duration: 2,
 			});
-		
 		})
 		.catch((err) => {
 			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_FAILURE, payload: err });
