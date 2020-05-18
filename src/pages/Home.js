@@ -12,7 +12,7 @@ const Home = () => {
 	console.log(authService);
 
 	useEffect(() => {
-		authState.isAuthenticated && authService.getUser().then((user) => loginUser(user.email));
+		authState.isAuthenticated ? history.push("/user-dashboard") : history.push("/");
 	}, [authState]);
 
 	return (

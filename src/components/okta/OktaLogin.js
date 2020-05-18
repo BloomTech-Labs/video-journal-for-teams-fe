@@ -33,7 +33,8 @@ const LoginForm = () => {
 		oktaAuth
 			.signIn({ username, password })
 			.then((res) => {
-				dispatch(loginUser(res.user.profile.login));
+				console.log(res);
+				// dispatch(loginUser(res.user.profile.login));
 				console.log(authService);
 				// Axios.post(`https://dev-292346.okta.com/api/v1/authn/recovery/password`, {
 				// 	username: res.user.profile.login,
@@ -84,7 +85,7 @@ const LoginForm = () => {
 				buttonText="Login With Google"
 				onSuccess={responseGoogle}
 				onFailure={responseGoogle}></GoogleLogin>
-			<a href="https://dev-292346.okta.com/oauth2/v1/authorize?idp=0oachck23hRb17ea34x6&client_id=0oacbrrfntl0SndJM4x6&response_type=id_token&response_mode=fragment&scope=openid%20email&redirect_uri=http://localhost:3000/google/callback&state=WM6D&nonce=YsG76jo">
+			<a href="https://dev-292346.okta.com/oauth2/v1/authorize?idp=0oachck23hRb17ea34x6&client_id=0oacbrrfntl0SndJM4x6&response_type=token&response_mode=fragment&scope=openid%20profile&redirect_uri=http://localhost:3000/google/callback&state=WM6D&nonce=YsG76jo">
 				Google Login
 			</a>
 		</form>

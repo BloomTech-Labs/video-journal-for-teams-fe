@@ -22,14 +22,19 @@ export const registerUser = (applicant) => (dispatch) => {
 
 // LOGIN A USER
 export const loginUser = (userCredentials) => (dispatch) => {
-	console.log(userCredentials);
-	// if (userCredentials.method === "email") {
-	const user = {
-		email: userCredentials,
-	};
+	// console.log(userCredentials);
+	// // if (userCredentials.method === "email") {
+	// const user = {
+	// 	email: userCredentials.email,
+	// 	first_name: userCredentials.given_name,
+	// 	last_name: userCredentials.family_name,
+	// 	username: userCredentials.preferred_username,
+	// 	password: userCredentials.sub,
+	// };
+	console.log("&&&&", userCredentials);
 
 	axios
-		.post("/auth/login/email", user)
+		.post("/auth/test", userCredentials)
 		.then((loginResponse) => {
 			console.log(loginResponse);
 			dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
