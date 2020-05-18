@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 
 function UserDashboard(props) {
 	const { authService, authState } = useOktaAuth();
+	console.log(authService);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -30,7 +31,10 @@ function UserDashboard(props) {
 
 	useEffect(() => {
 		authState.isAuthenticated
-			? authService.getUser().then((user) => dispatch(loginUser(user.email)))
+			? authService.getUser().then((user) => {
+					console.log(user);
+					dispatch(loginUser(user.email));
+			  })
 			: history.push("/login");
 	}, [authState]);
 

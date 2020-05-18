@@ -13,28 +13,26 @@ const Login = () => {
 		console.log(issuer, clientId);
 		const widget = new OktaSignIn({
 			baseUrl: "https://dev-292346.okta.com",
-			clientId,
+			clientId: "0oacbrrfntl0SndJM4x6",
 			redirectUri: window.location.origin + "/implicit/callback",
-			pkce: true,
-			logo: "/react.svg",
-			i18n: {
-				en: {
-					"primaryauth.title": "Sign in to React & Company",
-				},
-			},
+			// logo: "/react.svg",
+			// i18n: {
+			// 	en: {
+			// 		"primaryauth.title": "Sign in to React & Company",
+			// 	},
+			// },
 			authParams: {
 				issuer,
 				display: "page",
-				responseType: ["id_token", "token", "code"],
+				responseType: "id_token",
 				scope: "openid profile",
+				pkce: true,
 			},
 		});
 
 		widget.renderEl(
 			{ el: "#sign-in-widget" },
-			(res) => {
-				console.log(res);
-			},
+			() => {},
 			(err) => {
 				throw err;
 			}

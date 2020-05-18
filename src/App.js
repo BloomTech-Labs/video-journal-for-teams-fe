@@ -38,8 +38,10 @@ import { connect } from "react-redux";
 import { addToInvitedTeam } from "./redux/actions/userActions";
 import Organization from "./components/organization/Organization";
 import { useHistory } from "react-router-dom";
+import GoogleRedirect from "./components/okta/GoogleRedirect";
 
 function App(props) {
+	console.log(props);
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	const appHistory = useHistory();
 
@@ -56,42 +58,38 @@ function App(props) {
 
 	return (
 		<div className="app">
-			<Router>
-				<Security
+			{/* <Security
 					issuer="https://dev-292346.okta.com/oauth2/default"
 					client_id="0oacbrrfntl0SndJM4x6"
 					redirectUri={window.location.origin + "/implicit/callback"}
-					pkce
-					disableHttpsCheck>
-					<Switch>
-						{props.inviteError ? <Alert message={props.inviteError} type="error" /> : null}
-						<Route exact path="/" component={Home} />
-						{/* <Route exact path="/login" component={Login} /> */}
+					disableHttpsCheck> */}
+			<Route exact path="/implicit/callback" component={LoginCallback} />
+			{/* {props.inviteError ? <Alert message={props.inviteError} type="error" /> : null} */}
+			<Route exact path="/" component={Home} />
+			<Route exact path="/google/callback" component={GoogleRedirect} />
+			{/* <Route exact path="/login" component={Login} /> */}
 
-						<Route exact path="/register" component={Register} />
+			<Route exact path="/register" component={Register} />
 
-						<Route exact path="/invite/:invite" component={Invite} />
-						<SecureRoute exact path="/user-dashboard" component={UserDashboard} />
-						<Route exact path="/login" component={OktaLogin} />
+			<Route exact path="/invite/:invite" component={Invite} />
+			<SecureRoute exact path="/user-dashboard" component={UserDashboard} />
+			<Route exact path="/login" component={OktaLogin} />
 
-						<Route exact path="/implicit/callback" component={LoginCallback} />
+			<SecureRoute exact path="/videos/:id" component={VideoDetails} />
 
-						<SecureRoute exact path="/videos/:id" component={VideoDetails} />
+			<SecureRoute path="/profile" component={UserProfileDashboard} />
 
-						<SecureRoute path="/profile" component={UserProfileDashboard} />
+			<SecureRoute exact path="/teams/:team_id" component={TeamDashboard} />
 
-						<SecureRoute exact path="/teams/:team_id" component={TeamDashboard} />
+			<SecureRoute exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
 
-						<SecureRoute exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
+			<SecureRoute exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
 
-						<SecureRoute exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
+			<Route exact path="/videos" component={UserVideos} />
 
-						<Route exact path="/videos" component={UserVideos} />
-
-						<UploadProgress />
-					</Switch>
-				</Security>
-			</Router>
+			<UploadProgress />
+			{/* </Security>
+			</Router> */}
 		</div>
 	);
 }

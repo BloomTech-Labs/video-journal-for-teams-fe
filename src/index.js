@@ -20,7 +20,13 @@ ReactDOM.render(
 	<Provider store={store}>
 		<PersistGate loading={<LoadingView />} persistor={persistor}></PersistGate>
 		<Router>
-			<App />
+			<Security
+				issuer="https://dev-292346.okta.com/oauth2/default"
+				client_id="0oacbrrfntl0SndJM4x6"
+				redirectUri={window.location.origin + "/implicit/callback"}
+				disableHttpsCheck>
+				<App />
+			</Security>
 		</Router>
 	</Provider>,
 	document.getElementById("root")
