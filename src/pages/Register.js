@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-import AuthSider from "../components/AuthSider";
+//import AuthSider from "../components/AuthSider";
 
 // Redux
 import { connect } from "react-redux";
@@ -75,7 +75,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
 
   return (
       <>
-        <AuthSider>
+        <div>
           <span>
             Already a member? <Link to="/login" onClick={() => clearError()}>Sign in</Link>
           </span>`
@@ -157,7 +157,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
             </Form.Item>
           </Form>
           </div>
-        </AuthSider>
+        </div>
       </>
   );
 };

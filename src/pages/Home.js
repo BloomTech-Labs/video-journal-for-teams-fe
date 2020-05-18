@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "antd";
-//import Alpaca from '../imgs/alpaca-logo.png';
 import { useHistory, Link } from "react-router-dom";
 
 const Home = () => {
@@ -12,7 +11,7 @@ const Home = () => {
 				{/* NAVBAR */}
 				<nav className="bar">
 				<div className="title">
-					<h1 className="userDashHeaderFont" >Team&nbsp;Reels</h1>
+					<h1 className="userDashHeaderFont" >Team&nbsp;Reel</h1>
 				</div>
 					<div className="links">
 					<Link to="/login">Sign in</Link>

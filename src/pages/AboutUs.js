@@ -12,7 +12,7 @@
 				</div>
 					<div className="links">
 					<Link to="/login">Sign in</Link>
-					<Link to="/about">About us</Link>
+					<Link to="/">Home</Link>
 					
 					<div className="navStart">
 						<Button size="medium"
@@ -87,8 +87,8 @@
 				<Card className="dev">
 					<h2>Naomi R Torres</h2>
 					<img src ="https://ca.slack-edge.com/T4JUEB3ME-URDAV2AV7-a4e719e888aa-512" alt="Naomi"/>
-					<h3>Web Developer</h3>
-					<h3>Full Stack Web Development student at Lambda School</h3>
+					<h3>Full Stack Web Developer</h3>
+					<h3></h3>
 				</Card>
 				<Card className="dev">
 					<h2>Walter Futch</h2>

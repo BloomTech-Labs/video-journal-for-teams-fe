@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-import AuthSider from "../components/AuthSider";
+//import AuthSider from "../components/AuthSider";
 
 // Redux
 import { connect } from "react-redux";
@@ -60,18 +60,22 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
 
   return (
     <>
-      <AuthSider>
-        <span>
+      <div className="login">
+        <nav>
+          <h1>Teem Reel</h1>
+          <Link to="/">Go Back</Link>
+           <span>
           Not a Member? <Link to="/register" onClick={() => clearError()}>Register here</Link>
         </span>
-        <div className="auth-content">
+        </nav>
+       
+        <div className="login-content">
           <h1>Welcome Back!</h1>
-          <p>Please sign in</p>
         {error ? <Alert message={error} type="error" /> : null}
         <Form onSubmit={submitLogin} className="login-form" data-testid="login-form">
-        <Form.Item label="Username or Email"labelAlign="left">
+        <Form.Item label="Username or Email"labelAlign="left" className="formEmail">
             <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.5)" }} />}
+              prefix={<Icon type="user"  />}
               type="text"
               name="usernameOrEmail"
               value={user.usernameOrEmail}
@@ -81,9 +85,9 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
               required
             />
           </Form.Item>
-          <Form.Item label="Password"labelAlign="left">
+          <Form.Item label="Password"labelAlign="left" className="formPassword">
             <Input
-              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.5)" }} />}
+              prefix={<Icon type="lock"  />}
               type="password"
               name="password"
               value={user.password}
@@ -93,18 +97,20 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
               required
             />
           </Form.Item>
-          <Form.Item>
+          <Form.Item >
             {/* <Checkbox>Remember me</Checkbox> */}
+            <div className="buttons">
             <Button type="primary" htmlType="submit" className="login-form-button">
               Sign In
             </Button>
             <Button type="primary" htmlType="submit" className="login-form-button">
               Forgot Password?
             </Button>
+            </div>
           </Form.Item>
         </Form>
         </div>
-      </AuthSider>
+      </div>
     </>
   );
 };

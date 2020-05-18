@@ -1,15 +1,64 @@
 div.header{
     display:flex; 
-    flex-direction:row;
-    background-color: #FFFAFA;
+    flex-direction:column;
+    justify-content:center;
+    background-color: #F5F5F5;
+
+    
 
     nav.bar {
-        display:flex;
-        flex-direction:row;
-        justify-content:space-evenly;
-        background-color: #7B68EE;
-        color: white;
-        
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		height: 80px;
+		width: 100vw;
+		padding: 20px;
+		text-shadow: none;
+		bottom: 0px;
+		background-color: #7B68EE;
+		opacity: 1;
+		position: fixed;
+		top: 0px;
+		* {
+			margin:10px;
+		}
+        z-index: 9999;
+		.links {
+			width: 30%;
+			min-width: 320px;
+			display: flex;
+			justify-content: flex-start;
+			font-size: 1.5rem;
+			font-weight: bolder;
+			color: white;
+
+			p:hover {
+				cursor: pointer;
+			}
+			Link{
+				color:white;
+			}
+			Link:visited{
+				color:#98FB98;
+			}
+			Link:hover{
+				color:#FF7F50;
+			}
+			a,
+			a:link,
+			a:link {
+				color: white;
+			}
+			a:visited {
+				color: #98FB98;				;
+			}
+			a:hover {
+				color:#FF7F50 ;
+			}
+			* {
+				margin: 0 3%;
+			}
 			div.navStart{
 			button {
 				background-color: white;
@@ -28,10 +77,47 @@ div.header{
 			}
 		}
 		
-	
+	}
     .cards{
         display:flex;
         flex-direction:row;
         flex-wrap: wrap;
+        margin-top: 100px;
+        justify-content:center;
+
+        
+        h1{
+            width: 100%;
+        }
+        
+        .dev{
+            max-width: 25%;
+            margin: 40px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            margin: 30px;
+			border-radius: 15px;
+			padding: 30px;
+
+			h2{
+				display:flex;
+				justify-content:center;
+			}
+            img{
+                max-width: 85%;
+				border-radius: 15px;
+				display:flex;
+				justify-content:center;
+				margin-left:20px;
+			}
+			h3{
+				margin-top:20px;
+				display:flex;
+				justify-content:center;
+			}
+
+        }
     }
 }
