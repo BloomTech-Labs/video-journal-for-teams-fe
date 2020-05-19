@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { useHistory, Link } from "react-router-dom";
+import blob1 from '../imgs/Ellipse70.png';
 
 const Home = () => {
 	let history = useHistory();
@@ -44,8 +45,12 @@ const Home = () => {
 				
 				<div className="text-blobs">
 					<div className="blob1">
-						<h1>Join or create an organization</h1>
-						<h2>You can start your own, or join an already existing organization.</h2>
+						<div>
+							<h1>Join or create an organization</h1>
+							<h2>You can start your own, or join an already existing organization.</h2>
+						</div>
+						
+				
 					</div>
 					<div className="blob2">
 						<h1>Team up with others</h1>
