@@ -4,9 +4,9 @@ div.login{
 	width:100%;
 	display:flex;
 	justify-content:center;
-	margin-left: 400px;
+	
 
-	nav{
+	nav.loginNav{
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -24,69 +24,68 @@ div.login{
 			margin:10px;
 		}
 		z-index: 9999;
-		Link {
-			width: 30%;
-			min-width: 320px;
-			display: flex;
-			justify-content: flex-start;
-			font-size: 3rem;
-			font-weight: bolder;
-			color: white;
-
-			p:hover {
-				cursor: pointer;
+		.loginLinks{
+			font-size:1.5rem;
+			color:white;
+			a:visited{
+				color:#98FB98
 			}
-			Link:link{
-				color:white;
-			}
-			Link:visited{
-				color:#98FB98;
-			}
-			Link:hover{
+			a:hover{
 				color:#FF7F50;
 			}
+		}
 			
-		}	
 	}
-	.login-content{
+	.loginContent{
 		display:flex;
 		justify-content:center;
 		flex-direction:column;
-		width: 100vw;
+		width: 100%;
 		height: 100vh;
-		margin-top:100px;
+		margin-top:70px;
+		margin-left: 400px;
+		
+		h1{
+			margin-left: 160px;
+		}
+		.loginForm{
+			 display:flex;
+			 justify-content:center;
+			 flex-direction:column;
+			 //margin-left:500px;
+			.formEmail{
+				width: 60%;
+				display:flex;
+				flex-direction: column;
+				// justify-content:center;
+			}
+			.formPassword{
+				width:60%;
+				display:flex;
+				flex-direction:column;
+				justify-content:center;
+			}
+			.buttons{
+				display:flex;
+				flex-direction:column;
+				justify-content:space-evenly;
+				margin: 40px;
 		
 
-		.formEmail{
-		width: 40%;
-		display:flex;
-		flex-direction: column;
-		// justify-content:center;
-		}
-		.formPassword{
-		width:40%;
-		display:flex;
-		flex-direction:column;
-		justify-content:center;
-		}
-		.buttons{
-		display:flex;
-		flex-direction:column;
-		justify-content:space-evenly;
-		margin: 40px;
-		
-
-		.login-form-button{
-			background-color: #7B68EE;
-			width: 30%;
-			color:white;
-			border: 1px solid white;
-			&:hover{
-				color: #FF7F50;
-				background-color: white;
-				border: 1px solid #7B68EE;
+				.loginButton{
+				background-color: #7B68EE;
+				width: 50%;
+				color:white;
+				border: 1px solid white;
+				margin: 15px;
+				&:hover{
+					color: #FF7F50;
+					background-color: white;
+					border: 1px solid #7B68EE;
+					}
 				}
 			}
+		
 		}
 	}
 	

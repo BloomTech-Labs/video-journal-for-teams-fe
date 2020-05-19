@@ -61,18 +61,20 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
   return (
     <>
       <div className="login">
-        <nav>
+        <nav className="loginNav">
           <h1>Teem Reel</h1>
+          <div className="loginLinks">
           <Link to="/">Go Back</Link>
            <span>
           Not a Member? <Link to="/register" onClick={() => clearError()}>Register here</Link>
-        </span>
+          </span>
+          </div>
         </nav>
        
-        <div className="login-content">
+        <div className="loginContent">
           <h1>Welcome Back!</h1>
         {error ? <Alert message={error} type="error" /> : null}
-        <Form onSubmit={submitLogin} className="login-form" data-testid="login-form">
+        <Form onSubmit={submitLogin} className="loginForm" data-testid="login-form">
         <Form.Item label="Username or Email"labelAlign="left" className="formEmail">
             <Input
               prefix={<Icon type="user"  />}
@@ -98,12 +100,11 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
             />
           </Form.Item>
           <Form.Item >
-            {/* <Checkbox>Remember me</Checkbox> */}
             <div className="buttons">
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button type="primary" htmlType="submit" className="loginButton">
               Sign In
             </Button>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button type="primary" htmlType="submit" className="loginButton">
               Forgot Password?
             </Button>
             </div>

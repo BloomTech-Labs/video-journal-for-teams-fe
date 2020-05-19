@@ -45,12 +45,8 @@ const Home = () => {
 				
 				<div className="text-blobs">
 					<div className="blob1">
-						<div>
-							<h1>Join or create an organization</h1>
-							<h2>You can start your own, or join an already existing organization.</h2>
-						</div>
-						
-				
+						<h1>Join or create an organization</h1>
+						<h2>You can start your own, or join an already existing organization.</h2>
 					</div>
 					<div className="blob2">
 						<h1>Team up with others</h1>

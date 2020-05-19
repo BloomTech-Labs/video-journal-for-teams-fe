@@ -94,7 +94,8 @@ header.home {
 					background-attachment: fixed; 
     				// background-repeat: no-repeat;
     				background-position: center; 
-    				// position: relative;
+					// position: relative;
+					
 				}
 			}
 			div.footNote{
@@ -187,16 +188,6 @@ header.home {
 			p:hover {
 				cursor: pointer;
 			}
-			Link{
-				color:white;
-			}
-			Link:visited{
-				color:#98FB98;
-			}
-			Link:hover{
-				color:#FF7F50;
-			}
-			a,
 			a:link,
 			a:link {
 				color: white;
