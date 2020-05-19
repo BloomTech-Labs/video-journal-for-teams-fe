@@ -12,7 +12,7 @@ const Home = () => {
 	console.log(authService);
 
 	useEffect(() => {
-		authState.isAuthenticated ? history.push("/user-dashboard") : history.push("/");
+		authState.isAuthenticated && history.push("/user-dashboard");
 	}, [authState]);
 
 	return (
@@ -131,7 +131,7 @@ const Home = () => {
 					<h1 className="userDashHeaderFont">Alpaca&nbsp;Vids</h1>
 				</div>
 				<div className="links">
-					<Link to="/login">login</Link>
+					<Link to="/user-dashboard">login</Link>
 					<a onClick={() => setShow(!show)}>dev team</a>
 				</div>
 			</div>

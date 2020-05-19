@@ -80,11 +80,11 @@ const LoginForm = () => {
 				<input id="password" type="password" value={password} onChange={handlePasswordChange} />
 			</label>
 			<input id="submit" type="submit" value="Submit" />
-			<GoogleLogin
+			{/* <GoogleLogin
 				clientId="399318981538-8eudhb11tcao498l94vojqoil44spmrn.apps.googleusercontent.com"
 				buttonText="Login With Google"
 				onSuccess={responseGoogle}
-				onFailure={responseGoogle}></GoogleLogin>
+				onFailure={responseGoogle}></GoogleLogin> */}
 			<a href="https://dev-292346.okta.com/oauth2/v1/authorize?idp=0oachck23hRb17ea34x6&client_id=0oacbrrfntl0SndJM4x6&response_type=token&response_mode=fragment&scope=openid%20profile&redirect_uri=http://localhost:3000/google/callback&state=WM6D&nonce=YsG76jo">
 				Google Login
 			</a>

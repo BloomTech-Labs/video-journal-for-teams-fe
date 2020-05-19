@@ -24,7 +24,7 @@ const Login = () => {
 			authParams: {
 				issuer,
 				display: "page",
-				responseType: "id_token",
+				responseType: "code",
 				scope: "openid profile",
 				pkce: true,
 			},

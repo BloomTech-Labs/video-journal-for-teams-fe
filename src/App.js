@@ -7,7 +7,7 @@ import PrivateRoute from "./components/utils/PrivateRoute";
 import UploadProgress from "./components/PostTeamVideo/UploadVideo/UploadProgress";
 
 // Pages
-// import Login from "./pages/Login";
+import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import UserProfileDashboard from "./pages/UserProfileDashboard";
@@ -25,7 +25,8 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 import { Provider } from "react-redux";
 import LoadingView from "./components/utils/LoadingView";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import Login from "./components/okta/Login";
+// import Login from "./components/okta/Login";
+import { socket as io } from "./socket/socket";
 
 // Styles
 import "./App.scss";
@@ -41,7 +42,10 @@ import { useHistory } from "react-router-dom";
 import GoogleRedirect from "./components/okta/GoogleRedirect";
 
 function App(props) {
-	console.log(props);
+	const socket = io.connect();
+	console.log("check 1", socket.connected);
+	socket.on("connect", () => console.log("check 2", socket.connected));
+
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	const appHistory = useHistory();
 
@@ -75,15 +79,15 @@ function App(props) {
 			<SecureRoute exact path="/user-dashboard" component={UserDashboard} />
 			<Route exact path="/login" component={OktaLogin} />
 
-			<SecureRoute exact path="/videos/:id" component={VideoDetails} />
+			<Route exact path="/videos/:id" component={VideoDetails} />
 
-			<SecureRoute path="/profile" component={UserProfileDashboard} />
+			<Route path="/profile" component={UserProfileDashboard} />
 
-			<SecureRoute exact path="/teams/:team_id" component={TeamDashboard} />
+			<Route exact path="/teams/:team_id" component={TeamDashboard} />
 
-			<SecureRoute exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
+			<Route exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
 
-			<SecureRoute exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
+			<Route exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
 
 			<Route exact path="/videos" component={UserVideos} />
 

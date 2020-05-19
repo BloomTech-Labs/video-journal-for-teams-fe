@@ -32,6 +32,7 @@ function UserDashboard(props) {
 	useEffect(() => {
 		authState.isAuthenticated
 			? authService.getUser().then((user) => {
+					console.log("^^^", user);
 					const creds = {
 						username: user.preferred_username,
 						email: user.email,

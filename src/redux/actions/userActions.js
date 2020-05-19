@@ -36,7 +36,7 @@ export const loginUser = (userCredentials) => (dispatch) => {
 	axios
 		.post("/auth/test", userCredentials)
 		.then((loginResponse) => {
-			console.log(loginResponse);
+			console.log(loginResponse, "$$$$");
 			dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 		})
 		.catch((err) => {
@@ -133,6 +133,7 @@ export const createUserOrganization = (organization_name, history) => (dispatch)
 
 // FETCH VIDEOS FOR USER
 export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
+	console.log("dispatched");
 	dispatch({ type: constants.FETCH_USER_VIDEOS_START });
 	AxiosWithAuth()
 		.get(`/users/${userId}/videos/${organization_id}`)
