@@ -8,7 +8,7 @@
         <div className="header">
 			<nav className="bar">
 				<div className="title">
-					<h1 className="userDashHeaderFont" >Team&nbsp;Reels</h1>
+					<h1 className="title" >TeamReel</h1>
 				</div>
 					<div className="links">
 					<Link to="/login">Sign in</Link>
@@ -29,7 +29,7 @@
 				</div>
 			</nav>
 			<div className="cards">
-				<h1>Version Two Team</h1>
+				<h1 className="version">Version Two Team</h1>
 				<Card className="dev">
 					<h2>Kyla Oyamot</h2>
 					<img src="https://ca.slack-edge.com/ESZCHB482-W012QNQMEMS-1eea077dbe2f-512" alt="Kyla"/>

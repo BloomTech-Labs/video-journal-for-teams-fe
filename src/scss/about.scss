@@ -16,14 +16,22 @@ div.header{
 		padding: 20px;
 		text-shadow: none;
 		bottom: 0px;
-		background-color: #7B68EE;
+		background-color: #6954EA;
 		opacity: 1;
 		position: fixed;
 		top: 0px;
 		* {
 			margin:10px;
 		}
-        z-index: 9999;
+		z-index: 9999;
+		.title {
+			color:white;
+			width: 25%;
+			min-width: 320px;
+			text-align: right;
+			display: flex;
+			justify-content: center;
+		}
 		.links {
 			width: 30%;
 			min-width: 320px;
@@ -62,7 +70,7 @@ div.header{
 			div.navStart{
 			button {
 				background-color: white;
-				color:#7B68EE;
+				color:#6954EA;
 				display:flex;
 				justify-content:center;
 				align-items:center;
@@ -87,7 +95,12 @@ div.header{
 
         
         h1{
-            width: 100%;
+			width: 100%;
+			display:flex;
+			justify-content:center;
+			text-align: left;
+			color: #6954EA;
+			border-bottom: 1px dashed #6954EA;
         }
         
         .dev{

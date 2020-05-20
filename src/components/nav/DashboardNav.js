@@ -69,7 +69,7 @@ const DashboardNav = withRouter((props) => {
 				<div className={"userDashHeader"}>
 					<Title level={3}>
 						<Link to="/user-dashboard" className={"userDashHeaderFont"} style={{ marginTop: "12px" }}>
-							Alpaca&nbsp;Vids
+							Team&nbsp;Reel
 						</Link>
 					</Title>
 				</div>

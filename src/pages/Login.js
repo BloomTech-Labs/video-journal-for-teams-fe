@@ -60,21 +60,21 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
 
   return (
     <>
-      <div className="login">
-        <nav className="loginNav">
-          <h1>Teem Reel</h1>
-          <div className="loginLinks">
-          <Link to="/">Go Back</Link>
+      <div className="auth">
+        <nav className="authNav">
+          <h1 className="title">TeemReel</h1>
+          <div className="authLinks">
+          <Link to="/">Home</Link>
            <span>
           Not a Member? <Link to="/register" onClick={() => clearError()}>Register here</Link>
           </span>
           </div>
         </nav>
        
-        <div className="loginContent">
+        <div className="authContent">
           <h1>Welcome Back!</h1>
         {error ? <Alert message={error} type="error" /> : null}
-        <Form onSubmit={submitLogin} className="loginForm" data-testid="login-form">
+        <Form onSubmit={submitLogin} className="authForm" data-testid="login-form">
         <Form.Item label="Username or Email"labelAlign="left" className="formEmail">
             <Input
               prefix={<Icon type="user"  />}
@@ -101,10 +101,10 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
           </Form.Item>
           <Form.Item >
             <div className="buttons">
-            <Button type="primary" htmlType="submit" className="loginButton">
+            <Button type="primary" htmlType="submit" className="formButton">
               Sign In
             </Button>
-            <Button type="primary" htmlType="submit" className="loginButton">
+            <Button type="primary" htmlType="submit" className="formButton">
               Forgot Password?
             </Button>
             </div>

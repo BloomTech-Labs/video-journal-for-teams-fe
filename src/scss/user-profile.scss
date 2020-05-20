@@ -2,9 +2,11 @@
 	text-align    : left;
 	padding-top   : 10px;
 	padding-bottom: 10px;
+	background-color: #6954EA;
+	color: white;
 
 	.userDashHeaderFont {
-		color      : $alpaca-green;
+		color      : white;
 		font-family: Pacifico;
 		font-style : normal;
 		font-weight: normal;
@@ -16,7 +18,7 @@
 
 .jumbotron {
 	height          : 185px;
-	background-color: $pale-yellow;
+	background-color:#F5F5F5;
 	text-align      : left;
 
 	.breadcrumb {
@@ -47,12 +49,12 @@
 	height          : 100%;
 
 	.outlined-btn {
-		@include outlined-button($alpaca-green);
+		@include outlined-button(#6954EA);
 		color: $black;
 	}
 
 	.full-btn {
-		@include button($alpaca-green);
+		@include button(#6954EA);
 		color: $black;
 	}
 

@@ -85,17 +85,21 @@ header.home {
 					text-align: center;
 					width: 50%;
 					margin: 40px;
+					
 				}
 				
-				.blob1{
-					max-width: 100%;
-					background: url('../imgs/Ellipse70.png') no-repeat;
-					background-size:cover;
-					background-attachment: fixed; 
-    				// background-repeat: no-repeat;
-    				background-position: center; 
-					// position: relative;
-					
+				.blob1, .blob3{
+					background-image: url('../imgs/Ellipse70.png');
+					background-position: center;
+					background-size: auto;
+					background-repeat: no-repeat;
+				}
+
+				.blob2, .blob4{
+					background-image: url('../imgs/Ellipse72.png');
+					background-position:center;
+					background-size: auto;
+					background-repeat: no-repeat;
 				}
 			}
 			div.footNote{
@@ -121,7 +125,8 @@ header.home {
 						color: #98FB98;
 						background-color:white;	
 					}
-					background-color: #7B68EE;
+					background-color: #6954EA;
+					//background-color: #7B68EE;
 					color: white;
 				}
 			}
@@ -161,7 +166,8 @@ header.home {
 		padding: 20px;
 		text-shadow: none;
 		bottom: 0px;
-		background-color: #7B68EE;
+		background-color: #6954EA;
+		color:white;
 		opacity: 1;
 		position: fixed;
 		top: 0px;
@@ -169,7 +175,7 @@ header.home {
 			margin:10px;
 		}
 		.title {
-			@include userDashHeaderFont();
+			color:white;
 			width: 25%;
 			min-width: 320px;
 			text-align: right;
@@ -204,7 +210,7 @@ header.home {
 			div.navStart{
 			button {
 				background-color: white;
-				color:#7B68EE;
+				color:#6954EA;
 				display:flex;
 				justify-content:center;
 				align-items:center;

@@ -1,12 +1,11 @@
-div.login{
+div.auth{
 	background-color:#F5F5F5;
-	height:100vh;
 	width:100%;
 	display:flex;
 	justify-content:center;
-	
+	//margin-top:100px;
 
-	nav.loginNav{
+	nav.authNav{
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -16,7 +15,7 @@ div.login{
 		padding: 20px;
 		text-shadow: none;
 		bottom: 0px;
-		background-color: #7B68EE;
+		background-color: #6954EA;
 		opacity: 1;
 		position: fixed;
 		top: 0px;
@@ -24,7 +23,15 @@ div.login{
 			margin:10px;
 		}
 		z-index: 9999;
-		.loginLinks{
+		.title {
+			color:white;
+			width: 25%;
+			min-width: 320px;
+			text-align: right;
+			display: flex;
+			justify-content: center;
+		}
+		.authLinks{
 			font-size:1.5rem;
 			color:white;
 			a:visited{
@@ -36,23 +43,34 @@ div.login{
 		}
 			
 	}
-	.loginContent{
+	
+	.authContent{
 		display:flex;
 		justify-content:center;
 		flex-direction:column;
 		width: 100%;
 		height: 100vh;
 		margin-top:70px;
-		margin-left: 400px;
+		//margin-left: 400px;
+		
+		.registerContent{
+			padding-top: 200px;
+		}
 		
 		h1{
-			margin-left: 160px;
-		}
-		.loginForm{
+			width: 100%;
+			display:flex;
+			justify-content:center;
+			text-align: left;
+			color: #FF7F50;
+			border-bottom: 1px dashed #6954EA;
+        }
+		.authForm{
 			 display:flex;
 			 justify-content:center;
 			 flex-direction:column;
-			 //margin-left:500px;
+			 margin-left:400px;
+			 
 			.formEmail{
 				width: 60%;
 				display:flex;
@@ -65,6 +83,18 @@ div.login{
 				flex-direction:column;
 				justify-content:center;
 			}
+			.formName{
+				width:60%;
+				display:flex;
+				flex-direction:column;
+				justify-content:center;
+			}
+			.formUsername{
+				width: 60%;
+				display:flex;
+				flex-direction: column;
+				justify-content:center;
+			}
 			.buttons{
 				display:flex;
 				flex-direction:column;
@@ -72,8 +102,8 @@ div.login{
 				margin: 40px;
 		
 
-				.loginButton{
-				background-color: #7B68EE;
+				.formButton{
+				background-color: #6954EA;
 				width: 50%;
 				color:white;
 				border: 1px solid white;
@@ -81,7 +111,7 @@ div.login{
 				&:hover{
 					color: #FF7F50;
 					background-color: white;
-					border: 1px solid #7B68EE;
+					border: 1px solid #6954EA;
 					}
 				}
 			}

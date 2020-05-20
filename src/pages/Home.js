@@ -12,7 +12,7 @@ const Home = () => {
 				{/* NAVBAR */}
 				<nav className="bar">
 				<div className="title">
-					<h1 className="userDashHeaderFont" >Team&nbsp;Reel</h1>
+					<h1 className="title" >TeamReel</h1>
 				</div>
 					<div className="links">
 					<Link to="/login">Sign in</Link>
