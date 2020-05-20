@@ -34,12 +34,18 @@ div.auth{
 		.authLinks{
 			font-size:1.5rem;
 			color:white;
+			//border-bottom: 1px solid #FF7F50;
+
+			a{
+				border-bottom: 1px solid #FF7F50;
+			}
 			a:visited{
-				color:#98FB98
+				color:white
 			}
 			a:hover{
 				color:#FF7F50;
 			}
+			
 		}
 			
 	}

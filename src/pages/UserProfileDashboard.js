@@ -11,7 +11,7 @@ function EditUserDashboard() {
 		<>
 			<Layout>
 				<Header className="full-header">
-					<Title level={3} className={"userDashHeaderFont"}>Alpaca Vids</Title>
+					<Title level={3} className={"userDashHeaderFont"}>TeamReel</Title>
 				</Header>
 				<ProfileJumbtron />
 				<Content className="profile-page">

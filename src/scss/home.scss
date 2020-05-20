@@ -1,4 +1,6 @@
 
+
+
 header.home {
 	display: flex;
 	flex-direction: column-reverse;
@@ -82,22 +84,53 @@ header.home {
 					display:flex;
 					flex-direction:column;
 					justify-content:center;
+					align-items: center;
 					text-align: center;
-					width: 50%;
+					width: 100%;
 					margin: 40px;
+					//border: 1px solid red;
+					height:250px;
+					//font-size: 1.4rem;
+					.text{
+						width: 50%;
+						text-align:center;
+						//border: 1px solid green;
+
+						h1{
+							font-size: 2rem;
+							font-weight: bold;
+						}
+						h2{
+							font-size: 1.5rem;
+							font-weight: 700;
+						}
+					}
 					
 				}
 				
-				.blob1, .blob3{
+				.blob1, .blob4{
 					background-image: url('../imgs/Ellipse70.png');
 					background-position: center;
 					background-size: auto;
 					background-repeat: no-repeat;
+					width: 100%;
 				}
 
-				.blob2, .blob4{
+				.blob2{
+					background-image: url('../imgs/Ellipse71.png');
+					background-position:center;
+					background-size: auto;
+					background-repeat: no-repeat;
+				}
+				.blob3{
 					background-image: url('../imgs/Ellipse72.png');
 					background-position:center;
+					background-size: auto;
+					background-repeat: no-repeat;
+				}
+				.blob4{
+					background-image: ur('../imgs/Ellipse70.png');
+					background-position: center;
 					background-size: auto;
 					background-repeat: no-repeat;
 				}
@@ -122,8 +155,8 @@ header.home {
 						background-color: white;
 					}
 					&:focus {
-						color: #98FB98;
-						background-color:white;	
+						color: white;
+						background-color:#FF7F50;	
 					}
 					background-color: #6954EA;
 					//background-color: #7B68EE;
@@ -199,7 +232,7 @@ header.home {
 				color: white;
 			}
 			a:visited {
-				color: #98FB98;				;
+				color: white;				;
 			}
 			a:hover {
 				color:#FF7F50 ;
@@ -218,7 +251,7 @@ header.home {
 					color:#FF7F50;
 				}
 				&:focus {
-					color: #98FB98;
+					color: white;
 				}	
 			}	
 			
