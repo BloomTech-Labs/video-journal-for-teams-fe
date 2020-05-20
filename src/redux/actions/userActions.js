@@ -79,7 +79,7 @@ export const logoutUser = () => (dispatch) => {
 export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_TEAMS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/teams/${organization_id}`)
+		.get(`/v2/users/${userId}/teams/${organization_id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_TEAMS_SUCCESS, payload: res.data });
 		})
@@ -139,7 +139,7 @@ export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
 	console.log("dispatched");
 	dispatch({ type: constants.FETCH_USER_VIDEOS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/videos/${organization_id}`)
+		.get(`/v2/users/${userId}/videos/${organization_id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data });
 		})

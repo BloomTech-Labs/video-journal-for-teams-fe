@@ -15,7 +15,7 @@ export const createTeam = (newTeam, history, id) => (dispatch) => {
 export const fetchTeamById = (team_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_TEAM_BY_ID_START });
 	AxiosWithAuth()
-		.get(`/teams/${team_id}`)
+		.get(`/v2/teams/${team_id}`)
 		.then((teamResponse) => {
 			dispatch({ type: constants.FETCH_TEAM_BY_ID_SUCCESS, payload: teamResponse.data });
 		})
@@ -25,7 +25,7 @@ export const fetchTeamById = (team_id) => (dispatch) => {
 export const fetchTeamMembers = (team_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_TEAM_MEMBERS_START });
 	AxiosWithAuth()
-		.get(`/teams/${team_id}/users`)
+		.get(`/v2/teams/${team_id}/users`)
 		.then((teamMembersResponse) => {
 			dispatch({ type: constants.FETCH_TEAM_MEMBERS_SUCCESS, payload: teamMembersResponse.data });
 		})
@@ -45,7 +45,7 @@ export const fetchTeamPrompts = (team_id) => (dispatch) => {
 export const fetchTeamVideos = (team_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_START });
 	AxiosWithAuth()
-		.get(`/teams/${team_id}/videos`)
+		.get(`/v2/teams/${team_id}/videos`)
 		.then((teamVideosResponse) => {
 			dispatch({ type: constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_SUCCESS, payload: teamVideosResponse.data });
 		})
