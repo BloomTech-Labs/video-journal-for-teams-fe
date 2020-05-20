@@ -11,6 +11,7 @@ import {
 } from "../../redux/actions/userActions";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
+import logo from "../../imgs/whitelogo.png";
 
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
@@ -50,10 +51,10 @@ const DashboardNav = withRouter((props) => {
 	let filteredOrg = organizations.filter((x) => x.id === organization_id);
 
 	const menu = (
-		<Menu theme="dark">
+		<Menu >
 			{organizations.map((item) => (
 				<Link to="/user-dashboard">
-					<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
+					<Menu.Item style={{  textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
 						{item.name}
 					</Menu.Item>
 				</Link>
@@ -65,15 +66,15 @@ const DashboardNav = withRouter((props) => {
 	);
 	return (
 		<>
-			<Sider breakpoint="lg" collapsedWidth="0" width="240">
-				<div className={"userDashHeader"}>
+			<Sider breakpoint="lg" collapsedWidth="0" width="240" style={{backgroundColor:"#6954EA"}}>
+				<div className={"userDashHeader"} style={{backgroundColor:"#6954EA"}}>
 					<Title level={3}>
-						<Link to="/user-dashboard" className={"userDashHeaderFont"} style={{ marginTop: "12px" }}>
-							Alpaca&nbsp;Vids
+						<Link to="/user-dashboard" className={"userDashHeaderFont"} style={{ color:"whitesmoke",marginTop: "12px" }}>
+							<img src={logo}/>
 						</Link>
 					</Title>
 				</div>
-				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
+				<Menu style={{backgroundColor:"#6954EA"}} mode="inline" className={"userDashMenu"} >
 					<Dropdown overlay={menu}>
 						<a
 							className="ant-dropdown-link"
@@ -92,7 +93,7 @@ const DashboardNav = withRouter((props) => {
 					</Dropdown>
 					<hr style={{ margin: "25px 0" }} />
 					<Menu.Item key="/user-dashboard">
-						<Link to="/user-dashboard" style={{ color: "#fff", display: "block" }}>
+						<Link to="/user-dashboard" style={{ backgroundColor:"#6954EA", color: "#fff", display: "block" }}>
 							<Icon type="home" theme="filled" /> Dashboard
 						</Link>
 					</Menu.Item>
