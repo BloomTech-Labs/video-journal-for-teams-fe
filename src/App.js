@@ -7,7 +7,7 @@ import PrivateRoute from "./components/utils/PrivateRoute";
 import UploadProgress from "./components/PostTeamVideo/UploadVideo/UploadProgress";
 
 // Pages
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import UserProfileDashboard from "./pages/UserProfileDashboard";
@@ -25,7 +25,7 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 import { Provider } from "react-redux";
 import LoadingView from "./components/utils/LoadingView";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-// import Login from "./components/okta/Login";
+import Login from "./components/okta/Login";
 import { socket as io } from "./socket/socket";
 
 // Styles
@@ -62,31 +62,29 @@ function App(props) {
 
 	return (
 		<div className="app">
-			<Switch>
-				<Route exact path="/implicit/callback" component={LoginCallback} />
-				{/* {props.inviteError ? <Alert message={props.inviteError} type="error" /> : null} */}
-				<Route exact path="/" component={Home} />
-				<Route exact path="/google/callback" component={GoogleRedirect} />
-				{/* <Route exact path="/login" component={Login} /> */}
+			<Route exact path="/implicit/callback" component={LoginCallback} />
+			{/* {props.inviteError ? <Alert message={props.inviteError} type="error" /> : null} */}
+			<Route exact path="/" component={Home} />
+			<Route exact path="/google/callback" component={GoogleRedirect} />
+			{/* <Route exact path="/login" component={Login} /> */}
 
-				<Route exact path="/register" component={Register} />
+			<Route exact path="/register" component={Register} />
 
-				<Route exact path="/invite/:invite" component={Invite} />
-				<SecureRoute exact path="/user-dashboard" component={UserDashboard} />
-				<Route exact path="/login" component={OktaLogin} />
+			<Route exact path="/invite/:invite" component={Invite} />
+			<SecureRoute exact path="/user-dashboard" component={UserDashboard} />
+			<Route exact path="/login" component={Login} />
 
-				<Route exact path="/videos/:id" component={VideoDetails} />
+			<Route exact path="/videos/:id" component={VideoDetails} />
 
-				<Route path="/profile" component={UserProfileDashboard} />
+			<Route path="/profile" component={UserProfileDashboard} />
 
-				<Route exact path="/teams/:team_id" component={TeamDashboard} />
+			<Route exact path="/teams/:team_id" component={TeamDashboard} />
 
-				<Route exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
+			<Route exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
 
-				<Route exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
+			<Route exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
 
-				<Route exact path="/videos" component={UserVideos} />
-			</Switch>
+			<Route exact path="/videos" component={UserVideos} />
 
 			<UploadProgress />
 		</div>

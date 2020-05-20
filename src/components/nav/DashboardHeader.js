@@ -22,7 +22,7 @@ function DashboardHeader(props) {
 	const handleLogout = (e) => {
 		e.preventDefault();
 		props.logoutUser();
-		authService.logout("http://localhost:3000");
+		authService.logout("/");
 		history.push("/");
 	};
 

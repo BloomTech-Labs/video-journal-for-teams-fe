@@ -30,6 +30,7 @@ function UserDashboard(props) {
 	}
 
 	useEffect(() => {
+		console.log("use effect fired");
 		authState.isAuthenticated
 			? authService.getUser().then((user) => {
 					const creds = {
@@ -52,22 +53,26 @@ function UserDashboard(props) {
 	}, [id, fetchUserVideos, organization_id, defaultOrganization, selectedOrganization]);
 
 	return (
-		<NavAndHeader>
-			<div className="user-dashboard dashboard">
-				<h1>Dashboard</h1>
-				{organizations.length >= 1 ? (
-					<>
-						<TeamList />
-						<div className="dashboard-header">
-							<h2>My&nbsp;Videos</h2>
-						</div>
-						<Carousel component={UserVideosCard} data={videos} name={"videos"} />{" "}
-					</>
-				) : (
-					<Organization />
-				)}
-			</div>
-		</NavAndHeader>
+		<>
+			{authState.isAuthenticated && (
+				<NavAndHeader>
+					<div className="user-dashboard dashboard">
+						<h1>Dashboard</h1>
+						{organizations.length >= 1 ? (
+							<>
+								<TeamList />
+								<div className="dashboard-header">
+									<h2>My&nbsp;Videos</h2>
+								</div>
+								<Carousel component={UserVideosCard} data={videos} name={"videos"} />{" "}
+							</>
+						) : (
+							<Organization />
+						)}
+					</div>
+				</NavAndHeader>
+			)}
+		</>
 	);
 }
 

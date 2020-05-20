@@ -1,10 +1,10 @@
 import constants from "../constants";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
-export const createTeam = (newTeam, history) => (dispatch) => {
+export const createTeam = (newTeam, history, id) => (dispatch) => {
 	dispatch({ type: constants.CREATE_TEAM_START });
 	AxiosWithAuth()
-		.post("/teams/", newTeam)
+		.post("/v2/teams/", { team: newTeam, id })
 		.then((res) => {
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
 			history.push("/user-dashboard");

@@ -22,7 +22,7 @@ export const registerUser = (applicant) => (dispatch) => {
 
 // LOGIN A USER
 export const loginUser = (userCredentials) => (dispatch) => {
-	console.log(userCredentials);
+	console.log(userCredentials, "****");
 	// console.log(userCredentials);
 	// // if (userCredentials.method === "email") {
 	// const user = {
@@ -89,6 +89,7 @@ export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 // FETCH USER ORGANIZATOINS
 
 export const fetchUserOrganizations = (userId) => (dispatch) => {
+	console.log("dispatched");
 	dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_START });
 	AxiosWithAuth()
 		.get(`/v2/users/${userId}/organizations`)
@@ -100,6 +101,7 @@ export const fetchUserOrganizations = (userId) => (dispatch) => {
 };
 
 export const setUserSelectedOrganization = (organization) => (dispatch) => {
+	console.log("selected organization");
 	dispatch({ type: constants.SET_USER_SELECTED_ORGANIZATION_START });
 	dispatch({ type: constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS, payload: organization });
 };
