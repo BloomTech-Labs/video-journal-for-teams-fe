@@ -208,13 +208,16 @@ header.home {
 			margin:10px;
 		}
 		.title {
-			color:white;
-			width: 25%;
-			min-width: 320px;
+			width: 10%;
 			text-align: right;
 			display: flex;
 			justify-content: center;
+
+			img{
+				max-width: 70%;
+			}
 		}
+		
 		.links {
 			width: 30%;
 			min-width: 320px;

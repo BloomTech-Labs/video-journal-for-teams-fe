@@ -2,17 +2,19 @@
  import { Card } from 'antd';
  import { useHistory, Link } from "react-router-dom";
  import { Button } from 'antd';
+ import teamReel from '../imgs/TeamReel.png';
+
  const AboutUs = () => {
 	 let history = useHistory();
      return(
         <div className="header">
 			<nav className="bar">
 				<div className="title">
-					<h1 className="title" >TeamReel</h1>
+					<img src={teamReel} alt="team reel logo"/>
 				</div>
 					<div className="links">
-					<Link to="/login">Sign in</Link>
 					<Link to="/">Home</Link>
+					<Link to="/login">Sign in</Link>
 					
 					<div className="navStart">
 						<Button size="medium"

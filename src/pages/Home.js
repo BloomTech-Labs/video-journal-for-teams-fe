@@ -3,7 +3,8 @@ import { Button } from "antd";
 import { useHistory, Link } from "react-router-dom";
 import blob1 from '../imgs/Ellipse70.png';
 import reel from '../imgs/image.png';
-;
+import teamReel from '../imgs/TeamReel.png';
+
 const Home = () => {
 	let history = useHistory();
 	return (
@@ -13,11 +14,11 @@ const Home = () => {
 				{/* NAVBAR */}
 				<nav className="bar">
 				<div className="title">
-					<h1 className="title" >TeamReel</h1>
+					<img src={teamReel}/>
 				</div>
 					<div className="links">
-					<Link to="/login">Sign in</Link>
 					<Link to="/about">About us</Link>
+					<Link to="/login">Sign in</Link>
 					
 					<div className="navStart">
 						<Button size="medium"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
 //import AuthSider from "../components/AuthSider";
+import teamReel from '../imgs/TeamReel.png';
 
 // Redux
 import { connect } from "react-redux";
@@ -77,7 +78,10 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
       <>
         <div className="auth">
           <nav className="authNav">
-            <h1 className="title">TeamReel</h1>
+            <div className="title">
+              <img src={teamReel} alt="team reel logo"/>
+            </div>
+            
             <div className="authLinks">
               <Link to="/">Home</Link>
                <span>
@@ -88,8 +92,8 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
           </nav>
           
           {/* Alert will show any form validation error */}
-          <div className="authContent registerContent">
-            <h1>Create An Account</h1>
+          <div className="authContent">
+            <h1 className="create">Create An Account</h1>
           {error ? <Alert message={error} type="error" /> : null}
           <Form onSubmit={submitRegistration} className="authForm" data-testid="register-form" labelAlign="left">
           <Form.Item label="First Name"labelAlign="left" className="formName">

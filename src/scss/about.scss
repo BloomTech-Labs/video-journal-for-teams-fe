@@ -25,12 +25,14 @@ div.header{
 		}
 		z-index: 9999;
 		.title {
-			color:white;
-			width: 25%;
-			min-width: 320px;
+			width: 10%;
 			text-align: right;
 			display: flex;
 			justify-content: center;
+
+			img{
+				max-width: 100%;
+			}
 		}
 		.links {
 			width: 30%;
@@ -43,15 +45,6 @@ div.header{
 			
 			p:hover {
 				cursor: pointer;
-			}
-			Link{
-				color:white;
-			}
-			Link:visited{
-				color:white;
-			}
-			Link:hover{
-				color:#FF7F50;
 			}
 			a,
 			a:link,

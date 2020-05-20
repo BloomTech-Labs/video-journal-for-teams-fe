@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-//import AuthSider from "../components/AuthSider";
-
+import teamReel from '../imgs/TeamReel.png';
 // Redux
 import { connect } from "react-redux";
 
@@ -11,6 +10,9 @@ import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 // Components
 import { Form, Icon, Input, Button, Alert } from "antd";
+
+
+
 
 const emailLoginSchema = yup.object().shape({
   email: yup.string().email(),
@@ -62,7 +64,10 @@ const Login = ({isLogged, clearError, loginUser, error}) => {
     <>
       <div className="auth">
         <nav className="authNav">
-          <h1 className="title">TeemReel</h1>
+          <div className="title">
+            <img src={teamReel} alt="team reel logo"/>
+          </div>
+          
           <div className="authLinks">
           <Link to="/">Home</Link>
            <span>
