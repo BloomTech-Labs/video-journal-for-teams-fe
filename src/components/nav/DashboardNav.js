@@ -11,11 +11,12 @@ import {
 } from "../../redux/actions/userActions";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
+import { useLocation } from "react-router-dom";
 
-const DashboardNav = withRouter((props) => {
+const DashboardNav = (props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
-		location,
+		// location,
 		// organization_id,
 		organizations,
 		userId,
@@ -25,10 +26,11 @@ const DashboardNav = withRouter((props) => {
 		fetchUserTeams,
 		setUserSelectedOrganization,
 	} = props;
+
 	const { Sider } = Layout;
 	const { Title } = Typography;
 	const [showModal, setShowModal] = useState(false);
-	const history = useHistory();
+	const location = useLocation();
 
 	let organization_id = "";
 
@@ -82,9 +84,9 @@ const DashboardNav = withRouter((props) => {
 							<div style={{ paddingLeft: "25px", color: "white", width: "200px", textOverflow: "ellipsis" }}>
 								<BankOutlined style={{ paddingRight: "16px" }} />
 								{typeof defaultOrganization !== "undefined"
-									? selectedOrganization.name
-										? selectedOrganization.name
-										: defaultOrganization.name
+									? selectedOrganization.name.name
+										? selectedOrganization.name.name
+										: defaultOrganization.name.name
 									: "Create an Organization"}{" "}
 								<DownOutlined />
 							</div>
@@ -140,7 +142,7 @@ const DashboardNav = withRouter((props) => {
 			</Sider>
 		</>
 	);
-});
+};
 const mapStateToProps = (state) => ({
 	// organization_id: state.User.organization_id,
 	userId: state.User.userId,

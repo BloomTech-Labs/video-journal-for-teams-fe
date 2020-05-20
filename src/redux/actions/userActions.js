@@ -22,6 +22,7 @@ export const registerUser = (applicant) => (dispatch) => {
 
 // LOGIN A USER
 export const loginUser = (userCredentials) => (dispatch) => {
+	console.log(userCredentials);
 	// console.log(userCredentials);
 	// // if (userCredentials.method === "email") {
 	// const user = {
@@ -31,8 +32,6 @@ export const loginUser = (userCredentials) => (dispatch) => {
 	// 	username: userCredentials.preferred_username,
 	// 	password: userCredentials.sub,
 	// };
-	console.log("&&&&", userCredentials);
-
 	axios
 		.post("/auth/test", userCredentials)
 		.then((loginResponse) => {
@@ -92,8 +91,9 @@ export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 export const fetchUserOrganizations = (userId) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_START });
 	AxiosWithAuth()
-		.get(`/users/${userId}/organizations`)
+		.get(`/v2/users/${userId}/organizations`)
 		.then((res) => {
+			console.log(res);
 			dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
@@ -105,11 +105,12 @@ export const setUserSelectedOrganization = (organization) => (dispatch) => {
 };
 
 //create an orgainzation for after registration
-export const createUserOrganization = (organization_name, history) => (dispatch) => {
+export const createUserOrganization = (organization_name, history, uid) => (dispatch) => {
+	console.log(history);
 	dispatch({ type: constants.CREATE_USER_ORGANIZATION_START });
 	let id = "";
 	AxiosWithAuth()
-		.post(`/organizations`, organization_name)
+		.post(`/v2/organizations`, { name: organization_name, uid })
 		.then((res) => {
 			dispatch({ type: constants.CREATE_USER_ORGANIZATION_SUCCESS, payload: res.data });
 			id = res.data.id;

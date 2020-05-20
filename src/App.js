@@ -62,38 +62,33 @@ function App(props) {
 
 	return (
 		<div className="app">
-			{/* <Security
-					issuer="https://dev-292346.okta.com/oauth2/default"
-					client_id="0oacbrrfntl0SndJM4x6"
-					redirectUri={window.location.origin + "/implicit/callback"}
-					disableHttpsCheck> */}
-			<Route exact path="/implicit/callback" component={LoginCallback} />
-			{/* {props.inviteError ? <Alert message={props.inviteError} type="error" /> : null} */}
-			<Route exact path="/" component={Home} />
-			<Route exact path="/google/callback" component={GoogleRedirect} />
-			{/* <Route exact path="/login" component={Login} /> */}
+			<Switch>
+				<Route exact path="/implicit/callback" component={LoginCallback} />
+				{/* {props.inviteError ? <Alert message={props.inviteError} type="error" /> : null} */}
+				<Route exact path="/" component={Home} />
+				<Route exact path="/google/callback" component={GoogleRedirect} />
+				{/* <Route exact path="/login" component={Login} /> */}
 
-			<Route exact path="/register" component={Register} />
+				<Route exact path="/register" component={Register} />
 
-			<Route exact path="/invite/:invite" component={Invite} />
-			<SecureRoute exact path="/user-dashboard" component={UserDashboard} />
-			<Route exact path="/login" component={OktaLogin} />
+				<Route exact path="/invite/:invite" component={Invite} />
+				<SecureRoute exact path="/user-dashboard" component={UserDashboard} />
+				<Route exact path="/login" component={OktaLogin} />
 
-			<Route exact path="/videos/:id" component={VideoDetails} />
+				<Route exact path="/videos/:id" component={VideoDetails} />
 
-			<Route path="/profile" component={UserProfileDashboard} />
+				<Route path="/profile" component={UserProfileDashboard} />
 
-			<Route exact path="/teams/:team_id" component={TeamDashboard} />
+				<Route exact path="/teams/:team_id" component={TeamDashboard} />
 
-			<Route exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
+				<Route exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
 
-			<Route exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
+				<Route exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
 
-			<Route exact path="/videos" component={UserVideos} />
+				<Route exact path="/videos" component={UserVideos} />
+			</Switch>
 
 			<UploadProgress />
-			{/* </Security>
-			</Router> */}
 		</div>
 	);
 }
