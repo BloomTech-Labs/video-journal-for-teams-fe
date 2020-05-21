@@ -10,7 +10,7 @@ import { submitFeedback } from "../../redux/actions/userActions";
 import { Form, Input, Button } from "antd";
 import axios from "axios";
 import axiosWithAuth from "../utils/AxiosWithAuth";
-
+//import {StarRating, Star} from './FeedbackRating';
 // Additional Ant Design components
 const { TextArea } = Input;
 
@@ -42,6 +42,7 @@ export function FeedbackForm({ videoId, videoOwnerId, submitFeedback, isSubmitti
 			setFeedback({ post: "" });
 		}
 	};
+	
 
 	return (
 		<Form layout="vertical" onSubmit={handleSubmit}>
