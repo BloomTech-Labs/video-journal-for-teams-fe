@@ -137,6 +137,7 @@ const DashboardNav = withRouter((props) => {
 						<Icon type="folder" theme="filled" />
 						<span>Team Archive</span>
 					</Menu.Item>
+
 				</Menu>
 			</Sider>
 		</>

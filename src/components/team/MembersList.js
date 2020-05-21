@@ -22,7 +22,7 @@ function MembersList(props) {
 			<div className="dashboard-header">
 				<h2>Members ({props.teamMembers.length})</h2>
 				{userRole === 1 ? null : (
-					<Button icon="user" className="adding-button" onClick={openInviteModal}>
+					<Button style={{backgroundColor:"#6954EA"}}icon="user" className="adding-button" onClick={openInviteModal}>
 						Invite Member
 					</Button>
 				)}

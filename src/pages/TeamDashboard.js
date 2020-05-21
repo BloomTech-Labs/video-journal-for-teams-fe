@@ -124,11 +124,13 @@ function TeamDashboard(props) {
 			<NavAndHeader>
 				<div className="team-dashboard dashboard">
 					<h1>{team.name}</h1>
+					
 					<UserContext.Provider value={{ userRole }}>
 						<MembersList />
 						<PromptList teamMembersEmail={teamMembers.email} />
 					</UserContext.Provider>
 				</div>
+				<button style={{color:"#6954EA", border:"none" , fontSize:"1rem", textAlign:"left"}}>Delete Team</button>
 			</NavAndHeader>
 		);
 	}
