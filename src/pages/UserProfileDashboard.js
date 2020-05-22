@@ -3,6 +3,7 @@ import { Layout, Typography } from 'antd';
 import 'antd/dist/antd.css';
 import ProfileContent from '../components/profile/ProfileContent';
 import ProfileJumbtron from '../components/profile/ProfileJumbotron';
+import teamReel from '.././imgs/TeamReel.png';
 const { Title } = Typography;
 const { Header, Footer, Content } = Layout;
 
@@ -11,7 +12,10 @@ function EditUserDashboard() {
 		<>
 			<Layout>
 				<Header className="full-header">
-					<Title level={3} className={"userDashHeaderFont"}>Alpaca Vids</Title>
+					<div className="title">
+						<img src={teamReel} alt="team reel logo"/>
+					</div>
+					
 				</Header>
 				<ProfileJumbtron />
 				<Content className="profile-page">

@@ -11,11 +11,8 @@ import {
 } from "../../redux/actions/userActions";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
-<<<<<<< HEAD
 import logo from "../../imgs/whitelogo.png";
-=======
 import { useLocation } from "react-router-dom";
->>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
@@ -60,13 +57,8 @@ const DashboardNav = withRouter((props) => {
 	const menu = (
 		<Menu >
 			{organizations.map((item) => (
-<<<<<<< HEAD
-				<Link to="/user-dashboard">
-					<Menu.Item style={{  textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
-=======
 				<Link key={item.id} to="/user-dashboard">
 					<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
->>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 						{item.name}
 					</Menu.Item>
 				</Link>
@@ -89,13 +81,8 @@ const DashboardNav = withRouter((props) => {
 						</Link>
 					</Title>
 				</div>
-<<<<<<< HEAD
 				<Menu style={{backgroundColor:"#6954EA"}} mode="inline" className={"userDashMenu"} >
 					<Dropdown overlay={menu}>
-=======
-				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
-					<Dropdown {...children} overlay={menu}>
->>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 						<a
 							className="ant-dropdown-link"
 							onClick={(e) => e.preventDefault()}

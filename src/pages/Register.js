@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
-import AuthSider from "../components/AuthSider";
+//import AuthSider from "../components/AuthSider";
+import teamReel from '../imgs/TeamReel.png';
 
 // Redux
 import { connect } from "react-redux";
@@ -75,16 +76,27 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
 
   return (
       <>
-        <AuthSider>
-          <span>
-            Already a member? <Link to="/login" onClick={() => clearError()}>Sign in</Link>
-          </span>`
+        <div className="auth">
+          <nav className="authNav">
+            <div className="title">
+              <img src={teamReel} alt="team reel logo"/>
+            </div>
+            
+            <div className="authLinks">
+              <Link to="/">Home</Link>
+               <span>
+                  Already a member? <Link to="/login" onClick={() => clearError()}>Sign in</Link>
+                </span>
+            </div>
+           
+          </nav>
+          
           {/* Alert will show any form validation error */}
-          <div className="auth-content">
-            <h1>Create Account</h1>
+          <div className="authContent">
+            <h1 className="create">Create An Account</h1>
           {error ? <Alert message={error} type="error" /> : null}
-          <Form onSubmit={submitRegistration} className="register-form" data-testid="register-form" labelAlign="left">
-          <Form.Item label="First Name"labelAlign="left">
+          <Form onSubmit={submitRegistration} className="authForm" data-testid="register-form" labelAlign="left">
+          <Form.Item label="First Name"labelAlign="left" className="formName">
               <Input
                 type="text"
                 name="first_name"
@@ -95,7 +107,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
                 required
               />
               </Form.Item>
-              <Form.Item label="Last Name">
+              <Form.Item label="Last Name" className="formName">
                 <Input
                   type="text"
                   name="last_name"
@@ -106,7 +118,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
                   required
                 />
               </Form.Item>
-            <Form.Item label="Email">
+            <Form.Item label="Email" className="formEmail">
               <Input
                 type="text"
                 name="email"
@@ -117,7 +129,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
                 required
               />
             </Form.Item>
-            <Form.Item label="Username">
+            <Form.Item label="Username" className="formUsername">
               <Input
                 type="text"
                 name="username"
@@ -128,7 +140,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
                 required
               />
             </Form.Item>
-            <Form.Item label="Password">
+            <Form.Item label="Password" className="formPassword">
               <Input
                 type="password"
                 name="password"
@@ -139,7 +151,7 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
                 required
               />
             </Form.Item>
-            <Form.Item label="Confirm Password">
+            <Form.Item label="Confirm Password" className="formPassword">
               <Input
                 type="password"
                 name="confirm_password"
@@ -151,13 +163,16 @@ const Register = ({isLogged, clearError, registerUser, setError, error, invited_
               />
             </Form.Item>
             <Form.Item>
-            <Button type="primary" htmlType="submit" className="register-form-button">
+              <div className="buttons">
+                <Button type="primary" htmlType="submit" className="formButton">
                 Register
               </Button>
+              </div>
+            
             </Form.Item>
           </Form>
           </div>
-        </AuthSider>
+        </div>
       </>
   );
 };

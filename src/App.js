@@ -16,6 +16,7 @@ import TeamDashboard from "./pages/TeamDashboard";
 import VideoDetails from "./pages/VideoDetails";
 import Invite from "./pages/Invite";
 import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
 import OrganizationTeams from "./pages/OrganizationTeams";
 import OrganizationUsers from "./pages/OrganizationUsers";
 import OktaLogin from "./components/okta/OktaLogin";
@@ -65,6 +66,10 @@ function App(props) {
 			<Route exact path="/implicit/callback" component={LoginCallback} />
 			{/* {props.inviteError ? <Alert message={props.inviteError} type="error" /> : null} */}
 			<Route exact path="/" component={Home} />
+
+			<Route path="/about" component={AboutUs} />
+
+			<Route exact path="/login" component={Login} />
 			<Route exact path="/google/callback" component={GoogleRedirect} />
 			{/* <Route exact path="/login" component={Login} /> */}
 

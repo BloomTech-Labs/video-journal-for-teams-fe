@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { updateUserData, getUserData } from '../../redux/actions/userActions';
 import UpdateProfile from "./UpdateProfile";
-import ChangePassword from "./ChangePassword";
+//import ChangePassword from "./ChangePassword";
 import 'antd/dist/antd.css';
-import { Collapse, Alert, Badge } from 'antd';
+import { Collapse, Alert } from 'antd';
 
 
 const { Panel } = Collapse;
@@ -60,13 +60,13 @@ function ProfileForm(props) {
 							isUpdatingUserData={props.isUpdatingUserData}
 							onCancel={onCancel} />
 					</Panel>
-					<Panel header="Change your password" key="2" style={{ textAlign: "left" }}>
+					{/* <Panel header="Change your password" key="2" style={{ textAlign: "left" }}>
 						{formError ? <Alert message={formError} type="error" /> : null}
-						<ChangePassword
+						{/* <ChangePassword
 							handleSubmit={handleSubmit}
 							isUpdatingUserData={props.isUpdatingUserData}
-							onCancel={onCancel} />
-					</Panel>
+							onCancel={onCancel} /> */}
+					{/* </Panel>  */}
 				</Collapse>
 			</div>
 		</div>

@@ -1,23 +1,30 @@
 .full-header {
-	text-align    : left;
-	padding-top   : 10px;
-	padding-bottom: 10px;
+	text-align: left;
+	height: 80px;
+	padding: 20px;
+	background-color: #6954EA;
+	color: white;
 
-	.userDashHeaderFont {
-		color      : $alpaca-green;
-		font-family: Pacifico;
-		font-style : normal;
-		font-weight: normal;
-		font-size  : 36px;
-		line-height: 36px;
+
+	.title {
+		width: 10%;
+		text-align: right;
+		display: flex;
+		justify-content: center;
+
+		img{
+			max-width: 100%;
+			margin-left: 100px;
+		}
 	}
+
 }
 
 
 .jumbotron {
 	height          : 185px;
-	background-color: $pale-yellow;
-	text-align      : right;
+	background-color:#F5F5F5;
+	text-align      : left;
 
 	.breadcrumb {
 		font-size      : $md-text-size;
@@ -47,17 +54,17 @@
 	height          : 100%;
 
 	.outlined-btn {
-		@include outlined-button($alpaca-green);
+		@include outlined-button(#6954EA);
 		color: $black;
 	}
 
 	.full-btn {
-		@include button($alpaca-green);
+		@include button(#6954EA);
 		color: $black;
 	}
 
 	label {
-		color    : $alpaca-blue;
+		color: #FF7F50;
 		font-size: 16px;
 	}
 
@@ -90,7 +97,7 @@
 
 	img {
 		border-radius: 50%;
-		border       : 3px solid #fff;
+		border       : 3px solid #FF7F50;
 	}
 }
 

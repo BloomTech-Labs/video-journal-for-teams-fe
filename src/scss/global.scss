@@ -13,17 +13,20 @@ code {
 		monospace;
 }
 
-.app {
-	display         : flex;
-	height          : 100%;
-	width           : 100%;
-	text-align      : center;
-	background-color: $pale-yellow;
-	min-height      : 500px;
+.app{
+	background-color:#F5F5F5;
 }
+// .app {
+// 	display         : flex;
+// 	height          : 100%;
+// 	width           : 100%;
+// 	text-align      : center;
+// 	background-color: #F5F5F5;
+// 	min-height      : 500px;
+// }
 
 #root {
-	background-color: $pale-yellow;
+	background-color: #F5F5F5;
 	height          : 100%;
 }
 
@@ -43,9 +46,11 @@ h1 {
 .container {
 	max-width: 1000px;
 	width    : 100%;
+	height: 250px;
 	margin   : auto;
 	padding  : 0 20px;
 	position : relative;
+
 }
 
 .card-flex {

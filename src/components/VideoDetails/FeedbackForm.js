@@ -42,11 +42,14 @@ export function FeedbackForm({ videoId, videoOwnerId, submitFeedback, isSubmitti
 			setFeedback({ post: "" });
 		}
 	};
+	
 
 	return (
+		
 		<Form layout="vertical" onSubmit={handleSubmit}>
 			<Form.Item label="Feedback">
 				<TextArea name="post" rows={4} value={feedback.post} onChange={handleInput}></TextArea>
+				
 			</Form.Item>
 			<Form.Item>
 				<Button
@@ -58,6 +61,7 @@ export function FeedbackForm({ videoId, videoOwnerId, submitFeedback, isSubmitti
 					Submit Feedback
 				</Button>
 			</Form.Item>
+			
 		</Form>
 	);
 }
