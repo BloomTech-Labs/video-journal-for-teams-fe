@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import TeamCard from "./UserTeamsCard";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import { fetchUserTeams } from "../../redux/actions/userActions";
@@ -21,6 +21,8 @@ const TeamList = ({
 	const [teamData, setTeamData] = useState({ name: "", description: "", team_type: "private" });
 	const [showModal, setShowModal] = useState(false);
 	let history = useHistory();
+	// const uid = useSelector((state) => state);
+
 	let organization_id = "";
 
 	if (typeof selectedOrganization === "undefined" || typeof defaultOrganization === "undefined") {
@@ -48,7 +50,7 @@ const TeamList = ({
 	};
 
 	const handleOk = () => {
-		createTeam(teamData, history);
+		createTeam(teamData, history, id);
 		toggleModal();
 	};
 

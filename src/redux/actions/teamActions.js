@@ -1,10 +1,10 @@
 import constants from "../constants";
 import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 
-export const createTeam = (newTeam, history) => (dispatch) => {
+export const createTeam = (newTeam, history, id) => (dispatch) => {
 	dispatch({ type: constants.CREATE_TEAM_START });
 	AxiosWithAuth()
-		.post("/teams/", newTeam)
+		.post("/v2/teams/", { team: newTeam, id })
 		.then((res) => {
 			dispatch({ type: constants.CREATE_TEAM_SUCCESS, payload: res.data });
 			history.push("/user-dashboard");
@@ -15,7 +15,7 @@ export const createTeam = (newTeam, history) => (dispatch) => {
 export const fetchTeamById = (team_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_TEAM_BY_ID_START });
 	AxiosWithAuth()
-		.get(`/teams/${team_id}`)
+		.get(`/v2/teams/${team_id}`)
 		.then((teamResponse) => {
 			dispatch({ type: constants.FETCH_TEAM_BY_ID_SUCCESS, payload: teamResponse.data });
 		})
@@ -25,7 +25,7 @@ export const fetchTeamById = (team_id) => (dispatch) => {
 export const fetchTeamMembers = (team_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_TEAM_MEMBERS_START });
 	AxiosWithAuth()
-		.get(`/teams/${team_id}/users`)
+		.get(`/v2/teams/${team_id}/users`)
 		.then((teamMembersResponse) => {
 			dispatch({ type: constants.FETCH_TEAM_MEMBERS_SUCCESS, payload: teamMembersResponse.data });
 		})
@@ -45,7 +45,7 @@ export const fetchTeamPrompts = (team_id) => (dispatch) => {
 export const fetchTeamVideos = (team_id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_START });
 	AxiosWithAuth()
-		.get(`/teams/${team_id}/videos`)
+		.get(`/v2/teams/${team_id}/videos`)
 		.then((teamVideosResponse) => {
 			dispatch({ type: constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_SUCCESS, payload: teamVideosResponse.data });
 		})
@@ -65,7 +65,8 @@ export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
-export const createInvite = (team_id, team_name, org_id) => (dispatch) => {
+export const createInvite = (team_id, team_name, org_id, user_id) => (dispatch) => {
+	console.log(user_id, "&&&*&***");
 	dispatch({ type: constants.POST_INVITE_LINK_START });
 
 	const objj = {
@@ -75,7 +76,7 @@ export const createInvite = (team_id, team_name, org_id) => (dispatch) => {
 	};
 
 	AxiosWithAuth()
-		.post(`teams/${team_id}/invite`, objj)
+		.post(`/v2/teams/${team_id}/invite/${user_id}`, objj)
 		.then((inviteResponse) => {
 			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data.link });
 		})

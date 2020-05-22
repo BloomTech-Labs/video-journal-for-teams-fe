@@ -11,11 +11,12 @@ import {
 } from "../../redux/actions/userActions";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
+import { useLocation } from "react-router-dom";
 
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
-		location,
+		// location,
 		// organization_id,
 		organizations,
 		userId,
@@ -24,11 +25,14 @@ const DashboardNav = withRouter((props) => {
 		selectedOrganization,
 		fetchUserTeams,
 		setUserSelectedOrganization,
+		children,
 	} = props;
+
 	const { Sider } = Layout;
 	const { Title } = Typography;
 	const [showModal, setShowModal] = useState(false);
-	const history = useHistory();
+	const location = useLocation();
+	console.log(children, "nav");
 
 	let organization_id = "";
 
@@ -52,7 +56,7 @@ const DashboardNav = withRouter((props) => {
 	const menu = (
 		<Menu theme="dark">
 			{organizations.map((item) => (
-				<Link to="/user-dashboard">
+				<Link key={item.id} to="/user-dashboard">
 					<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
 						{item.name}
 					</Menu.Item>
@@ -63,6 +67,9 @@ const DashboardNav = withRouter((props) => {
 			</Menu.Item>
 		</Menu>
 	);
+	{
+		console.log(menu);
+	}
 	return (
 		<>
 			<Sider breakpoint="lg" collapsedWidth="0" width="240">
@@ -74,18 +81,18 @@ const DashboardNav = withRouter((props) => {
 					</Title>
 				</div>
 				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
-					<Dropdown overlay={menu}>
+					<Dropdown {...children} overlay={menu}>
 						<a
 							className="ant-dropdown-link"
 							onClick={(e) => e.preventDefault()}
 							style={{ display: "block", width: "500" }}>
 							<div style={{ paddingLeft: "25px", color: "white", width: "200px", textOverflow: "ellipsis" }}>
 								<BankOutlined style={{ paddingRight: "16px" }} />
-								{typeof defaultOrganization !== "undefined"
+								{selectedOrganization.hasOwnProperty("name")
 									? selectedOrganization.name
-										? selectedOrganization.name
-										: defaultOrganization.name
-									: "Create an Organization"}{" "}
+									: defaultOrganization
+									? defaultOrganization.name
+									: ""}
 								<DownOutlined />
 							</div>
 						</a>
