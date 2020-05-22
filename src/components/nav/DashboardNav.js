@@ -11,12 +11,16 @@ import {
 } from "../../redux/actions/userActions";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
+<<<<<<< HEAD
 import logo from "../../imgs/whitelogo.png";
+=======
+import { useLocation } from "react-router-dom";
+>>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
-		location,
+		// location,
 		// organization_id,
 		organizations,
 		userId,
@@ -25,11 +29,14 @@ const DashboardNav = withRouter((props) => {
 		selectedOrganization,
 		fetchUserTeams,
 		setUserSelectedOrganization,
+		children,
 	} = props;
+
 	const { Sider } = Layout;
 	const { Title } = Typography;
 	const [showModal, setShowModal] = useState(false);
-	const history = useHistory();
+	const location = useLocation();
+	console.log(children, "nav");
 
 	let organization_id = "";
 
@@ -53,8 +60,13 @@ const DashboardNav = withRouter((props) => {
 	const menu = (
 		<Menu >
 			{organizations.map((item) => (
+<<<<<<< HEAD
 				<Link to="/user-dashboard">
 					<Menu.Item style={{  textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
+=======
+				<Link key={item.id} to="/user-dashboard">
+					<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
+>>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 						{item.name}
 					</Menu.Item>
 				</Link>
@@ -64,6 +76,9 @@ const DashboardNav = withRouter((props) => {
 			</Menu.Item>
 		</Menu>
 	);
+	{
+		console.log(menu);
+	}
 	return (
 		<>
 			<Sider breakpoint="lg" collapsedWidth="0" width="240" style={{backgroundColor:"#6954EA"}}>
@@ -74,19 +89,24 @@ const DashboardNav = withRouter((props) => {
 						</Link>
 					</Title>
 				</div>
+<<<<<<< HEAD
 				<Menu style={{backgroundColor:"#6954EA"}} mode="inline" className={"userDashMenu"} >
 					<Dropdown overlay={menu}>
+=======
+				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
+					<Dropdown {...children} overlay={menu}>
+>>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 						<a
 							className="ant-dropdown-link"
 							onClick={(e) => e.preventDefault()}
 							style={{ display: "block", width: "500" }}>
 							<div style={{ paddingLeft: "25px", color: "white", width: "200px", textOverflow: "ellipsis" }}>
 								<BankOutlined style={{ paddingRight: "16px" }} />
-								{typeof defaultOrganization !== "undefined"
+								{selectedOrganization.hasOwnProperty("name")
 									? selectedOrganization.name
-										? selectedOrganization.name
-										: defaultOrganization.name
-									: "Create an Organization"}{" "}
+									: defaultOrganization
+									? defaultOrganization.name
+									: ""}
 								<DownOutlined />
 							</div>
 						</a>
