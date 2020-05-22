@@ -12,9 +12,11 @@ import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
 //socket
 import { socket } from "../socket/socket";
+import Axios from "axios";
 //test
 
 function TeamDashboard(props) {
+
 	const {
 		team,
 		hello,
@@ -34,6 +36,14 @@ function TeamDashboard(props) {
 	const history = useHistory();
 	let redirectTimer = null;
 	let countTimer = null;
+
+
+	function iDelete(){
+		Axios.delete('')
+		.then()
+		.catch()
+	}
+
 
 	useEffect(() => {
 		clearError();
@@ -130,7 +140,8 @@ function TeamDashboard(props) {
 						<PromptList teamMembersEmail={teamMembers.email} />
 					</UserContext.Provider>
 				</div>
-				<button style={{color:"#6954EA", border:"none" , fontSize:"1rem", textAlign:"left"}}>Delete Team</button>
+				{userRole === 2 && <button onClick={iDelete} style={{color:"red", border:"none" , fontSize:"1rem", textAlign:"left"}}>Delete Team</button> }
+				
 			</NavAndHeader>
 		);
 	}
