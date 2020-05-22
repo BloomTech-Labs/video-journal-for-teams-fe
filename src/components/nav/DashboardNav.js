@@ -13,7 +13,7 @@ import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
 import { useLocation } from "react-router-dom";
 
-const DashboardNav = (props) => {
+const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
 		// location,
@@ -25,13 +25,14 @@ const DashboardNav = (props) => {
 		selectedOrganization,
 		fetchUserTeams,
 		setUserSelectedOrganization,
+		children,
 	} = props;
 
 	const { Sider } = Layout;
 	const { Title } = Typography;
 	const [showModal, setShowModal] = useState(false);
 	const location = useLocation();
-	console.log(props);
+	console.log(children, "nav");
 
 	let organization_id = "";
 
@@ -55,7 +56,7 @@ const DashboardNav = (props) => {
 	const menu = (
 		<Menu theme="dark">
 			{organizations.map((item) => (
-				<Link to="/user-dashboard">
+				<Link key={item.id} to="/user-dashboard">
 					<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
 						{item.name}
 					</Menu.Item>
@@ -66,82 +67,87 @@ const DashboardNav = (props) => {
 			</Menu.Item>
 		</Menu>
 	);
+	{
+		console.log(menu);
+	}
 	return (
-		<Sider breakpoint="lg" collapsedWidth="0" width="240">
-			<div className={"userDashHeader"}>
-				<Title level={3}>
-					<Link to="/user-dashboard" className={"userDashHeaderFont"} style={{ marginTop: "12px" }}>
-						Alpaca&nbsp;Vids
-					</Link>
-				</Title>
-			</div>
-			<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
-				<Dropdown overlay={menu}>
-					<a
-						className="ant-dropdown-link"
-						onClick={(e) => e.preventDefault()}
-						style={{ display: "block", width: "500" }}>
-						<div style={{ paddingLeft: "25px", color: "white", width: "200px", textOverflow: "ellipsis" }}>
-							<BankOutlined style={{ paddingRight: "16px" }} />
-							{selectedOrganization.hasOwnProperty("name")
-								? selectedOrganization.name
-								: defaultOrganization
-								? defaultOrganization.name
-								: ""}
-							<DownOutlined />
-						</div>
-					</a>
-				</Dropdown>
-				<hr style={{ margin: "25px 0" }} />
-				<Menu.Item key="/user-dashboard">
-					<Link to="/user-dashboard" style={{ color: "#fff", display: "block" }}>
-						<Icon type="home" theme="filled" /> Dashboard
-					</Link>
-				</Menu.Item>
-				<Menu.Item key="/profile">
-					<Link to="/profile" style={{ color: "#fff", display: "block" }}>
-						<Icon type="user" /> My Profile
-					</Link>
-				</Menu.Item>
-				<Menu.Item key="/videos">
-					<Link to="/videos" style={{ color: "#fff", display: "block" }}>
-						<Icon type="play-circle" theme="filled" /> My Videos
-					</Link>
-				</Menu.Item>
-
-				{filteredOrg.length > 0 && filteredOrg[0].role_id === 3 ? (
-					<Menu.Item key="/teams">
-						<Link to={`/organizations/${organization_id}/teams`} style={{ color: "#fff", display: "block" }}>
-							<Icon type="calendar" theme="filled" /> All Teams
+		<>
+			<Sider breakpoint="lg" collapsedWidth="0" width="240">
+				<div className={"userDashHeader"}>
+					<Title level={3}>
+						<Link to="/user-dashboard" className={"userDashHeaderFont"} style={{ marginTop: "12px" }}>
+							Alpaca&nbsp;Vids
+						</Link>
+					</Title>
+				</div>
+				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
+					<Dropdown {...children} overlay={menu}>
+						<a
+							className="ant-dropdown-link"
+							onClick={(e) => e.preventDefault()}
+							style={{ display: "block", width: "500" }}>
+							<div style={{ paddingLeft: "25px", color: "white", width: "200px", textOverflow: "ellipsis" }}>
+								<BankOutlined style={{ paddingRight: "16px" }} />
+								{selectedOrganization.hasOwnProperty("name")
+									? selectedOrganization.name
+									: defaultOrganization
+									? defaultOrganization.name
+									: ""}
+								<DownOutlined />
+							</div>
+						</a>
+					</Dropdown>
+					<hr style={{ margin: "25px 0" }} />
+					<Menu.Item key="/user-dashboard">
+						<Link to="/user-dashboard" style={{ color: "#fff", display: "block" }}>
+							<Icon type="home" theme="filled" /> Dashboard
 						</Link>
 					</Menu.Item>
-				) : null}
-
-				{filteredOrg.length > 0 && filteredOrg[0].role_id === 3 ? (
-					<Menu.Item key="/users">
-						<Link to={`/organizations/${organization_id}/users`} style={{ color: "#fff", display: "block" }}>
-							<Icon type="calendar" theme="filled" /> All Users
+					<Menu.Item key="/profile">
+						<Link to="/profile" style={{ color: "#fff", display: "block" }}>
+							<Icon type="user" /> My Profile
 						</Link>
 					</Menu.Item>
-				) : null}
-				<Menu.Item key="/setting" disabled>
-					<Icon type="setting" theme="filled" />
-					Teams Settings
-				</Menu.Item>
-				<hr style={{ margin: "40px 0" }} />
-				<h3 style={{ color: "white", paddingLeft: "24px", paddingBottom: "20px" }}>Team Controls</h3>
-				<Menu.Item key="/manage-teams" disabled>
-					<Icon type="calendar" theme="filled" />
-					<span>Manage Teams</span>
-				</Menu.Item>
-				<Menu.Item key="/team-archive" disabled>
-					<Icon type="folder" theme="filled" />
-					<span>Team Archive</span>
-				</Menu.Item>
-			</Menu>
-		</Sider>
+					<Menu.Item key="/videos">
+						<Link to="/videos" style={{ color: "#fff", display: "block" }}>
+							<Icon type="play-circle" theme="filled" /> My Videos
+						</Link>
+					</Menu.Item>
+
+					{filteredOrg.length > 0 && filteredOrg[0].role_id === 3 ? (
+						<Menu.Item key="/teams">
+							<Link to={`/organizations/${organization_id}/teams`} style={{ color: "#fff", display: "block" }}>
+								<Icon type="calendar" theme="filled" /> All Teams
+							</Link>
+						</Menu.Item>
+					) : null}
+
+					{filteredOrg.length > 0 && filteredOrg[0].role_id === 3 ? (
+						<Menu.Item key="/users">
+							<Link to={`/organizations/${organization_id}/users`} style={{ color: "#fff", display: "block" }}>
+								<Icon type="calendar" theme="filled" /> All Users
+							</Link>
+						</Menu.Item>
+					) : null}
+					<Menu.Item key="/setting" disabled>
+						<Icon type="setting" theme="filled" />
+						Teams Settings
+					</Menu.Item>
+					<hr style={{ margin: "40px 0" }} />
+					<h3 style={{ color: "white", paddingLeft: "24px", paddingBottom: "20px" }}>Team Controls</h3>
+					<Menu.Item key="/manage-teams" disabled>
+						<Icon type="calendar" theme="filled" />
+						<span>Manage Teams</span>
+					</Menu.Item>
+					<Menu.Item key="/team-archive" disabled>
+						<Icon type="folder" theme="filled" />
+						<span>Team Archive</span>
+					</Menu.Item>
+				</Menu>
+			</Sider>
+		</>
 	);
-};
+});
 const mapStateToProps = (state) => ({
 	// organization_id: state.User.organization_id,
 	userId: state.User.userId,

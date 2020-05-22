@@ -21,9 +21,8 @@ const TeamList = ({
 	const [teamData, setTeamData] = useState({ name: "", description: "", team_type: "private" });
 	const [showModal, setShowModal] = useState(false);
 	let history = useHistory();
-	const uid = useSelector((state) => state);
+	// const uid = useSelector((state) => state);
 
-	console.log(uid, id);
 	let organization_id = "";
 
 	if (typeof selectedOrganization === "undefined" || typeof defaultOrganization === "undefined") {

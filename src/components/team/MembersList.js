@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../utils/UserContext";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { createInvite } from "../../redux/actions/teamActions";
 import { Button } from "antd";
 import "./teamTest.css";
@@ -11,9 +11,11 @@ import Carousel from "../shared/Carousel";
 function MembersList(props) {
 	const [showModal, setShowModal] = useState(false);
 	const { userRole } = useContext(UserContext);
+	const uid = useSelector((state) => state.User.userId);
+	console.log(uid, "user id");
 
 	const openInviteModal = () => {
-		props.createInvite(props.team.id, props.team.name, props.team.organization_id);
+		props.createInvite(props.team.id, props.team.name, props.team.organization_id, uid);
 		setShowModal(true);
 	};
 

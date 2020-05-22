@@ -358,7 +358,7 @@ export const updateUProfilePicture = (id, photo) => (dispatch) => {
 
 	dispatch({ type: constants.UPDATE_PROFILE_PICTURE_START });
 	AxiosWithAuth()
-		.post(`/users/${id}/photo`, photo, config)
+		.post(`/v2/users/${id}/photo`, photo, config)
 		.then((res) => {
 			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_PROGRESS, payload: 100 });
 			dispatch({ type: constants.UPDATE_PROFILE_PICTURE_SUCCESS, payload: res.data.avatar });
@@ -385,7 +385,7 @@ export const getUserData = (id) => (dispatch) => {
 	dispatch({ type: constants.FETCH_USER_DATA_START });
 
 	AxiosWithAuth()
-		.get(`/users/${id}`)
+		.get(`/v2/users/${id}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_USER_DATA_SUCCESS, payload: res.data });
 		})

@@ -10,14 +10,18 @@ import Organization from "../components/organization/Organization";
 import { fetchUserVideos, loginUser } from "../redux/actions/userActions";
 import { clearError } from "../redux/actions/teamActions";
 import { useOktaAuth } from "@okta/okta-react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function UserDashboard(props) {
+	console.log("this is props", props);
 	const { authService, authState } = useOktaAuth();
 	console.log(authService);
 	const dispatch = useDispatch();
 	const history = useHistory();
+	// const role_id = useSelector((state) => state.Team.teamMembers.find((elem) => state.User.email == elem.email).role_id);
+
+	// console.log("role", role_id);
 
 	const { id, fetchUserVideos, videos, clearError, organizations, defaultOrganization, selectedOrganization } = props;
 
@@ -30,7 +34,6 @@ function UserDashboard(props) {
 	}
 
 	useEffect(() => {
-		console.log("use effect fired");
 		authState.isAuthenticated
 			? authService.getUser().then((user) => {
 					const creds = {
