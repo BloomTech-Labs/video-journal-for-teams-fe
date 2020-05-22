@@ -38,6 +38,7 @@ function UserDashboard(props) {
 						<div className="dashboard-header">
 							<h2>My&nbsp;Videos</h2>
 						</div>
+						
 						<Carousel component={UserVideosCard} data={videos} name={"videos"} />{" "}
 					</>
 				) : (
