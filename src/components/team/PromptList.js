@@ -25,6 +25,7 @@ const PromptList = ({ createPrompt, teamPromptsAndVideos, teamId, fetchTeamVideo
 					<Button
 						icon="plus"
 						className="adding-button"
+						style={{backgroundColor:"#6954EA"}}
 						onClick={() => setShowModal(true)}>
 						Add Prompt
 					</Button>

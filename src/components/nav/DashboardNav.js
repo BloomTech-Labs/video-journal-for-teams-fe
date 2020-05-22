@@ -11,7 +11,11 @@ import {
 } from "../../redux/actions/userActions";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
+<<<<<<< HEAD
+import logo from "../../imgs/whitelogo.png";
+=======
 import { useLocation } from "react-router-dom";
+>>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
@@ -54,10 +58,15 @@ const DashboardNav = withRouter((props) => {
 	let filteredOrg = organizations.filter((x) => x.id === organization_id);
 
 	const menu = (
-		<Menu theme="dark">
+		<Menu >
 			{organizations.map((item) => (
+<<<<<<< HEAD
+				<Link to="/user-dashboard">
+					<Menu.Item style={{  textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
+=======
 				<Link key={item.id} to="/user-dashboard">
 					<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
+>>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 						{item.name}
 					</Menu.Item>
 				</Link>
@@ -72,16 +81,21 @@ const DashboardNav = withRouter((props) => {
 	}
 	return (
 		<>
-			<Sider breakpoint="lg" collapsedWidth="0" width="240">
-				<div className={"userDashHeader"}>
+			<Sider breakpoint="lg" collapsedWidth="0" width="240" style={{backgroundColor:"#6954EA"}}>
+				<div className={"userDashHeader"} style={{backgroundColor:"#6954EA"}}>
 					<Title level={3}>
-						<Link to="/user-dashboard" className={"userDashHeaderFont"} style={{ marginTop: "12px" }}>
-							Alpaca&nbsp;Vids
+						<Link to="/user-dashboard" className={"userDashHeaderFont"} style={{ color:"whitesmoke",marginTop: "12px" }}>
+							<img src={logo}/>
 						</Link>
 					</Title>
 				</div>
+<<<<<<< HEAD
+				<Menu style={{backgroundColor:"#6954EA"}} mode="inline" className={"userDashMenu"} >
+					<Dropdown overlay={menu}>
+=======
 				<Menu theme="dark" mode="inline" className={"userDashMenu"} selectedKeys={[location.pathname]}>
 					<Dropdown {...children} overlay={menu}>
+>>>>>>> 32d688f76ab5863f779878a6e2f3257e30c7396f
 						<a
 							className="ant-dropdown-link"
 							onClick={(e) => e.preventDefault()}
@@ -99,7 +113,7 @@ const DashboardNav = withRouter((props) => {
 					</Dropdown>
 					<hr style={{ margin: "25px 0" }} />
 					<Menu.Item key="/user-dashboard">
-						<Link to="/user-dashboard" style={{ color: "#fff", display: "block" }}>
+						<Link to="/user-dashboard" style={{ backgroundColor:"#6954EA", color: "#fff", display: "block" }}>
 							<Icon type="home" theme="filled" /> Dashboard
 						</Link>
 					</Menu.Item>
@@ -143,6 +157,7 @@ const DashboardNav = withRouter((props) => {
 						<Icon type="folder" theme="filled" />
 						<span>Team Archive</span>
 					</Menu.Item>
+
 				</Menu>
 			</Sider>
 		</>

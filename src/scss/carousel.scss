@@ -1,7 +1,7 @@
 .carousel {
 	display: flex;
-	//align-items: center;
-	position: relative;
+	align-items: center;
+	justify-content: center;
 	.carouselItems {
 		display: flex;
 		//flex-grow: 1;
