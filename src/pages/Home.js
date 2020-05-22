@@ -1,12 +1,21 @@
-import React from "react";
-import { Button } from "antd";
-import { useHistory, Link } from "react-router-dom";
-import blob1 from '../imgs/Ellipse70.png';
+
 import reel from '../imgs/image.png';
 import teamReel from '../imgs/TeamReel.png';
+import React, { useState, useEffect } from "react";
+import { Button, Card, Tag, Divider } from "antd";
+import { useHistory, Link } from "react-router-dom";
+import { useOktaAuth } from "@okta/okta-react";
+import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 const Home = () => {
 	let history = useHistory();
+	const { authService, authState } = useOktaAuth();
+	console.log(authService);
+
+	useEffect(() => {
+		authState.isAuthenticated && history.push("/user-dashboard");
+	}, [authState]);
+
 	return (
 		<div>
 		<header className="home">
@@ -98,4 +107,4 @@ const Home = () => {
 	)
 }
 
-export default Home; 
+export default Home;
