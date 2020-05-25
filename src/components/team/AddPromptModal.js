@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Modal, Form, Input } from "antd";
+import { useSelector } from "react-redux";
 
 import axiosWithAuth from "../utils/AxiosWithAuth";
 
 const AddPromptModal = (props) => {
 	const [prompt, setPrompt] = useState({ question: "", description: "" });
+	const uid = useSelector((state) => state.User.userId);
 
 	const handleInput = (e) => {
 		setPrompt({ ...prompt, [e.target.name]: e.target.value });
@@ -15,7 +17,7 @@ const AddPromptModal = (props) => {
 
 		props.form.validateFields((err, values) => {
 			if (!err) {
-				props.createPrompt(prompt, props.teamId);
+				props.createPrompt(prompt, props.teamId, uid);
 
 				props.setVisibility(false);
 			}

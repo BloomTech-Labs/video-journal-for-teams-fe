@@ -1,23 +1,20 @@
-import React from 'react';
-import { FaStar } from 'react-icons/fa';
+import React, { useState } from "react";
+import { FaStar } from "react-icons/fa";
 
-
- const starRating = () => {
-     return(
-        <div>
-        return (
-         <label >
-            <input
-             type="radio"
-             name="rating"
-            />
-            <FaStar className="star" size={100}/>
-             
-         </label>
-     )   
-    </div>
-     )
-    
-}
+const starRating = () => {
+	// const [rating, setRating] = useState(null);
+	return (
+		<div>
+			{[...Array(5)].map((star) => {
+				return (
+					<>
+						<input type="radio" name="rating"></input>
+						<FaStar className="star" size={50} />
+					</>
+				);
+			})}
+		</div>
+	);
+};
 
 export default starRating;
