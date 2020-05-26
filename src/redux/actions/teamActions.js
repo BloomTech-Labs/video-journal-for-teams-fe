@@ -66,7 +66,6 @@ export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
 };
 
 export const createInvite = (team_id, team_name, org_id, user_id) => (dispatch) => {
-	console.log(user_id, "&&&*&***");
 	dispatch({ type: constants.POST_INVITE_LINK_START });
 
 	const objj = {
@@ -78,15 +77,16 @@ export const createInvite = (team_id, team_name, org_id, user_id) => (dispatch) 
 	AxiosWithAuth()
 		.post(`/v2/teams/${team_id}/invite/${user_id}`, objj)
 		.then((inviteResponse) => {
+			console.log("invite response", inviteResponse);
 			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data.link });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
-export const createPrompt = (prompt, team_id) => (dispatch) => {
+export const createPrompt = (prompt, team_id, user_id) => (dispatch) => {
 	dispatch({ type: constants.POST_TEAM_PROMPT_START });
 	AxiosWithAuth()
-		.post(`teams/${team_id}/prompts`, prompt)
+		.post(`/v2/teams/${team_id}/prompts/${user_id}`, prompt)
 		.then((promptResponse) => {
 			dispatch({ type: constants.POST_TEAM_PROMPT_SUCCESS, payload: promptResponse.data });
 		})

@@ -33,7 +33,6 @@ const LoginForm = () => {
 		oktaAuth
 			.signIn({ username, password })
 			.then((res) => {
-				console.log(res);
 				// dispatch(loginUser(res.user.profile.login));
 				console.log(authService);
 				// Axios.post(`https://dev-292346.okta.com/api/v1/authn/recovery/password`, {
