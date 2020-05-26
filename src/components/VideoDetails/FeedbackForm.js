@@ -49,7 +49,7 @@ export function FeedbackForm({ videoId, videoOwnerId, submitFeedback, isSubmitti
 	return (
 		<Form layout="vertical" onSubmit={handleSubmit}>
 			<Form.Item>
-				{[...Array(5)].map((star, i) => {
+				{[...Array(5)].map((_, i) => {
 					const ratingValue = ++i;
 					return (
 						<label>

@@ -73,7 +73,6 @@ export const createInvite = (team_id, team_name, org_id, user_id) => (dispatch) 
 		team_name: team_name,
 		org_id: org_id,
 	};
-	console.log("objj", objj);
 
 	AxiosWithAuth()
 		.post(`/v2/teams/${team_id}/invite/${user_id}`, objj)
