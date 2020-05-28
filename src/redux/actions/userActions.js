@@ -25,7 +25,6 @@ export const loginUser = (userCredentials) => (dispatch) => {
 	axios
 		.post("/auth/test", userCredentials)
 		.then((loginResponse) => {
-			console.log(loginResponse, "$$$$");
 			dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 		})
 		.catch((err) => {
@@ -61,26 +60,22 @@ export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 // FETCH USER ORGANIZATOINS
 
 export const fetchUserOrganizations = (userId) => (dispatch) => {
-	console.log("dispatched");
 	dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_START });
 	AxiosWithAuth()
 		.get(`/v2/users/${userId}/organizations`)
 		.then((res) => {
-			console.log(res);
 			dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
 export const setUserSelectedOrganization = (organization) => (dispatch) => {
-	console.log("selected organization");
 	dispatch({ type: constants.SET_USER_SELECTED_ORGANIZATION_START });
 	dispatch({ type: constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS, payload: organization });
 };
 
 //create an orgainzation for after registration
 export const createUserOrganization = (organization_name, history, uid) => (dispatch) => {
-	console.log(history);
 	dispatch({ type: constants.CREATE_USER_ORGANIZATION_START });
 	let id = "";
 	AxiosWithAuth()
@@ -108,7 +103,6 @@ export const createUserOrganization = (organization_name, history, uid) => (disp
 
 // FETCH VIDEOS FOR USER
 export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
-	console.log("dispatched");
 	dispatch({ type: constants.FETCH_USER_VIDEOS_START });
 	AxiosWithAuth()
 		.get(`/v2/users/${userId}/videos/${organization_id}`)

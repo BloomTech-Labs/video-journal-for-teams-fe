@@ -65,7 +65,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				isLogged: true,
 			};
 		case constants.LOGIN_USER:
-			console.log("reducer fired");
 			//Store login token in browser localStorage
 			localStorage.setItem("token", payload.token);
 			return {
@@ -468,6 +467,11 @@ const userReducer = (state = initialState, { type, payload }) => {
 				...state,
 				error: null,
 				isFetching: false,
+			};
+		case constants.FETCH_UPDATED_TEAM:
+			return {
+				...state,
+				teams: payload,
 			};
 		default:
 			return state;

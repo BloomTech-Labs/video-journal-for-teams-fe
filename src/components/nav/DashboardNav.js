@@ -33,7 +33,6 @@ const DashboardNav = withRouter((props) => {
 	const { Title } = Typography;
 	const [showModal, setShowModal] = useState(false);
 	const location = useLocation();
-	console.log(children, "nav");
 
 	let organization_id = "";
 
@@ -55,7 +54,7 @@ const DashboardNav = withRouter((props) => {
 	let filteredOrg = organizations.filter((x) => x.id === organization_id);
 
 	const menu = (
-		<Menu >
+		<Menu>
 			{organizations.map((item) => (
 				<Link key={item.id} to="/user-dashboard">
 					<Menu.Item style={{ textAlign: "center" }} key={item.id} onClick={() => handleClick(item)}>
@@ -68,20 +67,21 @@ const DashboardNav = withRouter((props) => {
 			</Menu.Item>
 		</Menu>
 	);
-	{
-		console.log(menu);
-	}
+
 	return (
 		<>
-			<Sider breakpoint="lg" collapsedWidth="0" width="240" style={{backgroundColor:"#6954EA"}}>
-				<div className={"userDashHeader"} style={{backgroundColor:"#6954EA"}}>
+			<Sider breakpoint="lg" collapsedWidth="0" width="240" style={{ backgroundColor: "#6954EA" }}>
+				<div className={"userDashHeader"} style={{ backgroundColor: "#6954EA" }}>
 					<Title level={3}>
-						<Link to="/user-dashboard" className={"userDashHeaderFont"} style={{ color:"whitesmoke",marginTop: "12px" }}>
-							<img src={logo}/>
+						<Link
+							to="/user-dashboard"
+							className={"userDashHeaderFont"}
+							style={{ color: "whitesmoke", marginTop: "12px" }}>
+							<img src={logo} />
 						</Link>
 					</Title>
 				</div>
-				<Menu style={{backgroundColor:"#6954EA"}} mode="inline" className={"userDashMenu"} >
+				<Menu style={{ backgroundColor: "#6954EA" }} mode="inline" className={"userDashMenu"}>
 					<Dropdown overlay={menu}>
 						<a
 							className="ant-dropdown-link"
@@ -100,7 +100,7 @@ const DashboardNav = withRouter((props) => {
 					</Dropdown>
 					<hr style={{ margin: "25px 0" }} />
 					<Menu.Item key="/user-dashboard">
-						<Link to="/user-dashboard" style={{ backgroundColor:"#6954EA", color: "#fff", display: "block" }}>
+						<Link to="/user-dashboard" style={{ backgroundColor: "#6954EA", color: "#fff", display: "block" }}>
 							<Icon type="home" theme="filled" /> Dashboard
 						</Link>
 					</Menu.Item>
@@ -144,7 +144,6 @@ const DashboardNav = withRouter((props) => {
 						<Icon type="folder" theme="filled" />
 						<span>Team Archive</span>
 					</Menu.Item>
-
 				</Menu>
 			</Sider>
 		</>
