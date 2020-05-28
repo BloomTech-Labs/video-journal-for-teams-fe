@@ -6,6 +6,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import NavAndHeader from "../components/nav/NavAndHeader";
 import MembersList from "../components/team/MembersList";
 import PromptList from "../components/team/PromptList";
+import EditTeam from "../components/team/EditTeam";
 
 // Redux
 import { connect } from "react-redux";
@@ -16,7 +17,6 @@ import Axios from "axios";
 //test
 
 function TeamDashboard(props) {
-
 	const {
 		team,
 		hello,
@@ -37,13 +37,9 @@ function TeamDashboard(props) {
 	let redirectTimer = null;
 	let countTimer = null;
 
-
-	function iDelete(){
-		Axios.delete('')
-		.then()
-		.catch()
-	}
-
+	// function iDelete() {
+	// 	Axios.delete("").then().catch();
+	// }
 
 	useEffect(() => {
 		clearError();
@@ -134,14 +130,13 @@ function TeamDashboard(props) {
 			<NavAndHeader>
 				<div className="team-dashboard dashboard">
 					<h1>{team.name}</h1>
-					
+
 					<UserContext.Provider value={{ userRole }}>
 						<MembersList />
 						<PromptList teamMembersEmail={teamMembers.email} />
 					</UserContext.Provider>
 				</div>
-				{userRole === 2 && <button onClick={iDelete} style={{color:"red", border:"none" , fontSize:"1rem", textAlign:"left"}}>Delete Team</button> }
-				
+				{userRole === 2 && <EditTeam />}
 			</NavAndHeader>
 		);
 	}
