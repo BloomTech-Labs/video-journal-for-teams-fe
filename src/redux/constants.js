@@ -13,6 +13,9 @@ const constants = {
 	FETCH_USER_TEAMS_SUCCESS: "user:fetch-teams-success",
 	FETCH_USER_TEAMS_FAILURE: "user:fetch-teams-failure",
 
+	//PUT update team info
+	FETCH_UPDATED_TEAM: "team:fetch-team-updates",
+
 	//GET fetch videos for user
 	FETCH_USER_VIDEOS_START: "user:fetch-videos-start",
 	FETCH_USER_VIDEOS_SUCCESS: "user:fetch-videos-success",
@@ -23,7 +26,6 @@ const constants = {
 	FETCH_VIDEO_SUCCESS: "user:fetch-video-success",
 	FETCH_VIDEO_FAILURE: "user:fetch-video-failure",
 
-	
 	//GET fetch users organizations
 	FETCH_USER_ORGANIZATIONS_START: "user:fetch-user-organizations-start",
 	FETCH_USER_ORGANIZATIONS_SUCCESS: "user:fetch-user-organizations-success",
@@ -40,7 +42,6 @@ const constants = {
 	FETCH_FEEDBACK_SUCCESS: "user:fetch-feedback-success",
 	FETCH_FEEDBACK_FAILURE: "user:fetch-feedback-failure",
 
-
 	SUBMIT_FEEDBACK_START: "user:submit-feedback-start",
 	SUBMIT_FEEDBACK_SUCCESS: "user:submit-feedback-success",
 	SUBMIT_FEEDBACK_FAILURE: "user:submit-feedback-failure",
@@ -48,7 +49,7 @@ const constants = {
 	UPDATE_FEEDBACK_START: "user:update-feedback-start",
 	UPDATE_FEEDBACK_SUCCESS: "user:update-feedback-success",
 	UPDATE_FEEDBACK_FAILURE: "user:update-feedback-failure",
-  
+
 	// Update user data
 	UPDATE_USER_DATA_START: "user:update-user-data-start",
 	UPDATE_USER_DATA_SUCCESS: "user:update-user-data-success",
@@ -100,11 +101,10 @@ const constants = {
 	UPDATE_TEAM_MEMBER_ROLE_START: "team:update_team_member_role_start",
 	UPDATE_TEAM_MEMBER_ROLE_SUCCESS: "team:update_team_member_role_success",
 	UPDATE_TEAM_MEMBER_ROLE_FAILURE: "team:update_team_member_role_failure",
-	
+
 	//PUT update org member role
 	UPDATE_ORG_MEMBER_ROLE_START: "organization:update_org_member_role_start",
-	UPDATE_ORG_MEMBER_ROLE_SUCCESS: 
-	"organization:update_org_member_role_success",
+	UPDATE_ORG_MEMBER_ROLE_SUCCESS: "organization:update_org_member_role_success",
 	UPDATE_ORG_MEMBER_ROLE_FAILURE: "organization:update_org_member_role_failure",
 
 	//POST create team member
@@ -153,12 +153,10 @@ const constants = {
 	FETCH_ORGANIZATION_TEAMS_START: "organization:fetch-organization-teams-start",
 	FETCH_ORGANIZATION_TEAMS_SUCCESS: "organization:fetch-organization-teams-success",
 
-
 	FETCH_ORGANIZATION_USERS_START: "organization:fetch-organization-users-start",
 	FETCH_ORGANIZATION_USERS_SUCCESS: "organization:fetch-organization-users-success",
 
 	DELETE_ORGANIZATION_USER_SUCCESS: "organization:delete-organization-users-success",
-
 };
 
 export default constants;

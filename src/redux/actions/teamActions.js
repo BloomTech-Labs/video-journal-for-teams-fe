@@ -13,10 +13,12 @@ export const createTeam = (newTeam, history, id) => (dispatch) => {
 };
 
 export const fetchTeamById = (team_id) => (dispatch) => {
+	console.log("team_id", team_id);
 	dispatch({ type: constants.FETCH_TEAM_BY_ID_START });
 	AxiosWithAuth()
 		.get(`/v2/teams/${team_id}`)
 		.then((teamResponse) => {
+			console.log("team response", teamResponse);
 			dispatch({ type: constants.FETCH_TEAM_BY_ID_SUCCESS, payload: teamResponse.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
@@ -77,7 +79,6 @@ export const createInvite = (team_id, team_name, org_id, user_id) => (dispatch) 
 	AxiosWithAuth()
 		.post(`/v2/teams/${team_id}/invite/${user_id}`, objj)
 		.then((inviteResponse) => {
-			console.log("invite response", inviteResponse);
 			dispatch({ type: constants.POST_INVITE_LINK_SUCCESS, payload: inviteResponse.data.link });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
@@ -120,4 +121,12 @@ export const setError = (errorMessage) => (dispatch) => {
 // CLEAR AN ERROR
 export const clearError = () => (dispatch) => {
 	dispatch({ type: constants.CLEAR_ERROR, payload: null });
+};
+
+//update team info
+export const updateTeam = (team_info) => {
+	return {
+		type: constants.FETCH_UPDATED_TEAM,
+		payload: team_info,
+	};
 };

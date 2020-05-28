@@ -12,7 +12,6 @@ function MembersList(props) {
 	const [showModal, setShowModal] = useState(false);
 	const { userRole } = useContext(UserContext);
 	const uid = useSelector((state) => state.User.userId);
-	console.log(uid, "user id");
 
 	const openInviteModal = () => {
 		props.createInvite(props.team.id, props.team.name, props.team.organization_id, uid);
@@ -24,7 +23,11 @@ function MembersList(props) {
 			<div className="dashboard-header">
 				<h2>Members ({props.teamMembers.length})</h2>
 				{userRole === 1 ? null : (
-					<Button style={{backgroundColor:"#6954EA"}}icon="user" className="adding-button" onClick={openInviteModal}>
+					<Button
+						style={{ backgroundColor: "#6954EA" }}
+						icon="user"
+						className="adding-button"
+						onClick={openInviteModal}>
 						Invite Member
 					</Button>
 				)}
