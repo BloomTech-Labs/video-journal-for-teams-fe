@@ -70,7 +70,7 @@ const TeamList = ({
 						<p>Create a team</p>
 					</Card>
 				</Button>
-				<Modal title="Create New Team" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Create Team">
+				<Modal title="Create New Team" visible={showModal} onOk={handleOk} onCancel={toggleModal} okText="Create Team" okButtonProps={{style:{backgroundColor:"#6954EA",color:"white",border:"none"}}}>
 					<Form layout="vertical">
 						<Form.Item label="Team Name">
 							<Input onChange={handleInput} name="name" />

@@ -26,8 +26,8 @@ const Home = () => {
 					<img src={teamReel}/>
 				</div>
 					<div className="links">
-					<Link to="/about">About us</Link>
-					<Link to="/login">Sign in</Link>
+					<Link to="/user-dashboard">About us</Link>
+					<Link to="/user-dashboard">Sign in</Link>
 					
 					<div className="navStart">
 						<Button size="medium"
@@ -35,7 +35,7 @@ const Home = () => {
 							onClick={
 								(e) => {
 									e.preventDefault();
-									history.push("/register");
+									history.push("/user-dashboard");
 								}
 							}>
 							GET STARTED 
@@ -91,7 +91,7 @@ const Home = () => {
 						onClick={
 							(e) => {
 								e.preventDefault();
-								history.push("/register");
+								history.push("/user-dashboard");
 							}
 						}>
 						GET STARTED 

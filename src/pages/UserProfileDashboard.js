@@ -3,7 +3,7 @@ import { Layout, Typography } from 'antd';
 import 'antd/dist/antd.css';
 import ProfileContent from '../components/profile/ProfileContent';
 import ProfileJumbtron from '../components/profile/ProfileJumbotron';
-import teamReel from '.././imgs/TeamReel.png';
+import teamReel from '.././imgs/TeamReel.png'; 
 const { Title } = Typography;
 const { Header, Footer, Content } = Layout;
 
