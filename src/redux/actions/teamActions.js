@@ -57,7 +57,7 @@ export const fetchTeamVideos = (team_id) => (dispatch) => {
 export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
 	dispatch({ type: constants.DELETE_TEAM_MEMBER_START });
 	AxiosWithAuth()
-		.delete(`/teams/${team_id}/users/${user_id}`)
+		.delete(`/v2/teams/${team_id}/users/${user_id}`)
 		.then((removedMemberResponse) => {
 			dispatch({
 				type: constants.DELETE_TEAM_MEMBER_SUCCESS,

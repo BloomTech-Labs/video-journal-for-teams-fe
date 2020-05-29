@@ -5,7 +5,6 @@ import "antd/dist/antd.css";
 const { Content } = Layout;
 
 function Carousel({ component: Component, ...props }) {
-	console.log("this is data props in carousel");
 	const [axis, setAxis] = useState(0);
 	const [width, setWidth] = useState(window.innerWidth);
 	const carouselList = useRef(null);

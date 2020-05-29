@@ -43,10 +43,6 @@ import { useHistory } from "react-router-dom";
 import GoogleRedirect from "./components/okta/GoogleRedirect";
 
 function App(props) {
-	const socket = io.connect();
-	console.log("check 1", socket.connected);
-	socket.on("connect", () => console.log("check 2", socket.connected));
-
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	const appHistory = useHistory();
 

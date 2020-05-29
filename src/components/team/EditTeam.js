@@ -55,7 +55,12 @@ const EditTeam = () => {
 			<button onClick={iDelete} style={{ color: "red", border: "none", fontSize: "1rem", textAlign: "left" }}>
 				Delete Team
 			</button>
-			<Modal title="Edit Modal" visible={showModal} onOk={handleOk} onCancel={handleCancel}>
+			<Modal
+				title="Edit Team Name"
+				visible={showModal}
+				okButtonProps={{ style: { backgroundColor: "#6954EA", color: "white", border: "none" } }}
+				onOk={handleOk}
+				onCancel={handleCancel}>
 				<Form name="basic" initialValues={{ remember: true }}>
 					<Form.Item
 						label="team name"
