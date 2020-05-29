@@ -92,19 +92,6 @@
 					<h3>Full Stack Web Developer</h3>
 					<h3></h3>
 				</Card>
-				<Card className="dev">
-					<h2>Walter Futch</h2>
-					<img src="https://ca.slack-edge.com/ESZCHB482-W012JHV1XAN-0e5f0eeb6e7e-512" alt="Walter"/>
-					<h3>Full Stack Web Developer</h3>
-					<h3></h3>
-				</Card>
-				
-				<Card className="dev">
-					<h2>Gregory Hawman</h2>
-					<img src="https://ca.slack-edge.com/ESZCHB482-W0123RSAAGP-80dea8dd5def-512" alt="Gregory"/>
-					<h3>Full Stack Web Developer</h3>
-					<h3></h3>
-				</Card>
 				
 			</div>
 			

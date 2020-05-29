@@ -27,7 +27,7 @@ const Home = () => {
 				</div>
 					<div className="links">
 					<Link to="/about">About us</Link>
-					<Link to="/login">Sign in</Link>
+					<Link to="/user-dashboard">Sign in</Link>
 					
 					<div className="navStart">
 						<Button size="medium"
@@ -35,7 +35,7 @@ const Home = () => {
 							onClick={
 								(e) => {
 									e.preventDefault();
-									history.push("/register");
+									history.push("/user-dashboard");
 								}
 							}>
 							GET STARTED 
@@ -81,24 +81,24 @@ const Home = () => {
 							<h2>With TeamReels, you can answer prompts created by channel leaders every week, and get better through critical feedback and repitition!</h2>
 						</div>
 					</div>
-				</div>
+				
 				<div className="footNote">
 					<h1>Ready to get started?</h1>
 					<h2>We are ready for you to join the TeamReels community, click the button and get started now!</h2>
 					<div className="start">
-					<Button size="large"
-						className="adding-button"
-						onClick={
-							(e) => {
-								e.preventDefault();
-								history.push("/register");
-							}
-						}>
-						GET STARTED 
-					</Button>
+						<Button size="large"
+							className="adding-button"
+							onClick={
+								(e) => {
+									e.preventDefault();
+									history.push("/user-dashboard");
+								}
+							}>
+							GET STARTED 
+						</Button>
+					</div>
 				</div>
 				</div>
-				
 			</div>
 			
 		</div>	

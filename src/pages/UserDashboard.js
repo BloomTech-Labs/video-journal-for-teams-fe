@@ -44,6 +44,7 @@ function UserDashboard(props) {
 						password: user.sub,
 					};
 					dispatch(loginUser(creds));
+					console.log('User', user)
 			  })
 			: history.push("/login");
 	}, [authState]);
