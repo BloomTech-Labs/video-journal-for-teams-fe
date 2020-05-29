@@ -26,14 +26,13 @@ const LoginForm = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const oktaAuth = new OktaAuth({
-			issuer: "https://dev-292346.okta.com/oauth2/v1/default/",
+			issuer: "https://okta.alpacavids.com/oauth2/v1/default/",
 			idps: [{ type: "GOOGLE", id: "0oachck23hRb17ea34x6" }],
 			responseType: "id_token",
 		});
 		oktaAuth
 			.signIn({ username, password })
 			.then((res) => {
-				console.log(res);
 				// dispatch(loginUser(res.user.profile.login));
 				console.log(authService);
 				// Axios.post(`https://dev-292346.okta.com/api/v1/authn/recovery/password`, {

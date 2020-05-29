@@ -43,10 +43,6 @@ import { useHistory } from "react-router-dom";
 import GoogleRedirect from "./components/okta/GoogleRedirect";
 
 function App(props) {
-	const socket = io.connect();
-	console.log("check 1", socket.connected);
-	socket.on("connect", () => console.log("check 2", socket.connected));
-
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	const appHistory = useHistory();
 
@@ -79,17 +75,17 @@ function App(props) {
 			<SecureRoute exact path="/user-dashboard" component={UserDashboard} />
 			<Route exact path="/login" component={Login} />
 
-			<Route exact path="/videos/:id" component={VideoDetails} />
+			<SecureRoute exact path="/videos/:id" component={VideoDetails} />
 
-			<Route path="/profile" component={UserProfileDashboard} />
+			<SecureRoute path="/profile" component={UserProfileDashboard} />
 
-			<Route exact path="/teams/:team_id" component={TeamDashboard} />
+			<SecureRoute exact path="/teams/:team_id" component={TeamDashboard} />
 
-			<Route exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
+			<SecureRoute exact path="/organizations/:organization_id/teams" component={OrganizationTeams} />
 
-			<Route exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
+			<SecureRoute exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
 
-			<Route exact path="/videos" component={UserVideos} />
+			<SecureRoute exact path="/videos" component={UserVideos} />
 
 			<UploadProgress />
 		</div>

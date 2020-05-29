@@ -25,7 +25,7 @@ export const deleteOrganizationUser = (orgId, userId) => (dispatch) => {
 	dispatch({ type: constants.FETCH_ORGANIZATION_USERS_START });
 
 	AxiosWithAuth()
-		.delete(`/organizations/${orgId}/users`, {
+		.delete(`/v2/organizations/${orgId}/users`, {
 			data: { user_id: userId },
 		})
 		.then((res) => {

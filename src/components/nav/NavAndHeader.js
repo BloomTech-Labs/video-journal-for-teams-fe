@@ -8,10 +8,7 @@ import { connect } from "react-redux";
 const { Content } = Layout;
 
 const NavAndHeader = (props) => {
-	console.log("proppies", props);
-
 	const { userId, fetchUserOrganizations, selectedOrganization, ...rest } = props;
-	console.log(rest, "rest");
 
 	useEffect(() => {
 		fetchUserOrganizations(userId);

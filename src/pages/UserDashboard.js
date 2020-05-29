@@ -14,14 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function UserDashboard(props) {
-	console.log("this is props", props);
 	const { authService, authState } = useOktaAuth();
-	console.log(authService);
 	const dispatch = useDispatch();
 	const history = useHistory();
-	// const role_id = useSelector((state) => state.Team.teamMembers.find((elem) => state.User.email == elem.email).role_id);
-
-	// console.log("role", role_id);
 
 	const { id, fetchUserVideos, videos, clearError, organizations, defaultOrganization, selectedOrganization } = props;
 

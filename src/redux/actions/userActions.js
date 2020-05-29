@@ -22,43 +22,14 @@ export const registerUser = (applicant) => (dispatch) => {
 
 // LOGIN A USER
 export const loginUser = (userCredentials) => (dispatch) => {
-	console.log(userCredentials, "****");
-	// console.log(userCredentials);
-	// // if (userCredentials.method === "email") {
-	// const user = {
-	// 	email: userCredentials.email,
-	// 	first_name: userCredentials.given_name,
-	// 	last_name: userCredentials.family_name,
-	// 	username: userCredentials.preferred_username,
-	// 	password: userCredentials.sub,
-	// };
 	axios
 		.post("/auth/test", userCredentials)
 		.then((loginResponse) => {
-			console.log(loginResponse, "$$$$");
 			dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
 		})
 		.catch((err) => {
 			dispatch({ type: constants.GENERATE_ERROR, payload: "The email address or password you entered is incorrect" });
 		});
-	// } else {
-	// 	const user = {
-	// 		username: userCredentials.usernameOrEmail,
-	// 		password: userCredentials.password,
-	// 	};
-
-	// 	axios
-	// 		.post("/auth/login/username", user)
-	// 		.then((loginResponse) => {
-	// 			dispatch({ type: constants.LOGIN_USER, payload: loginResponse.data });
-	// 		})
-	// 		.catch((err) => {
-	// 			dispatch({
-	// 				type: constants.GENERATE_ERROR,
-	// 				payload: "The username or password you entered is incorrect",
-	// 			});
-	// 		});
-	// }
 };
 
 export const logoutUser = () => (dispatch) => {
@@ -89,26 +60,22 @@ export const fetchUserTeams = (userId, organization_id) => (dispatch) => {
 // FETCH USER ORGANIZATOINS
 
 export const fetchUserOrganizations = (userId) => (dispatch) => {
-	console.log("dispatched");
 	dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_START });
 	AxiosWithAuth()
 		.get(`/v2/users/${userId}/organizations`)
 		.then((res) => {
-			console.log(res);
 			dispatch({ type: constants.FETCH_USER_ORGANIZATIONS_SUCCESS, payload: res.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
 export const setUserSelectedOrganization = (organization) => (dispatch) => {
-	console.log("selected organization");
 	dispatch({ type: constants.SET_USER_SELECTED_ORGANIZATION_START });
 	dispatch({ type: constants.SET_USER_SELECTED_ORGANIZATION_SUCCESS, payload: organization });
 };
 
 //create an orgainzation for after registration
 export const createUserOrganization = (organization_name, history, uid) => (dispatch) => {
-	console.log(history);
 	dispatch({ type: constants.CREATE_USER_ORGANIZATION_START });
 	let id = "";
 	AxiosWithAuth()
@@ -136,7 +103,6 @@ export const createUserOrganization = (organization_name, history, uid) => (disp
 
 // FETCH VIDEOS FOR USER
 export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
-	console.log("dispatched");
 	dispatch({ type: constants.FETCH_USER_VIDEOS_START });
 	AxiosWithAuth()
 		.get(`/v2/users/${userId}/videos/${organization_id}`)
@@ -149,7 +115,7 @@ export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
 export const fetchVideo = (videoId) => (dispatch) => {
 	dispatch({ type: constants.FETCH_VIDEO_START });
 	AxiosWithAuth()
-		.get(`/videos/${videoId}`)
+		.get(`/v2/videos/${videoId}`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_VIDEO_SUCCESS, payload: res.data });
 		})
@@ -159,17 +125,17 @@ export const fetchVideo = (videoId) => (dispatch) => {
 export const fetchFeedback = (videoId) => (dispatch) => {
 	dispatch({ type: constants.FETCH_FEEDBACK_START });
 	AxiosWithAuth()
-		.get(`/videos/${videoId}/feedback`)
+		.get(`/v2/videos/${videoId}/feedback`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_FEEDBACK_SUCCESS, payload: res.data });
 		})
 		.catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err.response }));
 };
 
-export const submitFeedback = (videoId, feedback) => (dispatch) => {
+export const submitFeedback = (videoId, feedback, user_id) => (dispatch) => {
 	dispatch({ type: constants.SUBMIT_FEEDBACK_START });
 	AxiosWithAuth()
-		.post(`/videos/${videoId}/feedback`, feedback)
+		.post(`/v2/videos/${videoId}/feedback/${user_id}`, feedback)
 		.then(() => {
 			dispatch({
 				type: constants.SUBMIT_FEEDBACK_SUCCESS,
@@ -193,7 +159,7 @@ export const updateViewedFeedback = (videoId, userId, organizationId) => (dispat
 		organizationId: organizationId,
 	};
 	AxiosWithAuth()
-		.put(`/videos/${videoId}/feedback`, changes)
+		.put(`/v2/videos/${videoId}/feedback`, changes)
 		.then((res) => {
 			dispatch({
 				type: constants.UPDATE_FEEDBACK_SUCCESS,
@@ -278,7 +244,7 @@ export const uploadVideo = (video) => (dispatch) => {
 	};
 
 	AxiosWithAuth()
-		.post("/videos", videoSubmission, submissionConfig)
+		.post("/v2/videos", videoSubmission, submissionConfig)
 		.then((res) => {
 			dispatch({
 				type: constants.UPLOAD_VIDEO_SUCCESS,
