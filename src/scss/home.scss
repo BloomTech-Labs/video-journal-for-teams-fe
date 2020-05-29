@@ -88,20 +88,17 @@ header.home {
 					text-align: center;
 					width: 100%;
 					margin: 40px;
-					//border: 1px solid red;
 					height:250px;
-					//font-size: 1.4rem;
 					.text{
 						width: 50%;
 						text-align:center;
-						//border: 1px solid green;
-
+						margin-bottom: 40px;
 						h1{
 							font-size: 2rem;
 							font-weight: bold;
 						}
 						h2{
-							font-size: 1.5rem;
+							font-size: 1.4rem;
 							font-weight: 700;
 						}
 					}
@@ -140,7 +137,7 @@ header.home {
 				flex-direction:column;
 				justify-content:center;
 				max-width: 50%;
-				margin-left:325px;
+				//margin-left:325px;
 			}
 			div.start {
 				margin: 0;
