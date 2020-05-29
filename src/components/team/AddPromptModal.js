@@ -49,7 +49,7 @@ const AddPromptModal = (props) => {
 			okText="Submit"
 			onOk={submitPrompt}
 			onCancel={handleCancel}
-			okButtonProps={({ form: "add-prompt" }, { htmlType: "submit" })}>
+			okButtonProps={({ form: "add-prompt" }, { htmlType: "submit" }, {style:{backgroundColor:"#6954EA",color:"white",border:"none"}})}>
 			<Form id="add-prompt" onSubmit={submitPrompt}>
 				<Form.Item label="Question">
 					{getFieldDecorator("question", {

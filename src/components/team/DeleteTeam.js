@@ -6,7 +6,7 @@ import { fetchTeamById } from "../../redux/actions/teamActions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const EditTeam = () => {
+const DeleteTeam = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [values, setValues] = useState(null);
 	const { team_id } = useParams();
@@ -40,27 +40,30 @@ const EditTeam = () => {
 	function iDelete() {
 		axios
 			.delete(`/v2/teams/${team_id}`)
-			.then((res) => history.push("/user-dashboard"))
-			.catch((err) => console.log(err));
+			.then((res) =>{
+                    setShowModal(false)
+                 history.push("/user-dashboard")
+                })
+            .catch((err) => console.log(err));
+            
 	}
 
 	return (
 		<div>
 			<Button
 				type="primary"
-				style={{ color: "white", border: "none", fontSize: "1rem", textAlign: "left",backgroundColor:"#6954EA"}}
+				style={{ color: "white", border: "none", fontSize: "1rem", textAlign: "left",  borderStyle:"none",backgroundColor:"#6954EA"}}
 				onClick={handleOpen}>
-				Edit Team
+				Delete team
 			</Button>
-			
-			<Modal title="Edit Modal" visible={showModal} onOk={handleOk} onCancel={handleCancel}>
+
+			<Modal title="Delete this team" visible={showModal} onOk={iDelete} onCancel={handleCancel} okText="Delete" okButtonProps={{style:{backgroundColor:"#6954EA",color:"white",border:"none"}}}>
 				<Form name="basic" initialValues={{ remember: true }}>
 					<Form.Item
-						label="team name"
-						name="team_name"
-						rules={[{ required: true, message: "Please enter a new team name!" }]}
+						
 						onChange={handleChange}>
-						<Input />
+                            Are you sure that you want to delete this team?
+			
 					</Form.Item>
 				</Form>
 			</Modal>
@@ -68,4 +71,4 @@ const EditTeam = () => {
 	);
 };
 
-export default EditTeam;
+export default DeleteTeam;

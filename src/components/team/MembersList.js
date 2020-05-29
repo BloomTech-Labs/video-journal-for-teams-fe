@@ -24,7 +24,7 @@ function MembersList(props) {
 				<h2>Members ({props.teamMembers.length})</h2>
 				{userRole === 1 ? null : (
 					<Button
-						style={{ backgroundColor: "#6954EA" }}
+						style={{ backgroundColor: "#6954EA", color:"white", border:"none" }}
 						icon="user"
 						className="adding-button"
 						onClick={openInviteModal}>
