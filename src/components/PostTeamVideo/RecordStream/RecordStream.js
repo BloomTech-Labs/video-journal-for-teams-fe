@@ -100,6 +100,7 @@ export function RecordStream({
 				setStreamError(false);
 
 				//Turns off camera and mic
+				console.log("targets", e.target.stream.getTracks());
 				e.target.stream.getTracks().forEach((track) => track.stop());
 			};
 		}
