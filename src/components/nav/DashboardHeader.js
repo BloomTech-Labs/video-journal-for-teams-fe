@@ -6,6 +6,7 @@ import { BellOutlined } from "@ant-design/icons";
 import { Layout, Avatar, Popover } from "antd";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import { useOktaAuth } from "@okta/okta-react";
 
 import { logoutUser, fetchUserVideos, updateViewedFeedback } from "../../redux/actions/userActions";
 
@@ -16,10 +17,12 @@ const { Header } = Layout;
 function DashboardHeader(props) {
 	const [feedbackUpdate, setFeedbackUpdate] = useState(false);
 	let history = useHistory();
+	const { authService, authState } = useOktaAuth();
 
 	const handleLogout = (e) => {
 		e.preventDefault();
 		props.logoutUser();
+		authService.logout("/");
 		history.push("/");
 	};
 

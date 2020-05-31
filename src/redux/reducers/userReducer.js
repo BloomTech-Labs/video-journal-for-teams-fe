@@ -52,15 +52,16 @@ const initialState = {
 const userReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case constants.REGISTER_USER:
+			console.log("reducer fired");
 			//Store login token in browser localStorage
 			localStorage.setItem("token", payload.token);
 			return {
 				...state,
 				userId: payload.user.id,
-				first_name: payload.user.first_name,
-				last_name: payload.user.last_name,
-				email: payload.user.email,
-				username: payload.user.username,
+				first_name: payload.first_name,
+				last_name: payload.last_name,
+				email: payload.email,
+				username: payload.username,
 				isLogged: true,
 			};
 		case constants.LOGIN_USER:
@@ -68,13 +69,13 @@ const userReducer = (state = initialState, { type, payload }) => {
 			localStorage.setItem("token", payload.token);
 			return {
 				...state,
-				userId: payload.user.id,
-				first_name: payload.user.first_name,
-				last_name: payload.user.last_name,
-				email: payload.user.email,
-				username: payload.user.username,
-				avatar: payload.user.avatar,
-				organization_id: payload.user.organization_id,
+				userId: payload.id,
+				first_name: payload.first_name,
+				last_name: payload.last_name,
+				email: payload.email,
+				username: payload.username,
+				avatar: payload.avatar,
+				organization_id: payload.organization_id,
 				isLogged: true,
 			};
 		case constants.LOGOUT_USER:
@@ -466,6 +467,11 @@ const userReducer = (state = initialState, { type, payload }) => {
 				...state,
 				error: null,
 				isFetching: false,
+			};
+		case constants.FETCH_UPDATED_TEAM:
+			return {
+				...state,
+				teams: payload,
 			};
 		default:
 			return state;

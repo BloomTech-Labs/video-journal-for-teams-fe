@@ -23,7 +23,8 @@ const InviteModal = (props) => {
 			visible={props.isVisible}
 			okText="Copy"
 			onOk={handleOk}
-			onCancel={handleCancel}>
+			onCancel={handleCancel}
+			okButtonProps={{style:{backgroundColor:"#6954EA",color:"white",border:"none"}}}>
 			<Form>
 				<Form.Item label="Copy Link">
 					<Input readOnly id="team-link" value={URL} />

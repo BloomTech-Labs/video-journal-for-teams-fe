@@ -7,10 +7,17 @@ import Carousel from "../components/shared/Carousel";
 import UserVideosCard from "../components/user/UserVideosCard";
 import Organization from "../components/organization/Organization";
 
-import { fetchUserVideos } from "../redux/actions/userActions";
+import { fetchUserVideos, loginUser } from "../redux/actions/userActions";
 import { clearError } from "../redux/actions/teamActions";
+import { useOktaAuth } from "@okta/okta-react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function UserDashboard(props) {
+	const { authService, authState } = useOktaAuth();
+	const dispatch = useDispatch();
+	const history = useHistory();
+
 	const { id, fetchUserVideos, videos, clearError, organizations, defaultOrganization, selectedOrganization } = props;
 
 	let organization_id = "";
@@ -22,6 +29,22 @@ function UserDashboard(props) {
 	}
 
 	useEffect(() => {
+		authState.isAuthenticated &&
+			authService.getUser().then((user) => {
+				const creds = {
+					username: user.preferred_username,
+					email: user.email,
+					first_name: user.given_name,
+					last_name: user.family_name,
+					password: user.sub,
+				};
+				dispatch(loginUser(creds));
+				console.log("User", user);
+			});
+		// : history.push("/login");
+	}, [authState]);
+
+	useEffect(() => {
 		clearError();
 		if (organization_id !== undefined) {
 			fetchUserVideos(id, organization_id);
@@ -29,22 +52,26 @@ function UserDashboard(props) {
 	}, [id, fetchUserVideos, organization_id, defaultOrganization, selectedOrganization]);
 
 	return (
-		<NavAndHeader>
-			<div className="user-dashboard dashboard">
-				<h1>Dashboard</h1>
-				{organizations.length >= 1 ? (
-					<>
-						<TeamList />
-						<div className="dashboard-header">
-							<h2>My&nbsp;Videos</h2>
-						</div>
-						<Carousel component={UserVideosCard} data={videos} name={"videos"} />{" "}
-					</>
-				) : (
-					<Organization />
-				)}
-			</div>
-		</NavAndHeader>
+		<>
+			{authState.isAuthenticated && (
+				<NavAndHeader>
+					<div className="user-dashboard dashboard">
+						<h1>Dashboard</h1>
+						{organizations.length >= 1 ? (
+							<>
+								<TeamList />
+								<div className="dashboard-header">
+									<h2>My&nbsp;Videos</h2>
+								</div>
+								<Carousel component={UserVideosCard} data={videos} name={"videos"} />{" "}
+							</>
+						) : (
+							<Organization />
+						)}
+					</div>
+				</NavAndHeader>
+			)}
+		</>
 	);
 }
 

@@ -4,7 +4,7 @@ import AxiosWithAuth from "../../components/utils/AxiosWithAuth";
 export const fetchOrganizationTeams = (orgId) => (dispatch) => {
 	dispatch({ type: constants.FETCH_ORGANIZATION_TEAMS_START });
 	AxiosWithAuth()
-		.get(`/organizations/${orgId}/teams`)
+		.get(`/v2/organizations/${orgId}/teams`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_ORGANIZATION_TEAMS_SUCCESS, payload: res.data });
 		})
@@ -14,7 +14,7 @@ export const fetchOrganizationTeams = (orgId) => (dispatch) => {
 export const fetchOrganizationUsers = (orgId) => (dispatch) => {
 	dispatch({ type: constants.FETCH_ORGANIZATION_USERS_START });
 	AxiosWithAuth()
-		.get(`/organizations/${orgId}/users`)
+		.get(`/v2/organizations/${orgId}/users`)
 		.then((res) => {
 			dispatch({ type: constants.FETCH_ORGANIZATION_USERS_SUCCESS, payload: res.data });
 		})
@@ -25,7 +25,7 @@ export const deleteOrganizationUser = (orgId, userId) => (dispatch) => {
 	dispatch({ type: constants.FETCH_ORGANIZATION_USERS_START });
 
 	AxiosWithAuth()
-		.delete(`/organizations/${orgId}/users`, {
+		.delete(`/v2/organizations/${orgId}/users`, {
 			data: { user_id: userId },
 		})
 		.then((res) => {
