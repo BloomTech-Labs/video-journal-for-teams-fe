@@ -3,8 +3,8 @@ const constraints = {
 	//We want to capture audio,
 	audio: {
 		sampleSize: 8,
-		echoCancellation: true
- },
+		echoCancellation: true,
+	},
 	//We want to capture video in this configuration
 	video: {
 		//Camera for mobile users
@@ -21,7 +21,7 @@ const constraints = {
 };
 
 //mediaRecorder options config
-const options = { mimeType: "video/webm;" };
+const options = { mimeType: "video/webm;codecs=h264" };
 
 export default {
 	constraints,

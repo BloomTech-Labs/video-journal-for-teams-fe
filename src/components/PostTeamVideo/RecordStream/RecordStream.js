@@ -26,8 +26,14 @@ let chunks = [];
 //* Capture webcam and audio into a stream
 //* Record stream and update stream object URL in redux
 
-export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStreamPlayback, setStreamError, playback, showModal }) {
-
+export function RecordStream({
+	updateStreamObject,
+	updateStreamRaw,
+	toggleStreamPlayback,
+	setStreamError,
+	playback,
+	showModal,
+}) {
 	const [mediaRecorder, setMediaRecorder] = useState(null);
 	const streamElementHandle = useRef(null);
 	const [loading, setLoading] = useState(true);
@@ -36,19 +42,19 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 	const [isActive, setIsActive] = useState(false);
 
 	useEffect(() => {
-		setLoading(true)
-			//* Setup for media stream init, linking to video source and recorder init
+		setLoading(true);
+		//* Setup for media stream init, linking to video source and recorder init
 		function setupMediaStream() {
 			navigator.mediaDevices
 				.getUserMedia(MediaRecorderConfig.constraints)
-				.then(function(mediaStream) {
+				.then(function (mediaStream) {
 					//Pipe stream to video element
 					connectStreamToVideo(mediaStream);
 
 					//Create media recorder instance to capture the stream
 					setupMediaRecorder(mediaStream);
 				})
-				.catch(function(error) {
+				.catch(function (error) {
 					//NotFoundError - This will show up when no video device is detected.
 					//NotAllowedError: The request is denied by the user agent or the platform is insecure in the current context.
 					//NotReadableError: Failed to allocate videosource - User allowed permission but disconnected device. Could also be hardware error.
@@ -63,7 +69,7 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 	}, [playback, showModal, setStreamError]);
 
 	useEffect(() => {
-				//* Adds event handlers for onStop & onDataAvailable to the MediaRecorder
+		//* Adds event handlers for onStop & onDataAvailable to the MediaRecorder
 		function finalizeMediaRecorderSetup() {
 			//On new data, push to chunks array.
 			mediaRecorder.ondataavailable = (e) => {
@@ -94,7 +100,7 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 				setStreamError(false);
 
 				//Turns off camera and mic
-				e.target.stream.getTracks().forEach(track => track.stop());
+				e.target.stream.getTracks().forEach((track) => track.stop());
 			};
 		}
 
@@ -105,17 +111,17 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 
 	//Cancels recording and playback when exiting out of the modal. Should probably add a confirmation alert
 	useEffect(() => {
-		if (mediaRecorder && mediaRecorder.state === 'recording' && !showModal) {
+		if (mediaRecorder && mediaRecorder.state === "recording" && !showModal) {
 			mediaRecorder.stop();
 			toggleStreamPlayback();
-		} 
+		}
 		// else if (!showModal && playback) {
 		// 	toggleStreamPlayback();
-		// } 
-		else if (mediaRecorder && mediaRecorder.state === 'inactive' && !showModal) {
-			mediaRecorder.stream.getTracks().forEach(track => track.stop())
+		// }
+		else if (mediaRecorder && mediaRecorder.state === "inactive" && !showModal) {
+			mediaRecorder.stream.getTracks().forEach((track) => track.stop());
 		}
-	}, [showModal, mediaRecorder, toggleStreamPlayback, playback])
+	}, [showModal, mediaRecorder, toggleStreamPlayback, playback]);
 
 	//* Connects mediaStream to video DOM element
 	function connectStreamToVideo(mediaStream) {
@@ -131,6 +137,7 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 
 	//* Creates an instance of MediaRecorder using the passed in mediaStream object.
 	function setupMediaRecorder(mediaStream) {
+		console.log(MediaRecorder.isTypeSupported("video/mp4; codecs=avc1.424028, mp4a.40.24"));
 		setMediaRecorder(new MediaRecorder(mediaStream, MediaRecorderConfig.options));
 	}
 
@@ -144,9 +151,9 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 		if (isActive) {
 			interval = setInterval(() => {
 				if (countdown > 1) {
-					setCountdown(countdown => countdown - 1);
-				} else  {
-					setCountdown(0)
+					setCountdown((countdown) => countdown - 1);
+				} else {
+					setCountdown(0);
 					setIsActive(false);
 				}
 			}, 1000);
@@ -158,20 +165,27 @@ export function RecordStream({ updateStreamObject, updateStreamRaw, toggleStream
 
 	const startCountdown = () => {
 		setIsActive(true);
-	}
+	};
 
-		return (
-			<div className="record-stream-container">
-				<div className="new-video-player">
-					{loading ? <Icon type="loading"/> : null}
-					{!visibleFeed ? <Icon type="user"/> : null}
-					{isActive ? 
-					<div className="video-countdown">{countdown}</div> : null}
-					<video  muted style={{display: loading ? "none" : "flex"}} ref={streamElementHandle}></video>
-				</div>
-				<StreamControls mediaRecorder={mediaRecorder} toggleStreamPlayback={toggleStreamPlayback} streamElementHandle={streamElementHandle} toggleFeedVisibility={toggleFeedVisibility} visibleFeed={visibleFeed} isActive={isActive} startCountdown={startCountdown}/>
+	return (
+		<div className="record-stream-container">
+			<div className="new-video-player">
+				{loading ? <Icon type="loading" /> : null}
+				{!visibleFeed ? <Icon type="user" /> : null}
+				{isActive ? <div className="video-countdown">{countdown}</div> : null}
+				<video muted style={{ display: loading ? "none" : "flex" }} ref={streamElementHandle}></video>
 			</div>
-		);
+			<StreamControls
+				mediaRecorder={mediaRecorder}
+				toggleStreamPlayback={toggleStreamPlayback}
+				streamElementHandle={streamElementHandle}
+				toggleFeedVisibility={toggleFeedVisibility}
+				visibleFeed={visibleFeed}
+				isActive={isActive}
+				startCountdown={startCountdown}
+			/>
+		</div>
+	);
 }
 
 const mapStateToProps = (state) => ({
