@@ -31,7 +31,7 @@
 				</div>
 			</nav>
 			<div className="cards">
-				<h1 className="version">Version Two Team</h1>
+				<h1 className="version">Version Three Team - Labs 24</h1>
 				<Card className="dev">
 					<h2>Scott Harris</h2>
 					<img src="https://ca.slack-edge.com/ESZCHB482-W012JHXT4HY-81c4a9984527-512" alt="Scott"/>
@@ -45,11 +45,6 @@
 				<Card className="dev">
 					<h2>Chris Huskey</h2>
 					<img src="https://ca.slack-edge.com/ESZCHB482-W012H6PJ70V-6b3f17345534-512" alt="CHuskey"/>
-					<h3>Data Science Developer</h3>
-				</Card>
-				<Card className="dev">
-					<h2>CJ Ricciardi</h2>
-					<img src="https://ca.slack-edge.com/ESZCHB482-W0123RS7KGF-4c8af9817b4a-512" alt="CJ"/>
 					<h3>Data Science Developer</h3>
 				</Card>
 				<Card className="dev">
@@ -86,7 +81,35 @@
 				</Card>
 			
 			
-			  <h1 className="version">Version One Team</h1>
+			  <h1 className="version">Version Two Team - Labs 22</h1>
+					<Card className="dev">
+						<h2>Prem Puttegowda</h2>
+						<img src="https://avatars1.githubusercontent.com/u/48593048?s=400&u=20da423b85890989874a822ecfd9911fe8567994&v=4"/>
+						<h3>Full Stack Web Developer</h3>
+					</Card>
+					<Card className="dev">
+						<h2>Isabella Guo</h2>
+						<img src="https://avatars0.githubusercontent.com/u/56899955?s=400&u=f9ee3c869c52e3b73cf0c804622e180484531fb2&v=4"/>
+						<h3>Full Stack Web Developer</h3>
+					</Card>
+					<Card className="dev">
+						<h2>Chris Oakes</h2>
+						<img src="https://camo.githubusercontent.com/a767098ab5aee5fd51b0f2e7a1cfd4118921de10/68747470733a2f2f6d656469612d657870312e6c6963646e2e636f6d2f646d732f696d6167652f4334453033415148485a30434b576a497658412f70726f66696c652d646973706c617970686f746f2d736872696e6b5f3230305f3230302f303f653d3135393336343830303026763d6265746126743d46644f7477424e4e755f56667349527935545663375144424835504136582d443161525a38544738474a38"/>
+						<h3>Full Stack Web Developer</h3>
+					</Card>
+					<Card className="dev">
+						<h2>Johnathan Perkins</h2>
+						<img src="https://media-exp1.licdn.com/dms/image/C4D03AQH1akJC0YapCQ/profile-displayphoto-shrink_400_400/0?e=1597276800&v=beta&t=iBreMqxhQTuea1kXBArfbmCGlwZvp0nF3NzhiljyvB8"/>
+						<h3>UX Designer</h3>
+					</Card>
+					<Card className="dev">
+						<h2>Jessica Morrison</h2>
+						<img src="https://avatars1.githubusercontent.com/u/23093709?s=400&u=98a18ece02a63ec3eb008c60a1185a97d742b394&v=4"/>
+						<h3>UX Designer</h3>
+					</Card>
+
+
+			  <h1 className="version">Version One Team - Labs 20</h1>
 					<Card className="dev">
 						<h2>Darrin Lowery</h2>
 						<img src="https://ca.slack-edge.com/T4JUEB3ME-UMQM20RB9-672e81ad9979-512" alt="Darrin"/>
