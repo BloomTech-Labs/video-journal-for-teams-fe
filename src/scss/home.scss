@@ -15,8 +15,7 @@ header.home {
 		justify-content: center;
 		align-items: center;
 		width: 100vw;
-		padding: 25px;
-		margin-bottom: 150px;
+		
 		& > div {
 			margin: 5%;
 		}
@@ -25,7 +24,7 @@ header.home {
 			min-width: 320px;
 			text-align: center;
 			h1 {
-				font-weight: bolder;
+				// font-weight: bolder;
 				font-size: 3rem;
 
 				.text-red{
@@ -42,7 +41,9 @@ header.home {
 				width: 100%;
 				font-size: 2rem;
 				margin-top: 30px;
-
+				max-height: 600px;
+				
+				
 				.h1{
 					display:flex;
 					flex-direction:column;
@@ -52,8 +53,9 @@ header.home {
 					font-size: 50px;
 					width: 40%;
 				}
-
+				
 				img{
+					object-fit: contain;
 					width: 30%;
 				}
 			}
@@ -62,7 +64,6 @@ header.home {
 				flex-direction:column;
 				justify-content:center;
 				align-items:center;
-				margin-top: 100px;
 				padding: 40px;
 
 				h2{
@@ -176,7 +177,7 @@ header.home {
 				margin: 0 auto;
 			}
 			h1 {
-				font-weight: bolder;
+				
 				font-size: 2.5rem;
 			}
 			h2 {
@@ -211,8 +212,12 @@ header.home {
 			justify-content: center;
 
 			img{
+				// display: block;
 				max-width: 70%;
+				object-fit: contain;
 			}
+			
+			
 		}
 		
 		.links {
@@ -249,6 +254,7 @@ header.home {
 				align-items:center;
 				&:hover{
 					color:#FF7F50;
+					border: 1px solid #FF7F50;
 				}
 				&:focus {
 					color: white;
@@ -258,8 +264,20 @@ header.home {
 			}
 		}
 		
+
 	}
 	
+
+// 	@media not all and (min-resolution:.001dpcm)
+// 	{ @supports (-webkit-appearance:none) {
+
+//     .safari_only { 
+
+//         color:#0000FF; 
+//         background-color:#CCCCCC; 
+
+//     }
+// }}
 }
 
 
