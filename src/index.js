@@ -21,10 +21,10 @@ ReactDOM.render(
 		<PersistGate loading={<LoadingView />} persistor={persistor}></PersistGate>
 		<Router>
 			<Security
-				issuer="https://okta.alpacavids.com/oauth2/default"
-				client_id="0oacbrrfntl0SndJM4x6"
+				issuer={`${process.env.REACT_APP_ISSUER}`}
+				client_id={`${process.env.REACT_APP_CLIENT_ID}`}
 				redirectUri={window.location.origin + "/implicit/callback"}
-				disableHttpsCheck>
+				disableHttpsCheck={false}>
 				<App />
 			</Security>
 		</Router>
