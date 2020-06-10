@@ -8,6 +8,8 @@ import MembersList from "../components/team/MembersList";
 import PromptList from "../components/team/PromptList";
 import EditTeam from "../components/team/EditTeam";
 import DeleteTeam from "../components/team/DeleteTeam";
+import QuestionsForm from "../components/VideoDetails/QuestionsForm";
+import ChartModal from "../components/VideoDetails/ChartModal";
 
 // Redux
 import { connect } from "react-redux";
@@ -131,20 +133,26 @@ function TeamDashboard(props) {
 			<NavAndHeader>
 				<div className="team-dashboard dashboard">
 					<h1>{team.name}</h1>
-					<div style={{display:"flex", justifyContent:"flex-end", alignItems:"center", width:"90%", margin:"0 auto"}}>
-						<div>
-				{userRole === 2 && <EditTeam />}
-				</div>
-				<div style={{marginLeft:"2%"}}>
-				{userRole === 2 && <DeleteTeam />}
-				</div>
-				</div>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "flex-end",
+							alignItems: "center",
+							width: "90%",
+							margin: "0 auto",
+						}}>
+						<div>{userRole === 2 && <EditTeam />}</div>
+						<div style={{ marginLeft: "2%" }}>{userRole === 2 && <DeleteTeam />}</div>
+					</div>
+					{/* <QuestionsForm />
+					<br />
+					<ChartModal /> */}
+
 					<UserContext.Provider value={{ userRole }}>
 						<MembersList />
 						<PromptList teamMembersEmail={teamMembers.email} />
 					</UserContext.Provider>
 				</div>
-				
 			</NavAndHeader>
 		);
 	}

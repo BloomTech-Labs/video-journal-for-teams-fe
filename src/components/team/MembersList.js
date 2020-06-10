@@ -7,6 +7,9 @@ import "./teamTest.css";
 import InviteModal from "./InviteModal.js";
 import MemberCard from "./MemberCard";
 import Carousel from "../shared/Carousel";
+import {
+	UserAddOutlined
+  } from '@ant-design/icons';
 
 function MembersList(props) {
 	const [showModal, setShowModal] = useState(false);
@@ -23,13 +26,14 @@ function MembersList(props) {
 			<div className="dashboard-header">
 				<h2>Members ({props.teamMembers.length})</h2>
 				{userRole === 1 ? null : (
-					<Button
-						style={{ backgroundColor: "#6954EA", color:"white", border:"none" }}
-						icon="user"
-						className="adding-button"
-						onClick={openInviteModal}>
-						Invite Member
-					</Button>
+					// <Button
+					// 	style={{ color: "#6954EA", border: "hidden", fontSize: "1rem", textAlign: "left",  borderStyle:"none", backgroundColor:"transparent",boxShadow:"none" }}
+						
+					// 	className="adding-button"
+					// 	onClick={openInviteModal}>
+						
+					// </Button>
+					<UserAddOutlined style={{fontSize:"1.6rem", color: "#6954EA"}} onClick={openInviteModal} />
 				)}
 			</div>
 			<Carousel component={MemberCard} data={props.teamMembers} />
