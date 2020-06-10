@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 import { fetchTeamById } from "../../redux/actions/teamActions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import {
+	CloseOutlined
+  } from '@ant-design/icons';
 
 const DeleteTeam = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -52,9 +55,9 @@ const DeleteTeam = () => {
 		<div>
 			<Button
 				type="primary"
-				style={{ color: "white", border: "none", fontSize: "1rem", textAlign: "left",  borderStyle:"none",backgroundColor:"#6954EA"}}
+				style={{ color: "#6954EA", border: "hidden", fontSize: "1rem", textAlign: "left",  borderStyle:"none", backgroundColor:"transparent",boxShadow:"none"}}
 				onClick={handleOpen}>
-				Delete team
+				<CloseOutlined style={{fontSize:"1.6rem"}} />
 			</Button>
 
 			<Modal title="Delete this team" visible={showModal} onOk={iDelete} onCancel={handleCancel} okText="Delete" okButtonProps={{style:{backgroundColor:"#6954EA",color:"white",border:"none"}}}>
