@@ -24,7 +24,7 @@ ReactDOM.render(
 				issuer="https://okta.alpacavids.com/oauth2/default"
 				client_id="0oacbrrfntl0SndJM4x6"
 				redirectUri={window.location.origin + "/implicit/callback"}
-				disableHttpsCheck>
+				disableHttpsCheck={false}>
 				<App />
 			</Security>
 		</Router>

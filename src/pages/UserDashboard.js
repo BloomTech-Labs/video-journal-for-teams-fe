@@ -29,19 +29,19 @@ function UserDashboard(props) {
 	}
 
 	useEffect(() => {
-		authState.isAuthenticated
-			? authService.getUser().then((user) => {
-					const creds = {
-						username: user.preferred_username,
-						email: user.email,
-						first_name: user.given_name,
-						last_name: user.family_name,
-						password: user.sub,
-					};
-					dispatch(loginUser(creds));
-					console.log('User', user)
-			  })
-			: history.push("/login");
+		authState.isAuthenticated &&
+			authService.getUser().then((user) => {
+				const creds = {
+					username: user.preferred_username,
+					email: user.email,
+					first_name: user.given_name,
+					last_name: user.family_name,
+					password: user.sub,
+				};
+				dispatch(loginUser(creds));
+				console.log("User", user);
+			});
+		// : history.push("/login");
 	}, [authState]);
 
 	useEffect(() => {
