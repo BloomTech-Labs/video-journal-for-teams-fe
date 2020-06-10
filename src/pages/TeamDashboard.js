@@ -10,6 +10,7 @@ import EditTeam from "../components/team/EditTeam";
 import DeleteTeam from "../components/team/DeleteTeam";
 import QuestionsForm from "../components/VideoDetails/QuestionsForm";
 import ChartModal from "../components/VideoDetails/ChartModal";
+import ResultsModal from "../components/VideoDetails/FeedbackResults";
 
 // Redux
 import { connect } from "react-redux";
@@ -144,9 +145,6 @@ function TeamDashboard(props) {
 						<div>{userRole === 2 && <EditTeam />}</div>
 						<div style={{ marginLeft: "2%" }}>{userRole === 2 && <DeleteTeam />}</div>
 					</div>
-					{/* <QuestionsForm />
-					<br />
-					<ChartModal /> */}
 
 					<UserContext.Provider value={{ userRole }}>
 						<MembersList />
