@@ -9,7 +9,7 @@ import { submitFeedback } from "../../redux/actions/userActions";
 // Components
 import { Form, Input, Button, Icon } from "antd";
 import axiosWithAuth from "../utils/AxiosWithAuth";
-import StarRating from "./FeedbackRating";
+
 import { FaStar } from "react-icons/fa";
 
 // Additional Ant Design components

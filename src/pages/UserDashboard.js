@@ -39,7 +39,7 @@ function UserDashboard(props) {
 					password: user.sub,
 				};
 				dispatch(loginUser(creds));
-				console.log("User", user);
+				authService.getAccessToken().then((token) => localStorage.setItem("access-token", token));
 			});
 		// : history.push("/login");
 	}, [authState]);

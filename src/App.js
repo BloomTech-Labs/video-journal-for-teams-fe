@@ -28,6 +28,7 @@ import LoadingView from "./components/utils/LoadingView";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Login from "./components/okta/Login";
 import { socket as io } from "./socket/socket";
+import InviteRedirect from './pages/InviteRedirect'
 
 // Styles
 import "./App.scss";
@@ -43,6 +44,7 @@ import { useHistory } from "react-router-dom";
 import GoogleRedirect from "./components/okta/GoogleRedirect";
 
 function App(props) {
+	console.log(props)
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	const appHistory = useHistory();
 
@@ -50,12 +52,20 @@ function App(props) {
 		appHistory.push("/login");
 	};
 
+	const invite_info = JSON.parse(localStorage.getItem('team_invite'))
+	console.log(invite_info)
+
 	useEffect(() => {
+		// if (isLogged && invite_info && invite_info.org_id && invite_info.team_id) {
+		// 	addToInvitedTeam(invite_info.team_id, userId, history, invite_info.org_id)
+		// 	localStorage.removeItem('team_invite')
+		// 	history.push(`/teams/${invite_info.team_id}`)
+		// }
 		if (isLogged && invited_team_id && invite_code && organization_id) {
 			addToInvitedTeam(invited_team_id, userId, history, organization_id);
 			history.push(`/teams/${invited_team_id}`);
 		}
-	}, [isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history]);
+	}, [isLogged, invited_team_id, organization_id, invite_code, addToInvitedTeam, userId, history]);
 
 	return (
 		<div className="app">
@@ -64,6 +74,7 @@ function App(props) {
 			<Route exact path="/" component={Home} />
 
 			<Route path="/about" component={AboutUs} />
+			<Route exact path='/invite-redirect' component={InviteRedirect}/>
 
 			<Route exact path="/login" component={Login} />
 			<Route exact path="/google/callback" component={GoogleRedirect} />
