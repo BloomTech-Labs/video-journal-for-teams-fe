@@ -6,9 +6,22 @@
 }
 .ant-menu-item{
 	background-color:#6954EA;
-	max-width: 90%;
+	width: 90%;
 
 	.ant-menu-item-selected{
 		background-color:#6954EA;
 	}
 }
+.logo {
+	width: 80%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	margin-left: 10%;
+
+	img{
+		max-width: 100%;
+		object-fit: contain;
+	}
+}
+
