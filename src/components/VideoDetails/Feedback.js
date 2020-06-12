@@ -11,7 +11,7 @@ import { fetchFeedback } from "../../redux/actions/userActions";
 
 // Components
 import FeedbackTable from "./FeedbackTable";
-import FeedbackForm from "./FeedbackForm";
+
 import QuestionsForm from "./QuestionsForm";
 
 export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetchFeedback }) {
