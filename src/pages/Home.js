@@ -1,10 +1,10 @@
 import reel from "../imgs/image.png";
 import teamReel from "../imgs/TeamReel.png";
-import React, { useState, useEffect } from "react";
-import { Button, Card, Tag, Divider } from "antd";
+import React, { useEffect } from "react";
+import { Button } from "antd";
 import { useHistory, Link } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
-import { loginUser, setError, clearError } from "../redux/actions/userActions";
+//import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 const Home = () => {
 	let history = useHistory();

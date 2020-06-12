@@ -1,9 +1,27 @@
 .full-header {
-	text-align: left;
+	// text-align: left;
+	// height: 80px;
+	// padding: 20px;
+	// background-color: #6954EA;
+	// color: white;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	height: 80px;
+	width: 100vw;
 	padding: 20px;
+	text-shadow: none;
+	bottom: 0px;
 	background-color: #6954EA;
-	color: white;
+	opacity: 1;
+	position: fixed;
+	top: 0px;
+		* {
+			margin:10px;
+		}
+		z-index: 9999;
 
 
 	.title {
@@ -15,6 +33,8 @@
 		img{
 			max-width: 100%;
 			margin-left: 100px;
+			object-fit: contain;
+			margin-bottom: 4%;
 		}
 	}
 
@@ -22,9 +42,10 @@
 
 
 .jumbotron {
-	height          : 185px;
+	height          : 85px;
 	background-color:#F5F5F5;
 	text-align      : left;
+	margin-top: 80px;
 
 	.breadcrumb {
 		font-size      : $md-text-size;
@@ -51,7 +72,7 @@
 
 .profile-main {
 	background-color: #fff;
-	height: 580px;
+	height: 100vh;
 
 	.outlined-btn {
 		@include outlined-button(#6954EA);
@@ -104,7 +125,7 @@
 .avatar-wrapper {
 	text-align: center;
 	position  : absolute;
-	top       : -75px;
+	top       : 90px;
 
 	a {
 		font-size: $sm-text-size;

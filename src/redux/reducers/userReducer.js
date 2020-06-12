@@ -48,8 +48,16 @@ const initialState = {
 		playback: false,
 		error: false,
 	},
+	videoFeedback: {
+		overall_performance: "",
+		delivery_and_presentation: "",
+		response_quality: "",
+		audio_quality: "",
+		visual_environment: "",
+		post: "",
+	},
 };
-const userReducer = (state = initialState, { type, payload }) => {
+const userReducer = (state = initialState, { type, payload, values }) => {
 	switch (type) {
 		case constants.REGISTER_USER:
 			//Store login token in browser localStorage
@@ -471,6 +479,11 @@ const userReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				teams: payload,
+			};
+		case constants.SET_FEEDBACK:
+			return {
+				...state,
+				videoFeedback: { ...state.videoFeedback, [values]: payload },
 			};
 		default:
 			return state;

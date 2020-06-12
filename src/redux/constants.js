@@ -20,6 +20,7 @@ const constants = {
 	FETCH_USER_VIDEOS_START: "user:fetch-videos-start",
 	FETCH_USER_VIDEOS_SUCCESS: "user:fetch-videos-success",
 	FETCH_USER_VIDEOS_FAILURE: "user:fetch-videos-failure",
+	SET_FEEDBACK: "user:set-feedback",
 
 	//GET fetch single video for user
 	FETCH_VIDEO_START: "user:fetch-video-start",

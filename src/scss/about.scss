@@ -32,6 +32,7 @@ div.header{
 
 			img{
 				max-width: 100%;
+				object-fit: contain;
 			}
 		}
 		.links {
@@ -69,6 +70,7 @@ div.header{
 				align-items:center;
 				&:hover{
 					color:#FF7F50;
+					border: 1px solid #FF7F50;
 				}
 				&:focus {
 					color: white;
