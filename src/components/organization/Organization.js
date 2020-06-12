@@ -78,7 +78,6 @@ const Organization = ({ createUserOrganization }) => {
 	};
 	const handleInput = (e) => {
 		setOrganization({ ...organization, [e.target.name]: e.target.value });
-		console.log(organization);
 	};
 	return (
 		<div>
