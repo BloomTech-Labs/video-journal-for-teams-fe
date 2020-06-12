@@ -1,11 +1,11 @@
 
 import reel from '../imgs/image.png';
 import teamReel from '../imgs/TeamReel.png';
-import React, { useState, useEffect } from "react";
-import { Button, Card, Tag, Divider } from "antd";
+import React, { useEffect } from "react";
+import { Button } from "antd";
 import { useHistory, Link } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
-import { loginUser, setError, clearError } from "../redux/actions/userActions";
+//import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 const Home = () => {
 	let history = useHistory();
@@ -46,7 +46,7 @@ const Home = () => {
 			<div className="text">
 				<div className="reel-logo">
 					<h1 className="h1">Practice your speaking skills with your team,<h1 className="text-red">no matter where you are.</h1></h1>
-					<img src={reel} alt="film reel"/> 
+					<img src={reel} alt="film reel" className="reel"/> 
 				</div>
 				
 				<div className="arrow-down">

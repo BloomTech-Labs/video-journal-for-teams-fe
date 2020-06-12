@@ -107,6 +107,7 @@ export const fetchUserVideos = (userId, organization_id) => (dispatch) => {
 	AxiosWithAuth()
 		.get(`/v2/users/${userId}/videos/${organization_id}`)
 		.then((res) => {
+			console.log(res.data)
 			dispatch({ type: constants.FETCH_USER_VIDEOS_SUCCESS, payload: res.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
@@ -175,6 +176,8 @@ export const fetchInvite = (invite) => (dispatch) => {
 		.get(`/invites/${invite}`)
 		.then((invite) => {
 			if (invite.data.team_id > 0) {
+				// console.log('$$$', invite.data)
+				// localStorage.setItem('team_invite', JSON.stringify({org_id: invite.data.organization_id, team_id: invite.data.team_id}))
 				dispatch({ type: constants.FETCH_INVITE_SUCCESS, payload: invite.data });
 			} else {
 				dispatch({ type: constants.FETCH_INVITE_FAILURE, payload: invite.data.message });
@@ -188,7 +191,7 @@ export const fetchInvite = (invite) => (dispatch) => {
 export const addToInvitedTeam = (team_id, user_id, history, organization_id) => (dispatch) => {
 	dispatch({ type: constants.ADD_INVITED_MEMBER_START });
 	AxiosWithAuth()
-		.post(`/teams/${team_id}/users`, {
+		.post(`/v2/teams/${team_id}/users`, {
 			user_id: user_id,
 			role_id: 1,
 			team_id: team_id,
