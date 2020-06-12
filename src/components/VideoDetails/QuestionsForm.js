@@ -15,6 +15,7 @@ const QuestionForm = ({ videoId, videoOwnerId }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const feedback = useSelector((state) => state.User.videoFeedback);
+	const userId = useSelector((state) => state.User.userId);
 	const titles = [
 		"Overall Performance",
 		"Delivery and Presentation",
@@ -35,7 +36,7 @@ const QuestionForm = ({ videoId, videoOwnerId }) => {
 	};
 
 	const handleOk = () => {
-		const feedbackObj = { ...feedback, video_id: videoId, owner_id: videoOwnerId, post: values };
+		const feedbackObj = { ...feedback, video_id: videoId, owner_id: userId, post: values };
 		dispatch(submitFeedback(feedbackObj));
 		dispatch(setFeedback("post", values));
 		history.push(`/videos/${videoId}`);
