@@ -45,7 +45,7 @@ const ChartModal = () => {
 				type="primary"
 				style={{ color: "white", border: "none", fontSize: "1rem", textAlign: "left", backgroundColor: "#6954EA" }}
 				onClick={handleOpen}>
-				See your results
+				See your chart
 			</Button>
 
 			<Modal

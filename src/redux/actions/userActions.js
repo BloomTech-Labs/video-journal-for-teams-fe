@@ -372,3 +372,11 @@ export const setError = (errorMessage) => (dispatch) => {
 export const clearError = () => (dispatch) => {
 	dispatch({ type: constants.CLEAR_ERROR, payload: null });
 };
+
+export const setFeedback = (value, feedback) => {
+	return {
+		type: constants.SET_FEEDBACK,
+		values: value,
+		payload: feedback,
+	};
+};

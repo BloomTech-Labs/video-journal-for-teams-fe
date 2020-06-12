@@ -19,6 +19,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import OrganizationTeams from "./pages/OrganizationTeams";
 import OrganizationUsers from "./pages/OrganizationUsers";
+import Results from "./pages/Results";
 import OktaLogin from "./components/okta/OktaLogin";
 import { LoginCallback, ImplicitCallback, SecureRoute, Security } from "@okta/okta-react";
 import { persistor, store } from "./redux/store";
@@ -97,6 +98,8 @@ function App(props) {
 			<SecureRoute exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
 
 			<SecureRoute exact path="/videos" component={UserVideos} />
+
+			<SecureRoute exact path="/results" component={Results} />
 
 			<UploadProgress />
 		</div>
