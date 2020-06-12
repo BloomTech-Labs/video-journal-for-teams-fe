@@ -100,7 +100,6 @@ export function RecordStream({
 				setStreamError(false);
 
 				//Turns off camera and mic
-				console.log("targets", e.target.stream.getTracks());
 				e.target.stream.getTracks().forEach((track) => track.stop());
 			};
 		}
@@ -138,7 +137,6 @@ export function RecordStream({
 
 	//* Creates an instance of MediaRecorder using the passed in mediaStream object.
 	function setupMediaRecorder(mediaStream) {
-		console.log(MediaRecorder.isTypeSupported("video/mp4; codecs=avc1.424028, mp4a.40.24"));
 		setMediaRecorder(new MediaRecorder(mediaStream, MediaRecorderConfig.options));
 	}
 

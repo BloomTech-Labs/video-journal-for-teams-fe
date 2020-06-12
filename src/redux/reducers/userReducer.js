@@ -60,7 +60,6 @@ const initialState = {
 const userReducer = (state = initialState, { type, payload, values }) => {
 	switch (type) {
 		case constants.REGISTER_USER:
-			console.log("reducer fired");
 			//Store login token in browser localStorage
 			localStorage.setItem("token", payload.token);
 			return {

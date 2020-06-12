@@ -34,8 +34,10 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 	} else {
 		return (
 			<>
+				<div style={{ textAlign: "center", margin: "2% 0" }}>
+					<QuestionsForm videoId={videoId} videoOwnerId={videoOwnerId} />
+				</div>
 				<FeedbackTable feedback={feedback} />
-				<QuestionsForm videoId={videoId} videoOwnerId={videoOwnerId} />;
 			</>
 		);
 	}
