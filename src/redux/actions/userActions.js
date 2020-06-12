@@ -133,10 +133,10 @@ export const fetchFeedback = (videoId) => (dispatch) => {
 		.catch((err) => dispatch({ type: constants.FETCH_FEEDBACK_FAILURE, payload: err.response }));
 };
 
-export const submitFeedback = (videoId, feedback, user_id) => (dispatch) => {
+export const submitFeedback = (feedback) => (dispatch) => {
 	dispatch({ type: constants.SUBMIT_FEEDBACK_START });
 	AxiosWithAuth()
-		.post(`/v2/videos/${videoId}/feedback/${user_id}`, feedback)
+		.post(`/v2/users/feedback`, feedback)
 		.then(() => {
 			dispatch({
 				type: constants.SUBMIT_FEEDBACK_SUCCESS,
