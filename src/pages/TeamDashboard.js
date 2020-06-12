@@ -144,7 +144,6 @@ function TeamDashboard(props) {
 						<div>{userRole === 2 && <EditTeam />}</div>
 						<div style={{ marginLeft: "2%" }}>{userRole === 2 && <DeleteTeam />}</div>
 					</div>
-					<QuestionsForm />
 
 					<UserContext.Provider value={{ userRole }}>
 						<MembersList />

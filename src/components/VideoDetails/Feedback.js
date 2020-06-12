@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { socket } from "../../socket/socket";
-import starRating from './FeedbackRating.js';
+import starRating from "./FeedbackRating.js";
 
 // Redux
 import { connect } from "react-redux";
@@ -12,6 +12,7 @@ import { fetchFeedback } from "../../redux/actions/userActions";
 // Components
 import FeedbackTable from "./FeedbackTable";
 import FeedbackForm from "./FeedbackForm";
+import QuestionsForm from "./QuestionsForm";
 
 export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetchFeedback }) {
 	const [showFeedback, setShowFeedback] = useState(false);
@@ -34,8 +35,7 @@ export function Feedback({ videoId, videoOwnerId, loggedInUserId, feedback, fetc
 		return (
 			<>
 				<FeedbackTable feedback={feedback} />
-				
-				<FeedbackForm videoId={videoId} videoOwnerId={videoOwnerId} />;
+				<QuestionsForm videoId={videoId} videoOwnerId={videoOwnerId} />;
 			</>
 		);
 	}
