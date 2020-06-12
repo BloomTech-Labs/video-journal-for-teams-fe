@@ -2,7 +2,7 @@ import axios from "axios";
 
 const AxiosWithAuth = () => {
 	const token =
-		localStorage.getItem("token") ||
+		localStorage.getItem("access-token") ||
 		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExOCwiaWF0IjoxNTgwODg0NDYzLCJleHAiOjE1ODA4OTUyNjN9.t_fVoUgER1YRorMcbhHSPiJgBqzP__OUfMYmvx0uaxw";
 
 	return axios.create({

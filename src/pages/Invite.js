@@ -19,7 +19,7 @@ const Invite = ({ fetchInvite, isLoading }) => {
 	return (
 		<div>
 			{
-				isLoading ? <LoadingView /> : history.push("/register")
+				isLoading ? <LoadingView /> : history.push("/user-dashboard")
 				// : <Redirect to='/register' />
 			}
 		</div>

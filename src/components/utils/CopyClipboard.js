@@ -11,6 +11,6 @@ const CopyClipboard = (domElement) => {
 
 	/* Alert the copied text */
 	alert(copyText.value + " ...has been copied to clipboard.");
-}
+};
 
 export default CopyClipboard;

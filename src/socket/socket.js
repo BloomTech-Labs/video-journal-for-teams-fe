@@ -13,7 +13,6 @@ const host = function () {
 	}
 };
 export const ENDPOINT = host();
-console.log(ENDPOINT);
 
 //please work
 

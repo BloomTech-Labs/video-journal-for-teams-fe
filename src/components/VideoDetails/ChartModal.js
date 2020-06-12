@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, PureComponent } from "react";
 import { Modal, Button, Form, Input } from "antd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { fetchTeamById } from "../../redux/actions/teamActions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-	EditOutlined
-  } from '@ant-design/icons';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from "recharts";
 
-const EditTeam = () => {
+const ChartModal = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [values, setValues] = useState(null);
 	const { team_id } = useParams();
@@ -24,7 +22,7 @@ const EditTeam = () => {
 		if (values) {
 			const updates = { name: values };
 			axios
-				.put(`/v2/teams/${team_id}`, updates)
+				.put(``, updates)
 				.then((res) => {
 					dispatch(fetchTeamById(team_id));
 					setShowModal(!showModal);
@@ -40,37 +38,26 @@ const EditTeam = () => {
 	const handleChange = (e) => {
 		setValues(e.target.value);
 	};
-	function iDelete() {
-		axios
-			.delete(`/v2/teams/${team_id}`)
-			.then((res) => history.push("/user-dashboard"))
-			.catch((err) => console.log(err));
-	}
 
 	return (
 		<div>
 			<Button
-				
 				type="primary"
-				style={{ color: "#6954EA", border: "none", fontSize: "1rem", textAlign: "left",backgroundColor:"transparent",boxShadow:"none"}}
+				style={{ color: "white", border: "none", fontSize: "1rem", textAlign: "left", backgroundColor: "#6954EA" }}
 				onClick={handleOpen}>
-					<EditOutlined style={{fontSize:"1.6rem"}}/>
-				
+				See your chart
 			</Button>
-			
-			<Modal title="Edit Modal" visible={showModal} onOk={handleOk} onCancel={handleCancel}okButtonProps={{style:{backgroundColor:"#6954EA",color:"white",border:"none"}}}>
-				<Form name="basic" initialValues={{ remember: true }}>
-					<Form.Item
-						label="team name"
-						name="team_name"
-						rules={[{ required: true, message: "Please enter a new team name!" }]}
-						onChange={handleChange}>
-						<Input />
-					</Form.Item>
-				</Form>
+
+			<Modal
+				title="Feedback Modal"
+				visible={showModal}
+				onOk={handleOk}
+				onCancel={handleCancel}
+				okButtonProps={{ style: { backgroundColor: "#6954EA", color: "white", border: "none" } }}>
+				<RadarChart />
 			</Modal>
 		</div>
 	);
 };
 
-export default EditTeam;
+export default ChartModal;

@@ -19,15 +19,13 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import OrganizationTeams from "./pages/OrganizationTeams";
 import OrganizationUsers from "./pages/OrganizationUsers";
+import Results from "./pages/Results";
 import OktaLogin from "./components/okta/OktaLogin";
 import { LoginCallback, ImplicitCallback, SecureRoute, Security } from "@okta/okta-react";
-import { persistor, store } from "./redux/store";
-import { PersistGate } from "redux-persist/lib/integration/react";
-import { Provider } from "react-redux";
-import LoadingView from "./components/utils/LoadingView";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Login from "./components/okta/Login";
 import { socket as io } from "./socket/socket";
+import InviteRedirect from "./pages/InviteRedirect";
+import Chart from "./components/charts/Charts";
 
 // Styles
 import "./App.scss";
@@ -50,12 +48,19 @@ function App(props) {
 		appHistory.push("/login");
 	};
 
+	const invite_info = JSON.parse(sessionStorage.getItem("team_invite"));
+
 	useEffect(() => {
-		if (isLogged && invited_team_id && invite_code && organization_id) {
-			addToInvitedTeam(invited_team_id, userId, history, organization_id);
-			history.push(`/teams/${invited_team_id}`);
+		if (isLogged && invite_info && invite_info.org_id && invite_info.team_id) {
+			addToInvitedTeam(invite_info.team_id, userId, history, invite_info.org_id);
+			sessionStorage.removeItem("team_invite");
+			history.push(`/teams/${invite_info.team_id}`);
 		}
-	}, [isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history]);
+		// if (isLogged && invited_team_id && invite_code && organization_id) {
+		// 	addToInvitedTeam(invited_team_id, userId, history, organization_id);
+		// 	history.push(`/teams/${invited_team_id}`);
+		// }
+	}, [isLogged, invited_team_id, organization_id, invite_code, addToInvitedTeam, userId, history]);
 
 	return (
 		<div className="app">
@@ -64,6 +69,8 @@ function App(props) {
 			<Route exact path="/" component={Home} />
 
 			<Route path="/about" component={AboutUs} />
+			<Route exact path="/invite-redirect" component={InviteRedirect} />
+			<Route exact path="/charts" component={Chart} />
 
 			<Route exact path="/login" component={Login} />
 			<Route exact path="/google/callback" component={GoogleRedirect} />
@@ -86,6 +93,8 @@ function App(props) {
 			<SecureRoute exact path="/organizations/:organization_id/users" component={OrganizationUsers} />
 
 			<SecureRoute exact path="/videos" component={UserVideos} />
+
+			<SecureRoute exact path="/results" component={Results} />
 
 			<UploadProgress />
 		</div>
