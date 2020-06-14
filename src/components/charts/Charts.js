@@ -1,46 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import AxiosWithAuth from "../utils/AxiosWithAuth";
+import BarGraph from "./BarGraph";
+import { fetchVideoFeedback } from "../../redux/actions/userActions";
 
 const Graph = () => {
-	const data = [
-		{
-			field: "overall performance",
-			score: 88,
-		},
-		{
-			field: "delivery and performance",
-			score: 78,
-		},
-		{
-			field: "audio quality",
-			score: 48,
-		},
-		{
-			field: "visual quality",
-			score: 65,
-		},
-		{
-			field: "delivery and performance",
-			score: 78,
-		},
-	];
+	const [data, setData] = useState();
+	const userId = useSelector((state) => state.User.userId);
+	const dispatch = useDispatch();
 
-	return (
-		<div className="graph_wrapper">
-			<BarChart
-				width={800}
-				height={500}
-				data={data}
-				layout="vertical"
-				margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-				<XAxis type="number" />
-				<YAxis type="category" dataKey="field" />
-				<CartesianGrid strokeDasharray="3 3" />
-				<Tooltip />
-				<Bar dataKey="score" fill="#6954EA" />
-			</BarChart>
-		</div>
+	useEffect(() => {
+		userId &&
+			AxiosWithAuth()
+				.get(`/v2/users/feedback/${userId}`)
+				.then((res) => {
+					dispatch(fetchVideoFeedback(res.data));
+					setData([
+						// { field: "overall performance", score: res.data.performance_score },
+						{ field: "human response quality", score: res.data.human_response_quality },
+						{ field: "human audio quality", score: res.data.human_audio_quality },
+						{ field: "human visual environment", score: res.data.human_visual_environment },
+						{ field: "attitude", score: res.data.attitude },
+						{ field: "speaking speed", score: res.data.speaking_speed },
+						{ field: "background noise", score: res.data.background_noise },
+						{ field: "appearance facial centering", score: res.data.appearance_facial_centering },
+					]);
+				})
+				// }
+				.catch((err) => console.log(err));
+	}, [userId]);
+
+	return data && data.length && data[0].score !== 0 ? (
+		<BarGraph data={data} />
+	) : (
+		<p>{"please check back for results"}</p>
 	);
 };
 

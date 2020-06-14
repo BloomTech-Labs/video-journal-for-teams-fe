@@ -21,7 +21,7 @@ import OrganizationTeams from "./pages/OrganizationTeams";
 import OrganizationUsers from "./pages/OrganizationUsers";
 import Results from "./pages/Results";
 import OktaLogin from "./components/okta/OktaLogin";
-import { LoginCallback, ImplicitCallback, SecureRoute, Security } from "@okta/okta-react";
+import { LoginCallback, ImplicitCallback, SecureRoute, Security, useOktaAuth } from "@okta/okta-react";
 import Login from "./components/okta/Login";
 import { socket as io } from "./socket/socket";
 import InviteRedirect from "./pages/InviteRedirect";
@@ -43,10 +43,6 @@ import GoogleRedirect from "./components/okta/GoogleRedirect";
 function App(props) {
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	const appHistory = useHistory();
-
-	const authRequired = () => {
-		appHistory.push("/login");
-	};
 
 	const invite_info = JSON.parse(sessionStorage.getItem("team_invite"));
 
