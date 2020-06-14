@@ -17,7 +17,6 @@ const Graph = () => {
 				.then((res) => {
 					dispatch(fetchVideoFeedback(res.data));
 					setData([
-						// { field: "overall performance", score: res.data.performance_score },
 						{ field: "human response quality", score: res.data.human_response_quality },
 						{ field: "human audio quality", score: res.data.human_audio_quality },
 						{ field: "human visual environment", score: res.data.human_visual_environment },
@@ -27,7 +26,6 @@ const Graph = () => {
 						{ field: "appearance facial centering", score: res.data.appearance_facial_centering },
 					]);
 				})
-				// }
 				.catch((err) => console.log(err));
 	}, [userId]);
 
