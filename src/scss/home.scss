@@ -194,7 +194,7 @@ header.home {
 		align-items: center;
 		height: 80px;
 		width: 100vw;
-		padding: 20px;
+		//padding: 20px;
 		text-shadow: none;
 		bottom: 0px;
 		background-color: #6954EA;
@@ -202,9 +202,7 @@ header.home {
 		opacity: 1;
 		position: fixed;
 		top: 0px;
-		* {
-			margin:10px;
-		}
+		
 		.title {
 			width: 10%;
 			text-align: right;
@@ -212,9 +210,10 @@ header.home {
 			justify-content: center;
 
 			img{
-				// display: block;
-				max-width: 70%;
+				
+				width: 100%;
 				object-fit: contain;
+
 			}
 			
 			
@@ -222,11 +221,10 @@ header.home {
 		
 		.links {
 			width: 30%;
-			min-width: 320px;
 			display: flex;
 			justify-content: flex-start;
-			font-size: 1.5rem;
-			font-weight: bolder;
+			font-size: 1.4rem;
+			//font-weight: bolder;
 			color: white;
 
 			p:hover {
