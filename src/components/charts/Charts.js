@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import BarGraph from "./BarGraph";
+import LineGraph from "./LineGraph";
 import { fetchVideoFeedback } from "../../redux/actions/userActions";
 
 const Graph = () => {
@@ -30,7 +31,10 @@ const Graph = () => {
 	}, [userId]);
 
 	return data && data.length && data[0].score !== 0 ? (
-		<BarGraph data={data} />
+		<div>
+			<BarGraph data={data} />
+			<LineGraph />
+		</div>
 	) : (
 		<p>{"please check back for results"}</p>
 	);

@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 export default function BarGraph({ data }) {
 	return (
@@ -15,6 +15,7 @@ export default function BarGraph({ data }) {
 				<CartesianGrid strokeDasharray="3 3" />
 				<Tooltip />
 				<Bar dataKey="score" fill="#6954EA" />
+				<Legend />
 			</BarChart>
 		</div>
 	);
