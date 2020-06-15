@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { UserContext } from "../components/utils/UserContext";
 import { useParams, useHistory, Link } from "react-router-dom";
+import Charts from "../components/charts/Charts";
 
 // Components
 import NavAndHeader from "../components/nav/NavAndHeader";
@@ -24,6 +25,7 @@ function TeamDashboard(props) {
 		teamError,
 		isFetching,
 		clearError,
+		performance_score,
 	} = props;
 	const [userRole, setUserRole] = useState();
 	const [count, setCount] = useState(10);
@@ -94,6 +96,8 @@ function TeamDashboard(props) {
 						Your overall performance score is an averaged score based on the feedback you receive from your peers as
 						well as TeamReel’s automated performance score generator.
 					</p>
+					{performance_score !== 0 && <h2 style={{ marginTop: "3%" }}>Overall Score: {`${performance_score}/5`} </h2>}
+					<Charts />
 				</div>
 			</NavAndHeader>
 		);
@@ -108,6 +112,7 @@ const mapStateToProps = (state) => ({
 	isFetching: state.Team.isFetching,
 	teamPromptsAndVideos: state.Team.teamPromptsAndVideos,
 	newPrompt: state.Team.newPrompt,
+	performance_score: state.User.userVideoFeedback.performance_score,
 });
 
 const mapActionsToProps = {

@@ -5,6 +5,7 @@ import AxiosWithAuth from "../utils/AxiosWithAuth";
 import BarGraph from "./BarGraph";
 import LineGraph from "./LineGraph";
 import { fetchVideoFeedback } from "../../redux/actions/userActions";
+import { formatFeedback } from "../utils/formatFeedback";
 
 const Graph = () => {
 	const [data, setData] = useState();
@@ -17,21 +18,13 @@ const Graph = () => {
 				.get(`/v2/users/feedback/${userId}`)
 				.then((res) => {
 					dispatch(fetchVideoFeedback(res.data));
-					setData([
-						{ field: "human response quality", score: res.data.human_response_quality },
-						{ field: "human audio quality", score: res.data.human_audio_quality },
-						{ field: "human visual environment", score: res.data.human_visual_environment },
-						{ field: "attitude", score: res.data.attitude },
-						{ field: "speaking speed", score: res.data.speaking_speed },
-						{ field: "background noise", score: res.data.background_noise },
-						{ field: "appearance facial centering", score: res.data.appearance_facial_centering },
-					]);
+					setData(formatFeedback(res.data));
 				})
 				.catch((err) => console.log(err));
 	}, [userId]);
 
 	return data && data.length && data[0].score !== 0 ? (
-		<div>
+		<div style={{ display: "flex", justifyContent: "space-evenly", margin: "5% 0" }}>
 			<BarGraph data={data} />
 			<LineGraph />
 		</div>

@@ -10,11 +10,11 @@ export default function BarGraph({ data }) {
 				data={data}
 				layout="vertical"
 				margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-				<XAxis type="number" />
+				<XAxis ticks={[1, 2, 3, 4, 5]} domain={[0, 5]} type="number" />
 				<YAxis type="category" dataKey="field" />
 				<CartesianGrid strokeDasharray="3 3" />
 				<Tooltip />
-				<Bar dataKey="score" fill="#6954EA" />
+				<Bar dataKey="score" fill="#FF7F50" />
 				<Legend />
 			</BarChart>
 		</div>
