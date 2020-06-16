@@ -2,6 +2,7 @@ export const formatFeedback = (feedback) => {
 	const categories = [
 		"human response quality",
 		"human audio quality",
+		"human visual environment",
 		"attitude",
 		"speaking speed",
 		"background noise",

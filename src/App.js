@@ -20,12 +20,12 @@ import AboutUs from "./pages/AboutUs";
 import OrganizationTeams from "./pages/OrganizationTeams";
 import OrganizationUsers from "./pages/OrganizationUsers";
 import Results from "./pages/Results";
-import OktaLogin from "./components/okta/OktaLogin";
-import { LoginCallback, ImplicitCallback, SecureRoute, Security, useOktaAuth } from "@okta/okta-react";
+import { LoginCallback, SecureRoute, useOktaAuth } from "@okta/okta-react";
 import Login from "./components/okta/Login";
-import { socket as io } from "./socket/socket";
 import InviteRedirect from "./pages/InviteRedirect";
 import Chart from "./components/charts/Charts";
+import { loginUser } from "./redux/actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
 
 // Styles
 import "./App.scss";
@@ -37,14 +37,48 @@ import { Alert } from "antd";
 import { connect } from "react-redux";
 import { addToInvitedTeam } from "./redux/actions/userActions";
 import Organization from "./components/organization/Organization";
-import { useHistory } from "react-router-dom";
 import GoogleRedirect from "./components/okta/GoogleRedirect";
 
 function App(props) {
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
-	const appHistory = useHistory();
+	const { authState, authService } = useOktaAuth();
+	const dispatch = useDispatch();
+	const err = useSelector((state) => state.User.error);
 
 	const invite_info = JSON.parse(sessionStorage.getItem("team_invite"));
+	useEffect(() => {
+		// if (authState.isAuthenticated) {
+		// 	authService.getUser().then((user) => {
+		// 		const creds = {
+		// 			username: user.preferred_username,
+		// 			email: user.email,
+		// 			first_name: user.given_name,
+		// 			last_name: user.family_name,
+		// 			password: user.sub,
+		// 		};
+		// 		dispatch(loginUser(creds));
+
+		// 		authService.getAccessToken().then((token) => localStorage.setItem("access-token", token));
+		// 	});
+		// // } else if (!authState.isAuthenticated && !authState.isPending) {
+		// // 	localStorage.clear();
+		// // 	history.push("/");
+		// // }
+
+		authState.isAuthenticated &&
+			authService.getUser().then((user) => {
+				const creds = {
+					username: user.preferred_username,
+					email: user.email,
+					first_name: user.given_name,
+					last_name: user.family_name,
+					password: user.sub,
+				};
+				dispatch(loginUser(creds));
+
+				authService.getAccessToken().then((token) => localStorage.setItem("access-token", token));
+			});
+	}, [authState.isAuthenticated]);
 
 	useEffect(() => {
 		if (isLogged && invite_info && invite_info.org_id && invite_info.team_id) {
@@ -52,10 +86,6 @@ function App(props) {
 			sessionStorage.removeItem("team_invite");
 			history.push(`/teams/${invite_info.team_id}`);
 		}
-		// if (isLogged && invited_team_id && invite_code && organization_id) {
-		// 	addToInvitedTeam(invited_team_id, userId, history, organization_id);
-		// 	history.push(`/teams/${invited_team_id}`);
-		// }
 	}, [isLogged, invited_team_id, organization_id, invite_code, addToInvitedTeam, userId, history]);
 
 	return (

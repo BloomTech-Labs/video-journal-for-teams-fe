@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { UserContext } from "../components/utils/UserContext";
 import { useParams, useHistory, Link } from "react-router-dom";
 import Charts from "../components/charts/Charts";
 
 // Components
 import NavAndHeader from "../components/nav/NavAndHeader";
+import NoFeedback from "../components/ResultsComponents/NoFeedback";
 
 // Redux
 import { connect } from "react-redux";
@@ -12,7 +12,7 @@ import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "..
 //socket
 import { socket } from "../socket/socket";
 
-function TeamDashboard(props) {
+function ResultsPage(props) {
 	const {
 		team,
 		hello,
@@ -99,6 +99,7 @@ function TeamDashboard(props) {
 					{performance_score !== 0 && <h2 style={{ marginTop: "3%" }}>Overall Score: {`${performance_score}/5`} </h2>}
 					<Charts />
 				</div>
+				<NoFeedback />
 			</NavAndHeader>
 		);
 	}
@@ -122,4 +123,4 @@ const mapActionsToProps = {
 	fetchTeamVideos,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(TeamDashboard);
+export default connect(mapStateToProps, mapActionsToProps)(ResultsPage);

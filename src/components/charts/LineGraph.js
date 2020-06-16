@@ -12,10 +12,16 @@ export default function LineGraph() {
 			<LineChart width={800} height={500} data={recursiveFormat}>
 				<CartesianGrid strokeDasharray="5 5" />
 				<XAxis dataKey="created_at" />
-				<YAxis />
+				<YAxis domain={[0, 5]} ticks={[1, 2, 3, 4, 5]} />
 				<Tooltip />
 				<Legend />
-				<Line type="monotone" dataKey="overall_performance" stroke="#6954EA" activeDot={{ r: 8 }} />
+				<Line
+					strokeWidth="0.3rem"
+					type="monotone"
+					dataKey="overall_performance"
+					stroke="#6954EA"
+					activeDot={{ r: 8 }}
+				/>
 			</LineChart>
 		</div>
 	);
