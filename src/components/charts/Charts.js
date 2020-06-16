@@ -1,46 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import AxiosWithAuth from "../utils/AxiosWithAuth";
+import BarGraph from "./BarGraph";
+import LineGraph from "./LineGraph";
+import { fetchVideoFeedback } from "../../redux/actions/userActions";
+import { formatFeedback } from "../utils/formatFeedback";
 
 const Graph = () => {
-	const data = [
-		{
-			field: "overall performance",
-			score: 88,
-		},
-		{
-			field: "delivery and performance",
-			score: 78,
-		},
-		{
-			field: "audio quality",
-			score: 48,
-		},
-		{
-			field: "visual quality",
-			score: 65,
-		},
-		{
-			field: "delivery and performance",
-			score: 78,
-		},
-	];
+	const [data, setData] = useState();
+	const userId = useSelector((state) => state.User.userId);
+	const dispatch = useDispatch();
 
-	return (
-		<div className="graph_wrapper">
-			<BarChart
-				width={800}
-				height={500}
-				data={data}
-				layout="vertical"
-				margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-				<XAxis type="number" />
-				<YAxis type="category" dataKey="field" />
-				<CartesianGrid strokeDasharray="3 3" />
-				<Tooltip />
-				<Bar dataKey="score" fill="#6954EA" />
-			</BarChart>
+	useEffect(() => {
+		userId &&
+			AxiosWithAuth()
+				.get(`/v2/users/feedback/${userId}`)
+				.then((res) => {
+					dispatch(fetchVideoFeedback(res.data));
+					setData(formatFeedback(res.data));
+				})
+				.catch((err) => console.log(err));
+	}, [userId]);
+
+	return data && data.length && data[0].score !== 0 ? (
+		<div style={{ display: "flex", justifyContent: "space-evenly", margin: "5% 0" }}>
+			<BarGraph data={data} />
+			<LineGraph />
 		</div>
+	) : (
+		<p>{"please check back for results"}</p>
 	);
 };
 

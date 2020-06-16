@@ -56,6 +56,17 @@ const initialState = {
 		visual_environment: "",
 		post: "",
 	},
+	userVideoFeedback: {
+		performance_score: null,
+		human_response_quality: null,
+		human_audio_quality: null,
+		human_visual_environment: null,
+		attitude: null,
+		speaking_speed: null,
+		background_noise: null,
+		appearance_facial_centering: null,
+		score_over_time: [],
+	},
 };
 const userReducer = (state = initialState, { type, payload, values }) => {
 	switch (type) {
@@ -484,6 +495,22 @@ const userReducer = (state = initialState, { type, payload, values }) => {
 			return {
 				...state,
 				videoFeedback: { ...state.videoFeedback, [values]: payload },
+			};
+		case constants.FETCH_VIDEO_FEEDBACK:
+			return {
+				...state,
+				userVideoFeedback: {
+					...state.userVideoFeedback,
+					performance_score: payload.performance_score,
+					human_response_quality: payload.human_response_quality,
+					human_audio_quality: payload.human_audio_quality,
+					human_visual_environment: payload.human_visual_environment,
+					attitude: payload.attitude,
+					speaking_speed: payload.speaking_speed,
+					background_noise: payload.background_noise,
+					appearance_facial_centering: payload.appearance_facial_centering,
+					score_over_time: payload.score_over_time,
+				},
 			};
 		default:
 			return state;

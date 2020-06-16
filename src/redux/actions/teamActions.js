@@ -42,14 +42,16 @@ export const fetchTeamPrompts = (team_id) => (dispatch) => {
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
 };
 
-export const fetchTeamVideos = (team_id) => (dispatch) => {
+export const fetchTeamVideos = (team_id, history) => (dispatch) => {
 	dispatch({ type: constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_START });
 	AxiosWithAuth()
 		.get(`/v2/teams/${team_id}/videos`)
 		.then((teamVideosResponse) => {
 			dispatch({ type: constants.FETCH_TEAM_PROMPTS_AND_VIDEOS_SUCCESS, payload: teamVideosResponse.data });
 		})
-		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));
+		.catch((err) => {
+			dispatch({ type: constants.GENERATE_ERROR, payload: err.response });
+		});
 };
 
 export const deleteTeamMember = (team_id, user_id) => (dispatch) => {
