@@ -96,10 +96,13 @@ function ResultsPage(props) {
 						Your overall performance score is an averaged score based on the feedback you receive from your peers as
 						well as TeamReel’s automated performance score generator.
 					</p>
-					{performance_score !== 0 && <h2 style={{ marginTop: "3%" }}>Overall Score: {`${performance_score}/5`} </h2>}
+					{performance_score !== 0 ? (
+						<h2 style={{ marginTop: "3%" }}>Overall Score: {`${performance_score}/5`} </h2>
+					) : (
+						<NoFeedback />
+					)}
 					<Charts />
 				</div>
-				<NoFeedback />
 			</NavAndHeader>
 		);
 	}
