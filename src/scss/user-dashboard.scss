@@ -4,11 +4,14 @@
 	justify-content: flex-start;
 	margin: 20px 30px;
 }
-.ant-menu-item{
-	background-color:#6954EA;
+.ant-menu-item {
+	background-color: #6954ea;
 	max-width: 90%;
 
-	.ant-menu-item-selected{
-		background-color:#6954EA;
+	.ant-menu-item-selected {
+		background-color: #6954ea;
 	}
+}
+.ant-menu-inline {
+	border-right: none;
 }

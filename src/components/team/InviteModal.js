@@ -5,12 +5,12 @@ import { Modal, Form, Input } from "antd";
 
 const InviteModal = (props) => {
 	let baseURL = process.env.REACT_APP_FRONT_END_URL || "https://www.alpacavids.com/";
-	let URL = baseURL.concat("invite/", props.inviteCode)
+	let URL = baseURL.concat("invite/", props.inviteCode);
 
 	const handleOk = (e) => {
 		e.preventDefault();
 		props.setVisibility(false);
-		CopyClipboard("team-link")
+		CopyClipboard("team-link");
 	};
 
 	function handleCancel() {
@@ -24,7 +24,7 @@ const InviteModal = (props) => {
 			okText="Copy"
 			onOk={handleOk}
 			onCancel={handleCancel}
-			okButtonProps={{style:{backgroundColor:"#6954EA",color:"white",border:"none"}}}>
+			okButtonProps={{ style: { backgroundColor: "#6954EA", color: "white", border: "none" } }}>
 			<Form>
 				<Form.Item label="Copy Link">
 					<Input readOnly id="team-link" value={URL} />
@@ -32,10 +32,10 @@ const InviteModal = (props) => {
 			</Form>
 		</Modal>
 	);
-}
+};
 
 const mapStateToProps = (state) => ({
-	inviteCode: state.Team.inviteCode
+	inviteCode: state.Team.inviteCode,
 });
 
 export default connect(mapStateToProps)(InviteModal);
