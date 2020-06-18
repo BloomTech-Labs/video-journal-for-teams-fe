@@ -382,3 +382,10 @@ export const setFeedback = (value, feedback) => {
 		payload: feedback,
 	};
 };
+
+export const fetchVideoFeedback = (data) => {
+	return {
+		type: constants.FETCH_VIDEO_FEEDBACK,
+		payload: data,
+	};
+};
