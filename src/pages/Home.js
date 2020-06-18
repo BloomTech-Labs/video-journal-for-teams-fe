@@ -2,17 +2,21 @@ import reel from "../imgs/image.png";
 import teamReel from "../imgs/TeamReel.png";
 import React, { useEffect } from "react";
 import { Button } from "antd";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
+import UserVideos from "./UserVideos";
+import { useSelector } from "react-redux";
 //import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 const Home = () => {
-	let history = useHistory();
+	const history = useHistory();
+	const location = useLocation();
 	const { authService, authState } = useOktaAuth();
+	const userId = useSelector((state) => state.User.userId);
 
 	useEffect(() => {
-		authState.isAuthenticated && history.push("/user-dashboard");
-	}, [authState]);
+		authState.isAuthenticated && userId && history.push("/user-dashboard");
+	}, [authState, userId]);
 
 	return (
 		<div>

@@ -17,14 +17,21 @@ const Graph = () => {
 			AxiosWithAuth()
 				.get(`/v2/users/feedback/${userId}`)
 				.then((res) => {
+					console.log("results", res.data);
 					dispatch(fetchVideoFeedback(res.data));
 					setData(formatFeedback(res.data));
 				})
 				.catch((err) => console.log(err));
-	}, [userId]);
+	}, []);
 
 	return data && data.length && data[0].score !== 0 ? (
-		<div style={{ display: "flex", justifyContent: "space-evenly", margin: "5% 0" }}>
+		<div
+			style={{
+				display: "flex",
+				flexDirection: window.screen.availWidth > 767 ? "row" : "column",
+				justifyContent: "space-evenly",
+				margin: "5% 0",
+			}}>
 			<BarGraph data={data} />
 			<LineGraph />
 		</div>

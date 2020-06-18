@@ -39,10 +39,6 @@ function TeamDashboard(props) {
 	let redirectTimer = null;
 	let countTimer = null;
 
-	// function iDelete() {
-	// 	Axios.delete("").then().catch();
-	// }
-
 	useEffect(() => {
 		clearError();
 		fetchTeamById(team_id);
