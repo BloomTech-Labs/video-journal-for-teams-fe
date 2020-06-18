@@ -4,20 +4,12 @@ import { useParams, useHistory, Link } from "react-router-dom";
 
 // Components
 import NavAndHeader from "../components/nav/NavAndHeader";
-import MembersList from "../components/team/MembersList";
-import PromptList from "../components/team/PromptList";
-import EditTeam from "../components/team/EditTeam";
-import DeleteTeam from "../components/team/DeleteTeam";
-import QuestionsForm from "../components/VideoDetails/QuestionsForm";
 
 // Redux
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
 //socket
 import { socket } from "../socket/socket";
-import Axios from "axios";
-import { FeedbackForm } from "../components/VideoDetails/FeedbackForm";
-//test
 
 function TeamDashboard(props) {
 	const {
@@ -40,33 +32,6 @@ function TeamDashboard(props) {
 	let redirectTimer = null;
 	let countTimer = null;
 
-	// function iDelete() {
-	// 	Axios.delete("").then().catch();
-	// }
-
-	useEffect(() => {
-		clearError();
-		fetchTeamById(team_id);
-		fetchTeamMembers(team_id);
-		fetchTeamVideos(team_id);
-
-		socket.on("insertedFeedback", () => {
-			fetchTeamVideos(team_id);
-		});
-
-		socket.on("createdPrompt", () => {
-			fetchTeamVideos(team_id);
-		});
-
-		socket.on("registeredUser", () => {
-			fetchTeamMembers(team_id);
-		});
-
-		socket.on("videoPosted", () => {
-			fetchTeamVideos(team_id);
-		});
-	}, []);
-
 	// Check if there is an error on mount.
 	useEffect(() => {
 		if (!isFetching && teamError) {
@@ -87,14 +52,6 @@ function TeamDashboard(props) {
 			clearTimeout(countTimer);
 		};
 	}, [teamError]);
-
-	// Sets the logged in user role for the team (general team member role 1 or team lead role 2)
-	useEffect(() => {
-		if (teamMembers.length > 0) {
-			const findTeamMember = teamMembers.find((item) => item.user_id === userId);
-			findTeamMember ? setUserRole(findTeamMember.role_id) : setUserRole(1);
-		}
-	}, [teamMembers, userId]);
 
 	const clearDataAfterRedirect = () => {
 		clearError();
@@ -131,24 +88,12 @@ function TeamDashboard(props) {
 	} else {
 		return (
 			<NavAndHeader>
-				<div className="team-dashboard dashboard">
-					<h1>{team.name}</h1>
-					<div
-						style={{
-							display: "flex",
-							justifyContent: "flex-end",
-							alignItems: "center",
-							width: "90%",
-							margin: "0 auto",
-						}}>
-						<div>{userRole === 2 && <EditTeam />}</div>
-						<div style={{ marginLeft: "2%" }}>{userRole === 2 && <DeleteTeam />}</div>
-					</div>
-
-					<UserContext.Provider value={{ userRole }}>
-						<MembersList />
-						<PromptList teamMembersEmail={teamMembers.email} />
-					</UserContext.Provider>
+				<div className="resultsPage">
+					<h1>My Performance Results</h1>
+					<p>
+						Your overall performance score is an averaged score based on the feedback you receive from your peers as
+						well as TeamReel’s automated performance score generator.
+					</p>
 				</div>
 			</NavAndHeader>
 		);

@@ -78,11 +78,10 @@ const Organization = ({ createUserOrganization }) => {
 	};
 	const handleInput = (e) => {
 		setOrganization({ ...organization, [e.target.name]: e.target.value });
-		console.log(organization);
 	};
 	return (
 		<div>
-			<Button type="primary" style={{ width: 200, backgroundColor: '#FF7F50', color: '#696969', border: '1px solid white' }} onClick={toggleModal}>
+			<Button type="primary" style={{ width: 200, backgroundColor: '#FF7F50', color: 'white' }} onClick={toggleModal}>
 				Create a New Organization
 			</Button>
 			<Modal

@@ -13,12 +13,10 @@ export const createTeam = (newTeam, history, id) => (dispatch) => {
 };
 
 export const fetchTeamById = (team_id) => (dispatch) => {
-	console.log("team_id", team_id);
 	dispatch({ type: constants.FETCH_TEAM_BY_ID_START });
 	AxiosWithAuth()
 		.get(`/v2/teams/${team_id}`)
 		.then((teamResponse) => {
-			console.log("team response", teamResponse);
 			dispatch({ type: constants.FETCH_TEAM_BY_ID_SUCCESS, payload: teamResponse.data });
 		})
 		.catch((err) => dispatch({ type: constants.GENERATE_ERROR, payload: err.response }));

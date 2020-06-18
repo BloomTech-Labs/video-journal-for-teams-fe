@@ -13,8 +13,9 @@ import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
 import logo from "../../imgs/TeamReel.png";
 import { useLocation } from "react-router-dom";
+import { PieChartFilled } from "@ant-design/icons";
 
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
@@ -58,7 +59,7 @@ const DashboardNav = withRouter((props) => {
 		<Menu>
 			{organizations.map((item) => (
 				<Link key={item.id} to="/user-dashboard">
-					<Menu.Item style={{ textAlign: "center", backgroundColor: '#FFF', color: '#FF7F50', height: '20px', minWidth: 200 }} key={item.id} onClick={() => handleClick(item)}>
+					<Menu.Item style={{ textAlign: "center", color: '#FF7F50' }} key={item.id} onClick={() => handleClick(item)}>
 						{item.name}
 					</Menu.Item>
 				</Link>
@@ -85,18 +86,7 @@ const DashboardNav = withRouter((props) => {
 				</Title>
 			</div>
 			<Menu style={{ backgroundColor: "#6954EA" }} mode="inline" className={"userDashMenu"}>
-				{/* <SubMenu key="sub1" icon={<BankOutlined />} title={selectedOrganization.hasOwnProperty('name')
-						? selectedOrganization.name
-						: defaultOrganization
-						? defaultOrganization.name
-						: '' } style={{ color: 'white'  }} >
-					<Menu.Item style={{height: 100, backgroundColor: 'white', width: 200 }}>
-						{menu}
-					</Menu.Item>
-				</SubMenu> */}
-
-
-				<Dropdown overlay={menu}>
+				<Dropdown overlay={menu} trigger="click">
 					<a
 						className="ant-dropdown-link"
 						onClick={(e) => e.preventDefault()}
@@ -146,11 +136,17 @@ const DashboardNav = withRouter((props) => {
 						</Link>
 					</Menu.Item>
 				) : null}
-				<Menu.Item key="/setting" disabled>
+				<Menu.Item key="/results">
+					<Link to="/results" style={{ backgroundColor: "#6954EA", color: "#fff", display: "block" }}>
+						<PieChartFilled /> My Results
+					</Link>
+				</Menu.Item>
+				<hr style={{ margin: "40px 0" }} />
+				{/* <Menu.Item key="/setting" disabled>
 					<Icon type="setting" theme="filled" />
 					Teams Settings
 				</Menu.Item>
-				<hr style={{ margin: "40px 0" }} />
+				
 				<h3 style={{ color: "white", paddingLeft: "24px", paddingBottom: "20px" }}>Team Controls</h3>
 				<Menu.Item key="/manage-teams" disabled>
 					<Icon type="calendar" theme="filled" />
@@ -159,7 +155,7 @@ const DashboardNav = withRouter((props) => {
 				<Menu.Item key="/team-archive" disabled>
 					<Icon type="folder" theme="filled" />
 					<span>Team Archive</span>
-				</Menu.Item>
+				</Menu.Item> */}
 			</Menu>
 		</Sider>
 	);

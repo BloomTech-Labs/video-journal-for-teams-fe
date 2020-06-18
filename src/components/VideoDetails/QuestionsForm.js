@@ -2,35 +2,45 @@ import React, { useState } from "react";
 import { Modal, Button, Form, Input } from "antd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { fetchTeamById } from "../../redux/actions/teamActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import { fetchFeedback } from "../../redux/actions/userActions";
+import Stars from "./Stars.js";
+import { setFeedback, submitFeedback } from "../../redux/actions/userActions";
 
-const QuestionForm = () => {
+const QuestionForm = ({ videoId, videoOwnerId }) => {
 	const [showModal, setShowModal] = useState(false);
 	const [values, setValues] = useState(null);
 	const { team_id } = useParams();
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const feedback = useSelector((state) => state.User.videoFeedback);
+	const userId = useSelector((state) => state.User.userId);
+	const titles = [
+		"Overall Performance",
+		"Delivery and Presentation",
+		"Quality of response: : How well did he/she/they respond to the question?",
+		"Audio quality: Voice clarity, background noise, etc.",
+		"Visual environment: Does the environment look professional? Were there any unprofessional interruptions in the background",
+	];
+	const titleNames = [
+		"overall_performance",
+		"delivery_and_presentation",
+		"response_quality",
+		"audio_quality",
+		"visual_environment",
+	];
 
 	const handleOpen = () => {
 		setShowModal(true);
 	};
 
 	const handleOk = () => {
-		if (values) {
-			const updates = {
-				name: values,
-			};
-			axios
-				.put(``, updates)
-				.then((res) => {
-					dispatch(fetchTeamById(team_id));
-					setShowModal(!showModal);
-				})
-				.catch((err) => console.log(err));
-		}
+		const feedbackObj = { ...feedback, video_id: videoId, owner_id: userId, post: values };
+		dispatch(submitFeedback(feedbackObj));
+		dispatch(setFeedback("post", values));
+		history.push(`/videos/${videoId}`);
+		setShowModal(false);
 	};
 
 	const handleCancel = () => {
@@ -40,8 +50,6 @@ const QuestionForm = () => {
 	const handleChange = (e) => {
 		setValues(e.target.value);
 	};
-
-	const [rating, setRating] = useState(null);
 
 	return (
 		<div>
@@ -58,7 +66,7 @@ const QuestionForm = () => {
 				Leave your feeback!
 			</Button>{" "}
 			<Modal
-				title="Feedback Modal"
+				title="Leave your feedback"
 				visible={showModal}
 				onOk={handleOk}
 				onCancel={handleCancel}
@@ -72,105 +80,19 @@ const QuestionForm = () => {
 				<Form
 					name="basic"
 					initialValues={{
-						remember: true,
+						remember: false,
 					}}>
-					<Form.Item>
-						{" "}
-						{[...Array(5)].map((_, i) => {
-							const ratingValue = ++i;
-							return (
-								<label>
-									<input type="radio" name="rating" onClick={() => setRating(ratingValue)}></input>
-									<FaStar
-										className="star"
-										color={ratingValue <= rating ? "yellow" : "grey"}
-										size={30}
-										value={ratingValue}
-									/>
-								</label>
-							);
-						})}
-						<br />
-						Overall performance
-					</Form.Item>
-					<Form.Item>
-						{" "}
-						{[...Array(5)].map((_, i) => {
-							const ratingValue = ++i;
-							return (
-								<label>
-									<input type="radio" name="rating" onClick={() => setRating(ratingValue)}></input>
-									<FaStar
-										className="star"
-										color={ratingValue <= rating ? "yellow" : "grey"}
-										size={30}
-										value={ratingValue}
-									/>
-								</label>
-							);
-						})}
-						<br />
-						Delivery and presentation
-					</Form.Item>
-					<Form.Item>
-						{" "}
-						{[...Array(5)].map((_, i) => {
-							const ratingValue = ++i;
-							return (
-								<label>
-									<input type="radio" name="rating" onClick={() => setRating(ratingValue)}></input>
-									<FaStar
-										className="star"
-										color={ratingValue <= rating ? "yellow" : "grey"}
-										size={30}
-										value={ratingValue}
-									/>
-								</label>
-							);
-						})}
-						<br />
-						Quality of response: How well did he/she/they respond to the question?
-					</Form.Item>
-					<Form.Item>
-						{" "}
-						{[...Array(5)].map((_, i) => {
-							const ratingValue = ++i;
-							return (
-								<label>
-									<input type="radio" name="rating" onClick={() => setRating(ratingValue)}></input>
-									<FaStar
-										className="star"
-										color={ratingValue <= rating ? "yellow" : "grey"}
-										size={30}
-										value={ratingValue}
-									/>
-								</label>
-							);
-						})}
-						Audio quality: Voice clarity, background noise, etc.
-					</Form.Item>
-					<Form.Item>
-						{" "}
-						Visual environment: Does the environment look professional? Were there any unprofessional interruptions in
-						the background? Etc.
-						<br />
-						{[...Array(5)].map((_, i) => {
-							const ratingValue = ++i;
-							return (
-								<label>
-									<input type="radio" name="rating" onClick={() => setRating(ratingValue)}></input>
-									<FaStar
-										className="star"
-										color={ratingValue <= rating ? "yellow" : "grey"}
-										size={30}
-										value={ratingValue}
-									/>
-								</label>
-							);
-						})}
-					</Form.Item>
+					{titles.map((el, i) => {
+						return (
+							<Form.Item key={i}>
+								<Stars values={titleNames[i]} />
+								<p>{el}</p>
+							</Form.Item>
+						);
+					})}
+
 					<Form.Item
-						label="Free Text"
+						label="Additional Comments"
 						name="free_text"
 						rules={[{ required: true, message: " Any additional comments?!" }]}
 						onChange={handleChange}>
