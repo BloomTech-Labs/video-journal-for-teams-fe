@@ -15,8 +15,7 @@ import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
 //socket
 import { socket } from "../socket/socket";
-import Axios from "axios";
-import { FeedbackForm } from "../components/VideoDetails/FeedbackForm";
+
 //test
 
 function TeamDashboard(props) {

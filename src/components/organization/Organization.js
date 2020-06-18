@@ -81,7 +81,16 @@ const Organization = ({ createUserOrganization }) => {
 	};
 	return (
 		<div>
-			<Button type="primary" style={{ width: 200, backgroundColor: '#FF7F50', color: 'white' }} onClick={toggleModal}>
+			<Button
+				type="primary"
+				style={{
+					textAlign: "center",
+					width: 200,
+					backgroundColor: "#FF7F50",
+					color: "white",
+					border: "1px solid white",
+				}}
+				onClick={toggleModal}>
 				Create a New Organization
 			</Button>
 			<Modal

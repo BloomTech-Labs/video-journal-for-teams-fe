@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { UserContext } from "../components/utils/UserContext";
 import { useParams, useHistory, Link } from "react-router-dom";
 
 // Components
 import NavAndHeader from "../components/nav/NavAndHeader";
+import NoFeedback from "../components/ResultsComponents/NoFeedback";
 
 // Redux
 import { connect } from "react-redux";
@@ -11,7 +11,7 @@ import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "..
 //socket
 import { socket } from "../socket/socket";
 
-function TeamDashboard(props) {
+function ResultsPage(props) {
 	const {
 		team,
 		hello,
@@ -95,6 +95,7 @@ function TeamDashboard(props) {
 						well as TeamReel’s automated performance score generator.
 					</p>
 				</div>
+				<NoFeedback />
 			</NavAndHeader>
 		);
 	}
@@ -117,4 +118,4 @@ const mapActionsToProps = {
 	fetchTeamVideos,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(TeamDashboard);
+export default connect(mapStateToProps, mapActionsToProps)(ResultsPage);
