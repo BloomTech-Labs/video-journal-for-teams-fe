@@ -7,7 +7,6 @@ export default function Stars(props) {
 	const [rating, setRating] = useState(null);
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.User);
-	console.log(user);
 
 	const handleStars = (name, value) => {
 		setRating(value);

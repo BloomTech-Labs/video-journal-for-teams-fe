@@ -63,7 +63,6 @@ function ResultsPage(props) {
 			AxiosWithAuth()
 				.get(`/v2/users/feedback/${userId}`)
 				.then((res) => {
-					console.log("results", res.data);
 					dispatch(fetchVideoFeedback(res.data));
 					setData(formatFeedback(res.data));
 				})

@@ -24,7 +24,7 @@ export default function LineGraph() {
 					type="monotone"
 					dataKey="overall_performance"
 					stroke="#6954EA"
-					dot
+					dot={true}
 					activeDot={{ r: 8 }}
 				/>
 			</LineChart>
