@@ -28,37 +28,35 @@ function UserDashboard(props) {
 		organization_id = selectedOrganization.id ? selectedOrganization.id : defaultOrganization.id;
 	}
 
-	// useEffect(() => {
-	// 	authState.isAuthenticated &&
-	// 		authService.getUser().then((user) => {
-	// 			const creds = {
-	// 				username: user.preferred_username,
-	// 				email: user.email,
-	// 				first_name: user.given_name,
-	// 				last_name: user.family_name,
-	// 				password: user.sub,
-	// 			};
-	// 			dispatch(loginUser(creds));
+	useEffect(() => {
+		authState.isAuthenticated &&
+			authService.getUser().then((user) => {
+				const creds = {
+					username: user.preferred_username,
+					email: user.email,
+					first_name: user.given_name,
+					last_name: user.family_name,
+					password: user.sub,
+				};
+				dispatch(loginUser(creds));
 
-	// 			authService.getAccessToken().then((token) => localStorage.setItem("access-token", token));
-
-	// 		});
-	// 	// : history.push("/login");
-	// }, [authState]);
+				authService.getAccessToken().then((token) => localStorage.setItem("access-token", token));
+			});
+	}, []);
 
 	useEffect(() => {
 		clearError();
-		if (organization_id !== undefined) {
+		if (organization_id !== "" && id) {
 			fetchUserVideos(id, organization_id);
 		}
-	}, [id, fetchUserVideos, organization_id, defaultOrganization, selectedOrganization]);
+	}, [id, organization_id, defaultOrganization, selectedOrganization]);
 
 	return (
 		<>
 			{authState.isAuthenticated && (
 				<NavAndHeader>
 					<div className="user-dashboard dashboard">
-						<h1>Dashboard</h1>
+						<h1 style={{ color: "#696969" }}>Dashboard</h1>
 						{organizations.length >= 1 ? (
 							<>
 								<TeamList />

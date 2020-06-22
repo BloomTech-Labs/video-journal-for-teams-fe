@@ -25,7 +25,7 @@
 
 
 	.title {
-		width: 10%;
+		width: 16%;
 		text-align: right;
 		display: flex;
 		justify-content: center;
@@ -131,7 +131,7 @@
 		font-size: $sm-text-size;
 	}
 
-	@media (max-width: 800px) {
+	@media screen and (max-width: 800px) {
 		left     : 50%;
 		transform: translateX(-50%);
 	}

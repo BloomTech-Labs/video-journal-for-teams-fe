@@ -56,6 +56,7 @@ function App(props) {
 
 	const invite_info = JSON.parse(sessionStorage.getItem("team_invite"));
 	useEffect(() => {
+		console.log("effect from app");
 		// if (authState.isAuthenticated) {
 		// 	authService.getUser().then((user) => {
 		// 		const creds = {

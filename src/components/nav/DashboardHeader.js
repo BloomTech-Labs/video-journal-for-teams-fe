@@ -36,7 +36,7 @@ function DashboardHeader(props) {
 
 	const content = (
 		<div>
-			<button onClick={handleLogout}>Logout</button>
+			<button onClick={handleLogout} style={{ color: '#FF7F50'}}>Logout</button>
 		</div>
 	);
 
