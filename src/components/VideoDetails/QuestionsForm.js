@@ -63,7 +63,7 @@ const QuestionForm = ({ videoId, videoOwnerId }) => {
 					backgroundColor: "#6954EA",
 				}}
 				onClick={handleOpen}>
-				Leave your feeback!
+				Leave your feedback!
 			</Button>{" "}
 			<Modal
 				title="Leave your feedback"

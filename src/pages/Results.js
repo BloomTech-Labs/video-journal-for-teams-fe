@@ -10,7 +10,10 @@ import NoFeedback from "../components/ResultsComponents/NoFeedback";
 import { connect } from "react-redux";
 import { fetchTeamById, fetchTeamMembers, fetchTeamVideos, clearError } from "../redux/actions/teamActions";
 //socket
-import { socket } from "../socket/socket";
+import { fetchVideoFeedback } from "../redux/actions/userActions";
+import { formatFeedback } from "../components/utils/formatFeedback";
+import { useDispatch } from "react-redux";
+import AxiosWithAuth from "../components/utils/AxiosWithAuth";
 
 function ResultsPage(props) {
 	const {
@@ -27,9 +30,9 @@ function ResultsPage(props) {
 		clearError,
 		performance_score,
 	} = props;
-	const [userRole, setUserRole] = useState();
+	const [data, setData] = useState();
 	const [count, setCount] = useState(10);
-	let { team_id } = useParams();
+	const dispatch = useDispatch();
 	const history = useHistory();
 	let redirectTimer = null;
 	let countTimer = null;
@@ -54,6 +57,17 @@ function ResultsPage(props) {
 			clearTimeout(countTimer);
 		};
 	}, [teamError]);
+
+	useEffect(() => {
+		userId &&
+			AxiosWithAuth()
+				.get(`/v2/users/feedback/${userId}`)
+				.then((res) => {
+					dispatch(fetchVideoFeedback(res.data));
+					setData(formatFeedback(res.data));
+				})
+				.catch((err) => console.log(err));
+	}, []);
 
 	const clearDataAfterRedirect = () => {
 		clearError();
@@ -96,12 +110,17 @@ function ResultsPage(props) {
 						Your overall performance score is an averaged score based on the feedback you receive from your peers as
 						well as TeamReel’s automated performance score generator.
 					</p>
-					{performance_score !== 0 ? (
-						<h2 style={{ marginTop: "3%" }}>Overall Score: {`${performance_score}/5`} </h2>
+					{performance_score && performance_score !== 0 ? (
+						<div>
+							<h2 style={{ marginTop: "3%", textAlign: "center", fontSize: "1.5rem" }}>
+								Overall Score:
+								{`${Number.isInteger(performance_score) ? performance_score : performance_score.toFixed(2)}/5`}
+							</h2>
+							<Charts />
+						</div>
 					) : (
 						<NoFeedback />
 					)}
-					<Charts />
 				</div>
 			</NavAndHeader>
 		);

@@ -5,8 +5,8 @@ export default function BarGraph({ data }) {
 	return (
 		<div className="graph_wrapper">
 			<BarChart
-				width={800}
-				height={500}
+				width={window.screen.availWidth > 767 ? 800 : 400}
+				height={window.screen.availHeight > 767 ? 600 : 300}
 				data={data}
 				layout="vertical"
 				margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>

@@ -38,12 +38,21 @@ import { connect } from "react-redux";
 import { addToInvitedTeam } from "./redux/actions/userActions";
 import Organization from "./components/organization/Organization";
 import GoogleRedirect from "./components/okta/GoogleRedirect";
+import io from "socket.io-client";
 
 function App(props) {
 	const { isLogged, invited_team_id, invite_code, addToInvitedTeam, userId, history, organization_id } = props;
 	const { authState, authService } = useOktaAuth();
 	const dispatch = useDispatch();
 	const err = useSelector((state) => state.User.error);
+
+	// useEffect(() => {
+	// 	if (isLogged && err && err.status === 401 && token && userInfo) {
+	// 		console.log("$$$", isLogged, err, err.status, token, userInfo);
+	// 		console.log("token error fired");
+	// 		authService.logout("/");
+	// 	}
+	// }, [token, err, userInfo, isLogged]);
 
 	const invite_info = JSON.parse(sessionStorage.getItem("team_invite"));
 	useEffect(() => {

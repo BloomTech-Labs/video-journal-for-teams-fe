@@ -39,10 +39,6 @@ function TeamDashboard(props) {
 	let redirectTimer = null;
 	let countTimer = null;
 
-	// function iDelete() {
-	// 	Axios.delete("").then().catch();
-	// }
-
 	useEffect(() => {
 		clearError();
 		fetchTeamById(team_id);
@@ -89,6 +85,7 @@ function TeamDashboard(props) {
 
 	// Sets the logged in user role for the team (general team member role 1 or team lead role 2)
 	useEffect(() => {
+		console.log("effect fired again");
 		if (teamMembers.length > 0) {
 			const findTeamMember = teamMembers.find((item) => item.user_id === userId);
 			findTeamMember ? setUserRole(findTeamMember.role_id) : setUserRole(1);
