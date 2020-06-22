@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Menu, Typography, Dropdown } from "antd";
-import { DownOutlined, BankOutlined } from "@ant-design/icons";
+import { BankOutlined, DownOutlined } from "@ant-design/icons";
 import { Link, withRouter, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import {
@@ -11,10 +11,11 @@ import {
 } from "../../redux/actions/userActions";
 import { Modal, Button, Form, Input, Card, Icon } from "antd";
 import Organization from "../organization/Organization.js";
-import logo from "../../imgs/whitelogo.png";
+import logo from "../../imgs/TeamReel.png";
 import { useLocation } from "react-router-dom";
 import { PieChartFilled } from "@ant-design/icons";
 
+// const { SubMenu } = Menu;
 const DashboardNav = withRouter((props) => {
 	// Use location from router as a key to show that link is selected.
 	const {
@@ -77,7 +78,10 @@ const DashboardNav = withRouter((props) => {
 						to="/user-dashboard"
 						className={"userDashHeaderFont"}
 						style={{ color: "whitesmoke", marginTop: "12px" }}>
-						<img src={logo} />
+						<div className="logo">
+							<img src={logo} alt="logo" />
+						</div>	
+						
 					</Link>
 				</Title>
 			</div>
@@ -98,26 +102,28 @@ const DashboardNav = withRouter((props) => {
 						</div>
 					</a>
 				</Dropdown>
+
+
 				<hr style={{ margin: "25px 0" }} />
 				<Menu.Item key="/user-dashboard">
 					<Link to="/user-dashboard" style={{ backgroundColor: "#6954EA", color: "#fff", display: "block" }}>
-						<Icon type="home" theme="filled" /> Dashboard
+						<Icon type="home" theme="filled"/> Dashboard
 					</Link>
 				</Menu.Item>
 				<Menu.Item key="/profile">
-					<Link to="/profile" style={{ color: "#fff", display: "block" }}>
+					<Link to="/profile" style={{ color: "#FFF", display: "block" }}>
 						<Icon type="user" /> My Profile
 					</Link>
 				</Menu.Item>
 				<Menu.Item key="/videos">
-					<Link to="/videos" style={{ color: "#fff", display: "block" }}>
+					<Link to="/videos" style={{ color: "#FFF", display: "block" }}>
 						<Icon type="play-circle" theme="filled" /> My Videos
 					</Link>
 				</Menu.Item>
 
 				{filteredOrg.length > 0 && filteredOrg[0].role_id === 3 ? (
 					<Menu.Item key="/teams">
-						<Link to={`/organizations/${organization_id}/teams`} style={{ color: "#fff", display: "block" }}>
+						<Link to={`/organizations/${organization_id}/teams`} style={{ color: "#FFF", display: "block" }}>
 							<Icon type="calendar" theme="filled" /> All Teams
 						</Link>
 					</Menu.Item>
@@ -125,7 +131,7 @@ const DashboardNav = withRouter((props) => {
 
 				{filteredOrg.length > 0 && filteredOrg[0].role_id === 3 ? (
 					<Menu.Item key="/users">
-						<Link to={`/organizations/${organization_id}/users`} style={{ color: "#fff", display: "block" }}>
+						<Link to={`/organizations/${organization_id}/users`} style={{ color: "#FFF", display: "block" }}>
 							<Icon type="calendar" theme="filled" /> All Users
 						</Link>
 					</Menu.Item>

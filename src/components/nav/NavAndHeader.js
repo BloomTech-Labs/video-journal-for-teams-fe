@@ -11,8 +11,8 @@ const NavAndHeader = (props) => {
 	const { userId, fetchUserOrganizations, selectedOrganization, ...rest } = props;
 
 	useEffect(() => {
-		fetchUserOrganizations(userId);
-	}, [selectedOrganization]);
+		userId && fetchUserOrganizations(userId);
+	}, [selectedOrganization, userId]);
 
 	return (
 		<Layout className="nav-header">

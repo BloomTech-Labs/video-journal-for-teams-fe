@@ -2,21 +2,20 @@ import React, { useState } from "react";
 import { Modal, Button, Form, Input } from "antd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { fetchTeamById } from "../../redux/actions/teamActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import { fetchFeedback } from "../../redux/actions/userActions";
 import Stars from "./Stars.js";
-import { setFeedback } from "../../redux/actions/userActions";
+import { setFeedback, submitFeedback } from "../../redux/actions/userActions";
 
-const QuestionForm = () => {
+const QuestionForm = ({ videoId, videoOwnerId }) => {
 	const [showModal, setShowModal] = useState(false);
 	const [values, setValues] = useState(null);
 	const { team_id } = useParams();
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const feedback = useSelector((state) => state.User.videoFeedback);
-	console.log(feedback);
+	const userId = useSelector((state) => state.User.userId);
 	const titles = [
 		"Overall Performance",
 		"Delivery and Presentation",
@@ -36,24 +35,12 @@ const QuestionForm = () => {
 		setShowModal(true);
 	};
 
-	// const handleOk = () => {
-	// 	if (values) {
-	// 		const updates = {
-	// 			name: values,
-	// 		};
-	// 		axios
-	// 			.put(``, updates)
-	// 			.then((res) => {
-
-	// 				setShowModal(!showModal);
-	// 			})
-	// 			.catch((err) => console.log(err));
-	// 	}
-	// };
-
 	const handleOk = () => {
+		const feedbackObj = { ...feedback, video_id: videoId, owner_id: userId, post: values };
+		dispatch(submitFeedback(feedbackObj));
 		dispatch(setFeedback("post", values));
-		axios.post("", feedback);
+		history.push(`/videos/${videoId}`);
+		setShowModal(false);
 	};
 
 	const handleCancel = () => {
@@ -62,10 +49,7 @@ const QuestionForm = () => {
 
 	const handleChange = (e) => {
 		setValues(e.target.value);
-		dispatch(setFeedback("post", values));
 	};
-
-	const [rating, setRating] = useState(null);
 
 	return (
 		<div>
@@ -79,7 +63,7 @@ const QuestionForm = () => {
 					backgroundColor: "#6954EA",
 				}}
 				onClick={handleOpen}>
-				Leave your feeback!
+				Leave your feedback!
 			</Button>{" "}
 			<Modal
 				title="Leave your feedback"
@@ -96,7 +80,7 @@ const QuestionForm = () => {
 				<Form
 					name="basic"
 					initialValues={{
-						remember: true,
+						remember: false,
 					}}>
 					{titles.map((el, i) => {
 						return (

@@ -28,23 +28,23 @@ function UserDashboard(props) {
 		organization_id = selectedOrganization.id ? selectedOrganization.id : defaultOrganization.id;
 	}
 
-	useEffect(() => {
-		authState.isAuthenticated &&
-			authService.getUser().then((user) => {
-				const creds = {
-					username: user.preferred_username,
-					email: user.email,
-					first_name: user.given_name,
-					last_name: user.family_name,
-					password: user.sub,
-				};
-				dispatch(loginUser(creds));
+	// useEffect(() => {
+	// 	authState.isAuthenticated &&
+	// 		authService.getUser().then((user) => {
+	// 			const creds = {
+	// 				username: user.preferred_username,
+	// 				email: user.email,
+	// 				first_name: user.given_name,
+	// 				last_name: user.family_name,
+	// 				password: user.sub,
+	// 			};
+	// 			dispatch(loginUser(creds));
 
-				authService.getAccessToken().then((token) => localStorage.setItem("access-token", token));
+	// 			authService.getAccessToken().then((token) => localStorage.setItem("access-token", token));
 
-			});
-		// : history.push("/login");
-	}, [authState]);
+	// 		});
+	// 	// : history.push("/login");
+	// }, [authState]);
 
 	useEffect(() => {
 		clearError();
@@ -58,7 +58,7 @@ function UserDashboard(props) {
 			{authState.isAuthenticated && (
 				<NavAndHeader>
 					<div className="user-dashboard dashboard">
-						<h1>Dashboard</h1>
+						<h1 style={{ color: '#696969'}}>Dashboard</h1>
 						{organizations.length >= 1 ? (
 							<>
 								<TeamList />

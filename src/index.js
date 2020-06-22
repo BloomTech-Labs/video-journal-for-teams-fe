@@ -12,7 +12,6 @@ import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import { oktaConfig } from "./components/okta/oktaConfig";
 import { Security } from "@okta/okta-react";
-
 import LoadingView from "./components/utils/LoadingView";
 import UserDashboard from "./pages/UserDashboard";
 

@@ -25,7 +25,7 @@ div.header{
 		}
 		z-index: 9999;
 		.title {
-			width: 10%;
+			width: 16%;
 			text-align: right;
 			display: flex;
 			justify-content: center;
@@ -36,11 +36,11 @@ div.header{
 			}
 		}
 		.links {
-			width: 30%;
-			min-width: 320px;
+			width: 60%;
+			// min-width: 320px;
 			display: flex;
-			justify-content: flex-start;
-			font-size: 1.5rem;
+			justify-content: flex-end;
+			font-size: 1.4rem;
 			font-weight: bolder;
 			color: white;
 			

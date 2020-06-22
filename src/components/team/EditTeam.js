@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Input } from "antd";
-import axios from "axios";
+import AxiosWithAuth from "../utils/AxiosWithAuth";
 import { useParams } from "react-router-dom";
 import { fetchTeamById } from "../../redux/actions/teamActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +22,7 @@ const EditTeam = () => {
 	const handleOk = () => {
 		if (values) {
 			const updates = { name: values };
-			axios
+			AxiosWithAuth()
 				.put(`/v2/teams/${team_id}`, updates)
 				.then((res) => {
 					dispatch(fetchTeamById(team_id));
@@ -41,7 +41,7 @@ const EditTeam = () => {
 		setValues(e.target.value);
 	};
 	function iDelete() {
-		axios
+		AxiosWithAuth()
 			.delete(`/v2/teams/${team_id}`)
 			.then((res) => history.push("/user-dashboard"))
 			.catch((err) => console.log(err));

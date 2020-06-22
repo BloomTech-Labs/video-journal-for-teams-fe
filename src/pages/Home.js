@@ -2,17 +2,21 @@ import reel from "../imgs/image.png";
 import teamReel from "../imgs/TeamReel.png";
 import React, { useEffect } from "react";
 import { Button } from "antd";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
+import UserVideos from "./UserVideos";
+import { useSelector } from "react-redux";
 //import { loginUser, setError, clearError } from "../redux/actions/userActions";
 
 const Home = () => {
-	let history = useHistory();
+	const history = useHistory();
+	const location = useLocation();
 	const { authService, authState } = useOktaAuth();
+	const userId = useSelector((state) => state.User.userId);
 
 	useEffect(() => {
-		authState.isAuthenticated && history.push("/user-dashboard");
-	}, [authState]);
+		authState.isAuthenticated && userId && history.push("/user-dashboard");
+	}, [authState, userId]);
 
 	return (
 		<div>
@@ -60,20 +64,20 @@ const Home = () => {
 							<div className="blob1">
 								<div className="text">
 									<h1>Join or create an organization</h1>
-									<h2>You can start your own, or join an already existing organization.</h2>
+									<h2>You can start your own, or join an already existing<br/> organization.</h2>
 								</div>
 							</div>
 							<div className="blob2">
 								<div className="text">
 									<h1>Team up with others</h1>
-									<h2>Team up with coworkers or classmates, and leave feedback on eachothers videos!</h2>
+									<h2>Team up with coworkers or classmates, and leave<br/> feedback on eachothers videos!</h2>
 								</div>
 							</div>
 							<div className="blob3">
 								<div className="text">
 									<h1>Create prompts for others to answer</h1>
 									<h2>
-										Channel leaders can create prompts for other teammates to answer and practice their speaking skills.
+										Channel leaders can create prompts for other teammates to<br/> answer and practice their speaking skills.
 									</h2>
 								</div>
 							</div>
@@ -81,8 +85,8 @@ const Home = () => {
 								<div className="text">
 									<h1>Improve your speaking skills!</h1>
 									<h2>
-										With TeamReels, you can answer prompts created by channel leaders every week, and get better through
-										critical feedback and repitition!
+										With TeamReels, you can answer prompts created by channel<br/> leaders every week, and get better through
+										critical feedback<br/> and repitition!
 									</h2>
 								</div>
 							</div>

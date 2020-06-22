@@ -158,6 +158,9 @@ const constants = {
 	FETCH_ORGANIZATION_USERS_SUCCESS: "organization:fetch-organization-users-success",
 
 	DELETE_ORGANIZATION_USER_SUCCESS: "organization:delete-organization-users-success",
+
+	//GET fetch video feedback scores
+	FETCH_VIDEO_FEEDBACK: "user: fetch-video-feedback",
 };
 
 export default constants;
