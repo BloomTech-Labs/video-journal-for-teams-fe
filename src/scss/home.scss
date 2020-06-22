@@ -96,11 +96,11 @@ header.home {
 						margin-bottom: 40px;
 						h1{
 							font-size: 2rem;
-							font-weight: bold;
+							// font-weight: bold;
 						}
 						h2{
 							font-size: 1.4rem;
-							font-weight: 700;
+							// font-weight: 700;
 						}
 					}
 					
@@ -194,7 +194,7 @@ header.home {
 		align-items: center;
 		height: 80px;
 		width: 100vw;
-		padding: 20px;
+		//padding: 20px;
 		text-shadow: none;
 		bottom: 0px;
 		background-color: #6954EA;
@@ -202,33 +202,27 @@ header.home {
 		opacity: 1;
 		position: fixed;
 		top: 0px;
-		* {
-			margin:10px;
-		}
+		
 		.title {
-			width: 10%;
+			width: 16%;
 			text-align: right;
 			display: flex;
 			justify-content: center;
+			margin-left: 4%;
 
 			img{
-				// display: block;
-				max-width: 70%;
-				object-fit: contain;
+				width: 700px;
+				object-fit: fill;
 			}
-			
-			
 		}
 		
 		.links {
-			width: 30%;
-			min-width: 320px;
+			width: 60%;
 			display: flex;
-			justify-content: flex-start;
-			font-size: 1.5rem;
-			font-weight: bolder;
+			justify-content: flex-end;
+			font-size: 1.4rem;
+			//font-weight: bolder;
 			color: white;
-
 			p:hover {
 				cursor: pointer;
 			}
@@ -236,15 +230,12 @@ header.home {
 			a:link {
 				color: white;
 			}
-			a:visited {
-				color: white;				;
-			}
 			a:hover {
-				color:#FF7F50 ;
+				color:#FF7F50;
 			}
-			* {
-				margin: 0 3%;
-			}
+			// * {
+			// 	margin: 0 3%;
+			// }
 			div.navStart{
 			button {
 				background-color: white;
@@ -264,6 +255,22 @@ header.home {
 			}
 		}
 		
+		@media only screen and (max-width: 1200px) {
+			.title{
+				width: 50vw;
+				
+			}
+			.links{
+				width: 100%;
+				a:link{
+					width: 100%;
+					display:flex;
+					flex-wrap: wrap;
+				}
+			}
+
+
+		}
 
 	}
 	

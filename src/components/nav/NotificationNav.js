@@ -55,7 +55,7 @@ function NotificationNav(props) {
 				userFeedback.map((item) => (
 					<Menu.Item>
 						<Link to={`/videos/${item.video_id}`}>
-							{item.first_name} {item.last_name} left feedback on video {item.video_title}
+							{item.first_name} {item.last_name} left feedback on  {item.video_title}
 						</Link>
 					</Menu.Item>
 				))

@@ -58,7 +58,7 @@ function UserDashboard(props) {
 			{authState.isAuthenticated && (
 				<NavAndHeader>
 					<div className="user-dashboard dashboard">
-						<h1>Dashboard</h1>
+						<h1 style={{ color: '#696969'}}>Dashboard</h1>
 						{organizations.length >= 1 ? (
 							<>
 								<TeamList />
