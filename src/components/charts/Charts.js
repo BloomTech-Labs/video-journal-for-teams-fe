@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { ResponsiveContainer } from "recharts";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import BarGraph from "./BarGraph";
 import LineGraph from "./LineGraph";
