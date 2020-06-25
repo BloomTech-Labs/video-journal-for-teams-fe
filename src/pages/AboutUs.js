@@ -39,7 +39,7 @@
 				</Card>
 				<Card className="dev">
 					<h2>Beth Wingate</h2>
-					<img src ="https://ca.slack-edge.com/ESZCHB482-W012JHY8NH0-15c9a5fe1341-512" alt="Beth"/>
+					<img src ="https://ca.slack-edge.com/ESZCHB482-W012JHY8NH0-2f09d30b1297-512" alt="Beth"/>
 					<h3>iOS Developer</h3>
 				</Card>
 				<Card className="dev">
